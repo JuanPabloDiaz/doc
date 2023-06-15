@@ -2,7 +2,7 @@
 layout: post
 title: "Purchase and Configure Your New Domain"
 date: 2023-06-13 09:00:00 -0500
-categories: Web
+categories: domain
 tags: portfolio project github frontend hosting
 ---
 
