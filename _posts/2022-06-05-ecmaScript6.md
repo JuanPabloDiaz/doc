@@ -1,27 +1,24 @@
 ---
 layout: post
-title: "CSS Grid Basic Course"
-date: 2022-04-16 10:00:00 -0500
+title: "ECMAScript 6+ Course"
+date: 2022-06-05 10:00:00 -0500
 categories: platzi 2022
-tags: neverstoplearning platzi css grid
+tags: neverstoplearning platzi javascript ecmascript
 ---
 
-This repo is part of a Platzi course called: "[Curso de CSS Grid Básico
-](https://platzi.com/cursos/css-grid)".
+This folder is part of a Platzi course called: "[Curso de ECMAScript 6+](https://platzi.com/cursos/ecmascript-6/)".
 
-I had the oportunity to learn how to create dynamic layouts with CSS Grid! Apply complex layouts to my own website with just a few lines of CSS code. As well as built grids to distribute the containers and HTML elements quickly.
-
-## Challenge 🎲
+JavaScript is the most used language for web application development, mainly in the frontend. Each year, ECMA International publishes a new edition of ECMAScript, the specification to which JavaScript conforms. I had the oportunity to learn about the new features that ECMAScript implements from version 6 to version 10.
 
 <!-- BUILD WITH -->
 
 ### Built With 🔑
 
-This class is built using Cascading Style Sheets(CSS).
+This class is based on Javascript (JS).
 
 <div align="center">
 
-[![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3schools.com/whatis/whatis_css.asp)
+[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
 
 </div>
 
@@ -31,21 +28,12 @@ This class is built using Cascading Style Sheets(CSS).
 
 This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-web-2022/) I participated on. In which for two months, I got the oportunity to join 24 live meeting and multiple classes with the only purpose of creating a Web Portaflio.
 
-Here are some of the projects that have been developed in 2022.
+<p align="center">
+    <a href="#">link</a>
+	⭐
+    <a href="#">Challenge</a>
 
-<div align="center">
-
-[Final Project](https://jpdiaz.dev/platzi/2022/cssGridBasico/project/)
-| [Challenge 1](https://jpdiaz.dev/platzi/2022/cssGridBasico/challenge/reto.html)
-| [Challenge 2](https://jpdiaz.dev/platzi/2022/cssGridBasico/challenge/reto1.html)
-| [Challenge 3](https://jpdiaz.dev/platzi/2022/cssGridBasico/challenge/reto2.html)
-| [propiedadesAlineacion](https://jpdiaz.dev/platzi/2022/cssGridBasico/propiedadesAlineacion/)
-| [propiedadesContenedor](https://jpdiaz.dev/platzi/2022/cssGridBasico/propiedadesContenedor/)
-| [propiedadesUbicacion](https://jpdiaz.dev/platzi/2022/cssGridBasico/propiedadesUbicacion/)
-| [keywordsEspeciales](https://jpdiaz.dev/platzi/2022/cssGridBasico/keywordsEspeciales/)
-| [funcionesEspeciales](https://jpdiaz.dev/platzi/2022/cssGridBasico/funcionesEspeciales/)
-
-</div>
+  </p>
 
 <!-- PROJECTS -->
 
@@ -70,6 +58,8 @@ Here are some of the projects that have been developed in 2022.
 Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
+- [Escuela de JavaScript](https://platzi.com/escuela-javascript/)
+
 - [Escuela de Desarrollo Web](https://platzi.com/web/)
 - [#PlatziChallenge](https://platzi.com/blog/portafolio-web-2022/) 🎯
   Crea tu Portafolio como Web Developer 2022

@@ -1,30 +1,24 @@
 ---
 layout: post
-title: "React.js Course: Professional State Management"
-date: 2022-04-16 10:00:00 -0500
+title: "HTML and CSS Final Course"
+date: 2022-02-23 10:00:00 -0500
 categories: platzi 2022
-tags: neverstoplearning platzi javascript react
+tags: neverstoplearning platzi html css
 ---
 
-This repo is part of a Platzi course called: "[Curso de React.js: Manejo Profesional del Estado](https://platzi.com/cursos/react-estado/)".
-I learned how to handle state professionally with React.js! Created independent or compound states, imperative or declarative, with functions or classes, with useState or useReducer. Identifies the best tools for building or refactoring components
-
-## Challenge 🎲
-
-text
+This folder is part of a Platzi course called: "[Curso Definitivo de HTML y CSS](https://platzi.com/cursos/html-css/)". In which I learned HTML and CSS from scratch, without prior knowledge. Learned all about HTML tags, semantics, CSS, how to style website elements, EM/REM measurements, box model and much more. I had previous experience but it helped me to get back and refresh some concepts to start my path as a web developer.
 
 <!-- BUILD WITH -->
 
 ### Built With 🔑
 
-This class is based on React.js. Using Javascript (JS), Hyper Text Markup Language (HTML) and Cascading Style Sheets(CSS).
+This course is centered around Hyper Text Markup Language (HTML) and Cascading Style Sheets (CSS), with some possible inclusion of JavaScript (JS).
 
 <div align="center">
 
-[![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://www.w3schools.com/whatis/whatis_react.asp)
-[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://www.w3schools.com/whatis/whatis_html.asp)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3schools.com/whatis/whatis_css.asp)
+[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
 
 </div>
 
@@ -34,14 +28,20 @@ This class is based on React.js. Using Javascript (JS), Hyper Text Markup Langua
 
 This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-web-2022/) I participated on. In which for two months, I got the oportunity to join 24 live meeting and multiple classes with the only purpose of creating a Web Portaflio.
 
-<p align="center">
-    <a href="#">link</a>
-	⭐
-    <a href="#">Challenge</a>
+Here are some of the projects that have been developed through this course.
 
-  </p>
+<div align="center">
 
-<!-- OTHER PROJECTS -->
+[Platzi Day](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/web2022Challenges/platziDay.html)
+| [Layout Project](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/courseChallenges/layoutProject.html)
+| [ResponsiveDesign - ResponsiveImgs](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/ResponsiveImgs/)
+| [ResponsiveDesign - columnDrop](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/columnDrop/)
+| [ResponsiveDesign - layoutShifter](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/layoutShifter/)
+| [ResponsiveDesign - mostlyFluid](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/mostlyFluid/)
+
+</div>
+
+<!-- PROJECTS -->
 
 ## Projects 🚀
 
@@ -64,7 +64,4 @@ This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-w
 Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
-- [Escuela de Javascript](https://platzi.com/escuela-javascript/)
 - [Escuela de Desarrollo Web](https://platzi.com/web/)
-- [#PlatziChallenge](https://platzi.com/blog/portafolio-web-2022/) 🎯
-  Crea tu Portafolio como Web Developer 2022

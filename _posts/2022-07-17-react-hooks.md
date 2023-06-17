@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "React Hooks Professional Course"
-date: 2022-04-16 10:00:00 -0500
+date: 2022-07-17 10:00:00 -0500
 categories: platzi 2022
 tags: neverstoplearning react
 ---

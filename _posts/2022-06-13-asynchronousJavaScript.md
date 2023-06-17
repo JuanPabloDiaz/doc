@@ -1,24 +1,26 @@
 ---
 layout: post
-title: "Flujo de Desarrollo Moderno CodeStream Course"
-date: 2022-04-16 10:00:00 -0500
+title: "Asynchronous JavaScript Course"
+date: 2022-06-13 10:00:00 -0500
 categories: platzi 2022
-tags: neverstoplearning platzi codestream
+tags: neverstoplearning platzi javascript
 ---
 
-This folder is part of a Platzi course called: "[Curso de Flujo de Desarrollo Moderno CodeStream](https://platzi.com/cursos/desarrollo-moderno-codestream/)".
+This repo is part of a Platzi course called: "[Curso de Asincronismo con JavaScript](https://platzi.com/cursos/asincronismo-js/)". This course provided the fundamental concepts of asynchrony with JavaScript, apply its different structures and develop asynchronous solutions.
 
-Create Software in the most efficient way possible, individually or as a team. Learn how to maintain effective communication and improve team coordination with CodeStream: the collaboration tool for developer teams that allows the entire Software development workflow to exist within your editor, facilitating your work and that of your team.
+## Challenge 🎲
+
+I developed...
 
 <!-- BUILD WITH -->
 
 ### Built With 🔑
 
-This class is based on Hyper Text Markup Language (HTML) and Cascading Style Sheets(CSS) but also has some Javascript (JS).
+This class is based on Javascript (JS).
 
 <div align="center">
 
-[![CodeStream](https://img.shields.io/badge/CodeStream-323330?style=for-the-badge&logo=hashnode&logoColor=3F5767)](https://www.w3schools.com/whatis/whatis_js.asp)
+[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
 
 </div>
 
@@ -58,8 +60,10 @@ This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-w
 Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
-- [Escuela de JavaScript](https://platzi.com/escuela-javascript/)
-
+- [Escuela de Javascript](https://platzi.com/escuela-javascript/)
 - [Escuela de Desarrollo Web](https://platzi.com/web/)
 - [#PlatziChallenge](https://platzi.com/blog/portafolio-web-2022/) 🎯
   Crea tu Portafolio como Web Developer 2022
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

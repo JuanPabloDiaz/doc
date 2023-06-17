@@ -1,20 +1,24 @@
 ---
 layout: post
-title: "ECMAScript 6+ Course"
-date: 2022-04-16 10:00:00 -0500
+title: "Manipulate Arrays in JavaScript Course"
+date: 2022-06-12 10:00:00 -0500
 categories: platzi 2022
-tags: neverstoplearning platzi javascript ecmascript
+tags: neverstoplearning platzi javascript array
 ---
 
-This folder is part of a Platzi course called: "[Curso de ECMAScript 6+](https://platzi.com/cursos/ecmascript-6/)".
+This section is part of a Platzi course called: "[Curso de Manipulación de Arrays en JavaScript](https://platzi.com/cursos/arrays/)".
 
-JavaScript is the most used language for web application development, mainly in the frontend. Each year, ECMA International publishes a new edition of ECMAScript, the specification to which JavaScript conforms. I had the oportunity to learn about the new features that ECMAScript implements from version 6 to version 10.
+I learned how to solve quickly and efficiently the algorithms by using and understanding arrays in JavaScript, from how to create them to the different methods they have.
+
+## Challenge 🎲
+
+text
 
 <!-- BUILD WITH -->
 
 ### Built With 🔑
 
-This class is based on Javascript (JS).
+This class is based on Javascript (JS)
 
 <div align="center">
 
@@ -58,8 +62,7 @@ This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-w
 Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
-- [Escuela de JavaScript](https://platzi.com/escuela-javascript/)
-
+- [Escuela de Javascript](https://platzi.com/escuela-javascript/)
 - [Escuela de Desarrollo Web](https://platzi.com/web/)
 - [#PlatziChallenge](https://platzi.com/blog/portafolio-web-2022/) 🎯
   Crea tu Portafolio como Web Developer 2022

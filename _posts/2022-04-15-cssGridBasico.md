@@ -1,28 +1,27 @@
 ---
 layout: post
-title: "Manipulate Arrays in JavaScript Course"
-date: 2022-04-16 10:00:00 -0500
+title: "CSS Grid Basic Course"
+date: 2022-04-15 10:00:00 -0500
 categories: platzi 2022
-tags: neverstoplearning platzi javascript array
+tags: neverstoplearning platzi css grid
 ---
 
-This section is part of a Platzi course called: "[Curso de Manipulación de Arrays en JavaScript](https://platzi.com/cursos/arrays/)".
+This repo is part of a Platzi course called: "[Curso de CSS Grid Básico
+](https://platzi.com/cursos/css-grid)".
 
-I learned how to solve quickly and efficiently the algorithms by using and understanding arrays in JavaScript, from how to create them to the different methods they have.
+I had the oportunity to learn how to create dynamic layouts with CSS Grid! Apply complex layouts to my own website with just a few lines of CSS code. As well as built grids to distribute the containers and HTML elements quickly.
 
 ## Challenge 🎲
-
-text
 
 <!-- BUILD WITH -->
 
 ### Built With 🔑
 
-This class is based on Javascript (JS)
+This class is built using Cascading Style Sheets(CSS).
 
 <div align="center">
 
-[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
+[![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3schools.com/whatis/whatis_css.asp)
 
 </div>
 
@@ -32,12 +31,21 @@ This class is based on Javascript (JS)
 
 This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-web-2022/) I participated on. In which for two months, I got the oportunity to join 24 live meeting and multiple classes with the only purpose of creating a Web Portaflio.
 
-<p align="center">
-    <a href="#">link</a>
-	⭐
-    <a href="#">Challenge</a>
+Here are some of the projects that have been developed in 2022.
 
-  </p>
+<div align="center">
+
+[Final Project](https://jpdiaz.dev/platzi/2022/cssGridBasico/project/)
+| [Challenge 1](https://jpdiaz.dev/platzi/2022/cssGridBasico/challenge/reto.html)
+| [Challenge 2](https://jpdiaz.dev/platzi/2022/cssGridBasico/challenge/reto1.html)
+| [Challenge 3](https://jpdiaz.dev/platzi/2022/cssGridBasico/challenge/reto2.html)
+| [propiedadesAlineacion](https://jpdiaz.dev/platzi/2022/cssGridBasico/propiedadesAlineacion/)
+| [propiedadesContenedor](https://jpdiaz.dev/platzi/2022/cssGridBasico/propiedadesContenedor/)
+| [propiedadesUbicacion](https://jpdiaz.dev/platzi/2022/cssGridBasico/propiedadesUbicacion/)
+| [keywordsEspeciales](https://jpdiaz.dev/platzi/2022/cssGridBasico/keywordsEspeciales/)
+| [funcionesEspeciales](https://jpdiaz.dev/platzi/2022/cssGridBasico/funcionesEspeciales/)
+
+</div>
 
 <!-- PROJECTS -->
 
@@ -62,7 +70,6 @@ This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-w
 Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
-- [Escuela de Javascript](https://platzi.com/escuela-javascript/)
 - [Escuela de Desarrollo Web](https://platzi.com/web/)
 - [#PlatziChallenge](https://platzi.com/blog/portafolio-web-2022/) 🎯
   Crea tu Portafolio como Web Developer 2022

@@ -1,41 +1,39 @@
 ---
 layout: post
-title: "HTML and CSS Practical Course"
-date: 2022-04-16 10:00:00 -0500
+title: "Flujo de Desarrollo Moderno CodeStream Course"
+date: 2022-09-25 10:00:00 -0500
 categories: platzi 2022
-tags: neverstoplearning platzi html css
+tags: neverstoplearning platzi codestream
 ---
 
-This repo is part of a Platzi course called: "[Curso Práctico de HTML y CSS](https://platzi.com/cursos/html-practico/)". Now that I completed the **HTML and CSS Definitive Course** and I refreshed my knowledge on HTML and CSS. I am ready for this practical course. Creating pages using what I had learned on the other class.
-I also reinforce concepts such as positioning, box model, Display types, selectors such as classes, IDS, Flexbox and Grid.
+This folder is part of a Platzi course called: "[Curso de Flujo de Desarrollo Moderno CodeStream](https://platzi.com/cursos/desarrollo-moderno-codestream/)".
 
-## Challenge 🎲
-
-I developed some projects but the most challenging was to **clone the Google page**.
+Create Software in the most efficient way possible, individually or as a team. Learn how to maintain effective communication and improve team coordination with CodeStream: the collaboration tool for developer teams that allows the entire Software development workflow to exist within your editor, facilitating your work and that of your team.
 
 <!-- BUILD WITH -->
 
 ### Built With 🔑
 
-This class is based on Hyper Text Markup Language (HTML) and Cascading Style Sheets(CSS).
+This class is based on Hyper Text Markup Language (HTML) and Cascading Style Sheets(CSS) but also has some Javascript (JS).
 
 <div align="center">
 
-[![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://www.w3schools.com/whatis/whatis_html.asp)
-[![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3schools.com/whatis/whatis_css.asp)
+[![CodeStream](https://img.shields.io/badge/CodeStream-323330?style=for-the-badge&logo=hashnode&logoColor=3F5767)](https://www.w3schools.com/whatis/whatis_js.asp)
 
 </div>
+
 <!-- CONTENT -->
 
 ## Content 🚦
 
 This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-web-2022/) I participated on. In which for two months, I got the oportunity to join 24 live meeting and multiple classes with the only purpose of creating a Web Portaflio.
 
-<div align="center">
+<p align="center">
+    <a href="#">link</a>
+	⭐
+    <a href="#">Challenge</a>
 
-⭐[Google Clone](<https://jpdiaz.dev/platzi/2022/practicoHTMLyCSS/googleCloneOfficial/Clase%2015%20(%20css%20footer)>)⭐
-
-</div>
+  </p>
 
 <!-- PROJECTS -->
 
@@ -60,6 +58,8 @@ This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-w
 Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
+- [Escuela de JavaScript](https://platzi.com/escuela-javascript/)
+
 - [Escuela de Desarrollo Web](https://platzi.com/web/)
 - [#PlatziChallenge](https://platzi.com/blog/portafolio-web-2022/) 🎯
   Crea tu Portafolio como Web Developer 2022
