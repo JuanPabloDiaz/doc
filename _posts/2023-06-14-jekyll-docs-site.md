@@ -2,7 +2,7 @@
 layout: post
 title: "Jekyll Docs Site"
 date: 2023-06-14 09:00:00 -0500
-categories: jekyll
+categories: jekyll documentation
 tags: portfolio project markdown localhost
 ---
 
