@@ -1,34 +1,28 @@
 ---
 layout: post
-title: "Basic Programming"
-date: 2022-04-16 10:00:00 -0500
-categories: platzi 2022
-tags: neverstoplearning coding
+title: "Frontend Developer"
+date: 2021-04-16 10:00:00 -0500
+categories: platzi 2021
+tags: neverstoplearning frontend
 ---
 
 <!-- ABOUT THE PROJECT -->
 
 ## About
 
-This folder was created at the end of 2021 when I took the "Basic Programming" course on Platzi. Check out the course description: [Curso Gratis de Programación Básica](https://platzi.com/cursos/programacion-basica/).
+This folder was created at the end of 2021 when I took the "Frontend Developer" course on Platzi. Check out the course description: [Curso de Frontend Developer](https://platzi.com/cursos/frontend-developer/) as well as the [Curso Práctico de Frontend Developer](https://platzi.com/cursos/frontend-developer-practico/).
 
 <!-- CERTIFICATE -->
 
 ## My Certificate 🎓
 
-I completed the courses back on September 2021 and here is my [certificate](https://platzi.com/p/DiazJuan/curso/1050-course/diploma/detalle/)
+I completed the courses back on October 2021 and here is my [certificate](https://platzi.com/p/DiazJuan/curso/2467-course/diploma/detalle/) | [Practice](https://platzi.com/p/DiazJuan/curso/2477-course/diploma/detalle/)
 
 ## Projects
 
-Here are some of the projects developed with this course
+Here are some of the projects developed with this course:
 
-✔️ [My First Video Game](https://jpdiaz.dev/platzi/2021/programacionBasica/primerVideoJuego/villa.html)
-
-✔️ [Peso En Otro Planeta](https://jpdiaz.dev/platzi/2021/programacionBasica/pesoEnOtroPlaneta/marte_jupiter.html)
-
-✔️ [Random Number](https://jpdiaz.dev/platzi/2021/programacionBasica/primerVideoJuego/random.html)
-
-✔️ [Move Around](https://jpdiaz.dev/platzi/2021/programacionBasica/teclas/flechas.html)
+✔️ [Mr Robot Cool](https://jpdiaz.dev/platzi/2021/frontendDeveloper/curso-1/mr-robot.html)
 
 ## Other Projects 🚀
 
