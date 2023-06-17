@@ -14,13 +14,9 @@ This folder is part of a Platzi course called: "[Curso Definitivo de HTML y CSS]
 
 This course is centered around Hyper Text Markup Language (HTML) and Cascading Style Sheets (CSS), with some possible inclusion of JavaScript (JS).
 
-<div align="center">
-
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://www.w3schools.com/whatis/whatis_html.asp)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3schools.com/whatis/whatis_css.asp)
 [![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
-
-</div>
 
 <!-- CONTENT -->
 
@@ -30,16 +26,12 @@ This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-w
 
 Here are some of the projects that have been developed through this course.
 
-<div align="center">
-
 [Platzi Day](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/web2022Challenges/platziDay.html)
 | [Layout Project](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/courseChallenges/layoutProject.html)
 | [ResponsiveDesign - ResponsiveImgs](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/ResponsiveImgs/)
 | [ResponsiveDesign - columnDrop](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/columnDrop/)
 | [ResponsiveDesign - layoutShifter](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/layoutShifter/)
 | [ResponsiveDesign - mostlyFluid](https://jpdiaz.dev/platzi/2022/definitivoHTMLyCSS/ResponsiveDesign/mostlyFluid/)
-
-</div>
 
 <!-- PROJECTS -->
 
