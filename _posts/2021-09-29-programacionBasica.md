@@ -3,7 +3,7 @@ layout: post
 title: "Basic Programming"
 date: 2021-09-29 10:00:00 -0500
 categories: platzi 2021
-tags: neverstoplearning coding
+tags: neverstoplearning platzi coding
 ---
 
 <!-- ABOUT THE PROJECT -->

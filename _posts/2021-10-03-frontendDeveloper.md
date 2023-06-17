@@ -3,7 +3,7 @@ layout: post
 title: "Frontend Developer"
 date: 2021-10-03 10:00:00 -0500
 categories: platzi 2021
-tags: neverstoplearning frontend
+tags: neverstoplearning platzi frontend
 ---
 
 <!-- ABOUT THE PROJECT -->
