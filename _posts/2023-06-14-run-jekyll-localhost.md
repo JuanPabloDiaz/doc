@@ -14,7 +14,7 @@ I am not sure how to I run the site with Jekyll in local and make some changes..
 ## Run the Jekyll Commands to Install Dependencies
 
 ```bash
-bundle exec jekyll s
+bundle
 ```
 
 ## Run the Jekyll Commands to Run as Local
