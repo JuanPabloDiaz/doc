@@ -3,7 +3,7 @@ layout: post
 title: "How to Create a Subdomain"
 date: 2023-06-19 03:00:00 -0500
 categories: domain
-tags: subdomain porkbun vercel github-pages
+tags: dns subdomain porkbun vercel github-pages
 ---
 
 <!-- Dropdown in Markdown: https://gist.github.com/citrusui/07978f14b11adada364ff901e27c7f61 -->
