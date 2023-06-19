@@ -3,7 +3,7 @@ layout: post
 title: "Purchase and Configure Your New Domain"
 date: 2023-06-13 09:00:00 -0500
 categories: domain
-tags: portfolio project github frontend hosting
+tags: domain porkbun vercel github-pages
 ---
 
 # How to Purchase and Configure your New Domain
