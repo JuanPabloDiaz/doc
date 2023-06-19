@@ -10,3 +10,24 @@ Hello, my name is Juan Diaz. I am originally from Colombia but have relocated to
 
 > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
 > {: .prompt-tip }
+
+<br>
+
+<details>
+<summary>
+Learn More About Me
+</summary>
+<br>
+
+- 📱 I’m currently working at... jpdiaz.dev
+- 🌱 I’m currently learning at... [![](https://img.shields.io/badge/Platzi-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](https://platzi.com/)
+- 📆 I’m currently working on... ⚡HTML5 | ⚡CSS3 | ⚡Javascript | ⚡React
+- 👯 I’m looking to collaborate on a... Startup.
+- 🤔 I’m looking for help with... Front End.
+- 🎮 I'm passionate about... Web Development ⏳︎ NeverStopLearning.
+- 💬 Ask me about... Home-Lap & Front-End, HD, Platzi.
+
+- 🎓 Some of My Certificates... can be found at [![](https://img.shields.io/badge/Platzi_Profile-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](https://platzi.com/p/DiazJuan/)
+
+- 🚲 Hobbies: ... Home-Lab, learn something new on Platzi, cyclist & fitness.
+</details>
