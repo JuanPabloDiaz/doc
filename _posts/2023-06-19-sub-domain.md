@@ -20,6 +20,8 @@ Watch this video to learn more about Subdomain and how to use them.
 
 By: Eli the Computer Guy
 
+[Another video](https://www.youtube.com/watch?v=-pJq3XZQbt0)
+
 </details>
 <br>
 
