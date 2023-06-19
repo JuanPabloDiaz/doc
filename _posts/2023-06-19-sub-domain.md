@@ -37,7 +37,7 @@ In this article, you will learn how to connect your projects hosted on GitHub Pa
 ### Prerequisites
 
 - Own a custom domain in Porkbun.
-  > Check this article for details on [How to Purchase and Configure Your New Domain in Porkbun](https://www.jpdiaz.top/posts/new-domain/).
+  > Check this article for details on [How to Purchase and Configure Your New Domain in Porkbun](https://www.docs.jpdiaz.dev/posts/new-domain/).
 - Have a project deployed in Vercel.
 
 ### Step by Step in Vercel
@@ -65,7 +65,7 @@ In this article, you will learn how to connect your projects hosted on GitHub Pa
 ### Prerequisites
 
 - Own a custom domain in Porkbun.
-  > Check this article for details on [How to Purchase and Configure Your New Domain in Porkbun](https://www.jpdiaz.top/posts/new-domain/).
+  > Check this article for details on [How to Purchase and Configure Your New Domain in Porkbun](https://www.docs.jpdiaz.dev/posts/new-domain/).
 - Enable GitHub Pages
   > check the [Github documentation](https://docs.github.com/en/pages/quickstart) for more details.
 
