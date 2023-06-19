@@ -23,6 +23,11 @@ By: Eli the Computer Guy
 </details>
 <br>
 
+> 💡 Note: It is important to mention that the subdomain can link to a completely different website.
+> <br> To link another site just add the DNS records from the host to the new subdomain.
+
+<br>
+
 In this article, you will learn how to connect your projects hosted on GitHub Pages or Vercel to a custom sub-domain in Porkbun.
 
 ## How to Add and Configure a SubDomain on Porkbun and Vercel
