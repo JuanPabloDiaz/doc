@@ -6,22 +6,20 @@ categories: domain
 tags: domain porkbun vercel github-pages
 ---
 
-# How to Purchase and Configure your New Domain
-
 ## How to purchase a Domain
 
-1. Go to Porkbun and login
-2. Search for the domain name
+1. Go to Porkbun and login.
+2. Search for the domain name.
 3. select the extension that you prefer. (.com, .org)
 4. Follow the steps to complete purchase.
 
 ## How to Configure your New Domain with Github Pages
 
-1. Login to Github
-2. Make sure your repo has the same name as your username
+1. Login to Github.
+2. Make sure your repo has the same name as your username.
 3. Enable github pages under configurations.
 4. Go to Porkbun and select your new domain.
-5. Click on DNS
+5. Click on DNS.
 6. Add an A - Address record under type.
 7. Leave the host field empty.
 8. Add 76.76.21.21 in the answer field.
