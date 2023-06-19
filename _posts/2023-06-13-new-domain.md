@@ -3,8 +3,25 @@ layout: post
 title: "Purchase and Configure Your New Domain"
 date: 2023-06-13 09:00:00 -0500
 categories: domain
-tags: domain porkbun vercel github-pages
+tags: dns domain porkbun vercel github-pages
 ---
+
+<!-- Dropdown in Markdown: https://gist.github.com/citrusui/07978f14b11adada364ff901e27c7f61 -->
+
+<details>
+<summary>
+What is a Domain?
+</summary>
+<br>
+Watch this video to learn more about Domain and how to use them.
+<br>
+
+{% include embed/youtube.html id='VwpP8PUzqLw' %}
+
+By: Eli the Computer Guy
+
+</details>
+<br>
 
 ## How to purchase a Domain
 
