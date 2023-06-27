@@ -2,6 +2,7 @@
 layout: post
 title: "Customize the Favicon"
 date: 2023-06-27 09:00:00 -0500
+author: cotes
 categories: Blogging jekyll Tutorial localhost
 tags: portfolio project github markdown favicon
 ---
