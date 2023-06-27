@@ -7,7 +7,7 @@ categories: Blogging jekyll Tutorial localhost
 tags: portfolio project github markdown favicon
 ---
 
-This documentation was taken from [**Chirpy Doc**](https://chirpy.cotes.page/posts/customize-the-favicon/).
+This documentation article has been sourced from [**Chirpy Doc**](https://chirpy.cotes.page/posts/customize-the-favicon/).
 
 The [favicons](https://www.favicon-generator.org/about/) of [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/) are placed in the directory `assets/img/favicons/`{: .filepath}. You may want to replace them with your own. The following sections will guide you to create and replace the default favicons.
 

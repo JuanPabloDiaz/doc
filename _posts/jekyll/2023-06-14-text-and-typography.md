@@ -14,7 +14,7 @@ I NEED TO MAKE CHANGES TO MAKE THIS PAGE MY OWN BY ADDING NOTES AND EXAMPLES THA
 
 This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
 
-This documentation was taken from [**Chirpy Doc**](https://chirpy.cotes.page/posts/text-and-typography/).
+This documentation article has been sourced from [**Chirpy Doc**](https://chirpy.cotes.page/posts/text-and-typography/).
 
 ## Headings
 
