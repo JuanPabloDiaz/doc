@@ -13,7 +13,7 @@ Since I am not a graphic designer, nor do I pretend to be one, I have decided to
 
 Here is my logo:
 
-![JD Logo black](/assets/img/juanDiaz-logo/jd-logo-black.png){: width="200" height="200"}![JD Logo cream](/assets/img/juanDiaz-logo/jd-logo-cream.png){: width="200" height="200"}![JD Logo white](/assets/img/juanDiaz-logo/jd-logo-white.png){: width="200" height="200"}
+![JD Logo black](/assets/img/juanDiaz-logo/juanDiaz-logo-black.png){: width="200" height="200"}![JD Logo cream](/assets/img/juanDiaz-logo/juanDiaz-logo-cream.png){: width="200" height="200"}![JD Logo white](/assets/img/juanDiaz-logo/juanDiaz-logo-white.png){: width="200" height="200"}
 
 Follow the step-by-step instructions to create your own logo.
 
