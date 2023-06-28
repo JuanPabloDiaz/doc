@@ -49,8 +49,12 @@ That's it! You've successfully created a logo using Canva. Play around with the 
 
 Here are other variations of my logo:
 
-![JD Logo black](/assets/img/juanDiaz-logo/juanDiaz-Big-logo.png){: width="200" height="200"}
+![JD Big Logo](/assets/img/juanDiaz-logo/juanDiaz-Big-logo.png){: width="300" height="300"}
 
-![JD Logo white](/assets/img/juanDiaz-logo/juanDiaz-logo-white.png){: width="200" height="200"}
+![JD Logo white](/assets/img/juanDiaz-logo/juanDiaz-logo-white.png){: width="300" height="300"}
 
-![JD Logo cream](/assets/img/juanDiaz-logo/juanDiaz-logo-cream-small.png){: width="200" height="200"}
+![JD Small Logo cream](/assets/img/juanDiaz-logo/juanDiaz-logo-cream-small.png){: width="300" height="300"}
+
+![JD initials only logo](/assets/img/juanDiaz-logo/jd-huge-logo.png){: width="300" height="300"}
+
+![JD - Juan Diaz Logo black](/assets/img/juanDiaz-logo/jd-juanDiaz-logo-black.png){: width="300" height="300"}
