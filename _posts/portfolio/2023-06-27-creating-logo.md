@@ -49,12 +49,27 @@ That's it! You've successfully created a logo using Canva. Play around with the 
 
 Here are other variations of my logo:
 
-![JD Big Logo](/assets/img/juan-diaz-logo/juan-diaz-Big-logo.png){: width="300" height="300"}
+<!-- ![JD Logo white](){: width="300" height="300"} -->
 
-![JD Logo white](/assets/img/juan-diaz-logo/juan-diaz-logo-white.png){: width="300" height="300"}
-
-![JD Small Logo cream](/assets/img/juan-diaz-logo/juan-diaz-logo-cream-small.png){: width="300" height="300"}
-
-![JD initials only logo](/assets/img/juan-diaz-logo/jd-huge-logo.png){: width="300" height="300"}
-
-![JD - Juan Diaz Logo black](/assets/img/juan-diaz-logo/jd-juan-diaz-logo-black.png){: width="300" height="300"}
+<table>
+  <tr>
+    <td><img src="/assets/img/juan-diaz-logo/jd-huge-logo.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/juan-diaz-big-logo.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/jd-juan-diaz-logo-black.png" width=270 height=480></td>
+  </tr>
+  <tr>
+    <td><img src="/assets/img/juan-diaz-logo/jd-logo-black.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/jd-logo-cream.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/jd-logo-white.png" width=270 height=480></td>
+  </tr>
+    <tr>
+    <td><img src="/assets/img/juan-diaz-logo/juan-diaz-logo-black.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/juan-diaz-logo-cream.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/juan-diaz-logo-white.png" width=270 height=480></td>
+  </tr>
+    <tr>
+    <td><img src="/assets/img/juan-diaz-logo/juan-diaz-logo-black-small.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/juan-diaz-logo-cream-small.png" width=270 height=480></td>
+    <td><img src="/assets/img/juan-diaz-logo/juan-diaz-logo-white-small.png" width=270 height=480></td>
+  </tr>
+ </table>
