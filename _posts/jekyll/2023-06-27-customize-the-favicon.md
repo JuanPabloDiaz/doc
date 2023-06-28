@@ -72,7 +72,7 @@ In Terminal, navigate to the root directory of the specific jekyll folder (e.g. 
 
 Stackoverflow: [Jekyll assets get deleted](https://stackoverflow.com/questions/45090500/jekyll-assets-get-deleted)
 
-![JD Logo black](/assets/img/juanDiaz-logo/jd-logo-black.png){: width="200" height="200"}![JD Logo cream](/assets/img/juanDiaz-logo/jd-logo-cream.png){: width="200" height="200"}![JD Logo white](/assets/img/juanDiaz-logo/jd-logo-white.png){: width="200" height="200"}
+![JD Logo black](/assets/img/juan-diaz-logo/jd-logo-black.png){: width="200" height="200"}![JD Logo cream](/assets/img/juan-diaz-logo/jd-logo-cream.png){: width="200" height="200"}![JD Logo white](/assets/img/juan-diaz-logo/jd-logo-white.png){: width="200" height="200"}
 
 ## Generate the favicon
 
