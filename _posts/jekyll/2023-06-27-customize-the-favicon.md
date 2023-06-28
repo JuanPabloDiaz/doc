@@ -72,6 +72,8 @@ In Terminal, navigate to the root directory of the specific jekyll folder (e.g. 
 
 Stackoverflow: [Jekyll assets get deleted](https://stackoverflow.com/questions/45090500/jekyll-assets-get-deleted)
 
+![JD Logo black](/assets/img/juanDiaz-logo/jd-logo-black.png){: width="200" height="200"}![JD Logo cream](/assets/img/juanDiaz-logo/jd-logo-cream.png){: width="200" height="200"}![JD Logo white](/assets/img/juanDiaz-logo/jd-logo-white.png){: width="200" height="200"}
+
 ## Generate the favicon
 
 Prepare a square image (PNG, JPG, or SVG) with a size of 512x512 or more, and then go to the online tool [**Real Favicon Generator**](https://realfavicongenerator.net/) and click the button <kbd>Select your Favicon image</kbd> to upload your image file.
