@@ -46,3 +46,11 @@ Follow the step-by-step instructions to create your own logo.
 Remember to respect any copyright restrictions and use only elements and graphics that you have the right to use.
 
 That's it! You've successfully created a logo using Canva. Play around with the various features and options to make your logo unique and representative of your brand.
+
+Here are other variations of my logo:
+
+![JD Logo black](/assets/img/juanDiaz-logo/juanDiaz-Big-logo.png){: width="200" height="200"}
+
+![JD Logo white](/assets/img/juanDiaz-logo/juanDiaz-logo-white.png){: width="200" height="200"}
+
+![JD Logo cream](/assets/img/juanDiaz-logo/juanDiaz-logo-cream-small.png){: width="200" height="200"}
