@@ -11,7 +11,7 @@ tags: project frontend logo canva
 I used Canva to create the logo for my website and it only took me a couple of minutes.
 Since I am not a graphic designer, nor do I pretend to be one, I have decided to do something simple.
 
-Here is my logo:
+### Here is my logo:
 
 ![JD Logo black](/assets/img/juan-diaz-logo/juan-diaz-logo-black.png){: width="200" height="200"}![JD Logo cream](/assets/img/juan-diaz-logo/juan-diaz-logo-cream.png){: width="200" height="200"}![JD Logo white](/assets/img/juan-diaz-logo/juan-diaz-logo-white.png){: width="200" height="200"}
 
@@ -47,7 +47,7 @@ Remember to respect any copyright restrictions and use only elements and graphic
 
 That's it! You've successfully created a logo using Canva. Play around with the various features and options to make your logo unique and representative of your brand.
 
-Here are other variations of my logo:
+### Here are other variations of my logo:
 
 <!-- ![JD Logo white](){: width="300" height="300"} -->
 
