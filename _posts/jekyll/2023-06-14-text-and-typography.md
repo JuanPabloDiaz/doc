@@ -11,8 +11,6 @@ math: true
 mermaid: true
 ---
 
-<!-- ![alternative text]({{ page.image | relative_url }}) -->
-
 ## Text and Typography
 
 This post is intended to demonstrate Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), You can also utilize it as a writing example. Now, let's begin exploring text and typography.
