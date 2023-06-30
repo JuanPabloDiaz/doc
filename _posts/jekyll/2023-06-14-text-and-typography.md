@@ -11,7 +11,7 @@ math: true
 mermaid: true
 ---
 
-![alternative text]({{ page.image | relative_url }})
+<!-- ![alternative text]({{ page.image | relative_url }}) -->
 
 ## Text and Typography
 
