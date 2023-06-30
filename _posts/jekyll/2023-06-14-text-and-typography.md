@@ -12,8 +12,6 @@ mermaid: true
 
 ## Text and Typography
 
-I NEED TO MAKE CHANGES TO MAKE THIS PAGE MY OWN BY ADDING NOTES AND EXAMPLES THAT I USE TO LEARN JEKYLL.
-
 This post is intended to demonstrate Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), You can also utilize it as a writing example. Now, let's begin exploring text and typography.
 
 This documentation article has been sourced from [**Chirpy Doc**](https://chirpy.cotes.page/posts/text-and-typography/).
@@ -30,7 +28,7 @@ This documentation article has been sourced from [**Chirpy Doc**](https://chirpy
 
 ## Paragraph
 
-Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.
+Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.
 
 ## Lists
 
@@ -81,11 +79,11 @@ Moon
 
 ## Tables
 
-| Company                      | Contact          | Country |
-| :--------------------------- | :--------------- | ------: |
-| Alfreds Futterkiste          | Maria Anders     | Germany |
-| Island Trading               | Helen Bennett    |      UK |
-| Magazzini Alimentari Riuniti | Giovanni Rovelli |   Italy |
+| Company | Contact          | Country |
+| :------ | :--------------- | ------: |
+| Tesla   | Maria Anders     | Germany |
+| Apple   | Helen Bennett    |      UK |
+| Rolex   | Giovanni Rovelli |   Italy |
 
 ## Links
 
@@ -150,7 +148,7 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
   cherry :active, c, after b a, 1d
 ```
 
-## Images
+## Add Images
 
 ### Default (with caption)
 
@@ -180,7 +178,16 @@ The image below will toggle dark/light mode based on theme preference, notice it
 
 ## Video
 
+Adding a youtube video is super easy, just copy the code and modify the id.
+
 {% include embed/youtube.html id='Balreaj8Yqs' %}
+
+## Add Featured Images to Jekyll Posts
+
+Have you ever desired to incorporate a graphic at the beginning of your Jekyll post but lacked the knowledge on how to accomplish it? Fear not, for it is a simple task requiring only a small portion of code.
+
+{% include embed/youtube.html id='6oKO-7gsM4s' %}
+_watch the series_
 
 ## Reverse Footnote
 
