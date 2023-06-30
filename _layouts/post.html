@@ -10,6 +10,11 @@ tail_includes:
 ---
 
 {% include lang.html %}
+<img
+  src="{{- page.image | relative_url -}}"
+  alt="Banner/featured image"
+  class="featured-image-post"
+/>
 <h1 data-toc-skip>{{ page.title }}</h1>
 
 <div class="post-meta text-muted">
