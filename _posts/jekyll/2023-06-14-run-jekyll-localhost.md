@@ -4,6 +4,7 @@ title: "How to Run this Static Site Project in Local"
 date: 2023-06-14 09:00:00 -0500
 categories: jekyll localhost
 tags: portfolio project github markdown localhost
+pin: true
 ---
 
 Now that I have this documentation site up and running (which I did a couple months ago using Jekyll).

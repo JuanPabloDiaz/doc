@@ -4,6 +4,7 @@ title: "How To Create Static Site Generator with Jekyll"
 date: 2023-02-16 20:00:00 -0500
 categories: jekyll
 tags: jekyll neverstoplearning github open-source markdown
+pin: true
 ---
 
 ## What I Did to Run This Documentation Site Using Jekyll (Step by Step)
