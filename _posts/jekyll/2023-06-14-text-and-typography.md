@@ -192,6 +192,8 @@ Have you ever desired to incorporate a graphic at the beginning of your Jekyll p
 {% include embed/youtube.html id='6oKO-7gsM4s' %}
 _watch the series_
 
+> Remember to watch from minute 12. (usefull info before but its not for that)
+
 ### Code
 
 Add to the layout of the blog page:
