@@ -16,7 +16,7 @@ Descale
 
 It is recommend to use the De' Longhi descaling solution which is designed specifically for the EC680 machines. Please refer to the instruction manual for descaling your unit or you can watch the video below:
 
-{% include embed/youtube.html id='AjNGFF16M&t' %}
+{% include embed/youtube.html id='t-AjNGFF16M' %}
 
 Or
 
