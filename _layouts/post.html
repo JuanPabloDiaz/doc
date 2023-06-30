@@ -9,12 +9,19 @@ tail_includes:
   - comments
 ---
 
-{% include lang.html %}
+{% include lang.html %} {%- if page.image -%}
 <img
   src="{{- page.image | relative_url -}}"
   alt="Banner/featured image"
   class="featured-image-post"
 />
+{%- else -%} {%- assign postImage = "/assets/img/banners-posts/default.jpg" -%}
+<img
+  src="{{- postImage | relative_url -}}"
+  alt="Default banner/featured image"
+  class="featured-image-post"
+/>{%- endif -%}
+
 <h1 data-toc-skip>{{ page.title }}</h1>
 
 <div class="post-meta text-muted">
