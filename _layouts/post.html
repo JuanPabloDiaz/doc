@@ -29,8 +29,9 @@ tail_includes:
     date=page.last_modified_at tooltip=true lang=lang %}
   </span>
   {% endif %}
+
   <!-- Juan Diaz add this code below: -->
-  {%- if page.image -%}
+  <!-- {%- if page.image -%}
   <img
     src="{{- page.image | relative_url -}}"
     alt="Banner/featured image"
@@ -42,27 +43,37 @@ tail_includes:
     src="{{- postImage | relative_url -}}"
     alt="Default banner/featured image"
     class="featured-image-post"
-  />{%- endif -%}
+  />
+  {%- endif -%} -->
   <!-- end Juan Diaz code -->
 
   <!-- Juan Diaz commented this code because the image banner is too big and prefered to make an small banner which is above: -->
-  <!--
-      {% if page.image %} {% capture src %}src="{{ page.image.path | default:
-      page.image }}"{% endcapture %} {% capture class %}class="preview-img{% if
-      page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %} {% capture alt
-      %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{%
-      endcapture %} {% capture lqip %} {% if page.image.lqip %} lqip="{{
-      page.image.lqip }}" {% endif %} {% endcapture %}
 
-      <div class="mt-3 mb-3">
-        <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip | strip }} />
+  {% if page.image %} {% capture src %}src="{{ page.image.path | default:
+  page.image }}"{% endcapture %} {% capture class %}class="preview-img{% if
+  page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %} {% capture alt
+  %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{%
+  endcapture %} {% capture lqip %} {% if page.image.lqip %} lqip="{{
+  page.image.lqip }}" {% endif %} {% endcapture %}
 
-        {%- if page.image.alt -%}
-        <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
-        {%- endif -%}
-      </div>
-      {% endif %}
-    -->
+  <div class="mt-3 mb-3">
+    <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip | strip }} />
+
+    {%- if page.image.alt -%}
+    <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
+    {%- endif -%}
+  </div>
+  <!-- else code added by Juan diaz: -->
+  {%- else -%} {%- assign postImage = "/assets/img/banners-posts/default.jpg"
+  -%}
+  <img
+    src="{{- postImage | relative_url -}}"
+    alt="Default banner/featured image"
+    class="featured-image-post"
+  />
+  <!-- end else -->
+  {% endif %}
+
   <!-- end Juan Diaz commented code -->
 
   <div class="d-flex justify-content-between">
