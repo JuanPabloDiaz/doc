@@ -5,7 +5,7 @@ date: 2023-06-14 09:00:00 -0500
 author: cotes
 categories: jekyll documentation
 tags: portfolio project markdown typography
-image: /assets/img/banners-posts/laptop.jpg
+image: /assets/img/banners-posts/code.jpg
 pin: true
 math: true
 mermaid: true
