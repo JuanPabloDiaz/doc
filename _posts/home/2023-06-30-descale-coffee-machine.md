@@ -5,9 +5,9 @@ date: 2023-06-30
 author: juan
 categories: home
 tags: coffee descale
-pin: true
 math: true
 mermaid: true
+image: /assets/img/banners-posts/coffee.jpg
 ---
 
 ![coffee maker De'Longhi Dedica, EC680](/assets/img/home/coffee-maker.jpg){:height="160px" width="160px" .right}
