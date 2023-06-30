@@ -9,18 +9,9 @@ tail_includes:
   - comments
 ---
 
-{% include lang.html %} {%- if page.image -%}
-<img
-  src="{{- page.image | relative_url -}}"
-  alt="Banner/featured image"
-  class="featured-image-post"
-/>
-{%- else -%} {%- assign postImage = "/assets/img/banners-posts/default.jpg" -%}
-<img
-  src="{{- postImage | relative_url -}}"
-  alt="Default banner/featured image"
-  class="featured-image-post"
-/>{%- endif -%}
+{% include lang.html %}
+
+<!-- juan diaz code was here -->
 
 <h1 data-toc-skip>{{ page.title }}</h1>
 
@@ -37,20 +28,42 @@ tail_includes:
     {{ site.data.locales[lang].post.updated }} {% include datetime.html
     date=page.last_modified_at tooltip=true lang=lang %}
   </span>
-  {% endif %} {% if page.image %} {% capture src %}src="{{ page.image.path |
-  default: page.image }}"{% endcapture %} {% capture class
-  %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{%
-  endcapture %} {% capture alt %}alt="{{ page.image.alt | xml_escape | default:
-  "Preview Image" }}"{% endcapture %} {% capture lqip %} {% if page.image.lqip
-  %} lqip="{{ page.image.lqip }}" {% endif %} {% endcapture %}
-
-  <div class="mt-3 mb-3">
-    <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip | strip }} />
-    {%- if page.image.alt -%}
-    <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
-    {%- endif -%}
-  </div>
   {% endif %}
+  <!-- Juan Diaz add this code below: -->
+  {%- if page.image -%}
+  <img
+    src="{{- page.image | relative_url -}}"
+    alt="Banner/featured image"
+    class="featured-image-post"
+  />
+  {%- else -%} {%- assign postImage = "/assets/img/banners-posts/default.jpg"
+  -%}
+  <img
+    src="{{- postImage | relative_url -}}"
+    alt="Default banner/featured image"
+    class="featured-image-post"
+  />{%- endif -%}
+  <!-- end Juan Diaz code -->
+
+  <!-- Juan Diaz commented this code because the image banner is too big and prefered to make an small banner which is above: -->
+  <!--
+      {% if page.image %} {% capture src %}src="{{ page.image.path | default:
+      page.image }}"{% endcapture %} {% capture class %}class="preview-img{% if
+      page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %} {% capture alt
+      %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{%
+      endcapture %} {% capture lqip %} {% if page.image.lqip %} lqip="{{
+      page.image.lqip }}" {% endif %} {% endcapture %}
+
+      <div class="mt-3 mb-3">
+        <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip | strip }} />
+
+        {%- if page.image.alt -%}
+        <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
+        {%- endif -%}
+      </div>
+      {% endif %}
+    -->
+  <!-- end Juan Diaz commented code -->
 
   <div class="d-flex justify-content-between">
     <!-- author(s) -->
