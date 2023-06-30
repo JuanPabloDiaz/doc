@@ -4,6 +4,7 @@ title: "How To Create A Logo on Canva"
 date: 2023-06-27 09:00:00 -0500
 categories: portfolio
 tags: project frontend logo canva
+image: /assets/img/juan-diaz-logo/juan-diaz-logo-black.png
 ---
 
 [Canva](https://www.canva.com/) is an online design tool that helps you create various visual content such as graphics, logos, presentations, and more. It offers a user-friendly interface with pre-designed templates, fonts, images, and graphics. You can customize designs by adding text, images, and other elements using a drag-and-drop interface. Canva is popular because it's easy to use and doesn't require advanced design skills. It has both free and paid subscription options, providing access to a range of features and design resources.
