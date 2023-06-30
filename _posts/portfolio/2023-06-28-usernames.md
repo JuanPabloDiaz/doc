@@ -4,6 +4,7 @@ title: "Creating a Consistent Username Across Your Social Media Platforms"
 date: 2023-06-28 09:00:00 -0500
 categories: portfolio
 tags: project username
+image: /assets/img/banners-posts/social-media.jpg
 ---
 
 ## This article aims to unify all the social media account under a unique usernames and make them identical.
