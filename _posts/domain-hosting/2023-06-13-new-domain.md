@@ -4,6 +4,7 @@ title: "Purchase and Configure Your New Domain"
 date: 2023-06-13 09:00:00 -0500
 categories: domain
 tags: dns domain porkbun vercel github-pages
+image: /assets/img/banners-posts/domain.jpg
 ---
 
 <!-- Dropdown in Markdown: https://gist.github.com/citrusui/07978f14b11adada364ff901e27c7f61 -->
