@@ -7,6 +7,10 @@
   icon: "fab fa-linkedin" # icons powered by <https://fontawesome.com/>
   url: "https://www.linkedin.com/in/1diazdev/" # Fill with your Linkedin homepage
 
+- type: resume
+  icon: "fas fa-file-alt"
+  url: "https://resume.creddle.io/resume/9um4zrxd89s"
+
 - type: twitter
   icon: "fab fa-twitter"
 
@@ -14,16 +18,14 @@
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
-#- type: rss
-#  icon: "fas fa-rss"
-#  noblank: true
-# Uncomment and complete the url below to enable more contact options
-#
-# - type: mastodon
-#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
-#
-#
-# - type: stack-overflow
-#   icon: 'fab fa-stack-overflow'
-#   url:  ''                  # Fill with your stackoverflow homepage
+- type: stack-overflow
+  icon: "fab fa-stack-overflow"
+  url: "https://stackoverflow.com/users/9374650/juan-diaz"
+
+- type: react
+  icon: "fab fa-react"
+  url: ""
+
+- type: home-server
+  icon: "fab fa-raspberry-pi"
+  url: ""
