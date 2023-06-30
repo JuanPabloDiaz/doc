@@ -5,10 +5,13 @@ date: 2023-06-14 09:00:00 -0500
 author: cotes
 categories: jekyll documentation
 tags: portfolio project markdown typography
+image: /assets/img/banners-posts/default.jpg
 pin: true
 math: true
 mermaid: true
 ---
+
+![alternative text]({{ page.image | relative_url }})
 
 ## Text and Typography
 
@@ -188,6 +191,22 @@ Have you ever desired to incorporate a graphic at the beginning of your Jekyll p
 
 {% include embed/youtube.html id='6oKO-7gsM4s' %}
 _watch the series_
+
+### Code
+
+Add to the layout of the blog page:
+
+```markdown
+---
+image: /assets/img/banners-posts/default.jpg
+---
+```
+
+Add to the begining of the blog page:
+
+```markdown
+![alternative text]({{ page.image }})
+```
 
 ## Reverse Footnote
 
