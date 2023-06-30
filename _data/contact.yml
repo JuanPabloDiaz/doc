@@ -21,11 +21,11 @@
 - type: stack-overflow
   icon: "fab fa-stack-overflow"
   url: "https://stackoverflow.com/users/9374650/juan-diaz"
+#
+# - type: react
+#   icon: "fab fa-react"
+#   url: ""
 
-- type: react
-  icon: "fab fa-react"
-  url: ""
-
-- type: home-server
-  icon: "fab fa-raspberry-pi"
-  url: ""
+# - type: home-server
+#   icon: "fab fa-raspberry-pi"
+#   url: ""
