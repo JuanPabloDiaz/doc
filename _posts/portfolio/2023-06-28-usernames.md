@@ -36,3 +36,4 @@ Bellow is a list of all my social media accounts and other plataforms that I use
 - lastfm: jpdiazdev
 - soundcloud: 1diazdev
 - steam: jpdiaz0
+- freecodecamp: jpdiaz0
