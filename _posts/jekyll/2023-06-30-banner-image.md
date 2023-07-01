@@ -3,7 +3,7 @@ layout: post
 title: "How to Add Featured Images to Jekyll Posts"
 date: 2023-06-30 09:00:00 -0500
 author: juan
-categories: jekyll documentation
+categories: jekyll doc
 tags: banner-img
 pin: true
 image: /assets/img/banners-posts/design.jpg
