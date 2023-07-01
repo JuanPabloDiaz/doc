@@ -2,8 +2,8 @@
 layout: post
 title: "How to Run this Static Site Project in Local"
 date: 2023-06-14 09:00:00 -0500
-categories: jekyll localhost
-tags: portfolio project github markdown localhost
+categories: jekyll local
+tags: jekyll portfolio project github markdown localhost
 pin: true
 image: /assets/img/banners-posts/laptop.jpg
 ---

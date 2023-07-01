@@ -3,7 +3,7 @@ layout: post
 title: "How to Create a Subdomain"
 date: 2023-06-19 03:00:00 -0500
 categories: domain
-tags: dns subdomain porkbun vercel github-pages
+tags: dns domain porkbun vercel github-pages
 image: /assets/img/banners-posts/code2.jpg
 ---
 

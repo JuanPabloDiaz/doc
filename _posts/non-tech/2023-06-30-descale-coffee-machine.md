@@ -3,8 +3,8 @@ layout: post
 title: "How To Descale My Coffee Machine (De'Longhi Dedica, EC680)"
 date: 2023-06-30
 author: juan
-categories: home
-tags: coffee descale
+categories: non-tech
+tags: non-tech
 math: true
 mermaid: true
 image: /assets/img/banners-posts/coffee.jpg
