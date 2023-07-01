@@ -3,7 +3,7 @@ layout: post
 title: "React Hooks Professional Course"
 date: 2022-07-17 10:00:00 -0500
 categories: platzi 2022
-tags: neverstoplearning react
+tags: neverstoplearning platzi react
 ---
 
 This repo is part of a Platzi course called: "[Curso Profesional de React Hooks](https://platzi.com/cursos/react-hooks/)".
