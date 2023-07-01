@@ -6,6 +6,7 @@ author: juan
 categories: jekyll documentation
 tags: banner-img
 pin: true
+image: /assets/img/banners-posts/design.jpg
 ---
 
 Have you ever desired to incorporate a graphic at the beginning of your Jekyll post but lacked the knowledge on how to accomplish it? Fear not, for it is a simple task requiring only a small portion of code.
