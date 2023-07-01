@@ -3,9 +3,9 @@ layout: post
 title: "Customize the Favicon"
 date: 2023-06-27 09:00:00 -0500
 author: cotes
-categories: Blogging # jekyll Tutorial localhost
-tags: portfolio # project github markdown favicon
-image: /assets/img/banners-posts/design.jpg
+categories: jekyll
+tags: portfolio project github markdown favicon
+image: /assets/img/banners-posts/favicon.jpg
 ---
 
 <!-- Dropdown in Markdown: https://gist.github.com/citrusui/07978f14b11adada364ff901e27c7f61 -->
