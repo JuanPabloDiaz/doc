@@ -3,7 +3,7 @@ layout: post
 title: "Jekyll Docs Site"
 date: 2023-06-14 09:00:00 -0500
 author: cotes
-categories: jekyll doc
+categories: jekyll launch
 tags: jekyll portfolio project markdown localhost
 image: /assets/img/banners-posts/code3.jpg
 ---

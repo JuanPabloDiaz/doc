@@ -3,7 +3,7 @@ layout: post
 title: "Markdown Syntax"
 date: 2023-06-14 09:00:00 -0500
 author: cotes
-categories: jekyll doc
+categories: jekyll customize
 tags: jekyll portfolio project markdown typography
 image: /assets/img/banners-posts/code.jpg
 pin: true
@@ -121,11 +121,11 @@ fi;
 
 ### Specific filename
 
-```sass
 @import
-  "colors/light-typography",
-  "colors/dark-typography";
-```
+"colors/light-typography",
+"colors/dark-typography";
+
+````
 
 {: file='\_sass/jekyll-theme-chirpy.scss'}
 
@@ -147,7 +147,7 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
   apple :a, 2017-07-20, 1w
   banana :crit, b, 2017-07-23, 1d
   cherry :active, c, after b a, 1d
-```
+````
 
 ## Add Images
 
