@@ -6,7 +6,6 @@ author: juan
 categories: jekyll customize
 tags: jekyll portfolio project markdown typography
 image: /assets/img/banners-posts/code.jpg
-pin: true
 math: true
 mermaid: true
 ---
