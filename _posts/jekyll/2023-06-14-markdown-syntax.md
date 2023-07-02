@@ -19,19 +19,35 @@ This documentation article has been sourced from [**Chirpy Doc**](https://chirpy
 
 ## Headings
 
-<h1 class="mt-5">H1 - heading</h1>
+To create a heading, add number signs (#) in front of a word or phrase. The number of number signs you use should correspond to the heading level. For example, to create a heading level three (<h3>), use three number signs (e.g., ### My Header). Or you can also use html tags.
 
-<h2 data-toc-skip>H2 - heading</h2>
+| Markdown                    | HTML                          |
+| :-------------------------- | :---------------------------- |
+| # H1 - Heading level 1      | <h1>H1 - Heading level 1</h1> |
+| ## H2 - Heading level 2     | <h2>H2 - Heading level 2</h2> |
+| ### H3 - Heading level 3    | <h3>H3 - Heading level 3</h3> |
+| #### H4 - Heading level 4   | <h4>H4 - Heading level 4</h4> |
+| ##### H5 - Heading level 5  | <h5>H5 - Heading level 5</h5> |
+| ###### H6 - Heading level 6 | <h6>H6 - Heading level 6</h6> |
 
-<h3 data-toc-skip>H3 - heading</h3>
+#### Rendered Output
 
-<h4>H4 - heading</h4>
+<h1>H1 - Heading level 1</h1>
+<h2>H2 - Heading level 2</h2>
+<h3>H3 - Heading level 3</h3>
+<h4>H4 - Heading level 4</h4>
+<h5>H5 - Heading level 5</h5>
+<h6>H6 - Heading level 6</h6>
 
 ## Paragraph
+
+To create paragraphs, use a blank line to separate one or more lines of text.
 
 Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.
 
 ## Lists
+
+You can organize items into ordered and unordered lists.
 
 ### Ordered list
 
@@ -44,6 +60,16 @@ Generating random paragraphs can be an excellent way for writers to get their cr
 - Chapter
   - Section
     - Paragraph
+
+### Mix list
+
+You can nest an unordered list in an ordered list, or vice versa.
+
+1. First item
+2. Second item
+   - Indented item
+     - Indented item
+3. Third item
 
 ### ToDo list
 
@@ -107,7 +133,9 @@ Here is the `/path/to/the/file.extend`{: .filepath}.
 ### Common
 
 ```
+
 This is a common code snippet, without syntax highlight and line number.
+
 ```
 
 ### Specific Language
