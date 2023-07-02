@@ -30,7 +30,7 @@ To create a heading, add number signs (#) in front of a word or phrase. The numb
 | ##### H5 - Heading level 5  | <h5>H5 - Heading level 5</h5> |
 | ###### H6 - Heading level 6 | <h6>H6 - Heading level 6</h6> |
 
-#### Rendered Output
+<h5>Rendered Output</h5>
 
 <h1>H1 - Heading level 1</h1>
 <h2>H2 - Heading level 2</h2>
@@ -57,6 +57,14 @@ You can organize items into ordered and unordered lists.
 
 ### Unordered list
 
+```markdown
+- Chapter
+  - Section
+    - Paragraph
+```
+
+<h5>Rendered Output</h5>
+
 - Chapter
   - Section
     - Paragraph
@@ -64,6 +72,16 @@ You can organize items into ordered and unordered lists.
 ### Mix list
 
 You can nest an unordered list in an ordered list, or vice versa.
+
+```markdown
+1. First item
+2. Second item
+   - Indented item
+     - Indented item
+3. Third item
+```
+
+<h5>Rendered Output</h5>
 
 1. First item
 2. Second item
@@ -73,12 +91,28 @@ You can nest an unordered list in an ordered list, or vice versa.
 
 ### ToDo list
 
+```markdown
+- [ ] Job
+  - [x] Step 1
+  - [x] Step 2
+  - [ ] Step 3
+```
+
+<h5>Rendered Output</h5>
+
 - [ ] Job
   - [x] Step 1
   - [x] Step 2
   - [ ] Step 3
 
 ### Description list
+
+```markdown
+Def-name
+\ \ : description/definition
+```
+
+<h5>Rendered Output</h5>
 
 Sun
 : the star around which the earth orbits
@@ -88,12 +122,24 @@ Moon
 
 ## Block Quote
 
+Add "> " to the beginning of the paragraph
+
 > This line shows the _block quote_.
 
 ## Prompts
 
+```markdown
 > An example showing the `tip` type prompt.
 > {: .prompt-tip }
+```
+
+> An example showing the `tip` type prompt.
+> {: .prompt-tip }
+
+```markdown
+> An example showing the `info` type prompt.
+> {: .prompt-info }
+```
 
 > An example showing the `info` type prompt.
 > {: .prompt-info }
@@ -106,6 +152,16 @@ Moon
 
 ## Tables
 
+To add a table, just copy and modify the code below
+
+```markdown
+| Company | Contact      | Country |
+| :------ | :----------- | ------: |
+| Tesla   | Maria Anders | Germany |
+```
+
+<h5>Rendered Output</h5>
+
 | Company | Contact          | Country |
 | :------ | :--------------- | ------: |
 | Tesla   | Maria Anders     | Germany |
@@ -114,7 +170,46 @@ Moon
 
 ## Links
 
-<http://127.0.0.1:4000>
+To create a link, enclose the link text in brackets (e.g., [Markdown Guide]) and then follow it immediately with the URL in parentheses (e.g., (https://www.markdownguide.org/basic-syntax/#overview)).
+
+```markdown
+[link-name](link-url)
+```
+
+<h5>Rendered Output</h5>
+
+[Markdown Guide](https://www.markdownguide.org/basic-syntax/#overview)
+
+#### To quickly turn a URL into a link, enclose it in angle brackets "<>".
+
+```markdown
+<https://www.markdownguide.org/basic-syntax>
+```
+
+<h5>Rendered Output</h5>
+<https://www.markdownguide.org/basic-syntax>
+
+## Emphasis
+
+You can add emphasis by making text bold or italic.
+
+### Bold
+
+```markdown
+**bold text**
+```
+
+This is a **bold text**
+
+### Italic
+
+remove the "\"
+
+```markdown
+\*Italic text\*
+```
+
+This is an _italic text_
 
 ## Footnote
 
@@ -122,9 +217,17 @@ Click the hook will locate the footnote[^footnote], and here is another footnote
 
 ## Inline code
 
+```markdown
+`Inline Code`
+```
+
 This is an example of `Inline Code`.
 
 ## Filepath
+
+```markdown
+Here is the `/path/to/the/file.extend`{: .filepath}.
+```
 
 Here is the `/path/to/the/file.extend`{: .filepath}.
 
@@ -213,38 +316,17 @@ Adding a Youtube video is super easy, you just copy the code below and modify th
 {-% include embed/youtube.html id='xopvkx6CpNs' %-}
 ```
 
-Example...
+<h5>Rendered Output</h5>
 
 {% include embed/youtube.html id='xopvkx6CpNs' %}
 
 📺 [Watch Video](https://www.youtube.com/watch?v=Aq6eoMjW7V0)
 
-## Add Featured Images to Jekyll Posts
-
-Have you ever desired to incorporate a graphic at the beginning of your Jekyll post but lacked the knowledge on how to accomplish it? Fear not, for it is a simple task requiring only a small portion of code.
-
-{% include embed/youtube.html id='6oKO-7gsM4s' %}
-_watch the series_
-
-> Remember to watch from minute 12. (usefull info before but its not for that)
-
-### Code
-
-Add to the layout of the blog page:
-
-```markdown
----
-image: /assets/img/banners-posts/default.jpg
----
-```
-
-Add to the begining of the blog page:
-
-```markdown
-![alternative text]({{ page.image }})
-```
-
 ## Reverse Footnote
 
 [^footnote]: The footnote source
 [^fn-nth-2]: The 2nd footnote source
+
+```
+
+```
