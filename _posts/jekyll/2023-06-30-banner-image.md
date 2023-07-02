@@ -14,14 +14,11 @@ Have you ever desired to incorporate an image at the beginning of your Jekyll po
 You can watch the [video](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s) below and follow along with this post, which explains how I added a banner image at the beginning of all my posts. Yes, that's right—for every single post, even those without an image set by me. It automatically uses a default image for all those posts where I didn't set one.
 
 {% include embed/youtube.html id='6oKO-7gsM4s' %}
-
-> Watch it from minute 12". (usefull info before but its not for that)
-
 _Watch [Part 2](https://www.youtube.com/watch?v=1GskmTFLrA4&t=0s)_
 
 ## Requirements
 
-For this project and to follow along this article and the video from minute 7", you need the following:
+For this project and to follow along this article and the video from [minute 7](https://youtu.be/6oKO-7gsM4s?t=447)", you need the following:
 
 - Basic HTML, CSS and Markdown knowledge.
 - Basic Jekyll knowledge. Check [previous Jekyll posts](../../categories/jekyll/) for more content.
@@ -29,11 +26,13 @@ For this project and to follow along this article and the video from minute 7", 
 - A funtional Jekyll site with at least two post files.
 - Some images to work with (located at assets/img/)
 
-Verify the image displays
+If you do not have much time but you have experience using Jekyll. I suggest you to watch the [video from minute 12"](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s) instead. And jump to [Minute 12](#minute-12) in this post.
 
-### Code to add an image into the ....
+## Add Image Path to YAML Front Matter
 
-#### Add the path location to the layout section of the blog page:
+There are multiple ways to add an image into your post, using an html image tag or a markdown syntax. However, you can also add it by including an image field on the YAML Front Matter[^YAML]. (video: [Add image](https://youtu.be/6oKO-7gsM4s?t=447))
+
+Copy and past the code below to your YAML Front Matter:
 
 ```markdown
 ---
@@ -41,16 +40,25 @@ image: /assets/img/banners-posts/default.jpg
 ---
 ```
 
-#### Add to the begining of the blog page:
+Add the following code to display the image in your post. (delete the \* from the code)
 
-```markdown
-![alternative text]({{ page.image }})
+```text
+![alternative text]({*{ page.image }*})
 ```
 
-text here
+Add the relative url in case your image is not displaying with the previous code. (delete the \* from the code)
+
+```text
+![alternative text]({*{- page.image | relative_url -}*})
+```
+
+## Modify the \_layout/post.html file
+
+[Locate and understand the post layout](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s)
 
 ```markdown
-{% include lang.html %} {%- if page.image -%}
+{-% include lang.html %-}
+{-%- if page.image -%-}
 ```
 
 img <>
@@ -64,7 +72,8 @@ img <>
 ```
 
 ```markdown
-{%- else -%} {%- assign postImage = "/assets/img/banners-posts/default.jpg" -%}
+{-%- else -%-}
+{-%- assign postImage = "/assets/img/banners-posts/default.jpg" -%-}
 ```
 
 ```markdown
@@ -76,8 +85,10 @@ img <>
 ```
 
 ```markdown
-{%- endif -%}
+{-%- endif -%-}
 ```
+
+## Minute 12
 
 ```markdown
 {-% include lang.html %-}
@@ -104,3 +115,9 @@ img <>
   class="featured-image-post"
 />
 {%- endif -%}
+
+---
+
+#### Footnote
+
+[^YAML]: Placed at the top of a page and is used for maintaining metadata for the page and its contents.
