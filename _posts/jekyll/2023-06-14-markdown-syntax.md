@@ -2,7 +2,7 @@
 layout: post
 title: "Markdown Syntax"
 date: 2023-06-14 09:00:00 -0500
-author: cotes
+author: juan
 categories: jekyll customize
 tags: jekyll portfolio project markdown typography
 image: /assets/img/banners-posts/code.jpg
@@ -11,11 +11,7 @@ math: true
 mermaid: true
 ---
 
-## Text and Typography
-
-This post is intended to demonstrate Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), You can also utilize it as a writing example. Now, let's begin exploring text and typography.
-
-This documentation article has been sourced from [**Chirpy Doc**](https://chirpy.cotes.page/posts/text-and-typography/).
+This post has been sourced from [**Chirpy**](https://chirpy.cotes.page/posts/text-and-typography/) and it is intended to demonstrate Markdown syntax rendering, You can also utilize it as a writing example. For more information, please visit the [markdown documentation guide](https://www.markdownguide.org/basic-syntax). Now, let's begin exploring the markdown syntax.
 
 ## Headings
 
@@ -326,7 +322,3 @@ Adding a Youtube video is super easy, you just copy the code below and modify th
 
 [^footnote]: The footnote source
 [^fn-nth-2]: The 2nd footnote source
-
-```
-
-```
