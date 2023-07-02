@@ -179,9 +179,17 @@ The image below will toggle dark/light mode based on theme preference, notice it
 
 ## Video
 
-Adding a youtube video is super easy, just copy the code and modify the id.
+Adding a Youtube video is super easy, you just copy the code below and modify the id. Make sure to delete the dashes (-)
 
-{% include embed/youtube.html id='Balreaj8Yqs' %}
+```
+{-% include embed/youtube.html id='xopvkx6CpNs' %-}
+```
+
+Example...
+
+{% include embed/youtube.html id='xopvkx6CpNs' %}
+
+📺 [Watch Video](https://www.youtube.com/watch?v=Aq6eoMjW7V0)
 
 ## Add Featured Images to Jekyll Posts
 
