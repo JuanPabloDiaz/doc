@@ -4,7 +4,7 @@ title: "Create a Portfolio Using React.js"
 date: 2023-04-16 09:00:00 -0500
 categories: portfolio
 tags: react project frontend
-image: /assets/img/banners-posts/portfolio.jpg
+image: /assets/img/featured-posts/portfolio.jpg
 ---
 
 > 📌 I need to create a nice looking portfolio with React.js to host my site.

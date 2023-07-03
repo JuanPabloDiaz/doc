@@ -5,7 +5,7 @@ date: 2023-06-14 09:00:00 -0500
 author: juan
 categories: jekyll customize
 tags: jekyll portfolio project markdown typography
-image: /assets/img/banners-posts/code.jpg
+image: /assets/img/featured-posts/code.jpg
 math: true
 mermaid: true
 ---
@@ -279,29 +279,29 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
 ### Default (with caption)
 
-![Desktop View](/assets/img/banners-posts/default.jpg){: width="972" height="589" }
+![Desktop View](/assets/img/featured-posts/default.jpg){: width="972" height="589" }
 _Full screen width and center alignment_
 
 ### Left aligned
 
-![Desktop View](/assets/img/banners-posts/default.jpg){: width="972" height="589" .w-75 .normal}
+![Desktop View](/assets/img/featured-posts/default.jpg){: width="972" height="589" .w-75 .normal}
 
 ### Float to left
 
-![Desktop View](/assets/img/banners-posts/default.jpg){: width="972" height="589" .w-50 .left}
+![Desktop View](/assets/img/featured-posts/default.jpg){: width="972" height="589" .w-50 .left}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
 
 ### Float to right
 
-![Desktop View](/assets/img/banners-posts/default.jpg){: width="972" height="589" .w-50 .right}
+![Desktop View](/assets/img/featured-posts/default.jpg){: width="972" height="589" .w-50 .right}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
 
 ### Dark/Light mode & Shadow
 
 The image below will toggle dark/light mode based on theme preference, notice it has shadows.
 
-![light mode only](/assets/img/banners-posts/default.jpg){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
-![dark mode only](/assets/img/banners-posts/default.jpg){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+![light mode only](/assets/img/featured-posts/default.jpg){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/img/featured-posts/default.jpg){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 ## Video
 

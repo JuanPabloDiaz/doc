@@ -5,7 +5,7 @@ date: 2023-06-14 09:00:00 -0500
 author: cotes
 categories: jekyll launch
 tags: jekyll portfolio project markdown localhost
-image: /assets/img/banners-posts/code3.jpg
+image: /assets/img/featured-posts/code3.jpg
 ---
 
 ## Install Dependencies

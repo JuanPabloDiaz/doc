@@ -7,7 +7,7 @@ categories: non-tech
 tags: non-tech
 math: true
 mermaid: true
-image: /assets/img/banners-posts/coffee.jpg
+image: /assets/img/featured-posts/coffee.jpg
 ---
 
 ![coffee maker De'Longhi Dedica, EC680](/assets/img/home/coffee-maker.jpg){:height="160px" width="160px" .right}
