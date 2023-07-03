@@ -230,6 +230,14 @@ In order to modify the image style, you need to add some CSS.
 }
 ```
 
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments 📚
+
+Resources list that I find helpful and would like to give credit to.
+
+- [BillRaymond](https://talk.jekyllrb.com/t/learn-how-to-add-featured-images-to-your-posts/4852)
+
 #### Footnote
 
 [^feature-img]: An image that represent the contents, mood, or theme of a post or page.
