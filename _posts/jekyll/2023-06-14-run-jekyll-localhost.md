@@ -48,3 +48,9 @@ bundle exec jekyll serve
 ```bash
 bundle exec jekyll s --livereload
 ```
+
+### Run the Site with Drafts
+
+```bash
+jekyll server --drafts
+```
