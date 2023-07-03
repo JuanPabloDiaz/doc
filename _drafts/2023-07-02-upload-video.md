@@ -5,7 +5,7 @@ date: 2023-07-02
 author: juan
 categories: video
 tags: youtube veed
-image: # /assets/img/banners-posts/code.jpg
+image: #/assets/img/featured-posts/code.jpg
 ---
 
 Follow this simple video:
