@@ -26,13 +26,18 @@ To effectively engage in this project and follow along the content outlined in t
 - A funtional Jekyll site with at least two post files.
 - Some images to work with (located at assets/img/)
 
-If you do not have much time but you have experience using Jekyll. I suggest you to watch the video from [12th minute](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s) instead. And jump to [Minute 12](#minute-12) in this post.
+If you do not have much time but you have experience using Jekyll. I suggest you to watch the video from [12th minute](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s), and jump to section 2:[Modify the \_layout/post.html file](#modify-the-_layoutposthtml-file) in this post.
+
+---
+
+Section 1 starts from the [7th minute](https://youtu.be/6oKO-7gsM4s?t=447) of the video.
 
 ## Add Image Path to YAML Front Matter
 
 There are multiple ways to add an image into your post, using an html image tag or a markdown syntax. However, you can also add it by including an image field on the YAML Front Matter[^YAML]. (video: [Add image](https://youtu.be/6oKO-7gsM4s?t=447))
+By adding the image field in the YAML Front Matter, it also makes the image visible/appear at the preview for the post.
 
-Copy and past the code below to your YAML Front Matter:
+1. Copy and past the code below to your YAML Front Matter:
 
 ```markdown
 ---
@@ -40,30 +45,46 @@ image: /assets/img/featured-posts/default.jpg
 ---
 ```
 
-Add the following code to display the image in your post. (delete the \* from the code)
+> 📚 For more details on how to [set featured image](https://chriskyfung.github.io/amp-affiliately-jekyll-theme/front-matter-guide/#set-featured-image), visit the Front Matter Guide.
+
+<!-- code below for the order list, more details: https://stackoverflow.com/a/41575690/9374650 -->
+
+{:start="2"}
+
+2. Add the following code to display the image in your post. (delete the `*` from the code)
 
 ```text
 ![alternative text]({*{ page.image }*})
 ```
 
-Add the relative url in case your image is not displaying with the previous code. (delete the \* from the code)
+- Add the relative url in case your image is not displaying with the previous code. (delete the `*` from the code)
 
 ```text
 ![alternative text]({*{- page.image | relative_url -}*})
 ```
 
+---
+
+Section 2 starts from the 12th minute of the video.
+
 ## Modify the \_layout/post.html file
 
-[Locate and understand the post layout](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s)
+In order to modify the layout of the post and display the featured image on top of every post, you need to locate and understand the post layout.
 
-```markdown
-{-% include lang.html %-}
-{-%- if page.image -%-}
-```
+1. Go to the `_layout` folder and open the `post.html` file
 
-img <>
+> 📚 If you are missing the `_layout` folder. Visit related issue on [Stackoverflow](https://stackoverflow.com/questions/38891463/jekyll-default-installation-doesnt-have-layouts-directory) or [Jekyll themes docs](https://jekyllrb.com/docs/themes/).
+>
+> - Once you understand what is going on, go ahead and [override the theme default](https://jekyllrb.com/docs/themes/#overriding-theme-defaults)
 
-```markdown
+<!-- code below for the order list, more details: https://stackoverflow.com/a/41575690/9374650 -->
+
+{:start="2"}
+
+2.  Choose where you need the featured image to be
+3.  Add the code below to display the image.
+
+```html
 <img
   src="{{- page.image | relative_url -}}"
   alt="featured image"
@@ -71,33 +92,28 @@ img <>
 />
 ```
 
-```markdown
-{-%- else -%-}
-{-%- assign postImage = "/assets/img/featured-posts/default.jpg" -%-}
-```
+## Include a Default Image
 
-```markdown
+{:start="4"}
+
+4. Include an `if` & `else` statement to the code from step 3 (delete the `*` from the code):
+
+```text
+{*% include lang.html %*}
+{*%- if page.image -%*}
+<img
+  src="{{- page.image | relative_url -}}"
+  alt="featured image"
+  class="featured-image-post"
+/>
+{*%- else -%*}
+{*%- assign postImage = "/assets/img/featured-posts/default.jpg" -%*}
 <img
   src="{{- postImage | relative_url -}}"
   alt="Default featured image"
   class="featured-image-post"
 />
-```
-
-```markdown
-{-%- endif -%-}
-```
-
-## Minute 12
-
-```markdown
-{-% include lang.html %-}
-{-%- if page.image -%-}
-<img src="{{- page.image | relative_url -}}" alt="featured image" class="featured-image-post"/>
-{-%- else -%-}
-{-%- assign postImage = "/assets/img/featured-posts/default.jpg" -%-}
-<img src="{{- postImage | relative_url -}}" alt="Default featured image" class="featured-image-post"/>
-{-%- endif -%-}
+{*%- endif -%*}
 ```
 
 <h5>Rendered Output</h5>
@@ -115,6 +131,14 @@ img <>
   class="featured-image-post"
 />
 {%- endif -%}
+
+---
+
+## Resize the Featured Image
+
+{:start="5"}
+
+5. Add Some CSS
 
 ---
 
