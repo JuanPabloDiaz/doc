@@ -21,7 +21,7 @@ I am not sure how to I run the site with Jekyll in local and make some changes..
 bundle
 ```
 
-or
+Or
 
 ```bash
 bundle install
@@ -35,7 +35,7 @@ bundle install
 bundle exec jekyll s
 ```
 
-or
+Or
 
 ```bash
 bundle exec jekyll serve
@@ -43,7 +43,7 @@ bundle exec jekyll serve
 
 ### Run as Local with Auto-Reload
 
-**To run the project as localhost and reload the site ** (serving your site)
+**To run the project as localhost and reload the site** (serving your site)
 
 ```bash
 bundle exec jekyll s --livereload
@@ -51,6 +51,14 @@ bundle exec jekyll s --livereload
 
 ### Run the Site with Drafts
 
+Command use to run the project and be able to see the draft posts which are stored in the `_drafts` folder.
+
 ```bash
 jekyll server --drafts
+```
+
+Or
+
+```bash
+bundle exec jekyll s --livereload --drafts
 ```
