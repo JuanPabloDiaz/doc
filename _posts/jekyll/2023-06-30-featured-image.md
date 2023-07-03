@@ -16,7 +16,6 @@ You can watch the [video](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s) be
 # Part 1: Add a featured image to your posts
 
 {% include embed/youtube.html id='6oKO-7gsM4s' %}
-_Watch [Part 2](https://www.youtube.com/watch?v=1GskmTFLrA4&t=0s)_
 
 ## Requirements
 
@@ -69,7 +68,7 @@ image: /assets/img/featured-posts/default.jpg
 
 Section 2 starts from the 12th minute of the video.
 
-## Modify the \_layout/post.html file
+## Modify the **\_layout/post.html** file
 
 In order to modify the layout of the post and display the featured image on top of every post, you need to locate and understand the post layout.
 
@@ -159,11 +158,77 @@ In order to modify the image style, you need to add some CSS.
 
 ---
 
-## Add Featured images to the Blog Roll (Part 2)
-
-Add Featured images to Your Jekyll Blog Roll (Part 2)
+# Part 2: Add featured images to the list of posts (blog roll, posts reel)
 
 {% include embed/youtube.html id='1GskmTFLrA4' %}
+
+## Modify the **\_layout/home.html** file (Part 2)
+
+In order to modify the layout of the blog roll or list of posts and display the featured image, you need to locate and understand the post layout.
+
+1. Go to the `_layout` folder and open the `home.html` file
+
+   > 📚 Missing the `_sass` folder? Visit related issue on [Stackoverflow](https://stackoverflow.com/questions/38891463/jekyll-default-installation-doesnt-have-layouts-directory) or [Jekyll themes docs](https://jekyllrb.com/docs/themes/).
+
+   <!-- code below for the order list, more details: https://stackoverflow.com/a/41575690/9374650 -->
+
+{:start="2"}
+
+2.  Choose where you need the featured image to be
+3.  Add the code below to display the image on the blog roll.
+
+```html
+<img
+  src="{{- post.image | relative_url -}}"
+  alt="blog roll image"
+  class="blog-roll-image"
+/>
+```
+
+## Include a Default Image (Part 2)
+
+{:start="4"}
+
+4. Include an `if` & `else` statement to the code from step 3 (delete the `*` from the code):
+
+```text
+    {*%- if post.image -%*}
+      <img src="{*{- post.image | relative_url -}*}" alt="" class="blog-roll-image">
+    {*%- else -%*}
+      {*%- assign postImage = "/assets/img/featured-posts/default.jpg" -%*}
+      <img src="{{- postImage | relative_url -}}" alt="" class="blog-roll-image">
+    {*%- endif -%*}
+```
+
+<h5>Rendered Output</h5>
+
+{%- if post.image -%}
+<img src="{{- post.image | relative_url -}}" alt="blog roll image" class="blog-roll-image">
+{%- else -%}
+{%- assign postImage = "/assets/img/featured-posts/default.jpg" -%}
+<img src="{{- postImage | relative_url -}}" alt="blog roll image" class="blog-roll-image">
+{%- endif -%}
+
+---
+
+## Resize the Featured Image (Part 2)
+
+In order to modify the image style, you need to add some CSS.
+
+{:start="5"}
+
+5. Go to the `_sass` folder and open the `_layout.scss` file
+6. Add the CSS code bellow
+   > The file name could be different, just look for the appropriate `.scss` file
+
+```css
+.blog-roll-image {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  float: left;
+}
+```
 
 #### Footnote
 
