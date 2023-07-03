@@ -5,7 +5,6 @@ date: 2023-06-30 09:00:00 -0500
 author: juan
 categories: jekyll customize
 tags: jekyll featured-img
-pin: true
 image: /assets/img/featured-posts/design.jpg
 ---
 
@@ -133,8 +132,8 @@ In order to modify the layout of the post and display the featured image on top 
 />
 {%- endif -%}
 
----
-
+<br>
+<br>
 ## Resize the Featured Image
 
 In order to modify the image style, you need to add some CSS.
@@ -155,6 +154,9 @@ In order to modify the image style, you need to add some CSS.
   object-fit: cover;
 }
 ```
+
+<br>
+<br>
 
 ---
 
@@ -203,13 +205,13 @@ In order to modify the layout of the blog roll or list of posts and display the 
 <h5>Rendered Output</h5>
 
 {%- if post.image -%}
-<img src="{{- post.image | relative_url -}}" alt="blog roll image" class="blog-roll-image">
+<img src="{{- post.image | relative_url -}}" alt="blog roll image" class="blog-roll-image" width="75px" height="75px" >
 {%- else -%}
 {%- assign postImage = "/assets/img/featured-posts/default.jpg" -%}
-<img src="{{- postImage | relative_url -}}" alt="blog roll image" class="blog-roll-image">
+<img src="{{- postImage | relative_url -}}" alt="blog roll image" class="blog-roll-image" width="200" height="200" >
 {%- endif -%}
-
----
+<br>
+<br>
 
 ## Resize the Featured Image (Part 2)
 
@@ -236,7 +238,7 @@ In order to modify the image style, you need to add some CSS.
 
 Resources list that I find helpful and would like to give credit to.
 
-- [BillRaymond](https://talk.jekyllrb.com/t/learn-how-to-add-featured-images-to-your-posts/4852)
+- [Bill Raymond](https://talk.jekyllrb.com/t/learn-how-to-add-featured-images-to-your-posts/4852)
 
 #### Footnote
 
