@@ -136,9 +136,24 @@ In order to modify the layout of the post and display the featured image on top 
 
 ## Resize the Featured Image
 
+In order to modify the image style, you need to add some CSS.
+
 {:start="5"}
 
-5. Add Some CSS
+5. Go to the `_sass` folder and open the `_layout.scss` file
+
+   > 📚 Missing the `_sass` folder? Visit related issue on [Stackoverflow](https://stackoverflow.com/questions/38891463/jekyll-default-installation-doesnt-have-layouts-directory) or [Jekyll themes docs](https://jekyllrb.com/docs/themes/).
+
+6. Add the CSS code bellow
+   > The file name could be different, just look for the appropriate `.scss` file
+
+```css
+.featured-image-post {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+```
 
 ---
 
