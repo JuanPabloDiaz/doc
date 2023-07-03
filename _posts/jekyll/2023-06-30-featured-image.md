@@ -13,6 +13,8 @@ Have you ever desired to incorporate an image at the beginning of your Jekyll po
 
 You can watch the [video](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s) below and follow along with this post, which explains how I added a featured image[^feature-img] at the beginning of all my posts. Yes, that's right—for every single post, even those without an image set by me. It automatically uses a default image for all those posts where I didn't set one.
 
+# Part 1: Add a featured image to your posts
+
 {% include embed/youtube.html id='6oKO-7gsM4s' %}
 _Watch [Part 2](https://www.youtube.com/watch?v=1GskmTFLrA4&t=0s)_
 
@@ -156,6 +158,12 @@ In order to modify the image style, you need to add some CSS.
 ```
 
 ---
+
+## Add Featured images to the Blog Roll (Part 2)
+
+Add Featured images to Your Jekyll Blog Roll (Part 2)
+
+{% include embed/youtube.html id='1GskmTFLrA4' %}
 
 #### Footnote
 
