@@ -11,7 +11,7 @@ image: /assets/img/featured-posts/design.jpg
 
 Have you ever desired to incorporate an image at the beginning of your Jekyll post but lacked the knowledge on how to accomplish it? Fear not, for it is a simple task requiring only a small portion of code.
 
-You can watch the [video](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s) below and follow along with this post, which explains how I added a banner image at the beginning of all my posts. Yes, that's right—for every single post, even those without an image set by me. It automatically uses a default image for all those posts where I didn't set one.
+You can watch the [video](https://www.youtube.com/watch?v=6oKO-7gsM4s&t=725s) below and follow along with this post, which explains how I added a featured image[^feature-img] at the beginning of all my posts. Yes, that's right—for every single post, even those without an image set by me. It automatically uses a default image for all those posts where I didn't set one.
 
 {% include embed/youtube.html id='6oKO-7gsM4s' %}
 _Watch [Part 2](https://www.youtube.com/watch?v=1GskmTFLrA4&t=0s)_
@@ -66,7 +66,7 @@ img <>
 ```markdown
 <img
   src="{{- page.image | relative_url -}}"
-  alt="Banner/featured image"
+  alt="featured image"
   class="featured-image-post"
 />
 ```
@@ -79,7 +79,7 @@ img <>
 ```markdown
 <img
   src="{{- postImage | relative_url -}}"
-  alt="Default banner/featured image"
+  alt="Default featured image"
   class="featured-image-post"
 />
 ```
@@ -93,10 +93,10 @@ img <>
 ```markdown
 {-% include lang.html %-}
 {-%- if page.image -%-}
-<img src="{{- page.image | relative_url -}}" alt="Banner/featured image" class="featured-image-post"/>
+<img src="{{- page.image | relative_url -}}" alt="featured image" class="featured-image-post"/>
 {-%- else -%-}
 {-%- assign postImage = "/assets/img/featured-posts/default.jpg" -%-}
-<img src="{{- postImage | relative_url -}}" alt="Default banner/featured image" class="featured-image-post"/>
+<img src="{{- postImage | relative_url -}}" alt="Default featured image" class="featured-image-post"/>
 {-%- endif -%-}
 ```
 
@@ -105,13 +105,13 @@ img <>
 {% include lang.html %} {%- if page.image -%}
 <img
   src="{{- page.image | relative_url -}}"
-  alt="Banner/featured image"
+  alt="featured image"
   class="featured-image-post"
 />
 {%- else -%} {%- assign postImage = "/assets/img/featured-posts/default.jpg" -%}
 <img
   src="{{- postImage | relative_url -}}"
-  alt="Default banner/featured image"
+  alt="Default featured image"
   class="featured-image-post"
 />
 {%- endif -%}
@@ -120,4 +120,5 @@ img <>
 
 #### Footnote
 
+[^feature-img]: An image that represent the contents, mood, or theme of a post or page.
 [^YAML]: Placed at the top of a page and is used for maintaining metadata for the page and its contents.
