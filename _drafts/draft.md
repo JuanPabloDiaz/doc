@@ -1,13 +1,21 @@
 ---
 layout: post
-title: "draft"
-categories: platzi 2023
-tags: neverstoplearning platzi astro
-image: /assets/img/featured-posts/code4.jpg
-pin: true
+title: "Working With Drafts"
+categories: jekyll
+tags: draft
 ---
 
-this is a draft
+This is a draft test
+
+[Working with Drafts](https://www.youtube.com/watch?v=X8jXkW3k2Jg)
+
+> Run
+
+```bash
+jekyll server --drafts
+```
+
+> Or Run
 
 ```bash
 jekyll server --watch --drafts
