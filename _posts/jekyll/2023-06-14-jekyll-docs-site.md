@@ -8,6 +8,8 @@ tags: jekyll portfolio project markdown localhost
 image: /assets/img/featured-posts/code3.jpg
 ---
 
+from mac
+
 ## Install Dependencies
 
 ```bash
