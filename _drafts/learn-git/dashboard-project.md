@@ -12,3 +12,5 @@ This idea started when I find the need to track my progrogress and find a way to
 here is the video I used.
 
 {% include embed/youtube.html id='DOIPzJQmjfE' %}
+
+[dashboard project](https://www.youtube.com/watch?v=rVMQMmhpe5I)
