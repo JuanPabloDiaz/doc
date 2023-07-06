@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "How to USE Multiple Git Accounts using SSH on Windows"
+title: "How to Use Multiple GitHub Accounts using SSH on Windows"
+date: 2023-07-06
 categories: git
-tags: git devops
+tags: git github devops
 ---
 
 ## How to have multiple Github accounts on the same computer
