@@ -17,8 +17,8 @@ I learned how to handle state professionally with React.js! Created independent 
 
 This class is based on React.js. Using Javascript (JS), Hyper Text Markup Language (HTML) and Cascading Style Sheets(CSS).
 
-[![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://www.w3schools.com/whatis/whatis_react.asp)
-[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://www.w3schools.com/whatis/whatis_react.asp)
+[![JS](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://www.w3schools.com/whatis/whatis_html.asp)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3schools.com/whatis/whatis_css.asp)
 
@@ -32,7 +32,7 @@ This course is part of a [Platzi Challenge](https://platzi.com/blog/portafolio-w
 
 ## Projects 🚀
 
-![](https://img.shields.io/badge/Platzi_Repos-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)
+[![](https://img.shields.io/badge/Platzi_Repos-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](#)
 [![](https://img.shields.io/badge/2021-222?style=for-the-badge)](https://github.com/JuanPabloDiaz/platzi/tree/main/2021)
 [![](https://img.shields.io/badge/2022-222?style=for-the-badge)](https://github.com/JuanPabloDiaz/platzi/tree/main/2022)
 
