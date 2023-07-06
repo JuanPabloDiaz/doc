@@ -5,7 +5,7 @@ categories: git
 tags: draft
 ---
 
-[Video] (https://www.youtube.com/watch?v=6lA0oPoFCAE)
+[Video](https://www.youtube.com/watch?v=6lA0oPoFCAE)
 
 ## How to have multiple Github accounts on the same computer
 
@@ -96,4 +96,26 @@ ssh-add C:\Users\juanc\.ssh\1diazdev_key
 
 ```bash
    ssh -Tv 1diazdev
+```
+
+## 6. Preparing Folder Structure
+
+1. Create two folders inside a github folder
+
+- `C:\Users\juanc\Documents\Github\juanPabloDiaz`
+
+- `C:\Users\juanc\Documents\Github\1diazdev`
+
+2. In the `Users` folder, Create 3 files:
+
+- `.gitconfig`
+- ``
+- ``
+
+3. in the `.gitconfig` file, setup the user
+
+```bash
+  [user]
+  name = msi
+  email = juanchodis@hotmail.com
 ```
