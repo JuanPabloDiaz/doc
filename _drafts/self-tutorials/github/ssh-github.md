@@ -2,10 +2,8 @@
 layout: post
 title: "How to USE Multiple Git Accounts using SSH on Windows"
 categories: git
-tags: draft
+tags: git devops
 ---
-
-[Video](https://www.youtube.com/watch?v=6lA0oPoFCAE)
 
 ## How to have multiple Github accounts on the same computer
 
@@ -155,3 +153,57 @@ ssh-add C:\Users\juanc\.ssh\1diazdev_key
 ```
 
 ## 7. Preparing Folder Structure
+
+### A. Link the existing repos to the new SSH
+
+1. Go to github and find the repo
+2. From the SSH link in github
+   example
+
+```bash
+  git@github.com:JuanPabloDiaz/repoName.git
+```
+
+You will only copy and use:
+
+```bash
+  JuanPabloDiaz/repoName.git
+```
+
+3. Add the code to that especific folder repo (JuanPabloDiaz/repoName.git)
+
+```bash
+git remote set-url origin juanpablodiaz:JuanPabloDiaz/repoName.git
+```
+
+example:
+
+```bash
+git remote set-url origin juanpablodiaz:JuanPabloDiaz/doc.git
+or
+git remote set-url origin 1diazdev:1diazdev/JuanDiaz.git
+```
+
+4. Test doing a `git pull`
+
+### Command to add a new repo from Github to local
+
+```bash
+git clone juanpablodiaz:JuanPabloDiaz/repoName.git
+```
+
+or
+
+```bash
+git clone 1diazdev:1diazdev/repoName.git
+```
+
+Test doing a `git pull`
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments 📚
+
+Resources list that I find helpful and would like to give credit to.
+
+- [@jc_miron Video](https://www.youtube.com/watch?v=6lA0oPoFCAE)
