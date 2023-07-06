@@ -6,7 +6,7 @@ categories: platzi 2022
 tags: neverstoplearning platzi html css
 ---
 
-This folder is part of a Platzi course called: "[Curso Definitivo de HTML y CSS](https://platzi.com/cursos/html-css/)". In which I learned HTML and CSS from scratch, without prior knowledge. Learned all about HTML tags, semantics, CSS, how to style website elements, EM/REM measurements, box model and much more. I had previous experience but it helped me to get back and refresh some concepts to start my path as a web developer.
+This folder is part of a Platzi course called: "[The Definitive HTML and CSS Course](https://platzi.com/cursos/html-css/) (Curso Definitivo de HTML y CSS)". In which I learned HTML and CSS from scratch, without prior knowledge. Learned all about HTML tags, semantics, CSS, how to style website elements, EM/REM measurements, box model and much more. I had previous experience but it helped me to get back and refresh some concepts to start my path as a web developer.
 
 <!-- BUILD WITH -->
 
