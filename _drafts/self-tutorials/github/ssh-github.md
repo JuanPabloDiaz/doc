@@ -106,16 +106,52 @@ ssh-add C:\Users\juanc\.ssh\1diazdev_key
 
 - `C:\Users\juanc\Documents\Github\1diazdev`
 
-2. In the `Users` folder, Create 3 files:
+2. In the `Users\juanc` folder, Create 3 files:
 
 - `.gitconfig`
-- ``
-- ``
+- `.gitconfig-juanpablodiaz`
+- `.gitconfig-1diazdev`
 
-3. in the `.gitconfig` file, setup the user
+3. In my case, the `.gitconfig` file was already created.
+
+- Open and replace it with the following:
 
 ```bash
-  [user]
-  name = msi
-  email = juanchodis@hotmail.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[includeIf "gitdir:C:Users/juanc/Documents/Github/juanPabloDiaz"]
+	path = ./.gitconfig-juanpablodiaz
+
+[includeIf "gitdir:C:\Users/juanc/Documents/Github/1diazdev"]
+	path = ./.gitconfig-1diazdev
+[user]
+	name = Juan Diaz
+	email = juanchodis@hotmail.com
+[core]
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 ```
+
+4. Open the `.gitconfig-juanpablodiaz` and add the following code:
+
+```bash
+[user]
+	name = juanpablodiaz
+	email = juanchodis@hotmail.com
+[core]
+	sshCommand = ssh -i ~.ssh/juanpablodiaz_key
+```
+
+5. Open the `.gitconfig-1diazdev` and add the following code:
+
+```bash
+[user]
+	name = 1diazdev
+	email = juan.diaz.rodriguez93@gmail.com
+[core]
+	sshCommand = ssh -i ~.ssh/1diazdev_key
+```
+
+## 7. Preparing Folder Structure
