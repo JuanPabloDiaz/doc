@@ -96,9 +96,24 @@ You can nest an unordered list in an ordered list, or vice versa.
 <h5>Rendered Output</h5>
 
 - [ ] Job
+
   - [x] Step 1
   - [x] Step 2
   - [ ] Step 3
+
+  ### Hover Text
+
+```markdown
+[id1]: ## "your hover text"
+
+This is a [hover text][id1] example.
+```
+
+<h5>Rendered Output</h5>
+
+[id1]: ## "your hover text"
+
+This is a [hover text][id1] example.
 
 ### Description list
 
