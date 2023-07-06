@@ -6,7 +6,7 @@ categories: platzi 2022
 tags: neverstoplearning platzi html css
 ---
 
-"[The Definitive HTML and CSS](https://platzi.com/cursos/html-css/ "Curso Definitivo de HTML y CSS")" is one of the Platzi courses I took. In which I learned HTML and CSS from scratch, without prior knowledge. Learned all about HTML tags, semantics, CSS, how to style website elements, EM/REM measurements, box model and much more. I had previous experience but it helped me to get back and refresh some concepts to start my path as a web developer.
+"[The HTML and CSS Final Course](https://platzi.com/cursos/html-css/ "Curso Definitivo de HTML y CSS")" is one of the Platzi courses I took. In which I learned HTML and CSS from scratch, without prior knowledge. Learned all about HTML tags, semantics, CSS, how to style website elements, EM/REM measurements, box model and much more. I had previous experience but it helped me to get back and refresh some concepts to start my path as a web developer.
 
 <!-- BUILD WITH -->
 
