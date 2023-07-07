@@ -240,6 +240,8 @@ Resources list that I find helpful and would like to give credit to.
 
 - [Bill Raymond](https://talk.jekyllrb.com/t/learn-how-to-add-featured-images-to-your-posts/4852)
 
+<br>
+
 ---
 
 <!-- Footnote -->
