@@ -7,18 +7,25 @@ tags: git github devops
 image: /assets/img/featured-posts/github.jpg
 ---
 
-## How to have multiple Github accounts on the same computer
+Have you ever desired to manage multiple GitHub accounts on the same computer but lacked the knowledge on how to accomplish it? Fear not, for it is a simple task requiring only a small portion of code.
 
-## 1. Enable OpenSSH in services.
+## 1. [Enable OpenSSH](https://dev.to/jasoncruzdev/activating-your-openssh-authentication-agent-in-windows-10-1fdh)
 
-## 2. Create SSH Keys
+1. In windows, open the "Services" app and search for **OpenSSH Authentication Agent**
+2. Right click over `OpenSSH Authentication Agent`, then `Properties`
+3. Set the startup type to `Automatic`
+4. `Apply` changes and click `start`. Then close it.
 
-1. Open PowerShell ([for help](https://explainshell.com/))
+## 2. Create SSH Keys[^SSH]
+
+1. Open PowerShell[^help]
 2. Add command for the default account (personal recommended first)
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "juanpablodiaz"
 ```
+
+{:start="3"}
 
 3. Enter the path location where you want to save the key (personal_key)
 
@@ -26,12 +33,16 @@ ssh-keygen -t rsa -b 4096 -C "juanpablodiaz"
 C:\Users\juanc\.ssh\juanpablodiaz_key
 ```
 
+{:start="4"}
+
 4. The key has been generated. To check, go to the folder where you save it.
-5. Add next Github account. (example: Github for work)
+5. Add next GitHub account. (example: GitHub for work)
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "1diazdev"
 ```
+
+{:start="6"}
 
 6. Enter the path location where you want to save the key
 
@@ -39,23 +50,25 @@ ssh-keygen -t rsa -b 4096 -C "1diazdev"
 C:\Users\juanc\.ssh\1diazdev_key
 ```
 
+{:start="7"}
+
 7. The key has been generated. To check, go to the folder where you save it.
 
 ## 3. Create SSH Config File
 
-1. Open the file explorer in the folder where both keys are stored
-2. Create the file `config`
+1. Open the `file explorer` in the folder where both keys are stored
+2. Create the `config` file
 3. Open the file in VScode and add the info below:
 
 ```bash
-# juanpablodiaz Github
+# juanpablodiaz GitHub
 Host juanpablodiaz
   Hostname github.com
   User git
   IdentityFile ~/.ssh/juanpablodiaz_key
   IdentitiesOnly yes
 
-# 1diazdev Github
+# 1diazdev GitHub
 Host 1diazdev
   Hostname github.com
   User git
@@ -63,16 +76,16 @@ Host 1diazdev
   IdentitiesOnly yes
 ```
 
-## 4. Add Keys to Gothub
+## 4. [Add Keys to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-1. Go to github.com and login
-2. Go to menu > Setting > SSH and GPG keys > new SSH keys
+1. Go to [GitHub.com](https://github.com/) and login
+2. Go to `Menu` > `Setting` > `SSH and GPG keys` > `new SSH keys`
 3. Add the public key and save.
-4. Repet the process on the other Github account.
+4. Repet the process on the other GitHub account.
 
 ## 5. Add Keys to OpenSSH Cache
 
-This is to prevent having to login to github everytime I interact with github.com.
+This is to prevent having to login to GitHub everytime I interact with [GitHub.com](https://github.com/).
 
 1. Open PowerShell and add the command (this will add the private key)
 
@@ -80,17 +93,23 @@ This is to prevent having to login to github everytime I interact with github.co
 ssh-add C:\Users\juanc\.ssh\juanpablodiaz_key
 ```
 
+{:start="2"}
+
 2. Repet the process for the other account (adding the private key)
 
 ```bash
 ssh-add C:\Users\juanc\.ssh\1diazdev_key
 ```
 
+{:start="3"}
+
 3. To test this add the code
 
 ```bash
    ssh -Tv juanpablodiaz
 ```
+
+{:start="4"}
 
 4. And
 
@@ -100,17 +119,21 @@ ssh-add C:\Users\juanc\.ssh\1diazdev_key
 
 ## 6. Preparing Folder Structure
 
-1. Create two folders inside a github folder
+1. Create two folders inside a GitHub folder
 
 - `C:\Users\juanc\Documents\Github\juanPabloDiaz`
 
 - `C:\Users\juanc\Documents\Github\1diazdev`
+
+{:start="2"}
 
 2. In the `Users\juanc` folder, Create 3 files:
 
 - `.gitconfig`
 - `.gitconfig-juanpablodiaz`
 - `.gitconfig-1diazdev`
+
+{:start="3"}
 
 3. In my case, the `.gitconfig` file was already created.
 
@@ -134,6 +157,8 @@ ssh-add C:\Users\juanc\.ssh\1diazdev_key
 	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 ```
 
+{:start="4"}
+
 4. Open the `.gitconfig-juanpablodiaz` and add the following code:
 
 ```bash
@@ -143,6 +168,8 @@ ssh-add C:\Users\juanc\.ssh\1diazdev_key
 [core]
 	sshCommand = ssh -i ~.ssh/juanpablodiaz_key
 ```
+
+{:start="5"}
 
 5. Open the `.gitconfig-1diazdev` and add the following code:
 
@@ -158,27 +185,23 @@ ssh-add C:\Users\juanc\.ssh\1diazdev_key
 
 ### A. Link the existing repos to the new SSH
 
-1. Go to github and find the repo
-2. From the SSH link in github
-   example
+1. Go to [GitHub.com](https://github.com/) and find the repo
+2. Copy the last part of the SSH link.
 
-```bash
-  git@github.com:JuanPabloDiaz/repoName.git
-```
+   > - SSH link: `git@github.com:JuanPabloDiaz/repoName.git`<br>
+   > - Copy: `JuanPabloDiaz/repoName.git`
 
-You will only copy and use:
+{:start="3"}
 
-```bash
-  JuanPabloDiaz/repoName.git
-```
+3. Add the [SSH link][id1] to that especific folder repo
 
-3. Add the code to that especific folder repo (JuanPabloDiaz/repoName.git)
+[id1]: ## "JuanPabloDiaz/repoName.git"
 
 ```bash
 git remote set-url origin juanpablodiaz:JuanPabloDiaz/repoName.git
 ```
 
-example:
+Example:
 
 ```bash
 git remote set-url origin juanpablodiaz:JuanPabloDiaz/doc.git
@@ -186,9 +209,11 @@ or
 git remote set-url origin 1diazdev:1diazdev/JuanDiaz.git
 ```
 
-4. Test doing a `git pull`
+{:start="4"}
 
-### Command to add a new repo from Github to local
+4. Test it by doing a `git pull`
+
+### Command to add a new repo from GitHub to local
 
 ```bash
 git clone juanpablodiaz:JuanPabloDiaz/repoName.git
@@ -200,7 +225,7 @@ or
 git clone 1diazdev:1diazdev/repoName.git
 ```
 
-Test doing a `git pull`
+Test it by doing a `git pull`
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -208,4 +233,16 @@ Test doing a `git pull`
 
 Resources list that I find helpful and would like to give credit to.
 
-- [@jc_miron Video](https://www.youtube.com/watch?v=6lA0oPoFCAE)
+- [@jc_miron video](https://www.youtube.com/watch?v=6lA0oPoFCAE)
+
+---
+
+<!-- ## Footnote -->
+
+[^SSH]:
+    SSH or Secure Shell is a network communication protocol that enables two computers to communicate.<br>
+    Go to [GitHub Doc](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+[^help]:
+    [PowerShell](https://learn.microsoft.com/en-us/powershell/) is a task automation and configuration management program from Microsoft, consisting of a command-line shell and the associated scripting language.<br>
+    To undestand better any line of code in PowerShell visit ([Explain Shell](https://explainshell.com/))
