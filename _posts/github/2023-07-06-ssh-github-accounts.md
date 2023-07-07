@@ -235,6 +235,8 @@ Resources list that I find helpful and would like to give credit to.
 
 - [@jc_miron video](https://www.youtube.com/watch?v=6lA0oPoFCAE)
 
+<br>
+
 ---
 
 <!-- ## Footnote -->
