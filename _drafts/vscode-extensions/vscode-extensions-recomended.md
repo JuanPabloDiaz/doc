@@ -5,6 +5,8 @@ categories: vscode
 tags: draft
 ---
 
+I remends to use VS code extensions to make your code easy
+
 ```json
 {
   "recommendations": [
