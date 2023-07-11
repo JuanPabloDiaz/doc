@@ -38,6 +38,7 @@ Bellow is a list of all my social media accounts and other plataforms that I use
 ★ [SoundCloud](https://soundcloud.com/1diazdev "@1diazdev")
 ★ [Steam](https://steamcommunity.com/profiles/76561199348768743/ "@jpdiaz0")
 ★ [FreeCodeCamp](https://www.freecodecamp.org/1diazdev "@1diazdev")
+★ [Discord](https://discord.com/1diazdev "@1diazdev")
 ★
 
 <!--  DO NOT MODIFY this structure,
