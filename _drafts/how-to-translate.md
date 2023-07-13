@@ -8,7 +8,7 @@ tags: jekyll translate
 # image: /assets/img/featured-posts/design.jpg
 ---
 
-I am not sure how to do it on Jekyll but here is an example on how to do it on HTML and JS
+I am not sure how to do it on Jekyll but here is an example on how to do it on HTML and JS ([Code From...](https://www.coderepublics.com/howto/how-to-google-translate.php))
 
 ```html
 <!DOCTYPE html>
