@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "How to Tanslate a Jekyll Page"
-date: 2023-06-30
+date: 2023-07-12
 author: juan
 categories: jekyll customize
-tags: jekyll featured-img
+tags: jekyll translate
 # image: /assets/img/featured-posts/design.jpg
 ---
 
