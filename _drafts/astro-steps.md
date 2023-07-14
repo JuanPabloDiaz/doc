@@ -62,22 +62,49 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
    npm run dev
    ```
 
+## 4. [ADD] First Commit ★ [Clase 9](https://platzi.com/clases/6207-astro/60190-github-vscode-prettier-astro-config/ "GitHub, VSCode, Prettier, Astro config")
+
+### GitHub
+
+1. Crear repo
+2. inicializar y linkiar proyecto.
+3. hacer mi first commit sigiendo los pasos de GitHub.
+
+## 5. [UPDATE] Config ★ [Clase 9](https://platzi.com/clases/6207-astro/60190-github-vscode-prettier-astro-config/ "GitHub, VSCode, Prettier, Astro config")
+
+### Prettier
+
+1. Correr:
+
+   ```bash
+   npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
+   ```
+
+2. agregar el nuevo archivo `prettierrc.cjs`
+
+3. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+4. Subir los cambios a github: [UPDATE] Config
+
 ---
 
-[ADD] First Commit ★ [Clase 9]()
-Prettier -> npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
-[UPDATE] Config ★ [Clase ]()
+★ [Clase ]()
 [ADD] Components ★ [Clase ]()
 
-5. [ADD] Pages ★ [Clase ]()
-6. [ADD] Layouts ★ [Clase ]()
-7. [ADD] Markdown ★ [Clase ]()
-8. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
-9. [ADD] Static Routes ★ [Clase ]()
-10. [ADD] Dynamic Routes ★ [Clase ]()
-11. [ADD] Dynamic Template ★ [Clase ]()
-12. install React - npx astro add react
-13. install @headlessui/react
+1. [ADD] Pages ★ [Clase ]()
+2. [ADD] Layouts ★ [Clase ]()
+3. [ADD] Markdown ★ [Clase ]()
+4. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
+5. [ADD] Static Routes ★ [Clase ]()
+6. [ADD] Dynamic Routes ★ [Clase ]()
+7. [ADD] Dynamic Template ★ [Clase ]()
+8. install React - npx astro add react
+9. install @headlessui/react
 
 Correr el projecto
 
