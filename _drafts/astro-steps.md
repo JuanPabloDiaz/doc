@@ -5,34 +5,37 @@ categories: astro
 tags: draft
 ---
 
-## Links:
+Este archivo sirve como guia para correr el proyecto e instalar las dependencias necesatias si por alguna razon me toca empezar de cero y crear nuevamente una pagina con Astro.
 
-- [Repo del curso](https://github.com/platzi/astrobuild.tips/commits/main)
-
----
+Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platzi/astrobuild.tips/commits/main):
 
 1. [ADD] First Commit ★ [Clase 6](https://platzi.com/clases/6207-astro/60187-conoce-tu-proyecto-colaborativo-astrobuildtips/)
 
-   > `npm create astro@latest -- --template astrobuild.tips`
+   - 1.1 inicializar el Proyecto desde Cero:
+     - `npm create astro@latest -- --template astrobuild.tips`
+     - Or `npm create astro@2.0.2 astrobuild.tips`
+   - 1.2 Compilar el proyecto para verificar que no tenga errores:
+     - `npm run build`
+   - 1.3 Correr el proyecto en local:
 
-Or
+     - `npm run dev`
 
-> `npm create astro@2.0.2 astrobuild.tips`
+---
 
 - npm install @tailwindcss/line-clamp
 
-1. [UPDATE] Config ★ [Clase ]()
-2. [ADD] Components ★ [Clase ]()
-3. [ADD] Pages ★ Clase ]()
-4. [ADD] Layouts ★ [Clase ]()
-5. [ADD] Prettier -> npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
-6. [ADD] Markdown ★ [Clase ]()
-7. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
-8. [ADD] Static Routes ★ [Clase ]()
-9. [ADD] Dynamic Routes ★ [Clase ]()
-10. [ADD] Dynamic Template ★ [Clase ]()
-11. install React - npx astro add react
-12. install @headlessui/react
+2. [UPDATE] Config ★ [Clase ]()
+3. [ADD] Components ★ [Clase ]()
+4. [ADD] Pages ★ Clase ]()
+5. [ADD] Layouts ★ [Clase ]()
+6. [ADD] Prettier -> npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
+7. [ADD] Markdown ★ [Clase ]()
+8. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
+9. [ADD] Static Routes ★ [Clase ]()
+10. [ADD] Dynamic Routes ★ [Clase ]()
+11. [ADD] Dynamic Template ★ [Clase ]()
+12. install React - npx astro add react
+13. install @headlessui/react
 
 Correr el projecto
 
