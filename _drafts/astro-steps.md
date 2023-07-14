@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Para Montar de Forma Rapida el Proyecto del Curso de Creación de Páginas Web con Astro"
-categories: jekyll
+categories: astro
 tags: draft
 ---
 
@@ -13,7 +13,7 @@ tags: draft
 
 1. [ADD] First Commit ★ [Clase 6](https://platzi.com/clases/6207-astro/60187-conoce-tu-proyecto-colaborativo-astrobuildtips/)
 
-   > `npm create astro@latest -- --template astrotips`
+   > `npm create astro@latest -- --template astrobuild.tips`
 
 Or
 
