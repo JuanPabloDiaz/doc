@@ -43,22 +43,35 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
   >
   > `npm install @astrojs/tailwind@3.0.1 tailwindcss@3.2.4`
 
-  ***
-
-- npm install @tailwindcss/line-clamp
-
 ## 3. [ADD] Components ★ [Clase 8](https://platzi.com/clases/6207-astro/60189-configuracion-de-typescript/ "Configuración de TypeScript")
 
-2.  [ADD] Pages ★ Clase ]()
-3.  [ADD] Layouts ★ [Clase ]()
-4.  [ADD] Prettier -> npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
-5.  [ADD] Markdown ★ [Clase ]()
-6.  [ADD] MDX -> npx astro add mdx ★ [Clase ]()
-7.  [ADD] Static Routes ★ [Clase ]()
-8.  [ADD] Dynamic Routes ★ [Clase ]()
-9.  [ADD] Dynamic Template ★ [Clase ]()
-10. install React - npx astro add react
-11. install @headlessui/react
+1. Agregar Componentes al Proyecto.
+   - **Ej**: Usando un [Blog card](https://www.hyperui.dev/components/marketing/blog-cards) de hyperui
+2. Installar el plugin necesario
+   ```bash
+   npm install @tailwindcss/line-clamp
+   ```
+3. Agregamos el plugin a `tailwind.config.cjs`
+   ```bash
+   plugins: [ require('@tailwindcss/line-clamp') ]
+   ```
+4. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+5. [ADD] Pages ★ Clase ]()
+6. [ADD] Layouts ★ [Clase ]()
+7. [ADD] Prettier -> npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
+8. [ADD] Markdown ★ [Clase ]()
+9. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
+10. [ADD] Static Routes ★ [Clase ]()
+11. [ADD] Dynamic Routes ★ [Clase ]()
+12. [ADD] Dynamic Template ★ [Clase ]()
+13. install React - npx astro add react
+14. install @headlessui/react
 
 Correr el projecto
 
