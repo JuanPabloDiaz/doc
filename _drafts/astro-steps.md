@@ -9,7 +9,7 @@ Este archivo sirve como guia para correr el proyecto e instalar las dependencias
 
 Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platzi/astrobuild.tips/commits/main):
 
-## 1. [ADD] First Commit ★ [Clase 6](https://platzi.com/clases/6207-astro/60187-conoce-tu-proyecto-colaborativo-astrobuildtips/ "Conoce tu proyecto colaborativo: astrobuild.tips")
+## 1. Inicializar Proyecto ★ [Clase 6](https://platzi.com/clases/6207-astro/60187-conoce-tu-proyecto-colaborativo-astrobuildtips/ "Conoce tu proyecto colaborativo: astrobuild.tips")
 
 1. inicializar el Proyecto desde Cero:
 
@@ -29,7 +29,7 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
    npm run dev
    ```
 
-## 2. [UPDATE] Config ★ [Clase 7](https://platzi.com/clases/6207-astro/60188-configuracion-de-tailwind-css/ "Configuración de Tailwind CSS")
+## 2. Tailwind CSS ★ [Clase 7](https://platzi.com/clases/6207-astro/60188-configuracion-de-tailwind-css/ "Configuración de Tailwind CSS")
 
 > [**Hyper UI**](https://www.hyperui.dev/): Free Open Source Tailwind CSS Components
 
@@ -43,7 +43,7 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
   >
   > `npm install @astrojs/tailwind@3.0.1 tailwindcss@3.2.4`
 
-## 3. [ADD] Components ★ [Clase 8](https://platzi.com/clases/6207-astro/60189-configuracion-de-typescript/ "Configuración de TypeScript")
+## 3. Componentes ★ [Clase 8](https://platzi.com/clases/6207-astro/60189-configuracion-de-typescript/ "Configuración de TypeScript")
 
 1. Agregar Componentes al Proyecto.
    - **Ej**: Usando un [Blog card](https://www.hyperui.dev/components/marketing/blog-cards) de hyperui
@@ -62,16 +62,22 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
    npm run dev
    ```
 
-5. [ADD] Pages ★ Clase ]()
+---
+
+[ADD] First Commit ★ [Clase 9]()
+Prettier -> npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
+[UPDATE] Config ★ [Clase ]()
+[ADD] Components ★ [Clase ]()
+
+5. [ADD] Pages ★ [Clase ]()
 6. [ADD] Layouts ★ [Clase ]()
-7. [ADD] Prettier -> npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
-8. [ADD] Markdown ★ [Clase ]()
-9. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
-10. [ADD] Static Routes ★ [Clase ]()
-11. [ADD] Dynamic Routes ★ [Clase ]()
-12. [ADD] Dynamic Template ★ [Clase ]()
-13. install React - npx astro add react
-14. install @headlessui/react
+7. [ADD] Markdown ★ [Clase ]()
+8. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
+9. [ADD] Static Routes ★ [Clase ]()
+10. [ADD] Dynamic Routes ★ [Clase ]()
+11. [ADD] Dynamic Template ★ [Clase ]()
+12. install React - npx astro add react
+13. install @headlessui/react
 
 Correr el projecto
 
