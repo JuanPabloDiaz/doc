@@ -188,11 +188,13 @@ npm run dev
 1. instalar la integracion de React
 
    ```bash
-   npx install react@18.2.0 react-dom@18.2.0
+   npm install @astrojs/react@2.0.2
    ```
 
+   - Instalar vue en el proyecto
+
    ```bash
-   npm install @astrojs/react@2.0.2
+   npx install react@18.2.0 react-dom@18.2.0
    ```
 
    - instalar automáticamente React en Astro:
@@ -204,7 +206,9 @@ npm run dev
    Astro instalará y configurará automáticamente React y todas sus dependencias, también se encargará de modificar los archivos de configuración automáticamente.
 
 2. Copiamos el codigo
-3. Compilar y correr el proyecto:
+3. Para el archivo `src/components/Header.tsx`, se uso un componente en react de [Hyper UI](https://www.hyperui.dev/)
+
+4. Compilar y correr el proyecto:
 
    ```bash
    npm run build
@@ -215,7 +219,35 @@ npm run dev
 
 1. instalar la integracion de Vue
 
-install @headlessui/react
+   ```bash
+      npm install @astrojs/vue@2.0.1
+   ```
+
+   - Instalar vue en el proyecto
+
+   ```bash
+      npm install vue@3.2.47
+   ```
+
+   - instalar automáticamente Vue en Astro:
+
+     ```bash
+        npx astro add vue
+     ```
+
+   Astro instalará y configurará automáticamente Vue y todas sus dependencias, también se encargará de modificar los archivos de configuración automáticamente.
+
+2. Copiamos el codigo
+3. Para el archivo `src/components/Footer.vue`, se uso un componente en vue de [Hyper UI](https://www.hyperui.dev/)
+
+   > Se encapsulo el codigo en un tag `<template></template>`
+
+4. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
 
 ## 16. [ADD] Svelte ★ [Clase 19]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/a2b5293c6bc2943d9cf68507fba782cf1624c6c3)
 
@@ -224,6 +256,8 @@ install @headlessui/react
 ## 17. [ADD] Islands ★ [Clase 20]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/83287a4b77275ddf7d92db6350719b137a527324)
 
 # Astro Islands
+
+install @headlessui/react
 
 ## 18. [ADD] SEO ★ [Clase ]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/6f885dee5dd63c5480eec7191b619939179a1f48)
 
