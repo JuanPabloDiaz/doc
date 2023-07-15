@@ -70,7 +70,7 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
 2. inicializar y linkiar proyecto.
 3. hacer mi first commit sigiendo los pasos de GitHub.
 
-## 5. [UPDATE] Config ★ [Clase 9](https://platzi.com/clases/6207-astro/60190-github-vscode-prettier-astro-config/ "GitHub, VSCode, Prettier, Astro config")
+## 5. [UPDATE] Config
 
 ### Prettier
 
@@ -80,7 +80,7 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
    npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
    ```
 
-2. agregar el nuevo archivo `prettierrc.cjs`
+2. Agregar el nuevo archivo `prettierrc.cjs`
 
 3. Compilar y correr el proyecto:
 
@@ -89,14 +89,16 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
    npm run dev
    ```
 
-4. Subir los cambios a github: [UPDATE] Config
+4. Subir los cambios a GitHub: [UPDATE] Config
 
 ---
 
-★ [Clase ]()
-[ADD] Components ★ [Clase ]()
+## 6. [ADD] Components ★ [Clase 10](https://platzi.com/clases/6207-astro/60191-componentes-en-astro/ "Componentes en Astro")
 
-1. [ADD] Pages ★ [Clase ]()
+Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del repo`. No es necesario instalar ninguna dependencia. Y luego subir los cambios a GitHub.
+
+## 7. [ADD] Pages ★ [Clase ]()
+
 2. [ADD] Layouts ★ [Clase ]()
 3. [ADD] Markdown ★ [Clase ]()
 4. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
