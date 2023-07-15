@@ -396,3 +396,5 @@ Solo se estan haciendo unas mejoras al codigo.
 > ```
 
 ## 21. Make it my Own
+
+Si llegue hasta aca, todo esta bien y ya puedo usar este proyecto y modificarlo a mi gusto para personalizar la pagina segun mis necesidades.
