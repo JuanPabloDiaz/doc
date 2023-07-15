@@ -49,7 +49,7 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
 
 1. Agregar Componentes al Proyecto.
    - **Ej**: Usando un [Blog card](https://www.hyperui.dev/components/marketing/blog-cards) de hyperui
-2. Installar el plugin necesario
+2. Instalar el plugin necesario
    ```bash
    npm install @tailwindcss/line-clamp
    ```
@@ -76,7 +76,7 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
 
 ### Prettier
 
-1. Correr:
+1. install la integracion de Prettier:
 
    ```bash
    npm install --save-dev prettier@2.8.4 prettier-plugin-astro@0.8.0
@@ -183,19 +183,43 @@ npm run dev
    npm run dev
    ```
 
-## 14. [ADD] React ★ [Clase 18]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/1d46816eb2cc034709e0bf1fd2c60141890b7c0f)
+## 14. [ADD] React ★ [Clase 18](https://platzi.com/clases/6207-astro/60199-componentes-en-react-header/ "Componentes en React: header") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/1d46816eb2cc034709e0bf1fd2c60141890b7c0f)
 
-install React
+1. instalar la integracion de React
 
-```bash
-npx astro add react
-```
+   ```bash
+   npx install react@18.2.0 react-dom@18.2.0
+   ```
 
-## 15. [ADD] Vue ★ [Clase 19]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/210a7894e05ec0c4ca571720880cfa5b5262bf9c)
+   ```bash
+   npm install @astrojs/react@2.0.2
+   ```
+
+   - instalar automáticamente React en Astro:
+
+     ```bash
+        npx astro add react
+     ```
+
+   Astro instalará y configurará automáticamente React y todas sus dependencias, también se encargará de modificar los archivos de configuración automáticamente.
+
+2. Copiamos el codigo
+3. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+## 15. [ADD] Vue ★ [Clase 19](https://platzi.com/clases/6207-astro/60200-componentes-en-vue-footer/ "Componentes en Vue: footer") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/210a7894e05ec0c4ca571720880cfa5b5262bf9c)
+
+1. instalar la integracion de Vue
 
 install @headlessui/react
 
 ## 16. [ADD] Svelte ★ [Clase 19]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/a2b5293c6bc2943d9cf68507fba782cf1624c6c3)
+
+1. instalar la integracion de
 
 ## 17. [ADD] Islands ★ [Clase 20]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/83287a4b77275ddf7d92db6350719b137a527324)
 
