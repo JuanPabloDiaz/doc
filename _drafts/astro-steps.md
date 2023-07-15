@@ -1,15 +1,16 @@
 ---
 layout: post
-title: "Para Montar de Forma Rapida el Proyecto del Curso de Creación de Páginas Web con Astro"
+title: "Montar de Forma Rapida el Proyecto del Curso de Creación de Páginas Web con Astro"
 categories: astro
 tags: draft
 ---
 
-Este archivo sirve como guia para correr el proyecto e instalar las dependencias necesatias si por alguna razon me toca empezar de cero y crear nuevamente una pagina con Astro.
+Este archivo tiene como finalidad guiar al usuario en la creacion de un proyecto en Astro. Como correr el proyecto e instalar las dependencias necesarias.
+Con esta informacion debe de ser capas de empezar de cero y crear nuevamente una pagina usando el framework de Astro.
 
-Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platzi/astrobuild.tips/commits/main):
+El [Repo del curso](https://github.com/platzi/astrobuild.tips/commits/main) servira de guia:
 
-> Nota: El **Deployment** se hace al final del curso, en la [Clase 22](http://localhost:4000/posts/astro-steps/#desplegar-en-cloudflare-pages--clase-23), no antes porque debemos configurarlo con algunos valores. Pueden surgir errores.
+> 📌 El **Deployment** se hace al final del curso, en la [Clase 22](http://localhost:4000/posts/astro-steps/#desplegar-en-cloudflare-pages--clase-23), no antes porque debemos configurarlo con algunos valores. Pueden surgir errores.
 
 ## 1. Inicializar Proyecto ★ [Clase 6](https://platzi.com/clases/6207-astro/60187-conoce-tu-proyecto-colaborativo-astrobuildtips/ "Conoce tu proyecto colaborativo: astrobuild.tips")
 
@@ -106,7 +107,7 @@ Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del r
 1. Para crear la pagina `src/pages/404.astro`, debemos buscarlo en [Hyper UI](https://www.hyperui.dev/)
 2. Una vez encontremos el codigo, lo copiamos, pegamos y listo.
    - Ejemplo: [error 404 page](https://www.hyperui.dev/components/application-ui/error-pages)
-     > Note: esta pagina en particular no requiere ningun componente en JS, asi que no es necesario agregar frontmatter al commienzo.
+     > 📌Note: esta pagina en particular no requiere ningun componente en JS, asi que no es necesario agregar frontmatter al commienzo.
 3. Modificar el url del boton del archivo para que redireccione al root
    > Reemplazando el `href="#"` por `href="/"`
 4. Compilar y correr el proyecto:
@@ -371,7 +372,7 @@ npm run build
 npm run dev
 ```
 
-Ojo: debo agregar lo siguiente para que funcione el projecto:
+📌Ojo: debo agregar lo siguiente para que funcione el projecto:
 
 1. Seleccionar Astro
 2. Asignar las [variables de entorno](https://platzi.com/clases/6207-astro/60204-desplegar-en-cloudflare-pages/?time=300)
@@ -395,6 +396,6 @@ Solo se estan haciendo unas mejoras al codigo.
 > npm run dev
 > ```
 
-## 21. Make it my Own
+## 🔥 21. Make it my Own 🔥
 
 Si llegue hasta aca, todo esta bien y ya puedo usar este proyecto y modificarlo a mi gusto para personalizar la pagina segun mis necesidades.
