@@ -95,18 +95,36 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
 
 ## 6. [ADD] Components ★ [Clase 10](https://platzi.com/clases/6207-astro/60191-componentes-en-astro/ "Componentes en Astro")
 
-Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del repo`. No es necesario instalar ninguna dependencia. Y luego subir los cambios a GitHub.
+Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del repo`. No es necesario instalar ninguna integracion o plugin. Y luego subir los cambios a GitHub.
 
-## 7. [ADD] Pages ★ [Clase ]()
+## 7. [ADD] Pages ★ [Clase 11](https://platzi.com/clases/6207-astro/60192-paginas-en-astro/)
 
-2. [ADD] Layouts ★ [Clase ]()
-3. [ADD] Markdown ★ [Clase ]()
-4. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
-5. [ADD] Static Routes ★ [Clase ]()
-6. [ADD] Dynamic Routes ★ [Clase ]()
-7. [ADD] Dynamic Template ★ [Clase ]()
-8. install React - npx astro add react
-9. install @headlessui/react
+### Como Crear una pagina 404
+
+1. Para crear la pagina `src/pages/404.astro`, debemos buscarlo en [Hyper UI](https://www.hyperui.dev/)
+2. Una vez encontremos el codigo, lo copiamos, pegamos y listo.
+   - Ejemplo: [error 404 page](https://www.hyperui.dev/components/application-ui/error-pages)
+     > Note: esta pagina en particular no requiere ningun componente en JS, asi que no es necesario agregar frontmatter al commienzo.
+3. Modificar el url del boton del archivo para que redireccione al root
+   - Reemplazando el `href="#"` por `href="/"`
+4. Probar que funcione correctamente usando un url invalido. Ej: `http://localhost:3000/test`
+5. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+   ***
+
+6. [ADD] Layouts ★ [Clase ]()
+7. [ADD] Markdown ★ [Clase ]()
+8. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
+9. [ADD] Static Routes ★ [Clase ]()
+10. [ADD] Dynamic Routes ★ [Clase ]()
+11. [ADD] Dynamic Template ★ [Clase ]()
+12. install React - npx astro add react
+13. install @headlessui/react
 
 Correr el projecto
 
@@ -114,7 +132,7 @@ Correr el projecto
    npm run dev
 ```
 
-Compilar el projecto
+Compilar el proyecto
 
 ```bash
    npm run build
