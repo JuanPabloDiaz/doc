@@ -117,12 +117,15 @@ Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del r
 
 ## 8. [ADD] Layouts ★ [Clase 12](https://platzi.com/clases/6207-astro/60193-plantillas-en-astro/ "Plantillas en Astro")
 
-No es necesario instalar ninguna integracion en la seccion de **Plantillas en Astro**. Copiamos el codigo y listo.
+No es necesario instalar ninguna integracion en la seccion de _Plantillas en Astro_. **Copiamos el codigo** y listo.
+
+## 9. [ADD] Markdown ★ [Clase 13](https://platzi.com/clases/6207-astro/60194-markdown/ "Markdown")
+
+No es necesario instalar ninguna integracion en la seccion de _Markdown_. **Copiamos el codigo** y listo.
 
 ---
 
-7. [ADD] Markdown ★ [Clase ]()
-8. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
+8. [ADD] MDX -> npx astro add mdx ★ [Clase 14]()
 9. [ADD] Static Routes ★ [Clase ]()
 10. [ADD] Dynamic Routes ★ [Clase ]()
 11. [ADD] Dynamic Template ★ [Clase ]()
