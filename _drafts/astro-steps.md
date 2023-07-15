@@ -249,7 +249,7 @@ npm run dev
    npm run dev
    ```
 
-## 16. [ADD] Svelte ★ [Clase 19](https://platzi.com/clases/6207-astro/60201-componentes-en-svelte-redes-sociales/ "Componentes en Svelte: redes sociales") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/a2b5293c6bc2943d9cf68507fba782cf1624c6c3)
+## 16. [ADD] Svelte ★ [Clase 20](https://platzi.com/clases/6207-astro/60201-componentes-en-svelte-redes-sociales/ "Componentes en Svelte: redes sociales") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/a2b5293c6bc2943d9cf68507fba782cf1624c6c3)
 
 1. instalar la integracion de Svelte
 
@@ -273,7 +273,7 @@ npm run dev
    npm run dev
    ```
 
-## 17. [ADD] Islands ★ [Clase 20](https://platzi.com/clases/6207-astro/60202-patrones-de-diseno-astro-islands/ "Patrones de diseño: Astro Islands") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/83287a4b77275ddf7d92db6350719b137a527324)
+## 17. [ADD] Islands ★ [Clase 21](https://platzi.com/clases/6207-astro/60202-patrones-de-diseno-astro-islands/ "Patrones de diseño: Astro Islands") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/83287a4b77275ddf7d92db6350719b137a527324)
 
 1. Recursos:
 
@@ -306,10 +306,62 @@ npm run dev
    npm run dev
    ```
 
-## 18. [ADD] SEO ★ [Clase ]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/6f885dee5dd63c5480eec7191b619939179a1f48)
+## 18. [ADD] SEO ★ [Clase 22](https://platzi.com/clases/6207-astro/60203-integraciones-seo-rss-sitemap/ "Integraciones SEO, RSS, Sitemap") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/6f885dee5dd63c5480eec7191b619939179a1f48)
 
-## 19. [ADD] FIX ★ [Clase ]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/fc8fbb3c956eeda53f97528485c240409f8b1cb3)
+### SEO
 
-`npx astro add sitemap`
+1. Copiar el codigo de [Head](https://gist.github.com/gndx/fae954a6b2afdc07afe5441fba234801 "Head - Astro · GitHub de gndx/head")
+2. Pegarlo en `src/components/BaseHead.astro`
 
-`	site: "https://jpdiaz.top",`
+   > Debo agregar estructura js al inicio del archivo.
+
+3. en el archivo `astro.config.mjs`, debo agregar:
+   [`site: "https://jpdiaz.top",`](https://platzi.com/clases/6207-astro/60203-integraciones-seo-rss-sitemap/?time=631 "mas detalles en capitulo del video")
+4. Copiamos el resto del codigo
+
+5. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+### RSS
+
+1. instalar la [integracion de RSS](https://platzi.com/clases/6207-astro/60203-integraciones-seo-rss-sitemap/?time=746 "mas detalles en capitulo del video"):
+
+   ```bash
+   npm install @astrojs/rss@2.1.0
+   ```
+
+2. Copiar el resto del codigo
+
+3. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+### Sitemap
+
+1. instalar la [integracion de SiteMap](https://platzi.com/clases/6207-astro/60203-integraciones-seo-rss-sitemap/?time=1063 "mas detalles en capitulo del video"):
+
+   ```bash
+   npm install @astrojs/sitemap@1.0.1
+   ```
+
+2. Copiar el resto del codigo
+
+3. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+## Desplegar en Cloudflare Pages ★ [Clase 23](https://platzi.com/clases/6207-astro/60204-desplegar-en-cloudflare-pages/ "Desplegar en Cloudflare Pages")
+
+- [Pages Cloudflare](https://pages.cloudflare.com/)
+
+## 19. [ADD] FIX ★ [Clase 24]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/fc8fbb3c956eeda53f97528485c240409f8b1cb3)
