@@ -249,9 +249,29 @@ npm run dev
    npm run dev
    ```
 
-## 16. [ADD] Svelte ★ [Clase 19]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/a2b5293c6bc2943d9cf68507fba782cf1624c6c3)
+## 16. [ADD] Svelte ★ [Clase 19](https://platzi.com/clases/6207-astro/60201-componentes-en-svelte-redes-sociales/ "Componentes en Svelte: redes sociales") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/a2b5293c6bc2943d9cf68507fba782cf1624c6c3)
 
-1. instalar la integracion de
+1. instalar la integracion de Svelte
+
+   ```bash
+      npm install svelte@3.55.1
+   ```
+
+   - instalar automáticamente Vue en Astro:
+
+     ```bash
+        npx astro add svelte
+     ```
+
+     Astro instalará y configurará automáticamente Svelte y todas sus dependencias, también se encargará de modificar los archivos de configuración automáticamente.
+
+2. Copiamos el codigo
+3. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
 
 ## 17. [ADD] Islands ★ [Clase 20]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/83287a4b77275ddf7d92db6350719b137a527324)
 
