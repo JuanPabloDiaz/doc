@@ -108,14 +108,15 @@ Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del r
    - Ejemplo: [error 404 page](https://www.hyperui.dev/components/application-ui/error-pages)
      > Note: esta pagina en particular no requiere ningun componente en JS, asi que no es necesario agregar frontmatter al commienzo.
 3. Modificar el url del boton del archivo para que redireccione al root
-   - Reemplazando el `href="#"` por `href="/"`
-4. Probar que funcione correctamente usando un url invalido. Ej: `http://localhost:3000/test`
-5. Compilar y correr el proyecto:
+   > Reemplazando el `href="#"` por `href="/"`
+4. Compilar y correr el proyecto:
 
    ```bash
    npm run build
    npm run dev
    ```
+
+5. Probar que funcione correctamente usando un url invalido. Ej: `http://localhost:3000/test`
 
 ## 8. [ADD] Layouts ★ [Clase 12](https://platzi.com/clases/6207-astro/60193-plantillas-en-astro/ "Plantillas en Astro")
 
@@ -168,7 +169,19 @@ npm run build
 npm run dev
 ```
 
-## 13. [ADD] Dynamic Template ★ [Clase 17]()
+## 13. [ADD] Dynamic Template ★ [Clase 17](https://platzi.com/clases/6207-astro/60198-creando-template-de-nuestra-pagina-de-entrada-del-/ "Creando template de nuestra página de entrada del blog")
+
+1. Para crear la plantilla `src/layouts/Posts.astro`, debemos buscarlo en [Hyper UI](https://www.hyperui.dev/)
+2. Una vez encontremos el codigo, lo copiamos, pegamos y listo.
+
+   - Ejemplo: [secciones](https://www.hyperui.dev/components/marketing/sections)
+
+3. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
 
 ## 14. install React - npx astro add react
 
