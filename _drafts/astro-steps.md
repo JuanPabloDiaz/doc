@@ -97,7 +97,7 @@ Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platz
 
 Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del repo`. No es necesario instalar ninguna integracion o plugin. Y luego subir los cambios a GitHub.
 
-## 7. [ADD] Pages ★ [Clase 11](https://platzi.com/clases/6207-astro/60192-paginas-en-astro/)
+## 7. [ADD] Pages ★ [Clase 11](https://platzi.com/clases/6207-astro/60192-paginas-en-astro/ "Paginas en Astro")
 
 ### Como Crear una pagina 404
 
@@ -115,9 +115,12 @@ Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del r
    npm run dev
    ```
 
-   ***
+## 8. [ADD] Layouts ★ [Clase 12](https://platzi.com/clases/6207-astro/60193-plantillas-en-astro/ "Plantillas en Astro")
 
-6. [ADD] Layouts ★ [Clase ]()
+No es necesario instalar ninguna integracion en la seccion de **Plantillas en Astro**. Copiamos el codigo y listo.
+
+---
+
 7. [ADD] Markdown ★ [Clase ]()
 8. [ADD] MDX -> npx astro add mdx ★ [Clase ]()
 9. [ADD] Static Routes ★ [Clase ]()
