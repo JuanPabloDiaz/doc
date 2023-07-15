@@ -123,14 +123,30 @@ No es necesario instalar ninguna integracion en la seccion de _Plantillas en Ast
 
 No es necesario instalar ninguna integracion en la seccion de _Markdown_. **Copiamos el codigo** y listo.
 
----
+## 10. [ADD] MDX ★ [Clase 14](https://platzi.com/clases/6207-astro/60195-mdx/ "MDX")
 
-8. [ADD] MDX -> npx astro add mdx ★ [Clase 14]()
-9. [ADD] Static Routes ★ [Clase ]()
-10. [ADD] Dynamic Routes ★ [Clase ]()
-11. [ADD] Dynamic Template ★ [Clase ]()
-12. install React - npx astro add react
-13. install @headlessui/react
+1. instalar la integracion de MDX de forma auto:
+
+   ```bash
+            npx astro add mdx
+   ```
+
+2. Copiar el codigo al archivo `src/pages/*.mdx`
+
+3. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+   ***
+
+4. [ADD] Static Routes ★ [Clase ]()
+5. [ADD] Dynamic Routes ★ [Clase ]()
+6. [ADD] Dynamic Template ★ [Clase ]()
+7. install React - npx astro add react
+8. install @headlessui/react
 
 Correr el projecto
 
