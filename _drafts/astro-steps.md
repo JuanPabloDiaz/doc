@@ -120,6 +120,12 @@ Para esta seccion de **componentes en Astro**, `solo debo copiar el codigo del r
 ## 8. [ADD] Layouts ★ [Clase 12](https://platzi.com/clases/6207-astro/60193-plantillas-en-astro/ "Plantillas en Astro")
 
 No es necesario instalar ninguna integracion en la seccion de _Plantillas en Astro_. **Copiamos el codigo** y listo.
+Recomiendo **compilar y correr** el proyecto:
+
+```bash
+npm run build
+npm run dev
+```
 
 ## 9. [ADD] Markdown ★ [Clase 13](https://platzi.com/clases/6207-astro/60194-markdown/ "Markdown")
 
@@ -145,25 +151,28 @@ No es necesario instalar ninguna integracion en la seccion de _Markdown_. **Copi
 ## 11. [ADD] Static Routes ★ [Clase 15](https://platzi.com/clases/6207-astro/60196-enrutamiento-rutas-estaticas/ "Enrutamiento: rutas estáticas")
 
 No es necesario instalar ninguna integracion en la seccion de _Rutas estaticas_. **Copiamos el codigo** y listo.
-
----
-
-. [ADD] Dynamic Routes ★ [Clase ]()
-. [ADD] Dynamic Template ★ [Clase ]()
-. install React - npx astro add react
-. install @headlessui/react
-
-Correr el projecto
+Recomiendo **compilar y correr** el proyecto:
 
 ```bash
-   npm run dev
+npm run build
+npm run dev
 ```
 
-Compilar el proyecto
+## 12. [ADD] Dynamic Routes ★ [Clase 16](https://platzi.com/clases/6207-astro/60197-enrutamiento-rutas-dinamicas/ "Enrutamiento: rutas dinámicas")
+
+No es necesario instalar ninguna integracion en la seccion de _Rutas dinamicas_. **Copiamos el codigo** y listo.
+Recomiendo **compilar y correr** el proyecto:
 
 ```bash
-   npm run build
+npm run build
+npm run dev
 ```
+
+## 13. [ADD] Dynamic Template ★ [Clase 17]()
+
+## 14. install React - npx astro add react
+
+## 15. install @headlessui/react
 
 # Astro Islands
 
