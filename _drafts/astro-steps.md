@@ -9,6 +9,8 @@ Este archivo sirve como guia para correr el proyecto e instalar las dependencias
 
 Paso a paso del curso basandonos en el [Repo del curso](https://github.com/platzi/astrobuild.tips/commits/main):
 
+> Nota: El **Deployment** se hace al final del curso (Clase 22), no antes porque debemos configurarlo con algunos valores. Pueden surgir errores.
+
 ## 1. Inicializar Proyecto ★ [Clase 6](https://platzi.com/clases/6207-astro/60187-conoce-tu-proyecto-colaborativo-astrobuildtips/ "Conoce tu proyecto colaborativo: astrobuild.tips")
 
 1. inicializar el Proyecto desde Cero:
@@ -140,13 +142,16 @@ No es necesario instalar ninguna integracion en la seccion de _Markdown_. **Copi
    npm run dev
    ```
 
-   ***
+## 11. [ADD] Static Routes ★ [Clase 15](https://platzi.com/clases/6207-astro/60196-enrutamiento-rutas-estaticas/ "Enrutamiento: rutas estáticas")
 
-4. [ADD] Static Routes ★ [Clase ]()
-5. [ADD] Dynamic Routes ★ [Clase ]()
-6. [ADD] Dynamic Template ★ [Clase ]()
-7. install React - npx astro add react
-8. install @headlessui/react
+No es necesario instalar ninguna integracion en la seccion de _Rutas estaticas_. **Copiamos el codigo** y listo.
+
+---
+
+. [ADD] Dynamic Routes ★ [Clase ]()
+. [ADD] Dynamic Template ★ [Clase ]()
+. install React - npx astro add react
+. install @headlessui/react
 
 Correr el projecto
 
