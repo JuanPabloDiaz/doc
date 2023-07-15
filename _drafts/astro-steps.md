@@ -360,7 +360,7 @@ npm run dev
    npm run dev
    ```
 
-## Desplegar en Cloudflare Pages ★ [Clase 23](https://platzi.com/clases/6207-astro/60204-desplegar-en-cloudflare-pages/ "Desplegar en Cloudflare Pages")
+## 19. Desplegar en Cloudflare Pages ★ [Clase 23](https://platzi.com/clases/6207-astro/60204-desplegar-en-cloudflare-pages/ "Desplegar en Cloudflare Pages")
 
 > Recomiendo ver el video completo en Platzi
 
@@ -383,4 +383,16 @@ Recursos:
 
 - [Pages Cloudflare](https://pages.cloudflare.com/)
 
-## 19. [ADD] FIX ★ [Clase 24]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/fc8fbb3c956eeda53f97528485c240409f8b1cb3)
+## 20. [ADD] FIX ★ [Clase 24](https://platzi.com/clases/6207-astro/60205-bonus-aplica-mejoras-a-tu-proyecto/ "Bonus: aplica mejoras a tu proyecto") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/fc8fbb3c956eeda53f97528485c240409f8b1cb3)
+
+No es necesario instalar ninguna integracion en esta ultima seccion _Fix_. **Copiamos el codigo** y listo.
+Solo se estan haciendo unas mejoras al codigo.
+
+> Compilar y correr el proyecto:
+>
+> ```bash
+> npm run build
+> npm run dev
+> ```
+
+## 21. Make it my Own
