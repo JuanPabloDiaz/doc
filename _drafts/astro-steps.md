@@ -273,32 +273,42 @@ npm run dev
    npm run dev
    ```
 
-## 17. [ADD] Islands ★ [Clase 20]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/83287a4b77275ddf7d92db6350719b137a527324)
+## 17. [ADD] Islands ★ [Clase 20](https://platzi.com/clases/6207-astro/60202-patrones-de-diseno-astro-islands/ "Patrones de diseño: Astro Islands") ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/83287a4b77275ddf7d92db6350719b137a527324)
 
-# Astro Islands
+1. Recursos:
 
-install @headlessui/react
+   - [Astro Islands documentation](https://docs.astro.build/es/concepts/islands/)
+   - La pagina es [Tailwind UI](https://tailwindui.com/).
+   - El [Header](https://tailwindui.com/components/marketing/elements/headers#component-6f74644bcfda42fc3d6735054d46bbe1) del proyecto.
+
+2. instalar el recurso/plugin/dependencia:
+
+   ```bash
+   npm install @headlessui/react
+   ```
+
+   - Para los iconos
+
+     ```bash
+     npm install @heroicons/react
+     ```
+
+3. Para que el componente pueda interactuar con el usuario, debemos agregar: `client:load` al final del componente.
+
+   - **ej**: `<HeaderTop client:load />`
+
+4. Copiamos el codigo
+
+5. Compilar y correr el proyecto:
+
+   ```bash
+   npm run build
+   npm run dev
+   ```
 
 ## 18. [ADD] SEO ★ [Clase ]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/6f885dee5dd63c5480eec7191b619939179a1f48)
 
 ## 19. [ADD] FIX ★ [Clase ]() ★ [Repo](https://github.com/platzi/astrobuild.tips/commit/fc8fbb3c956eeda53f97528485c240409f8b1cb3)
-
-## Recursos:
-
-- La pagina es [Tailwind UI](https://tailwindui.com/).
-- El [Header](https://tailwindui.com/components/marketing/elements/headers#component-6f74644bcfda42fc3d6735054d46bbe1) del proyecto.
-
-debo instalar dependecias:
-
-```bash
-npm install @headlessui/react
-```
-
-Para los iconos
-
-```bash
-npm install @heroicons/react
-```
 
 `npx astro add sitemap`
 
