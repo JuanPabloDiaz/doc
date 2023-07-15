@@ -55,9 +55,14 @@ El [Repo del curso](https://github.com/platzi/astrobuild.tips/commits/main) serv
    npm install @tailwindcss/line-clamp
    ```
 3. Agregamos el plugin a `tailwind.config.cjs`
+
    ```bash
    plugins: [ require('@tailwindcss/line-clamp') ]
    ```
+
+   > 💀 warn - As of Tailwind CSS v3.3, the `@tailwindcss/line-clamp` plugin is now included by default.
+   > warn - Remove it from the `plugins` array in your configuration to eliminate this warning.
+
 4. Compilar y correr el proyecto:
 
    ```bash
@@ -138,7 +143,7 @@ No es necesario instalar ninguna integracion en la seccion de _Markdown_. **Copi
 1. instalar la integracion de MDX de forma auto:
 
    ```bash
-            npx astro add mdx
+   npx astro add mdx
    ```
 
 2. Copiar el codigo al archivo `src/pages/*.mdx`
@@ -195,13 +200,13 @@ npm run dev
    - Instalar vue en el proyecto
 
    ```bash
-   npx install react@18.2.0 react-dom@18.2.0
+   npm install react@18.2.0 react-dom@18.2.0
    ```
 
    - instalar automáticamente React en Astro:
 
      ```bash
-        npx astro add react
+      npx astro add react
      ```
 
    Astro instalará y configurará automáticamente React y todas sus dependencias, también se encargará de modificar los archivos de configuración automáticamente.
@@ -221,19 +226,19 @@ npm run dev
 1. instalar la integracion de Vue
 
    ```bash
-      npm install @astrojs/vue@2.0.1
+   npm install @astrojs/vue@2.0.1
    ```
 
    - Instalar vue en el proyecto
 
    ```bash
-      npm install vue@3.2.47
+   npm install vue@3.2.47
    ```
 
    - instalar automáticamente Vue en Astro:
 
      ```bash
-        npx astro add vue
+      npx astro add vue
      ```
 
    Astro instalará y configurará automáticamente Vue y todas sus dependencias, también se encargará de modificar los archivos de configuración automáticamente.
@@ -255,13 +260,13 @@ npm run dev
 1. instalar la integracion de Svelte
 
    ```bash
-      npm install svelte@3.55.1
+   npm install svelte@3.55.1
    ```
 
    - instalar automáticamente Vue en Astro:
 
      ```bash
-        npx astro add svelte
+      npx astro add svelte
      ```
 
      Astro instalará y configurará automáticamente Svelte y todas sus dependencias, también se encargará de modificar los archivos de configuración automáticamente.
