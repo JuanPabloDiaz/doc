@@ -41,7 +41,7 @@ sudo dpkg --get-selections | grep php
 php --version
 ```
 
-## How to Install PHP on Linux?
+## How to Install PHP on Kali Linux?
 
 ```bash
 sudo apt install php-all-dev
