@@ -15,6 +15,7 @@ tags: draft projects
 
 ### Future Projects:
 
+- I need a Python site!!
 - [jpdiaz.work](https://jpdiaz.work/) -> It will host my PHP website. which will have a backend, login, register, and more (que mas??)
 - [jpdiaz.design](https://jpdiaz.design/) -> My E-commerce site using WordPress.
 
