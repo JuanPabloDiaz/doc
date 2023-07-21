@@ -40,3 +40,9 @@ sudo dpkg --get-selections | grep php
 ```bash
 php --version
 ```
+
+## How to Install PHP on Linux?
+
+```bash
+sudo apt install php-all-dev
+```
