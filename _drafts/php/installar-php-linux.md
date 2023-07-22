@@ -5,6 +5,8 @@ categories: php
 tags: draft
 ---
 
+Recomiendo ver el video en [Platzi](https://platzi.com/clases/2646-php/44433-instalacion-de-php-en-linux/)
+
 ## Agregamos el repositorio
 
 ```bash
