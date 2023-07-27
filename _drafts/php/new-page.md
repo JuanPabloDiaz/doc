@@ -19,3 +19,21 @@ I will use jpdiaz.work or jpdiaz.design for this project
 [Video Login](https://www.youtube.com/watch?v=KBskeBtQNOw&t=323s)
 
 My project is located in `C:\wamp64\www\tutorioz`
+
+- usar un Do...while en PHP para evitar que se repitan usernames a la hora de pedirle al usuario que se registre.
+
+  ```php
+  <?php
+
+  $usernames = ["Pepito123", "Mr.Michi", "RetaxMain"];
+
+  do {
+
+  	$username = readline("Por favor, ingresa tu nuevo nombre de usuario: ");
+
+  	echo "\n";
+
+  } while( in_array($username, $usernames) );
+
+  echo "\n";
+  ```

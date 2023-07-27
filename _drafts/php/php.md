@@ -131,3 +131,75 @@ echo "El color de Mr. Michi es " . $mr_michi["Color"];
 
 echo "\n";
 ```
+
+## [Clase 6](https://platzi.com/clases/2794-php-arreglos-funciones/46557-aprende-a-tomar-decisiones-con-if-y-else/): If / Else
+
+```php
+<?php
+
+$asientos_disponibles = 0;
+$es_hijo_de_tom_holland = false;
+$conoce_a_tony_stark = true;
+
+if ($asientos_disponibles > 0)
+    echo "Puedes ver la pelicula de Spidey";
+else if ($es_hijo_de_tom_holland)
+    echo "No te creo, pero puedes ver la pelicula";
+else if ($conoce_a_tony_stark)
+    echo "Bueno, te creo, adelante";
+else
+    echo "Lo sentimos, te tocara spoilearte";
+
+echo "\n";
+```
+
+## [Clase 7](https://platzi.com/clases/2794-php-arreglos-funciones/46558-como-organizar-tu-codigo-con-switch/): Switch
+
+## [Clase 8](https://platzi.com/clases/2794-php-arreglos-funciones/46559-reto-puedo-retirar-mis-donaciones-de-twitch/): Reto IF
+
+```php
+<?php
+
+$saldo = readline("Ingrese su saldo: ");
+
+if ($saldo <= 100){
+echo "Saldo insuficiente";
+}
+else {
+echo "Aca tiene sus $saldo";
+}
+echo "\n";
+```
+
+## [Clase 9](https://platzi.com/clases/2794-php-arreglos-funciones/46560-ciclo-while/): Ciclo while
+
+```php
+<?php
+
+$contador = 1;
+
+while($contador <= 10) {
+    echo "Actualmente estamos en la iteración $contador \n";
+    $contador++;
+}
+
+echo "\n";
+```
+
+## [Clase 10](https://platzi.com/clases/2794-php-arreglos-funciones/46561-do-while/): Do while
+
+```php
+<?php
+
+$usernames = ["Pepito123", "Mr.Michi", "RetaxMain"];
+
+do {
+
+	$username = readline("Por favor, ingresa tu nuevo nombre de usuario: ");
+
+	echo "\n";
+
+} while( in_array($username, $usernames) );
+
+echo "\n";
+```
