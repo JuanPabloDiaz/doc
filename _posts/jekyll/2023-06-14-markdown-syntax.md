@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Markdown Syntax"
-date: 2023-06-14 09:00:00 -0500
+date: 2023-06-14
 author: juan
 categories: jekyll customize
 tags: jekyll portfolio project markdown typography

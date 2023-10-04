@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Curso Practico de Javascript"
-date: 2021-05-23 10:00:00 -0500
+date: 2021-05-23
 categories: platzi 2021
 tags: neverstoplearning platzi javascript
 ---

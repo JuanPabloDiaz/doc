@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ECMAScript 6+ Course"
-date: 2022-06-05 10:00:00 -0500
+date: 2022-06-05
 categories: platzi 2022
 tags: neverstoplearning platzi javascript ecmascript
 ---

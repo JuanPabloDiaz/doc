@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Purchase and Configure Your New Domain"
-date: 2023-06-13 09:00:00 -0500
+date: 2023-06-13
 categories: domain
 tags: dns domain porkbun vercel github-pages
 image: /assets/img/featured-posts/domain.jpg

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "HTML and CSS Practical Course"
-date: 2022-04-08 10:00:00 -0500
+date: 2022-04-08
 categories: platzi 2022
 tags: neverstoplearning platzi html css
 ---

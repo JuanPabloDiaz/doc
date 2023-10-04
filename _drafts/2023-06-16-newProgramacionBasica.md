@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Curso Nuevo de Programacion - Rock ✊ Paper 🤚 Scissors ✌ Game"
-date: 2023-06-16 10:00:00 -0500
+date: 2023-06-16
 categories: platzi 2023
 tags: neverstoplearning platzi
 image: /assets/img/featured-posts/gamer.jpg

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Flujo de Desarrollo Moderno CodeStream Course"
-date: 2022-09-25 10:00:00 -0500
+date: 2022-09-25
 categories: platzi 2022
 tags: neverstoplearning platzi codestream
 ---

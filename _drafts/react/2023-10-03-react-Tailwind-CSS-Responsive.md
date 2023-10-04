@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "react Tailwind CSS Responsive"
-date: 2023-10-03 10:00:00 -0500
+title: "React Tailwind CSS Responsive"
+date: 2023-10-04
 categories: platzi 2023
 tags: react tailwind css responsive
 # image: /assets/img/featured-posts/gamer.jpg
@@ -13,11 +13,10 @@ Landing page from [Youtube](https://www.youtube.com/watch?v=ZU-drSVodBw&t=590s)
 
 ## Description 💡
 
-This project was developed using react-Tailwind-CSS-Responsive
+This project was developed using
 
-[![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://www.w3schools.com/whatis/whatis_html.asp)
-[![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3schools.com/whatis/whatis_css.asp)
-[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.w3schools.com/whatis/whatis_js.asp)
+[![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
+[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
 
 ## [Demo]()
 

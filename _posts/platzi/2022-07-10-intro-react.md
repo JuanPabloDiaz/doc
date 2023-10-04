@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introduction to React.js Course"
-date: 2022-07-10 10:00:00 -0500
+date: 2022-07-10
 categories: platzi 2022
 tags: neverstoplearning platzi
 ---

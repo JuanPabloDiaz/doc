@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "HTML and CSS Final Course"
-date: 2022-02-23 10:00:00 -0500
+date: 2022-02-23
 categories: platzi 2022
 tags: neverstoplearning platzi html css
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Practical Course on REST API Consumption with JavaScript"
-date: 2022-07-03 10:00:00 -0500
+date: 2022-07-03
 categories: platzi 2022
 tags: neverstoplearning platzi javascript rest-api
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Creating a Consistent Username Across Your Social Media Platforms"
-date: 2023-06-28 09:00:00 -0500
+date: 2023-06-28
 categories: portfolio
 tags: project username
 image: /assets/img/featured-posts/social-media.jpg

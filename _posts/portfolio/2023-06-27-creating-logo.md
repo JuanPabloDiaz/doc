@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How To Create A Logo on Canva"
-date: 2023-06-27 09:00:00 -0500
+date: 2023-06-27
 categories: portfolio
 tags: logo canva
 image: /assets/img/juan-diaz-logo/juan-diaz-logo-black.png

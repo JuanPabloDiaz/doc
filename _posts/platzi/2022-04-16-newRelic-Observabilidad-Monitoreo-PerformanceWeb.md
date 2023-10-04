@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Curso de New Relic: Observabilidad, Monitoreo y Performance Web"
-date: 2022-04-16 10:00:00 -0500
+date: 2022-04-16
 categories: platzi 2022
 tags: neverstoplearning platzi new-relic
 ---

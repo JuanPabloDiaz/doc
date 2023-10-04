@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CSS Grid Basic Course"
-date: 2022-04-15 10:00:00 -0500
+date: 2022-04-15
 categories: platzi 2022
 tags: neverstoplearning platzi css grid
 ---

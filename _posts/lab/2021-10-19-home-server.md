@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pi Home Server"
-date: 2021-10-19 10:00:00 -0500
+date: 2021-10-19
 categories: home-lab
 tags: home-lab neverstoplearning raspberrypi
 image: /assets/img/featured-posts/server.jpg

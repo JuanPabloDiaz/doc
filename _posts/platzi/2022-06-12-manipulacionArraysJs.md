@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Manipulate Arrays in JavaScript Course"
-date: 2022-06-12 10:00:00 -0500
+date: 2022-06-12
 categories: platzi 2022
 tags: neverstoplearning platzi javascript array
 ---

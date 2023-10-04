@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Responsive Design Course: Mobile First Layout"
-date: 2022-04-22 10:00:00 -0500
+date: 2022-04-22
 categories: platzi 2022
 tags: neverstoplearning platzi mobilefirst
 ---

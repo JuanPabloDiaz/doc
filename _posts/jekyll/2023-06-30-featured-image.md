@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Add Featured Images to Jekyll Posts"
-date: 2023-06-30 09:00:00 -0500
+date: 2023-06-30
 author: juan
 categories: jekyll customize
 tags: jekyll featured-img
