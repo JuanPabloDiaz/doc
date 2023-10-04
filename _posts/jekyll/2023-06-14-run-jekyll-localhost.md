@@ -35,11 +35,15 @@ bundle install
 bundle exec jekyll s
 ```
 
+Small for `bundle exec jekyll serve`
+
 Or
 
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll s --port 3000
 ```
+
+In case `Port 4000` is already in use.
 
 ### Run as Local with Auto-Reload
 
@@ -62,3 +66,25 @@ Or
 ```bash
 bundle exec jekyll s --livereload --drafts
 ```
+
+Using the `Live Reload` option will reload the browser.
+
+## Errors:
+
+### Permission denied error:
+
+Regarding the Permission denied error, it seems like the port 4000 is already in use by another process. You can try stopping any other processes that might be using this port or try running Jekyll on a different port by specifying the --port option when running jekyll serve. For example, jekyll serve --port 3000.
+
+```bash
+bundle exec jekyll s --livereload --drafts --port 3000
+```
+
+![debuging with Copilot](../../assets/img/errors/permission-denied-error.png)
+
+Helpfull Commands
+
+- `jekyll -v` to ensure you have installed Jekyll and its dependencies correctly.
+- `bundle install` to check for dependencies.
+- `jekyll doctor` to check for syntax errors.
+  the error comes up after running `jekyll doctor`:
+  ![jekyll doctor image](../../assets/img/errors/jekyll-doctor.png)
