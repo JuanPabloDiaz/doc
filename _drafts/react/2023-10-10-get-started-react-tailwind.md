@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "React Tailwind CSS Responsive"
-date: 2023-10-04
-categories: platzi 2023
+title: "Get Started React Tailwind"
+date: 2023-10-10
+categories: react
 tags: react tailwind css responsive
 # image: /assets/img/featured-posts/gamer.jpg
 ---
 
 <!-- ABOUT THE PROJECT -->
 
-Landing page from [Youtube](https://www.youtube.com/watch?v=ZU-drSVodBw&t=590s)
+# [Create a Landing Page with React.JS and tailwind CSS](https://medium.com/@chiragmehta900/create-a-responsive-landing-page-with-react-js-and-tailwind-css-fa09ffb24cb7)
 
 ## Description 💡
 
@@ -20,65 +20,63 @@ This project was developed using
 
 ## [Demo]()
 
-## Step by Step
+## Steps...
 
 1. Create your React project: `npx create-react-app my-project`
    - [Getting Started with React](https://www.w3schools.com/react/react_getstarted.asp)
-2. Once the react app is created, `Delete` files from the react template:
+2. _Customize the project_:
+
+   A. `Delete` files:
+
    - App.css
    - App.test.js
    - logo.svg
    - reportWebVital
    - SetupTests.js
-     I will get some error if I start the server (thats ok)
-3. Edit `index.js` and delete the `reportWebVitals function and import reportWebVitals`
-4. Edit `App.js` by deleting the <header>, delete the `import App.css, import logo and add import React from react;`
-5. [Install Tailwind CSS with Create React App](https://tailwindcss.com/docs/guides/create-react-app)
-6. Create the `components` folder inside `src`
-7. Create `Navbar.jsx` inside the `components` folder
-   ```js
-   import React from "react";
-   const Navbar = () => {
-     return (
-       <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto text-white">
-         <h1 className="w-full text-3xl font-bold text-[#00df9a]">REACT.</h1>
-         <ul className="flex">
-           <li className="p-4">Home</li>
-           <li className="p-4">Company</li>
-           <li className="p-4">Resources</li>
-           <li className="p-4">About</li>
-           <li className="p-4">Contact</li>
-         </ul>
-       </div>
-     );
-   };
-   export default Navbar;
-   ```
-8. `Import` and `add` the <Navbar> component to the `App.js` file.
-   ```js
-   import React from "react";
-   import Navbar from "./components/Navbar";
-   function App() {
-     return (
-       <div>
-         <Navbar />
-       </div>
-     );
-   }
-   export default App;
-   ```
-9. Use the [pesticides extension](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi) to check the layout of the page in localhost:3000
-10. Install the [react-icons](https://react-icons.github.io/react-icons/) to the project
-    `npm install react-icons --save`
-11. install: `npm install @headlessui/react`
-12. install: `npm install @heroicons/react`
-13. Import react-icons to `Navbar.jsx`
+     - Warning: I will get some error if I start the server (thats ok)
 
-```js
-	import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-	<AiOutlineMenu />
-	<AiOutlineClose />
-```
+   B. Edit `index.js` and delete the `reportWebVitals function and import reportWebVitals`
+
+   C. Edit `App.js` by deleting the `<header>`, delete the `import App.css, import logo and add import React from react;`
+
+3. [Install Tailwind CSS with Create React App](https://tailwindcss.com/docs/guides/create-react-app)
+4. [Install useful libraries]()
+
+   a. Install the [react-icons](https://react-icons.github.io/react-icons/) to the project
+
+   `npm install react-icons --save`
+
+   - `npm install @headlessui/react`
+   - `npm install @heroicons/react`
+   - Add `React-icon` to the fileComponent.jsx: - Import react-icons to `file.jsx`
+
+     - example
+
+     ```js
+     	import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+     	<AiOutlineMenu />
+     	<AiOutlineClose />
+     ```
+
+   b. Install [Framer Motion]() to the project
+
+   `npm install framer-motion`
+
+   - Add `framer-motion` to the fileComponent.jsx: - Import framer-motion to `file.jsx`
+
+     - example
+
+     ```js
+     	import framer-motion from "react";
+     ```
+
+5. Create the `components` folder inside `src`
+6. Create `FileComponents.jsx` inside the `components` folder.
+
+7. Use the [pesticides extension](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi) to check the layout of the page in localhost:3000
+8.
+
+### Open Cards Section
 
 <!-- LICENSE -->
 
@@ -130,3 +128,7 @@ Resources list that I find helpful and would like to give credit to.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
+
+```
+
+```
