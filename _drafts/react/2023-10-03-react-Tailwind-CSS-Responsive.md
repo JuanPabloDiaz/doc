@@ -4,7 +4,7 @@ title: "React Tailwind CSS Responsive"
 date: 2023-10-04
 categories: platzi 2023
 tags: react tailwind css responsive
-# image: /assets/img/featured-posts/gamer.jpg
+image: /assets/img/featured-posts/react_tailwind.jpg
 ---
 
 <!-- ABOUT THE PROJECT -->
@@ -79,6 +79,8 @@ This project was developed using
 	<AiOutlineMenu />
 	<AiOutlineClose />
 ```
+
+### Open Cards Section
 
 <!-- LICENSE -->
 

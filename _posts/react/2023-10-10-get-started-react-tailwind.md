@@ -4,7 +4,7 @@ title: "Get Started React Tailwind"
 date: 2023-10-10
 categories: react
 tags: react tailwind css responsive
-# image: /assets/img/featured-posts/gamer.jpg
+image: /assets/img/featured-posts/react_tailwind.jpg
 ---
 
 This is an step by step article on how to create, setup and deploy a simple React App using React.js, and Tailwind CSS.
