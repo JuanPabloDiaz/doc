@@ -137,6 +137,7 @@ npm install --save react-helmet
                     <meta charSet="utf-8" />
                     <title>My Title</title>
                     <link rel="canonical" href="http://mysite.com/example" />
+                    <meta name="description" content="Helmet application" />
                 </Helmet>
                 ...
             </div>
@@ -148,10 +149,18 @@ npm install --save react-helmet
 Example
 
 ```js
-	import framer-motion from "react";
+
 ```
 
 Project example: []()
+
+For the Icon App:
+
+1. Create or [Download](https://icon-icons.com/) your favicon. (download img as ico)
+2. Replace the `favicon.ico` inside the `public` folder with yours.
+3. Run the project.
+
+[Video: How to Add a Favicon and Title to React app](https://www.youtube.com/watch?v=7pJmM-XdPm8)
 
 ## 5. Run the App in Localhost
 
