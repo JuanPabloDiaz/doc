@@ -113,6 +113,46 @@ npm install framer-motion
 
   Project example: [Animated expandable cards with Tailwind CSS and Framer Motion](https://www.youtube.com/watch?v=bhRUBc0xjUo)
 
+### Manage all of your changes to the document head: (Title, Icon, description, url...)
+
+Install [Helmet](https://www.npmjs.com/package/react-helmet) to the project
+
+```bash
+npm install --save react-helmet
+```
+
+- [learn more](https://www.digitalocean.com/community/tutorials/react-react-helmet)
+
+- Import and Add the `<Helmet>` tag to the fileComponent.jsx:
+
+```bash
+    import React from "react";
+    import {Helmet} from "react-helmet";
+
+    class Application extends React.Component {
+      render () {
+        return (
+            <div className="application">
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>My Title</title>
+                    <link rel="canonical" href="http://mysite.com/example" />
+                </Helmet>
+                ...
+            </div>
+        );
+      }
+    };
+```
+
+Example
+
+```js
+	import framer-motion from "react";
+```
+
+Project example: []()
+
 ## 5. Run the App in Localhost
 
 ```js
@@ -124,6 +164,11 @@ Go to `localhost:3000`
 ## 6. Deployment
 
 [For FREE](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.)
+
+### Vercel
+
+- From a [Github Repo](https://www.youtube.com/watch?v=sauV-3_Nn60)
+- From a [new project on your machine](https://www.youtube.com/watch?v=FvsvHzcwOmQ)
 
 ---
 
