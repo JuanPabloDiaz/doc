@@ -7,7 +7,18 @@ tags: react tailwind css responsive
 # image: /assets/img/featured-posts/gamer.jpg
 ---
 
-## 1. Create a React project
+This is an step by step article on how to create, setup and deploy a simple React App using React.js, and Tailwind CSS.
+
+#### [Demo]()
+
+<!-- ABOUT THE PROJECT -->
+
+This project was developed using
+
+[![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
+[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
+
+## 1. Create a React Project
 
 ```bash
 npx create-react-app my-project
@@ -78,7 +89,7 @@ npm install framer-motion
 
   Project example: [Animated expandable cards with Tailwind CSS and Framer Motion](https://www.youtube.com/watch?v=bhRUBc0xjUo)
 
-## 5. Run the App in localhost
+## 5. Run the App in Localhost
 
 ```js
 	npm start
@@ -86,22 +97,11 @@ npm install framer-motion
 
 Go to `localhost:3000`
 
-## 6. Deploy
+## 6. Deployment
 
 [For FREE](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.)
 
 ---
-
-<!-- ABOUT THE PROJECT -->
-
-## Description 💡
-
-This project was developed using
-
-[![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
-[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
-
-## [Demo]()
 
 <!-- LICENSE -->
 
