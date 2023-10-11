@@ -48,6 +48,30 @@ D. Create components:
 
 ## 3. [Install Tailwind CSS](https://tailwindcss.com/docs/guides/create-react-app)
 
+- Free libraries of [Tailwind CSS Components](https://dev.to/cruip/25-places-where-you-can-get-free-tailwind-css-components-47lm#Tailwind%20Design)
+  Free Tailwind CSS Templates, Components and Resources
+  Fully responsive libraries, multi-purpose UI kits, built with Tailwind CSS, for start-ups and products of any kind. `Build beautiful interfaces without reinventing the wheel.`
+
+- [FloatUI](https://www.floatui.com/components)
+- [Tailwind Awesome](https://www.tailwindawesome.com/)
+- [HyperUI](https://www.hyperui.dev/)
+- [a17t](https://a17t.miles.land/)
+- [Kometa UI Kit](https://kitwind.io/products/kometa)
+- [Tailwind Toolbox](https://www.tailwindtoolbox.com/)
+- [Headless UI](https://headlessui.com/)
+- [Tailwind UI Kit](https://tuk.dev/)
+- [DaisyUI](https://daisyui.com/)
+- [Tailwind Components](https://tailwindcomponents.com/)
+- [Treact](https://treact.owaiskhan.me/)
+- [Meraki UI](https://merakiui.com/)
+- [Mamba UI](https://mambaui.com/)
+- [Flowbite](https://www.flowbite-react.com/)
+- [Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation)
+- [Kutty](https://kutty.netlify.app/)
+- [PostSrc](https://postsrc.com/)
+- [Tailblocks](https://tailblocks.cc/)
+- [Tailwind Elements](https://tw-elements.com/)
+
 ## 4. Install additional functionalities
 
 ### Icons
@@ -127,6 +151,9 @@ For more information regarding my completed courses and certificates, please cli
 
 Resources list that I find helpful and would like to give credit to.
 
+- [Tailwindcss.com](https://tailwindcss.com/)
+- [Tailwind CSS Cheat Sheet](https://tailwindcomponents.com/cheatsheet/)
+- Video: [How To Use Tailwind CSS With React](https://www.youtube.com/watch?v=W99CEOBCPSI)
 - [Create a Landing Page with React.JS and tailwind CSS](https://medium.com/@chiragmehta900/create-a-responsive-landing-page-with-react-js-and-tailwind-css-fa09ffb24cb7)
 - [Pesticides extension](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi) to check the layout of the page
 
