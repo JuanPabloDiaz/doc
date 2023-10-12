@@ -52,25 +52,13 @@ D. Create components:
   Free Tailwind CSS Templates, Components and Resources
   Fully responsive libraries, multi-purpose UI kits, built with Tailwind CSS, for start-ups and products of any kind. `Build beautiful interfaces without reinventing the wheel.`
 
-- [FloatUI](https://www.floatui.com/components)
-- [Tailwind Awesome](https://www.tailwindawesome.com/)
-- [HyperUI](https://www.hyperui.dev/)
-- [a17t](https://a17t.miles.land/)
-- [Kometa UI Kit](https://kitwind.io/products/kometa)
-- [Tailwind Toolbox](https://www.tailwindtoolbox.com/)
-- [Headless UI](https://headlessui.com/)
-- [Tailwind UI Kit](https://tuk.dev/)
-- [DaisyUI](https://daisyui.com/)
-- [Tailwind Components](https://tailwindcomponents.com/)
-- [Treact](https://treact.owaiskhan.me/)
-- [Meraki UI](https://merakiui.com/)
-- [Mamba UI](https://mambaui.com/)
-- [Flowbite](https://www.flowbite-react.com/)
-- [Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation)
-- [Kutty](https://kutty.netlify.app/)
-- [PostSrc](https://postsrc.com/)
-- [Tailblocks](https://tailblocks.cc/)
-- [Tailwind Elements](https://tw-elements.com/)
+|                                                      |                                                      |                                        |                                                        |                                                                                                     |                                      |
+| ---------------------------------------------------- | ---------------------------------------------------- | -------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| [FloatUI](https://www.floatui.com/components)        | [a17t](https://a17t.miles.land/)                     | [Headless UI](https://headlessui.com/) | [Tailwind Components](https://tailwindcomponents.com/) | [Treact](https://treact.owaiskhan.me/)                                                              | [Mamba UI](https://mambaui.com/)     |
+| [Tailwind Awesome](https://www.tailwindawesome.com/) | [Kometa UI Kit](https://kitwind.io/products/kometa)  | [Tailwind UI Kit](https://tuk.dev/)    | [Meraki UI](https://merakiui.com/)                     | [Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation) | [Kutty](https://kutty.netlify.app/)  |
+| [HyperUI](https://www.hyperui.dev/)                  | [Tailwind Toolbox](https://www.tailwindtoolbox.com/) | [DaisyUI](https://daisyui.com/)        | [Flowbite](https://www.flowbite-react.com/)            | [PostSrc](https://postsrc.com/)                                                                     | [Tailblocks](https://tailblocks.cc/) |
+
+[Tailwind Elements](https://tw-elements.com/)
 
 ## 4. Install additional functionalities
 
@@ -90,9 +78,9 @@ npm install react-icons --save
   Example
 
   ```js
-  	import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-  	<AiOutlineMenu />
-  	<AiOutlineClose />
+  import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+  <AiOutlineMenu />
+  <AiOutlineClose />
   ```
 
 ### Animation
@@ -108,7 +96,7 @@ npm install framer-motion
   Example
 
   ```js
-  	import framer-motion from "react";
+  import framer-motion from "react";
   ```
 
   Project example: [Animated expandable cards with Tailwind CSS and Framer Motion](https://www.youtube.com/watch?v=bhRUBc0xjUo)
@@ -126,24 +114,24 @@ npm install --save react-helmet
 - Import and Add the `<Helmet>` tag to the fileComponent.jsx:
 
 ```bash
-    import React from "react";
-    import {Helmet} from "react-helmet";
+import React from "react";
+import {Helmet} from "react-helmet";
 
-    class Application extends React.Component {
-      render () {
-        return (
-            <div className="application">
-                <Helmet>
-                    <meta charSet="utf-8" />
-                    <title>My Title</title>
-                    <link rel="canonical" href="http://mysite.com/example" />
-                    <meta name="description" content="Helmet application" />
-                </Helmet>
-                ...
-            </div>
-        );
-      }
-    };
+class Application extends React.Component {
+  render () {
+    return (
+        <div className="application">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+                <meta name="description" content="Helmet application" />
+            </Helmet>
+            ...
+        </div>
+    );
+  }
+};
 ```
 
 Example
@@ -164,20 +152,41 @@ For the Icon App:
 
 ## 5. Run the App in Localhost
 
-```js
-	npm start
+```bash
+npm start
 ```
 
 Go to `localhost:3000`
 
 ## 6. Deployment
 
-[For FREE](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.)
+There are multiple ways to deploy a React app in just minutes. Here is an article that explains 8 different ways to [Deploy a React App](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.).
 
-### Vercel
+[![Vercel](https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white)](https://www.Vercel.com)
 
 - From a [Github Repo](https://www.youtube.com/watch?v=sauV-3_Nn60)
 - From a [new project on your machine](https://www.youtube.com/watch?v=FvsvHzcwOmQ)
+
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28.svg?style=for-the-badge&logo=Firebase&logoColor=black)](https://www.Firebase.com)
+
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7.svg?style=for-the-badge&logo=Netlify&logoColor=white)](https://www.Netlify.com)
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222.svg?style=for-the-badge&logo=GitHub-Pages&logoColor=white)](https://pages.github.com/)
+
+[![Heroku](https://img.shields.io/badge/Heroku-430098.svg?style=for-the-badge&logo=Heroku&logoColor=white)](https://www.Heroku.com)
+
+[![Surge](https://img.shields.io/badge/Surge-FFDE91.svg?style=for-the-badge&logo=&logoColor=black)](https://surge.sh/)
+
+1. Make sure to have latest Node.js
+2. Install Surge:
+   ```bash
+    npm install --global surge
+   ```
+3. Now, run surge from within any directory, to publish that directory onto the web.
+
+[![Render](https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white)](https://www.Render.com)
+
+[![GitLab Pages](https://img.shields.io/badge/GitLab_Pages-FC6D26.svg?style=for-the-badge&logo=GitLab&logoColor=white)](https://www..com)
 
 ---
 
@@ -210,6 +219,7 @@ Resources list that I find helpful and would like to give credit to.
 - Video: [How To Use Tailwind CSS With React](https://www.youtube.com/watch?v=W99CEOBCPSI)
 - [Create a Landing Page with React.JS and tailwind CSS](https://medium.com/@chiragmehta900/create-a-responsive-landing-page-with-react-js-and-tailwind-css-fa09ffb24cb7)
 - [Pesticides extension](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi) to check the layout of the page
+- How to set [React background Image](https://www.freecodecamp.org/news/react-background-image-tutorial-how-to-set-backgroundimage-with-inline-css-style/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 ````
