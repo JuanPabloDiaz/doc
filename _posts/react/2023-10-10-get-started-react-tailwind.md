@@ -113,25 +113,25 @@ npm install --save react-helmet
 
 - Import and Add the `<Helmet>` tag to the fileComponent.jsx:
 
-```bash
+```js
 import React from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 class Application extends React.Component {
-  render () {
+  render() {
     return (
-        <div className="application">
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>My Title</title>
-                <link rel="canonical" href="http://mysite.com/example" />
-                <meta name="description" content="Helmet application" />
-            </Helmet>
-            ...
-        </div>
+      <div className="application">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>My Title</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+          <meta name="description" content="Helmet application" />
+        </Helmet>
+        ...
+      </div>
     );
   }
-};
+}
 ```
 
 Example
