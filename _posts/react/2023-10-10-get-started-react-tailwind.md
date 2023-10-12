@@ -169,6 +169,16 @@ There are multiple ways to deploy a React app in just minutes. Here is an articl
 
 [![Firebase](https://img.shields.io/badge/Firebase-FFCA28.svg?style=for-the-badge&logo=Firebase&logoColor=black)](https://www.Firebase.com)
 
+1. Install Firebase:
+   ```bash
+    npm install -g firebase-tools
+   ```
+2. Login with your Firebase or Google account.
+   ```bash
+   firebase login
+   ```
+3. Follow steps on [blog](https://blog.logrocket.com/8-ways-deploy-react-app-free/#firebase)
+
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7.svg?style=for-the-badge&logo=Netlify&logoColor=white)](https://www.Netlify.com)
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222.svg?style=for-the-badge&logo=GitHub-Pages&logoColor=white)](https://pages.github.com/)
@@ -179,12 +189,16 @@ There are multiple ways to deploy a React app in just minutes. Here is an articl
 
 1. Make sure to have latest Node.js
 2. Install Surge:
-   ```bash
-    npm install --global surge
-   ```
+
+```bash
+ npm install --global surge
+```
+
 3. Now, run surge from within any directory, to publish that directory onto the web.
 
 [![Render](https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white)](https://www.Render.com)
+
+From a Github Repo. [Learn More](https://blog.logrocket.com/8-ways-deploy-react-app-free/#render)
 
 [![GitLab Pages](https://img.shields.io/badge/GitLab_Pages-FC6D26.svg?style=for-the-badge&logo=GitLab&logoColor=white)](https://www..com)
 
