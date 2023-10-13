@@ -101,46 +101,48 @@ npm install framer-motion
 
   Project example: [Animated expandable cards with Tailwind CSS and Framer Motion](https://www.youtube.com/watch?v=bhRUBc0xjUo)
 
-### Manage all of your changes to the document head: (Title, Icon, description, url...)
+### Change the Title and Metadata (title, icon, description, url, ...)
 
-Install [Helmet](https://www.npmjs.com/package/react-helmet) to the project
+`Making your site SEO friendly.`
 
-```bash
-npm install --save react-helmet
-```
+1. Install [Helmet](https://www.npmjs.com/package/react-helmet) to the project
+
+   ```bash
+   npm install --save react-helmet
+   ```
 
 - [learn more](https://www.digitalocean.com/community/tutorials/react-react-helmet)
 
-- Import and Add the `<Helmet>` tag to the fileComponent.jsx:
+2. Import and Add the `<Helmet>` tag to the fileComponent.jsx:
 
-```js
-import React from "react";
-import { Helmet } from "react-helmet";
+   ```js
+   import React from "react";
+   import { Helmet } from "react-helmet";
 
-class Application extends React.Component {
-  render() {
-    return (
-      <div className="application">
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>My Title</title>
-          <link rel="canonical" href="http://mysite.com/example" />
-          <meta name="description" content="Helmet application" />
-        </Helmet>
-        ...
-      </div>
-    );
-  }
-}
-```
+   class Application extends React.Component {
+     render() {
+       return (
+         <div className="application">
+           <Helmet>
+             <meta charSet="utf-8" />
+             <title>My Title</title>
+             <link rel="canonical" href="http://mysite.com/example" />
+             <meta name="description" content="Helmet application" />
+           </Helmet>
+           ...
+         </div>
+       );
+     }
+   }
+   ```
 
-Example
+   Example
 
-```js
+   ```js
 
-```
+   ```
 
-Project example: []()
+   [Work around](https://create-react-app.dev/docs/title-and-meta-tags/)
 
 For the Icon App:
 
