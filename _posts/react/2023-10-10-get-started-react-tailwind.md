@@ -152,6 +152,60 @@ For the Icon App:
 
 [Video: How to Add a Favicon and Title to React app](https://www.youtube.com/watch?v=7pJmM-XdPm8)
 
+### TypeWriter Effect
+
+Install [react-simple-typewriter](https://www.npmjs.com/package/react-simple-typewriter) to the project
+
+```bash
+npm i react-simple-typewriter
+```
+
+- Add `react-simple-typewriter` to the fileComponent.jsx:
+  - `import { Typewriter } from 'react-simple-typewriter'`
+
+[Learn more](https://www.youtube.com/watch?v=PHCmWorM69Y)
+
+Example
+
+```js
+import React from 'react'
+import { Typewriter } from 'react-simple-typewriter'
+
+const MyComponent = () => {
+
+  const handleType = (count: number) => {
+    // access word count number
+    console.log(count)}
+  }
+
+  const handleDone = () => {
+    console.log(`Done after 5 loops!`)
+  }
+
+  return (
+    <div className='App'>
+      <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}>
+        Life is simple{' '}
+        <span style={{ color: 'red', fontWeight: 'bold' }}>
+          {/* Style will be inherited from the parent element */}
+          <Typewriter
+            words={['Eat', 'Sleep', 'Code', 'Repeat!']}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+            onLoopDone={handleDone}
+            onType={handleType}
+          />
+        </span>
+      </h1>
+    </div>
+  )
+}
+```
+
 ## 5. Run the App in Localhost
 
 ```bash
