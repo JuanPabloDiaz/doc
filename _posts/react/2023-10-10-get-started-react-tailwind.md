@@ -206,6 +206,37 @@ const MyComponent = () => {
 }
 ```
 
+### Scroll Effect on landing page
+
+Install [React Scroll](https://www.npmjs.com/package/react-scroll#-react-scroll) to the project
+
+```bash
+$ npm install react-scroll
+```
+
+- Add `react-scroll` to the fileComponent.jsx:
+  - `import { Link } from 'react-scroll'`
+
+[Learn more](https://www.youtube.com/watch?v=2kg0z1qNrkw&t=5406s)
+
+Example
+
+```js
+  <Link
+    activeClass="active"
+    to="home"
+    spy={true}
+    smooth={true}
+    offset={50}
+    duration={500}
+    onSetActive={handleSetActive}
+  >
+    Home
+  </Link>
+
+    <p name="home">Home Section</p>
+```
+
 ## 5. Run the App in Localhost
 
 ```bash
