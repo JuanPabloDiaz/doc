@@ -23,3 +23,7 @@ Learn More... [Stackblitz Doc](https://developer.stackblitz.com/codeflow/using-p
 
 - Run projects and edit them in the browser
 - StackBlitz takes care of all of the setup: from forking and installing dependencies to configuring build tools and hot reloading. Working on StackBlitz feels exactly like working on your local dev environment - minus the frustrating parts.
+
+# Another Way to Edit Repo Using VS Code in the Browser...
+
+Si lo que necesita es abrir en el navegador un repositorio que estas viendo en GitHub. Presiona la Tecla `.` (punto) y te abrira el repo en VScode en el navegador. 🤯🤓
