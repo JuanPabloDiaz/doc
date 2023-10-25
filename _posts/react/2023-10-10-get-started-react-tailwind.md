@@ -309,7 +309,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 For more information regarding my completed courses and certificates, please click on:
 
-[![](https://img.shields.io/badge/Platzi_Profile-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](https://platzi.com/p/DiazJuan/)<!-- ACKNOWLEDGMENTS -->
+[![](https://img.shields.io/badge/Platzi_Profile-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](https://platzi.com/p/1diazdev/)<!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments 📚
 

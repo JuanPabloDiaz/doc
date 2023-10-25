@@ -16,7 +16,7 @@ This folder was created at the end of 2021 when I took the "Basic Programming" c
 
 ## My Certificate 🎓
 
-I completed the courses back on September 2021 and here is my [certificate](https://platzi.com/p/DiazJuan/curso/1050-course/diploma/detalle/)
+I completed the courses back on September 2021 and here is my [certificate](https://platzi.com/p/1diazdev/curso/1050-course/diploma/detalle/)
 
 ## Projects
 

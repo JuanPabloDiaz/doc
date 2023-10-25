@@ -27,7 +27,7 @@ Learn More About Me
 - 🎮 I'm passionate about... Web Development ⏳︎ NeverStopLearning.
 - 💬 Ask me about... Home-Lap & Front-End, HD, Platzi.
 
-- 🎓 Some of My Certificates... can be found at [![](https://img.shields.io/badge/Platzi_Profile-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](https://platzi.com/p/DiazJuan/)
+- 🎓 Some of My Certificates... can be found at [![](https://img.shields.io/badge/Platzi_Profile-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](https://platzi.com/p/1diazdev/)
 
 - 🚲 Hobbies: ... Home-Lab, learn something new on Platzi, cyclist & fitness.
 </details>

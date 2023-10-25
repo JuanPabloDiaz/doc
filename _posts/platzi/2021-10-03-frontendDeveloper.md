@@ -16,7 +16,7 @@ This folder was created at the end of 2021 when I took the "Frontend Developer" 
 
 ## My Certificate 🎓
 
-I completed the courses back on October 2021 and here is my [certificate](https://platzi.com/p/DiazJuan/curso/2467-course/diploma/detalle/) | [Practice](https://platzi.com/p/DiazJuan/curso/2477-course/diploma/detalle/)
+I completed the courses back on October 2021 and here is my [certificate](https://platzi.com/p/1diazdev/curso/2467-course/diploma/detalle/) | [Practice](https://platzi.com/p/1diazdev/curso/2477-course/diploma/detalle/)
 
 ## Projects
 
