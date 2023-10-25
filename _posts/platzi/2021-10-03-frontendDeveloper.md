@@ -35,4 +35,4 @@ Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
 - [Escuela de Javascript](https://platzi.com/escuela-javascript/)
-- [Escuela de Desarrollo Web](https://platzi.com/web/)
+- [Escuela de Desarrollo Web](https://platzi.com/escuela/web/)

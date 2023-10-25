@@ -56,4 +56,4 @@ Here are some of the projects that have been developed through this course.
 Resources list that I find helpful and would like to give credit to.
 
 - [Platzi](https://www.platzi.com/)
-- [Escuela de Desarrollo Web](https://platzi.com/web/)
+- [Escuela de Desarrollo Web](https://platzi.com/escuela/web/)
