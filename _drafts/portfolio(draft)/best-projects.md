@@ -65,13 +65,13 @@ Projects in React
 
 This section list some challenges I have participated in Platzi which require time and dedication along other skills.
 
-- [Datacademy 2022](https://deepnote.com/workspace/juandiaz-7746519b-662c-4b7c-b97f-9577567b2970/project/Proyecto-Datacademy-b6457371-4e49-4f83-96ab-1232331cf711/%2FdataProyect%2Ftemplate_proyecto_datacademy.ipynb) (on Deepnote) 📈 | [Certificate ](https://platzi.com/p/DiazJuan/curso/2681-datacademy/diploma/detalle/) | [Gold Certificate ](https://platzi.com/p/DiazJuan/curso/3105-datacademy-proyecto-2022/diploma/detalle/) ✔️
+- [Datacademy 2022](https://deepnote.com/workspace/juandiaz-7746519b-662c-4b7c-b97f-9577567b2970/project/Proyecto-Datacademy-b6457371-4e49-4f83-96ab-1232331cf711/%2FdataProyect%2Ftemplate_proyecto_datacademy.ipynb) (on Deepnote) 📈 | [Certificate ](https://platzi.com/p/1diazdev/curso/2681-datacademy/diploma/detalle/) | [Gold Certificate ](https://platzi.com/p/1diazdev/curso/3105-datacademy-proyecto-2022/diploma/detalle/) ✔️
 
-- [Crea tu Primera Página web 2022 (repo)](https://github.com/JuanPabloDiaz/platzi/tree/main/2022/definitivoHTMLyCSS/web2022Challenges) 🌐 | [Certificate ](https://platzi.com/p/DiazJuan/curso/2940-primera-pagina-web-2022-diploma/diploma/detalle/) ✔️
+- [Crea tu Primera Página web 2022 (repo)](https://github.com/JuanPabloDiaz/platzi/tree/main/2022/definitivoHTMLyCSS/web2022Challenges) 🌐 | [Certificate ](https://platzi.com/p/1diazdev/curso/2940-primera-pagina-web-2022-diploma/diploma/detalle/) ✔️
 
 - [Crea tu Portafolio como Web Developer](https://platzi.com/blog/portafolio-web-2022/) 🎬 | [Certificate ](#) (Current Project) 🚧
 
-- Smart Crypto Investments 2022 📀 [Certificate ](https://platzi.com/p/DiazJuan/curso/2787-smart-crypto-investments/diploma/detalle/) ✔️
+- Smart Crypto Investments 2022 📀 [Certificate ](https://platzi.com/p/1diazdev/curso/2787-smart-crypto-investments/diploma/detalle/) ✔️
 
   <!-- - [](https:///) -->
 
