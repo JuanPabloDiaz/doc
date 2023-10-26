@@ -237,6 +237,35 @@ Example
     <p name="home">Home Section</p>
 ```
 
+
+### Prettier Plugin Tailwind
+
+1. make sure to have Prettier already install in the PROJECT
+
+`npm i --save-dev prettier
+
+or
+
+npm install -D prettier`
+
+to save it with the exact version:
+`npm i --save-dev --save-exact prettier`
+
+2. install:
+
+`npm i prettier-plugin-tailwind
+
+or
+
+npm i prettier-plugin-tailwindcss`
+
+- [NPM site](https://www.npmjs.com/package/prettier-plugin-tailwind)
+- [other](https://www.youtube.com/shorts/MD_-XzdX0oo)
+[Video](https://www.youtube.com/watch?v=_CntOc4hBcg)
+
+ Tutorial To Change NavBar On Scroll https://www.youtube.com/watch?v=UvWMlNZuQTc&t=237s
+ Add Effects to NavBar: https://www.youtube.com/watch?v=z9sHOXheE_M
+
 ## 5. Run the App in Localhost
 
 ```bash
