@@ -28,20 +28,12 @@ npx create-react-app my-project
 
 ## 2. Modify the React App
 
-A. `Delete` files:
-
-- App.css
-- App.test.js
-- logo.svg
-- reportWebVital
-- SetupTests.js
+A. `Delete` the `App.css` and the `logo.svg`
   - Warning: I will get some error if I start the server (thats ok)
 
-B. Edit `index.js` and delete the `reportWebVitals function and import reportWebVitals`
+B. Edit `App.js` by deleting the `<header>`, delete the `import App.css, import logo and add import React from react;` (Try changing the HTML content and save the file.)
 
-C. Edit `App.js` by deleting the `<header>`, delete the `import App.css, import logo and add import React from react;` (Try changing the HTML content and save the file.)
-
-D. Create components:
+C. Create components:
 
 - Create the `components` folder inside `src`
 - Create the `FileComponents.jsx` inside the `components` folder.
