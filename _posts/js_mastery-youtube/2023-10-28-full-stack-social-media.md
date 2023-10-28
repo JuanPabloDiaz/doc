@@ -7,7 +7,7 @@ tags: react vite tailwind appwrite react-query
 image: https://camo.githubusercontent.com/20115e5e8c49fa30a940add791a2a5e5623d991014cf104c0044df52f8209d4d/68747470733a2f2f692e6962622e636f2f6b3442517464502f5468756d626e61696c2e706e67
 ---
 
-This is an step by step article on how to create, setup and deploy a simple React App using React.js, and Tailwind CSS.
+Build a modern social app with a stunning UI with a native mobile feel, a special tech stack, an infinite scroll feature, and amazing performance using React JS, Appwrite, TypeScript, and more.
 
 #### [Demo]()
 
@@ -18,18 +18,21 @@ This project was developed using
 [![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
 [![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
 
-## 1. Create a React Project
+## 1. Create a React Project using Vite
 
 ```bash
-npx create-react-app my-project
+npm create vite@latest
+```
+```bash
+npm install
+npm run dev
 ```
 
-- [Getting Started with React.js](https://www.w3schools.com/react/react_getstarted.asp)
+- [Getting Started with Vite](https://vitejs.dev/guide/)
 
 ## 2. Modify the React App
 
-A. `Delete` the `App.css` and the `logo.svg`
-  - Warning: I will get some error if I start the server (thats ok)
+A. `Delete` the `src` folder and create a new one
 
 B. Edit `App.js` by deleting the `<header>`, delete the `import App.css, import logo and add import React from react;` (Try changing the HTML content and save the file.)
 
@@ -44,13 +47,6 @@ C. Create components:
   Free Tailwind CSS Templates, Components and Resources
   Fully responsive libraries, multi-purpose UI kits, built with Tailwind CSS, for start-ups and products of any kind. `Build beautiful interfaces without reinventing the wheel.`
 
-|                                                      |                                                      |                                        |                                                        |                                                                                                     |                                      |
-| ---------------------------------------------------- | ---------------------------------------------------- | -------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| [FloatUI](https://www.floatui.com/components)        | [a17t](https://a17t.miles.land/)                     | [Headless UI](https://headlessui.com/) | [Tailwind Components](https://tailwindcomponents.com/) | [Treact](https://treact.owaiskhan.me/)                                                              | [Mamba UI](https://mambaui.com/)     |
-| [Tailwind Awesome](https://www.tailwindawesome.com/) | [Kometa UI Kit](https://kitwind.io/products/kometa)  | [Tailwind UI Kit](https://tuk.dev/)    | [Meraki UI](https://merakiui.com/)                     | [Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation) | [Kutty](https://kutty.netlify.app/)  |
-| [HyperUI](https://www.hyperui.dev/)                  | [Tailwind Toolbox](https://www.tailwindtoolbox.com/) | [DaisyUI](https://daisyui.com/)        | [Flowbite](https://www.flowbite-react.com/)            | [PostSrc](https://postsrc.com/)                                                                     | [Tailblocks](https://tailblocks.cc/) |
-
-[Tailwind Elements](https://tw-elements.com/)
 
 ## 4. Install additional functionalities
 
