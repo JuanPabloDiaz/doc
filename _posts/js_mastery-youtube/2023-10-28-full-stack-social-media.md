@@ -30,13 +30,30 @@ npm run dev
 
 - [Getting Started with Vite](https://vitejs.dev/guide/)
 
-## 2. Modify the React App
+## 2. Customize the Project 
 
-A. `Delete` the `src` folder and create a new one
+A. Starting Point Of The Project: `Delete` the `src` folder and create a new one with the files `App.tsx`, `main.tsx` and edit the files [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/a537dd5495959114c2afa51767249d972c657b88)
 
-B. Edit `App.js` by deleting the `<header>`, delete the `import App.css, import logo and add import React from react;` (Try changing the HTML content and save the file.)
+B. Create a `global.css` file and add the tailwind classes that we will use in the project. [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/63c49b3a8043f76157c9e84d7f3c3702e8f79fed)
 
-C. Create components:
+C. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+> Note: it will show an error if I run the project at this point. the `bg-dark-1` and `font-Inter` needs to be install (step D) 
+
+D. Modify the `tailwind.config` file by adding the info in the [Github repo](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+
+  - Install the necesary plugins: 
+  ```
+  npm install -D tailwindcss-animate
+  ```
+  make sure to install the plugin and modify 
+
+
+E. Create components:
 
 - Create the `components` folder inside `src`
 - Create the `FileComponents.jsx` inside the `components` folder.
