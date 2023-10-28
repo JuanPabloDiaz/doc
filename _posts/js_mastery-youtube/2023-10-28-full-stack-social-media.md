@@ -52,7 +52,7 @@ D. Modify the `tailwind.config` file by adding the info in the [Github repo](htt
   ```
   > Make sure to install the plugin and modify [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/755a5aa625577a880d3b7b55ffac063e220236a2)
 
-E. Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom)
+E. Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom) [(repo details)](https://github.com/JuanPabloDiaz/socialMedia/commit/1a1e9f1263e4723f20a76587f319b1ae9cf54668)
 
 ```bash
 npm i react-router-dom
