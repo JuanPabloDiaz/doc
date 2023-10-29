@@ -59,13 +59,25 @@ E. Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#rea
 ```bash
 npm i react-router-dom
 ```
+## Auth Pages
+## Auth Functionality - Appwrite
+## Storage & Database Design
+## TanStack Query
+## HomePage
+## Create Post
+## Post Card
+## Post CRUD
+## Post Details
+## Explore Page
+## Search Results
+## Active Lesson
 
 
 
 
 
 
-## 6. Deployment
+## last step. Deployment
 
 There are multiple ways to deploy a React app in just minutes. Here is an article that explains 8 different ways to [Deploy a React App](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.).
 
