@@ -16,6 +16,8 @@ Build a modern social app with a stunning UI with a native mobile feel, a specia
 This project was developed using
 
 [![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
+[![Appwrite](https://img.shields.io/badge/Appwrite-F02E65.svg?style=for-the-badge&logo=Appwrite&logoColor=white)](https://appwrite.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
 
 ## 1. Create a React Project using Vite
@@ -57,6 +59,7 @@ E. Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#rea
 ```bash
 npm i react-router-dom
 ```
+
 
 
 
