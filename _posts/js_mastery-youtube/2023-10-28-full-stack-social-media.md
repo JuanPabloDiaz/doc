@@ -157,8 +157,6 @@ export default App;
 [Shadcn UI](https://ui.shadcn.com/). is a library with multiple designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source. it will be use to style the page.
 - Edit `tsconfig.json` file by adding the following code to the paths section:
 ```bash
-
-
 {
   "compilerOptions": {
     // ...
@@ -245,6 +243,36 @@ Configure the import alias for components: › `@/components`
 Configure the import alias for utils: › `@/lib/utils`
 Are you using React Server Components? › no / `yes` (no)
 ```
+This will install all the necesary components
+
+### F. Modify the `AuthLayout.tsx` file
+
+```tsx
+import { Outlet, Navigate } from "react-router-dom";
+
+const AuthLayout = () => {
+  const isAutenticated = false;
+
+  return (
+    <>
+      {isAutenticated ? (
+        <Navigate to="/" />
+      ) : (
+        <>
+          <section>
+            <Outlet />
+          </section>
+        </>
+      )}
+    </>
+  );
+};
+
+export default AuthLayout;
+```
+
+
+
 
 ## 6. Auth Functionality - Appwrite
 ## 7. Storage & Database Design
