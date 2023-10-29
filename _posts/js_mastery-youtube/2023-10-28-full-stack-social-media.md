@@ -61,9 +61,94 @@ D. Modify the `tailwind.config` file by adding the info in the [Github repo](htt
 ```bash
 npm i react-router-dom
 ```
-### Modify the files
+### A. Edit the `main.tsx` file:
 
+```tsx
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+```
+
+### B. Edit the `App.tsx` file:
+
+```tsx
+import { Routes, Route } from "react-router-dom";
+
+import "./globals.css";
+import SigninForm from "./_auth/forms/SigninForm";
+import SignupnForm from "./_auth/forms/SignupnForm";
+import { Home } from "./_root/Pages";
+import AuthLayout from "./_auth/AuthLayout";
+import RootLayout from "./_root/RootLayout";
+
+const App = () => {
+  return (
+    <main className="flex h-screen">
+      <Routes>
+        {/* Public Routes */}
+          <Route path="/sign-in" element={<SigninForm />} />
+          <Route path="/sign-up" element={<SignupnForm />} />
+        {/* Private Routes */}
+          <Route index element={<Home />} />
+      </Routes>
+    </main>
+  );
+};
+
+export default App;
+```
 ## 4. File & Folder Structure
+
+### Create & edit the files:
+
+<ol type="a">
+  <li>Create two folders: <b>"src/_auth"</b> for the Public content: sign-in & register pages. <b>"src/_root"</b> for the Private content once the user sign in</li>
+  <li>Create a <b>SinginForm.tsx</b> file in the path: <i>"src/_auth/forms/SinginForm.tsx"</i>. Edit the file using the <b>rafce</b> (reactArrowFunction). And Ensure to delete the <i>import React from 'react';</i></li>
+  <li>Create a <b>SingupForm.tsx</b> file in the path: <i>"src/_auth/forms/SingupForm.tsx"</i>. Edit the file using the <b>rafce</b> (reactArrowFunction). And Ensure to delete the <i>import React from 'react';</i></li>
+  <li>Create a <b>AuthLayout.tsx</b> file in the path: <i>"src/_auth/AuthLayout.tsx"</i>. Edit the file using the <b>rafce</b> (reactArrowFunction). And Ensure to delete the <i>import React from 'react';</i></li>
+  <li>Create a <b>Home.tsx</b> file in the path: <i>"src/_root/pages/Home.tsx"</i>. Edit the file using the <b>rafce</b> (reactArrowFunction). And Ensure to delete the <i>import React from 'react';</i></li>
+  <li>Create a <b>index.tsx</b> file in the path: <i>"src/_root/pages/index.tsx"</i>. Edit the file with the code: <code>export { default as Home } from "./Home";</code></li>
+  <li>Create a <b>RootLayout.tsx</b> file in the path: <i>"src/_root/RootLayout.tsx"</i>. Edit the file using the <b>rafce</b> (reactArrowFunction). And Ensure to delete the <i>import React from 'react';</i></li>
+</ol>
+
+### B. Edit the `App.tsx` file:
+
+```tsx
+import { Routes, Route } from "react-router-dom";
+
+import "./globals.css";
+import SigninForm from "./_auth/forms/SigninForm";
+import SignupnForm from "./_auth/forms/SignupnForm";
+import { Home } from "./_root/Pages";
+import AuthLayout from "./_auth/AuthLayout";
+import RootLayout from "./_root/RootLayout";
+
+const App = () => {
+  return (
+    <main className="flex h-screen">
+      <Routes>
+        {/* Public Routes */}
+        <Route element={<AuthLayout />}>
+          <Route path="/sign-in" element={<SigninForm />} />
+          <Route path="/sign-up" element={<SignupnForm />} />
+        </Route>
+        {/* Private Routes */}
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </main>
+  );
+};
+
+export default App;
+```
 
 ## 5. Auth Pages
 ## 6. Auth Functionality - Appwrite
