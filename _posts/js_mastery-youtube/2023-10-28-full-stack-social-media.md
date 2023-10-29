@@ -151,6 +151,101 @@ export default App;
 ```
 
 ## 5. Auth Pages
+
+### A. Install [Shadcn UI](https://ui.shadcn.com/docs/installation/vite) for Vite. 
+
+[Shadcn UI](https://ui.shadcn.com/). is a library with multiple designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source. it will be use to style the page.
+- Edit `tsconfig.json` file by adding the following code to the paths section:
+```bash
+
+
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+> The `tsconfig.json` file should look like:
+   ```bash
+   {
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Shadcn UI */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+```
+
+### B. Install Node.
+```bash
+# (so you can import "path" without error)
+npm i -D @types/node
+``` 
+### C. Overwrite the `vite.config.ts` file:
+```bash
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+### D. Run the shadcn-ui init command to setup your project:
+
+```bash
+npx shadcn-ui@latest init
+```
+### E. Configure components.json
+You will be asked a few questions to configure components.json:
+```bash
+Would you like to use TypeScript (recommended)? no / `yes`
+Which style would you like to use? › `Default`
+Which color would you like to use as base color? › `Slate`
+Where is your global CSS file? › › `src/index.css`
+Do you want to use CSS variables for colors? › no / `yes`
+Where is your tailwind.config.js located? › `tailwind.config.js`
+Configure the import alias for components: › `@/components`
+Configure the import alias for utils: › `@/lib/utils`
+Are you using React Server Components? › no / `yes` (no)
+```
+
 ## 6. Auth Functionality - Appwrite
 ## 7. Storage & Database Design
 ## 8. TanStack Query
