@@ -32,7 +32,7 @@ npm run dev
 
 - [Getting Started with Vite](https://vitejs.dev/guide/)
 
-## 2. Customize the Project 
+## 2. Customize the Project (SetUp)
 
 A. Starting Point Of The Project: `Delete` the `src` folder and create a new one with the files `App.tsx`, `main.tsx` and edit the files [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/a537dd5495959114c2afa51767249d972c657b88)
 
@@ -54,23 +54,29 @@ D. Modify the `tailwind.config` file by adding the info in the [Github repo](htt
   ```
   > Make sure to install the plugin and modify [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/755a5aa625577a880d3b7b55ffac063e220236a2)
 
-E. Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom) [(repo details)](https://github.com/JuanPabloDiaz/socialMedia/commit/1a1e9f1263e4723f20a76587f319b1ae9cf54668)
+## 3. Routing
+
+### Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom) [(repo details)](https://github.com/JuanPabloDiaz/socialMedia/commit/1a1e9f1263e4723f20a76587f319b1ae9cf54668)
 
 ```bash
 npm i react-router-dom
 ```
-## Auth Pages
-## Auth Functionality - Appwrite
-## Storage & Database Design
-## TanStack Query
-## HomePage
-## Create Post
-## Post Card
-## Post CRUD
-## Post Details
-## Explore Page
-## Search Results
-## Active Lesson
+### Modify the files
+
+## 4. File & Folder Structure
+
+## 5. Auth Pages
+## 6. Auth Functionality - Appwrite
+## 7. Storage & Database Design
+## 8. TanStack Query
+## 9. HomePage
+## 10. Create Post
+## 11. Post Card
+## 12. Post CRUD
+## 13. Post Details
+## 14. Explore Page
+## 15. Search Results
+## 16. Active Lesson
 
 
 
