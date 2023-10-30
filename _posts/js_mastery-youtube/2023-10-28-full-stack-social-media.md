@@ -596,6 +596,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
 
   ```tsx
   import { zodResolver } from "@hookform/resolvers/zod";
+  import { Link } from "react-router-dom";
 
   import {
     Form,
@@ -712,6 +713,15 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
                 "Sign up"
               )}
             </Button>
+            <p className="text-small-regular text-light-2 text-center mt-2">
+              Already have an account?
+              <Link
+                to="/sign-in"
+                className="text-primary-500 text-small-semibold ml-1"
+              >
+                Log in
+              </Link>
+            </p>
           </form>
         </div>
       </Form>
