@@ -172,11 +172,9 @@ export default App;
   }
 }
 ```
+> The <b>tsconfig.json</b> file should look like:
+> <img src="tsconfig-json.png" alt="tsconfig image">
 
-<details open>
-<summary>The <b>tsconfig.json</b> file should look like:</summary>
-<img src="tsconfig-json.png" alt="tsconfig image">
-</details>
 
 #### b. Install Node.
 ```bash
