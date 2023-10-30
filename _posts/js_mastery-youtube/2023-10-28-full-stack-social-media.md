@@ -481,6 +481,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
     export default SignupForm;
     ```
      3. Modify the `SignupForm.tsx` file to display the form section on the sign up page
+    
     ```jsx
     import { zodResolver } from "@hookform/resolvers/zod";
 
