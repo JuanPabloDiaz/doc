@@ -730,9 +730,37 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
 
   export default SignupForm;
   ```
+## 6. Auth Functionality - [Appwrite](https://cloud.appwrite.io/)
+
+### I Go to [Appwrite](https://cloud.appwrite.io/) and create a project.
+copy the id.
+
+Create the `config.ts` file located in the path `src/lib/appwrite/config.ts` and add the code below:
+
+```ts
+code
+```
+
+install appwrite dependency
+  ```bash
+  npm install appwrite
+  ```
 
 
-## 6. Auth Functionality - Appwrite
+
+
+### II 
+
+### III 
+
+### IV 
+
+
+
+
+
+
+
 ## 7. Storage & Database Design
 ## 8. TanStack Query
 ## 9. HomePage
