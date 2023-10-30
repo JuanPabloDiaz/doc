@@ -172,40 +172,11 @@ export default App;
   }
 }
 ```
-> The `tsconfig.json` file should look like:
-   ```bash
-   {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    /* Shadcn UI */
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
-  }
-  ```
+<details open>
+<summary>The <b>tsconfig.json</b> file should look like:</summary>
+<img src="./tsconfig-json.png">
+</details>
 
 #### b. Install Node.
 ```bash
