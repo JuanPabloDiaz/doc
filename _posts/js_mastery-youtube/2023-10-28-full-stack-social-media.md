@@ -204,8 +204,8 @@ export default App;
 
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
-}
-```
+  }
+  ```
 
 #### b. Install Node.
 ```bash
