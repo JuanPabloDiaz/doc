@@ -175,7 +175,7 @@ export default App;
 
 <details open>
 <summary>The <b>tsconfig.json</b> file should look like:</summary>
-<img src="./tsconfig-json.png">
+<img src="tsconfig-json.png" alt="tsconfig image">
 </details>
 
 #### b. Install Node.
