@@ -303,10 +303,309 @@ export default AuthLayout;
 
   export default SignupForm;
   ```
-  confirm it works
+  confirm it works.
 
+### III. Create the Form for the project (which has Form, input and label components)
 
+#### a. Go to [Shadcn-ui Components forms](https://ui.shadcn.com/docs/components/form).
+Follow the steps on the Shadcn-UI site and check the documentation for more details.
 
+- Install form component
+  ```bash
+  npx shadcn-ui@latest add form
+  ```
+- Install input component
+  ```bash
+  npx shadcn-ui@latest add input
+  ```
+- Modify the `SignupForm.tsx` file
+
+  ```jsx
+  import * as z from "zod";
+  import { zodResolver } from "@hookform/resolvers/zod";
+
+  import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "@/components/ui/form";
+  import { Input } from "@/components/ui/input";
+
+  import { Button } from "@/components/ui/button";
+  import { useForm } from "react-hook-form";
+
+  const formSchema = z.object({
+    username: z.string().min(2).max(50),
+  });
+
+  const SignupForm = () => {
+    // 1. Define your form.
+    const form = useForm<z.infer<typeof formSchema>>({
+      resolver: zodResolver(formSchema),
+      defaultValues: {
+        username: "",
+      },
+    });
+
+    // 2. Define a submit handler.
+    function onSubmit(values: z.infer<typeof formSchema>) {
+      // Do something with the form values.
+      // ✅ This will be type-safe and validated.
+      console.log(values);
+    }
+
+    return (
+      <div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input placeholder="shadcn" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is your public display name.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Submit</Button>
+          </form>
+        </Form>
+      </div>
+    );
+  };
+
+  export default SignupForm;
+  ```
+- Create Reusable Components by extracting the `formSchema`
+
+    1. Create an `index.ts` file in `src/lib/validation/index.ts`
+    ```jsx
+    import * as z from "zod";
+
+    export const SignupValidation = z.object({
+      name: z
+        .string()
+        .min(2, { message: "Name is too short" })
+        .max(50, { message: "Name is too long" }),
+      username: z
+        .string()
+        .min(2, { message: "Username is too short" })
+        .max(50, { message: "Username is too short" }),
+      email: z.string().email({ message: "Please enter a valid email" }).e,
+      password: z
+        .string()
+        .min(8, { message: "Password must be at least 8 characters" })
+        .max(60, { message: "Password is too long" }),
+    });
+    ```
+     2. Modify the `SignupForm.tsx` file to reuse the validation section
+     
+     This will modify the functionality of form but not the apperience. 
+    ```jsx
+    import { zodResolver } from "@hookform/resolvers/zod";
+
+    import {
+      Form,
+      FormControl,
+      FormDescription,
+      FormField,
+      FormItem,
+      FormLabel,
+      FormMessage,
+    } from "@/components/ui/form";
+    import { Input } from "@/components/ui/input";
+
+    import { Button } from "@/components/ui/button";
+    import { useForm } from "react-hook-form";
+    import { SignupValidation } from "@/lib/validation";
+    import { z } from "zod";
+
+    const SignupForm = () => {
+      // 1. Define your form.
+      const form = useForm<z.infer<typeof SignupValidation>>({
+        resolver: zodResolver(SignupValidation),
+        defaultValues: {
+          name: "",
+          username: "",
+          email: "",
+          password: "",
+        },
+      });
+
+      // 2. Define a submit handler.
+      function onSubmit(values: z.infer<typeof SignupValidation>) {
+        // Do something with the form values.
+        // ✅ This will be type-safe and validated.
+        console.log(values);
+      }
+
+      return (
+        <div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Username</FormLabel>
+                    <FormControl>
+                      <Input placeholder="shadcn" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      This is your public display name.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit">Submit</Button>
+            </form>
+          </Form>
+        </div>
+      );
+    };
+
+    export default SignupForm;
+    ```
+     3. Modify the `SignupForm.tsx` file to display the form section on the sign up page
+    ```jsx
+    import { zodResolver } from "@hookform/resolvers/zod";
+
+    import {
+      Form,
+      FormControl,
+      FormField,
+      FormItem,
+      FormLabel,
+      FormMessage,
+    } from "@/components/ui/form";
+    import { Input } from "@/components/ui/input";
+
+    import { Button } from "@/components/ui/button";
+    import { useForm } from "react-hook-form";
+    import { SignupValidation } from "@/lib/validation";
+    import { z } from "zod";
+
+    const SignupForm = () => {
+      const isLoading = true;
+
+      // 1. Define your form.
+      const form = useForm<z.infer<typeof SignupValidation>>({
+        resolver: zodResolver(SignupValidation),
+        defaultValues: {
+          name: "",
+          username: "",
+          email: "",
+          password: "",
+        },
+      });
+
+      // 2. Define a submit handler.
+      function onSubmit(values: z.infer<typeof SignupValidation>) {
+        // Do something with the form values.
+        // ✅ This will be type-safe and validated.
+        console.log(values);
+      }
+
+      return (
+        <Form {...form}>
+          <div className="sm:w-420 flex-center flex-col">
+            <img src="/assets/images/logo.svg" alt="logo" />
+
+            <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+              Create a new account
+            </h2>
+            <p className="text-light-3 small-medium md:base-regular mt-2">
+              To use Snapgram enter your details
+            </p>
+
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col gap-5 w-full mt-4"
+            >
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input type="text" className="shad-input" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />{" "}
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Username</FormLabel>
+                    <FormControl>
+                      <Input type="text" className="shad-input" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input type="email" className="shad-input" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input type="password" className="shad-input" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="shad-button_primary">
+                {isLoading ? (
+                  <div className="flex-center gap-2">Loading...</div>
+                ) : (
+                  "Sign up"
+                )}
+              </Button>
+            </form>
+          </div>
+        </Form>
+      );
+    };
+
+    export default SignupForm;
+    ```
+
+    The styles in the project were unintentionaly modify with the intalation of shadcn, go to the `global.css` file and overwrite it using the [previous global.css](https://github.com/JuanPabloDiaz/socialMedia/commit/63c49b3a8043f76157c9e84d7f3c3702e8f79fed) file.
+
+    The `tailwind.config` file got modify too. Overwrite it using the [previous tailwind.config](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac) file.
 
 
 ## 6. Auth Functionality - Appwrite
