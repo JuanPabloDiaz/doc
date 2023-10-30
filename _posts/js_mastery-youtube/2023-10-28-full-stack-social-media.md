@@ -356,8 +356,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
   ```
 - Create Reusable Components by extracting the `formSchema`
 
-    1. Create an `index.ts` file in `src/lib/validation/index.ts`
-    
+    a. Create an `index.ts` file in `src/lib/validation/index.ts`
     ```jsx
     import * as z from "zod";
 
@@ -377,7 +376,8 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
         .max(60, { message: "Password is too long" }),
     });
     ```
-     2. Modify the `SignupForm.tsx` file to reuse the validation section
+
+     b. Modify the `SignupForm.tsx` file to reuse the validation section
      
      This will modify the functionality of form but not the apperience. 
     ```jsx
@@ -447,7 +447,8 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
 
     export default SignupForm;
     ```
-     3. Modify the `SignupForm.tsx` file to display the form section on the sign up page
+
+     c. Modify the `SignupForm.tsx` file to display the form section on the sign up page
     
     ```jsx
     import { zodResolver } from "@hookform/resolvers/zod";
@@ -571,10 +572,154 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
 
     export default SignupForm;
     ```
+    
+    d. The styles in the project were unintentionaly modify with the intalation of shadcn, go to the `global.css` file and overwrite it using the [previous global.css](https://github.com/JuanPabloDiaz/socialMedia/commit/63c49b3a8043f76157c9e84d7f3c3702e8f79fed) file.
+    
+    e. The `tailwind.config` file got modify too. Overwrite it using the [previous tailwind.config](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac) file.
 
-    The styles in the project were unintentionaly modify with the intalation of shadcn, go to the `global.css` file and overwrite it using the [previous global.css](https://github.com/JuanPabloDiaz/socialMedia/commit/63c49b3a8043f76157c9e84d7f3c3702e8f79fed) file.
 
-    The `tailwind.config` file got modify too. Overwrite it using the [previous tailwind.config](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac) file.
+### IV. Add a the Loader Component
+
+#### a. Create the `Loader.tsx` file in the path: `src/components/shared/Loader.tsx` and copy the code:
+
+  ```tsx
+  const Loader = () => {
+    return (
+      <div className="flex-center w-full">
+        <img src="/assets/icons/loader.svg" alt="loader" width={24} height={24} />
+      </div>
+    );
+  };
+  export default Loader;
+  ```
+  Include the Loader component to the `SignupForm.tsx` file:
+
+  ```tsx
+  import { zodResolver } from "@hookform/resolvers/zod";
+
+  import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "@/components/ui/form";
+  import { Input } from "@/components/ui/input";
+
+  import { Button } from "@/components/ui/button";
+  import { useForm } from "react-hook-form";
+  import { SignupValidation } from "@/lib/validation";
+  import { z } from "zod";
+  import Loader from "@/components/shared/Loader";
+
+  const SignupForm = () => {
+    const isLoading = false;
+
+    // 1. Define your form.
+    const form = useForm<z.infer<typeof SignupValidation>>({
+      resolver: zodResolver(SignupValidation),
+      defaultValues: {
+        name: "",
+        username: "",
+        email: "",
+        password: "",
+      },
+    });
+
+    // 2. Define a submit handler.
+    function onSubmit(values: z.infer<typeof SignupValidation>) {
+      // Do something with the form values.
+      // ✅ This will be type-safe and validated.
+      console.log(values);
+    }
+
+    return (
+      <Form {...form}>
+        <div className="sm:w-420 flex-center flex-col">
+          <img src="/assets/images/logo.svg" alt="logo" />
+
+          <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+            Create a new account
+          </h2>
+          <p className="text-light-3 small-medium md:base-regular mt-2">
+            To use Snapgram, Please enter your details
+          </p>
+
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-5 w-full mt-4"
+          >
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input type="text" className="shad-input" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />{" "}
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input type="text" className="shad-input" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input type="email" className="shad-input" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" className="shad-input" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" className="shad-button_primary">
+              {isLoading ? (
+                <div className="flex-center gap-2">
+                  <Loader />
+                  Loading...
+                </div>
+              ) : (
+                "Sign up"
+              )}
+            </Button>
+          </form>
+        </div>
+      </Form>
+    );
+  };
+
+  export default SignupForm;
+  ```
 
 
 ## 6. Auth Functionality - Appwrite
