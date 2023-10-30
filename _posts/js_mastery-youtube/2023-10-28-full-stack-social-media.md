@@ -172,10 +172,7 @@ export default App;
   }
 }
 ```
-> The <b>tsconfig.json</b> file should look like:
-> ![](tsconfig-json.png)
-> Putas!
-
+> The [tsconfig.json](https://github.com/JuanPabloDiaz/socialMedia/blob/main/tsconfig.json) file should look like the one in the link.
 
 #### b. Install Node.
 ```bash
