@@ -174,7 +174,7 @@ export default App;
 ```
 > The <b>tsconfig.json</b> file should look like:
 > ![](tsconfig-json.png)
-
+> Putas!
 
 
 #### b. Install Node.
