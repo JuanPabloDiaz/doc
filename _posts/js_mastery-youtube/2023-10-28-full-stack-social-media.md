@@ -390,6 +390,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
 - Create Reusable Components by extracting the `formSchema`
 
     1. Create an `index.ts` file in `src/lib/validation/index.ts`
+    
     ```jsx
     import * as z from "zod";
 
