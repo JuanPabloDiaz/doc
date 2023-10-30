@@ -152,7 +152,9 @@ export default App;
 
 ## 5. Auth Pages
 
-### A. Install [Shadcn UI](https://ui.shadcn.com/docs/installation/vite) for Vite. 
+### I. SetUp [Shadcn UI](https://ui.shadcn.com/) in the Project
+
+#### a. Install [Shadcn UI](https://ui.shadcn.com/docs/installation/vite) for Vite. 
 
 [Shadcn UI](https://ui.shadcn.com/). is a library with multiple designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source. it will be use to style the page.
 - Edit `tsconfig.json` file by adding the following code to the paths section:
@@ -205,12 +207,12 @@ export default App;
 }
 ```
 
-### B. Install Node.
+#### b. Install Node.
 ```bash
 # (so you can import "path" without error)
 npm i -D @types/node
 ``` 
-### C. Overwrite the `vite.config.ts` file:
+#### c. Overwrite the `vite.config.ts` file:
 ```bash
 import path from "path"
 import react from "@vitejs/plugin-react"
@@ -225,12 +227,12 @@ export default defineConfig({
   },
 })
 ```
-### D. Run the shadcn-ui init command to setup your project:
+#### d. Run the shadcn-ui init command to setup your project:
 
 ```bash
 npx shadcn-ui@latest init
 ```
-### E. Configure components.json
+#### e. Configure components.json
 You will be asked a few questions to configure components.json:
 ```bash
 Would you like to use TypeScript (recommended)? no / `yes`
@@ -245,7 +247,11 @@ Are you using React Server Components? › no / `yes` (no)
 ```
 This will install all the necesary components
 
-### F. Modify the `AuthLayout.tsx` file
+### II. Implement the AuthLayout Page
+
+#### a. Delete the `public` folder and replace it with the info from [this new public](https://drive.google.com/file/d/13_7FofRAC3wARqPtAVPi53QNJJRd5RH_/view?usp=sharing) folder.
+
+#### b. Modify the `AuthLayout.tsx` file
 
 ```tsx
 import { Outlet, Navigate } from "react-router-dom";
@@ -259,9 +265,14 @@ const AuthLayout = () => {
         <Navigate to="/" />
       ) : (
         <>
-          <section>
+          <section className="flex flex-1 justify-center items-center flex-col py-10">
             <Outlet />
           </section>
+          <img
+            src="/assets/images/side-img.svg"
+            alt="side image"
+            className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat"
+          />
         </>
       )}
     </>
@@ -269,7 +280,31 @@ const AuthLayout = () => {
 };
 
 export default AuthLayout;
+
 ```
+
+#### c. Modify the `SignupForm.tsx` file
+
+- Install the button component from shadcn:
+  ```bash
+  npx shadcn-ui@latest add button
+  ```
+- Copy and past to `SignupForm.tsx` file
+  ```tsx
+  import { Button } from "@/components/ui/button";
+
+  const SignupForm = () => {
+    return (
+      <div>
+        <Button>click me</Button>
+      </div>
+    );
+  };
+
+  export default SignupForm;
+  ```
+  confirm it works
+
 
 
 
@@ -286,6 +321,21 @@ export default AuthLayout;
 ## 15. Search Results
 ## 16. Active Lesson
 
+1: I
+2: II
+3: III
+4: IV
+5: V
+6: VI
+7: VII
+8: VIII
+9: IX
+10: X
+11: XI
+12: XII
+13: XIII
+14: XIV
+15: XV
 
 
 
