@@ -36,7 +36,7 @@ npm run dev
 
 A. Starting Point Of The Project: `Delete` the `src` folder and create a new one with the files `App.tsx`, `main.tsx` and edit the files [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/a537dd5495959114c2afa51767249d972c657b88)
 
-B. Create a `global.css` file and add the tailwind classes that we will use in the project. [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/63c49b3a8043f76157c9e84d7f3c3702e8f79fed)
+B. Create a `global.css` file and add the tailwind classes that we will use in the project. [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/63c49b3a8043f76157c9e84d7f3c3702e8f79fed) [(Github gist)](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
 
 C. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
 
@@ -46,7 +46,7 @@ npx tailwindcss init -p
 ```
 > Note: it will show an error if I run the project at this point. the `bg-dark-1` and `font-Inter` needs to be install (step D) 
 
-D. Modify the `tailwind.config` file by adding the info in the [Github repo](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+D. Modify the `tailwind.config` file by adding the info in the [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
 
   - Install the necesary plugins: 
   ```
@@ -369,7 +369,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
         .string()
         .min(2, { message: "Username is too short" })
         .max(50, { message: "Username is too short" }),
-      email: z.string().email({ message: "Please enter a valid email" }).e,
+      email: z.string().email(),
       password: z
         .string()
         .min(8, { message: "Password must be at least 8 characters" })
@@ -732,22 +732,140 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
   ```
 ## 6. Auth Functionality - [Appwrite](https://cloud.appwrite.io/)
 
-### I Go to [Appwrite](https://cloud.appwrite.io/) and create a project.
-copy the id.
+### I. Appwrite
 
-Create the `config.ts` file located in the path `src/lib/appwrite/config.ts` and add the code below:
-
-```ts
-code
-```
-
-install appwrite dependency
+A. Install appwrite dependency
   ```bash
   npm install appwrite
   ```
 
+B. Go to [Appwrite](https://cloud.appwrite.io/), login with Github and create a new project.
 
+C. In Appwrite, Copy the `Project ID` provided.
 
+D. Create a `config.ts` file located in the path `src/lib/appwrite/config.ts` and add the code below:
+
+```ts
+import { Client, Account, Databases, Storage, Avatars } from "appwrite";
+
+export const appwriteConfig = {
+  projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
+};
+```
+
+E. Create a `.env.local` file located in the path `src/.env.local` and add the code below:
+
+```js
+VITE_APPWRITE_PROJECT_ID='Paste_the_Project_ID_here'
+```
+
+F. Create a `vite-env.d.ts` file located in the path `src/vite-env.d.ts` and add the code below:
+
+```ts
+/// <reference types="vite/client" />
+```
+
+G. Modify the `config.ts` file
+
+```ts
+import { Client, Account, Databases, Storage, Avatars } from "appwrite";
+
+export const appwriteConfig = {
+  projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
+  url: import.meta.env.VITE_APPWRITE_URL,
+};
+
+export const client = new Client();
+
+client.setProject(appwriteConfig.projectId);
+client.setEndpoint(appwriteConfig.url);
+export const account = new Account(client);
+export const database = new Databases(client);
+export const storage = new Storage(client);
+export const avatars = new Avatars(client);
+```
+
+H. Modify the `.env.local` file
+```js
+VITE_APPWRITE_PROJECT_ID='65400de75a08e8215625'
+VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
+```
+
+I. Create a `api.ts` file in the path `src/lib/appwrite/api.ts`
+
+```ts
+import { ID } from "appwrite";
+import { INewUser } from "@/types";
+import { account } from "./config";
+
+export async function createUserAccount(user: INewUser) {
+  try {
+    const newAccount = await account.create(
+      ID.unique(),
+      user.email,
+      user.password,
+      user.name
+    );
+    return newAccount;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+```
+
+J. Create a `index.ts` file in the path `src/types/index.ts` and add the code from [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+
+```ts
+export type INavLink = {
+  imgURL: string;
+  route: string;
+  label: string;
+};
+
+export type IUpdateUser = {
+  userId: string;
+  name: string;
+  bio: string;
+  imageId: string;
+  imageUrl: URL | string;
+  file: File[];
+};
+
+export type INewPost = {
+  userId: string;
+  caption: string;
+  file: File[];
+  location?: string;
+  tags?: string;
+};
+
+export type IUpdatePost = {
+  postId: string;
+  caption: string;
+  imageId: string;
+  imageUrl: URL;
+  file: File[];
+  location?: string;
+  tags?: string;
+};
+
+export type IUser = {
+  id: string;
+  name: string;
+  username: string;
+  email: string;
+  imageUrl: string;
+  bio: string;
+};
+
+export type INewUser = {
+  name: string;
+  email: string;
+  username: string;
+  password: string;
+};
+```
 
 ### II 
 
