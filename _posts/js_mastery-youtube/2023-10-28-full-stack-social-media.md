@@ -82,7 +82,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./globals.css";
 import SigninForm from "./_auth/forms/SigninForm";
-import SignupnForm from "./_auth/forms/SignupnForm";
+import SignupForm from "./_auth/forms/SignupForm";
 import { Home } from "./_root/Pages";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
@@ -93,7 +93,7 @@ const App = () => {
       <Routes>
         {/* Public Routes */}
           <Route path="/sign-in" element={<SigninForm />} />
-          <Route path="/sign-up" element={<SignupnForm />} />
+          <Route path="/sign-up" element={<SignupForm />} />
         {/* Private Routes */}
           <Route index element={<Home />} />
       </Routes>
@@ -124,7 +124,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./globals.css";
 import SigninForm from "./_auth/forms/SigninForm";
-import SignupnForm from "./_auth/forms/SignupnForm";
+import SignupForm from "./_auth/forms/SignupForm";
 import { Home } from "./_root/Pages";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
@@ -136,7 +136,7 @@ const App = () => {
         {/* Public Routes */}
         <Route element={<AuthLayout />}>
           <Route path="/sign-in" element={<SigninForm />} />
-          <Route path="/sign-up" element={<SignupnForm />} />
+          <Route path="/sign-up" element={<SignupForm />} />
         </Route>
         {/* Private Routes */}
         <Route element={<RootLayout />}>
@@ -176,7 +176,6 @@ export default App;
 
 #### b. Install Node.
 ```bash
-# (so you can import "path" without error)
 npm i -D @types/node
 ``` 
 #### c. Overwrite the `vite.config.ts` file:
@@ -517,7 +516,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
                     <FormMessage />
                   </FormItem>
                 )}
-              />{" "}
+              />
               <FormField
                 control={form.control}
                 name="username"
@@ -663,7 +662,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
                   <FormMessage />
                 </FormItem>
               )}
-            />{" "}
+            />
             <FormField
               control={form.control}
               name="username"
@@ -739,7 +738,7 @@ A. Install appwrite dependency
   npm install appwrite
   ```
 
-B. Go to [Appwrite](https://cloud.appwrite.io/), login with Github and create a new project.
+B. Go to [cloud.appwrite.io](https://cloud.appwrite.io/), login with Github and create a new project.
 
 C. In Appwrite, Copy the `Project ID` provided.
 
@@ -754,11 +753,12 @@ export const appwriteConfig = {
 ```
 
 E. Create a `.env.local` file **`OUTSIDE`** of the `src`. In the path `./.env.local` and add the code below:
+> Warning: Make sure it's save at the `root` of the project and not in the `src` folder (I had issues bc I save it in the wrong place.)
 
 ```js
-VITE_APPWRITE_PROJECT_ID='Paste_the_Project_ID_here'
+VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
 ```
-> Warning: Make sure it's save at the `root` of the project and not in the `src` folder (I had issues bc I save it in the wrong place.)
+> Replace the *'YOUR_APPWRITE_PROJECT_ID'* with your actual ID number.
 
 F. Create a `vite-env.d.ts` file located in the path `src/vite-env.d.ts` and add the code below:
 
@@ -793,6 +793,9 @@ VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
 ```
 > Replace the *'YOUR_APPWRITE_PROJECT_ID'* with your actual ID number.
 
+> Learn More: [Appwrite user](https://appwrite.io/docs/references/cloud/server-nodejs/users) | 
+[Appwrite React](https://appwrite.io/docs/quick-starts/react#step-4) | [.Env Variables](https://vitejs.dev/guide/env-and-mode.html)
+
 I. Create a `api.ts` file in the path `src/lib/appwrite/api.ts`
 
 ```ts
@@ -824,7 +827,6 @@ export type INavLink = {
   route: string;
   label: string;
 };
-
 export type IUpdateUser = {
   userId: string;
   name: string;
@@ -833,7 +835,6 @@ export type IUpdateUser = {
   imageUrl: URL | string;
   file: File[];
 };
-
 export type INewPost = {
   userId: string;
   caption: string;
@@ -841,7 +842,6 @@ export type INewPost = {
   location?: string;
   tags?: string;
 };
-
 export type IUpdatePost = {
   postId: string;
   caption: string;
@@ -851,7 +851,6 @@ export type IUpdatePost = {
   location?: string;
   tags?: string;
 };
-
 export type IUser = {
   id: string;
   name: string;
@@ -860,7 +859,6 @@ export type IUser = {
   imageUrl: string;
   bio: string;
 };
-
 export type INewUser = {
   name: string;
   email: string;
@@ -868,6 +866,150 @@ export type INewUser = {
   password: string;
 };
 ```
+
+K. Modify the `SignupForm.tsx` file
+
+```jsx
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+import { Input } from "@/components/ui/input";
+
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import Loader from "@/components/shared/Loader";
+import { SignupValidation } from "@/lib/validation";
+import { z } from "zod";
+import { createUserAccount } from "@/lib/appwrite/api";
+
+const SignupForm = () => {
+  const isLoading = false;
+
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof SignupValidation>>({
+    resolver: zodResolver(SignupValidation),
+    defaultValues: {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
+    const newUser = await createUserAccount(values);
+    console.log(newUser);
+  }
+
+  return (
+    <Form {...form}>
+      <div className="sm:w-420 flex-center flex-col">
+        <img src="/assets/images/logo.svg" alt="logo" />
+
+        <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+          Create a new account
+        </h2>
+        <p className="text-light-3 small-medium md:base-regular mt-2">
+          To use Snapgram, Please enter your details
+        </p>
+
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 w-full mt-4"
+        >
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input type="text" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input type="text" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input type="password" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className="shad-button_primary">
+            {isLoading ? (
+              <div className="flex-center gap-2">
+                <Loader />
+                Loading...
+              </div>
+            ) : (
+              "Sign up"
+            )}
+          </Button>
+          <p className="text-small-regular text-light-2 text-center mt-2">
+            Already have an account?
+            <Link
+              to="/sign-in"
+              className="text-primary-500 text-small-semibold ml-1"
+            >
+              Log in
+            </Link>
+          </p>
+        </form>
+      </div>
+    </Form>
+  );
+};
+
+export default SignupForm;
+```
+
+L. Go to the Sign up page (`http://localhost:5173/Sign-up`) and fill out the form.
+
+M. Go to the Auth tab in the Appwrite page to check that the new user has been created. (reload page if needed)
 
 ### II 
 
