@@ -753,13 +753,12 @@ export const appwriteConfig = {
 };
 ```
 
-E. Create a `.env.local` file located in the path `./.env.local` and add the code below:
-
-> Warning: Make sure it's save at the `root` of the project and not in the `src` folder (had issues before saving it in the wrong place.)
+E. Create a `.env.local` file **`OUTSIDE`** of the `src`. In the path `./.env.local` and add the code below:
 
 ```js
 VITE_APPWRITE_PROJECT_ID='Paste_the_Project_ID_here'
 ```
+> Warning: Make sure it's save at the `root` of the project and not in the `src` folder (I had issues bc I save it in the wrong place.)
 
 F. Create a `vite-env.d.ts` file located in the path `src/vite-env.d.ts` and add the code below:
 
