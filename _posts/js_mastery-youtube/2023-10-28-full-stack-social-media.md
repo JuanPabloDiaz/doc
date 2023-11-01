@@ -753,7 +753,9 @@ export const appwriteConfig = {
 };
 ```
 
-E. Create a `.env.local` file located in the path `src/.env.local` and add the code below:
+E. Create a `.env.local` file located in the path `./.env.local` and add the code below:
+
+> Warning: Make sure it's save at the `root` of the project and not in the `src` folder (had issues before saving it in the wrong place.)
 
 ```js
 VITE_APPWRITE_PROJECT_ID='Paste_the_Project_ID_here'
@@ -785,11 +787,12 @@ export const storage = new Storage(client);
 export const avatars = new Avatars(client);
 ```
 
-H. Modify the `.env.local` file
+H. Modify the `.env.local` file. Which should be located in the root of the project (`./.env.local`)
 ```js
-VITE_APPWRITE_PROJECT_ID='65400de75a08e8215625'
+VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
 VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
 ```
+> Replace the *'YOUR_APPWRITE_PROJECT_ID'* with your actual ID number.
 
 I. Create a `api.ts` file in the path `src/lib/appwrite/api.ts`
 
