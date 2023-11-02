@@ -1204,7 +1204,7 @@ P. **`Saves` Collection** > *`Relationship`*
     - On deleting a document: `Null`
     - Create
 
-### IV Integrate
+### IV. Integrate
 
 1. Go to Appwrite > Select the project > database Tab > Select the database just created (snapgram)
 
@@ -1223,7 +1223,7 @@ VITE_APPWRITE_USER_COLLECTIONS_ID='YOUR_APPWRITE_USER_COLLECTIONS_ID'
 VITE_APPWRITE_POST_COLLECTIONS_ID='YOUR_APPWRITE_POST_COLLECTIONS_ID'
 ```
 
-6. Modify the `config.ts` file
+6. Modify the `config.ts` file (`src/lib/appwrite/config.ts`)
 
 ```ts
 import { Client, Account, Databases, Storage, Avatars } from "appwrite";
@@ -1252,8 +1252,262 @@ export const databases = new Databases(client);
 export const storage = new Storage(client);
 export const avatars = new Avatars(client);
 ```
+
+
 quede en el [video 1 hora y 21 min](https://youtu.be/_W3R2VwRyF4?t=4875)
 
+### V. Complete Back-End SetUp
+
+6. Modify the `api.ts` file (`src/lib/appwrite/api.ts`)
+
+```ts
+import { ID } from "appwrite";
+
+import { INewUser } from "@/types";
+import { account, appwriteConfig, avatars, databases } from "./config";
+
+export async function createUserAccount(user: INewUser) {
+  try {
+    const newAccount = await account.create(
+      ID.unique(),
+      user.email,
+      user.password,
+      user.name
+    );
+
+    if (!newAccount) throw Error;
+
+    const avatarUrl = avatars.getInitials(user.name);
+
+    const newUser = await saveUserToDB({
+      accountId: newAccount.$id,
+      email: newAccount.email,
+      name: newAccount.name,
+      username: user.username,
+      imageUrl: avatarUrl,
+    });
+
+    return newUser;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+
+export async function saveUserToDB(user: {
+  accountId: string;
+  email: string;
+  name: string;
+  imageUrl: URL;
+  username?: string;
+}) {
+  try {
+    const newUser = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      ID.unique(),
+      user
+    );
+    return newUser;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+```
+
+### VI. Add a [Toast](https://ui.shadcn.com/docs/components/toast) from [Shadcn UI](https://ui.shadcn.com/) to the Project
+
+A. Install Toast
+```bash
+npx shadcn-ui@latest add toast
+```
+
+B. Modify the `App.tsx` 
+
+```tsx
+import { Routes, Route } from "react-router-dom";
+
+import "./globals.css";
+import SigninForm from "./_auth/forms/SigninForm";
+import SignupForm from "./_auth/forms/SignupForm";
+import { Home } from "./_root/Pages";
+import AuthLayout from "./_auth/AuthLayout";
+import RootLayout from "./_root/RootLayout";
+import { Toaster } from "@/components/ui/toaster";
+
+const App = () => {
+  return (
+    <main className="flex h-screen">
+      <Routes>
+        {/* Public Routes */}
+        <Route element={<AuthLayout />}>
+          <Route path="/sign-in" element={<SigninForm />} />
+          <Route path="/sign-up" element={<SignupForm />} />
+        </Route>
+        {/* Private Routes */}
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+
+      <Toaster />
+    </main>
+  );
+};
+
+export default App;
+```
+
+C. Modify the `SignUpForm.tsx` 
+
+```tsx
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
+
+import { useToast } from "@/components/ui/use-toast";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+import { Input } from "@/components/ui/input";
+
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import Loader from "@/components/shared/Loader";
+import { SignupValidation } from "@/lib/validation";
+import { z } from "zod";
+import { createUserAccount } from "@/lib/appwrite/api";
+
+const SignupForm = () => {
+  const { toast } = useToast();
+  const isLoading = false;
+
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof SignupValidation>>({
+    resolver: zodResolver(SignupValidation),
+    defaultValues: {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
+    const newUser = await createUserAccount(values);
+
+    if (!newUser) return;
+    console.log(newUser);
+    return toast({
+      title: "Sign up failed. Please try again later.",
+    });
+  }
+
+  // const session = await signInAccount();
+
+  return (
+    <Form {...form}>
+      <div className="sm:w-420 flex-center flex-col">
+        <img src="/assets/images/logo.svg" alt="logo" />
+
+        <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+          Create a new account
+        </h2>
+        <p className="text-light-3 small-medium md:base-regular mt-2">
+          To use Snapgram, Please enter your details
+        </p>
+
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 w-full mt-4"
+        >
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input type="text" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input type="text" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input type="password" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className="shad-button_primary">
+            {isLoading ? (
+              <div className="flex-center gap-2">
+                <Loader />
+                Loading...
+              </div>
+            ) : (
+              "Sign up"
+            )}
+          </Button>
+          <p className="text-small-regular text-light-2 text-center mt-2">
+            Already have an account?
+            <Link
+              to="/sign-in"
+              className="text-primary-500 text-small-semibold ml-1"
+            >
+              Log in
+            </Link>
+          </p>
+        </form>
+      </div>
+    </Form>
+  );
+};
+
+export default SignupForm;
+```
 
 ### II 
 
