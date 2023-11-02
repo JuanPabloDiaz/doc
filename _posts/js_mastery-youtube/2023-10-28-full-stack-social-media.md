@@ -1051,7 +1051,7 @@ D. Go to `settings` (inside Saves) > `Permissions` > `+` > `Any` > check all the
 
 ### III. Database Relations...
 
-A. **`Posts` Collection**
+A. **`Posts` Collection** > *`Relationship`*
 1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
 2. **Relationship**,
     - Select `Two-Way Relationship`
@@ -1059,10 +1059,10 @@ A. **`Posts` Collection**
     - Attribute Key: `creator` (delete `users`)
     - Attribute Key(related collection): `posts`
     - Relation: `Many-to-One`
-    - On deleting a document: `Null`.
+    - On deleting a document: `Null`
     - Create
 
-B. **`Posts` Collection**
+B. **`Posts` Collection** > *`Relationship`*
 1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
 2. **Relationship**,
     - Select `Two-Way Relationship`
@@ -1070,10 +1070,10 @@ B. **`Posts` Collection**
     - Attribute Key: `likes` (delete `users`)
     - Attribute Key(related collection): `liked`
     - Relation: `Many-to-Many`
-    - On deleting a document: `Null`.
+    - On deleting a document: `Null`
     - Create
 
-C. **`Posts` Collection**
+C. **`Posts` Collection** > *`String`*
 1. Click the `Attributes` tab > `Create Attribute` > *`String`*
 2. **String**,
     - Attribute Key: `caption`
@@ -1081,7 +1081,7 @@ C. **`Posts` Collection**
     - Default: `null`
     - Create
 
-D. **`Posts` Collection**
+D. **`Posts` Collection** > *`String`*
 1. Click the `Attributes` tab > `Create Attribute` > *`String`*
 2. **String**,
     - Attribute Key: `tags`
@@ -1090,28 +1090,169 @@ D. **`Posts` Collection**
     - `Array`
     - Create
 
-E. **`Posts` Collection**
+E. **`Posts` Collection** > *`URL`*
 1. Click the `Attributes` tab > `Create Attribute` > *`URL`*
 2. **URL**,
     - Attribute Key: `imageUrl`
     - `Required`
     - Create
 
-F. **`Posts` Collection**
+F. **`Posts` Collection** > *`String`*
 1. Click the `Attributes` tab > `Create Attribute` > *`String`*
 2. **String**,
     - Attribute Key: `imageId`
     - size: `2200`
-    - Default: `null`
     - `Required`
     - Create
 
-G. **`Posts` Collection**
+G. **`Posts` Collection** > *`String`*
 1. Click the `Attributes` tab > `Create Attribute` > *`String`*
 2. **String**,
     - Attribute Key: `location`
     - size: `2200`
     - Create
+
+----
+Indexes tab
+
+H. **`Posts` Collection** > *`String`*
+1. Click the `Indexes` tab > `Create index` > *`String`*
+2. **String**,
+    - Index Key: `caption`
+    - Index type: `FullText`
+    - Attribute: `caption`
+    - Order: `DESC`
+    - Create
+---
+
+I. **`Users` Collection** > *`String`*
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `name`
+    - size: `2200`
+    - Default: `null`
+    - Create
+
+J. **`Users` Collection** > *`String`*
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `username`
+    - size: `2200`
+    - Default: `null`
+    - Create
+
+K. **`Users` Collection** > *`String`*
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `accountId`
+    - size: `2200`
+    - Default: `null`
+    - Required
+    - Create
+
+L. **`Users` Collection** > *`Email`*
+1. Click the `Attributes` tab > `Create Attribute` > *`Email`*
+2. **Email**,
+    - Attribute Key: `email`
+    - Required
+    - Create
+
+M. **`Users` Collection** > *`String`*
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `bio`
+    - size: `2200`
+    - Default: `null`
+    - Create
+
+N. **`Users` Collection** > *`String`*
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `imageId`
+    - size: `2200`
+    - Default: `null`
+    - Create
+
+O. **`Users` Collection** > *`URL`*
+1. Click the `Attributes` tab > `Create Attribute` > *`URL`*
+2. **URL**,
+    - Attribute Key: `imageUrl`
+    - `Required`
+    - Create
+
+---
+
+P. **`Saves` Collection** > *`Relationship`*
+1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
+2. **Relationship**,
+    - Select `Two-Way Relationship`
+    - Related Collection: `Users`
+    - Attribute Key: `user`
+    - Attribute Key(related collection): `save`
+    - Relation: `Many-to-One`
+    - On deleting a document: `Null`
+    - Create
+
+P. **`Saves` Collection** > *`Relationship`*
+1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
+2. **Relationship**,
+    - Select `Two-Way Relationship`
+    - Related Collection: `Posts`
+    - Attribute Key: `post`
+    - Attribute Key(related collection): `save`
+    - Relation: `Many-to-One`
+    - On deleting a document: `Null`
+    - Create
+
+### IV Integrate
+
+1. Go to Appwrite > Select the project > database Tab > Select the database just created (snapgram)
+
+2. Copy the `collection ID` for `Saves`
+3. Copy the `collection ID` for `Users`
+4. Copy the `collection ID` for `Posts`
+5. Paste them in the `./.env.local` file:
+
+```bash
+VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
+VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
+VITE_APPWRITE_STORAGE_ID='YOUR_APPWRITE_STORAGE_ID'
+VITE_APPWRITE_DATABASE_ID='YOUR_APPWRITE_DATABASE_ID'
+VITE_APPWRITE_SAVES_COLLECTIONS_ID='YOUR_APPWRITE_SAVES_COLLECTIONS_ID'
+VITE_APPWRITE_USER_COLLECTIONS_ID='YOUR_APPWRITE_USER_COLLECTIONS_ID'
+VITE_APPWRITE_POST_COLLECTIONS_ID='YOUR_APPWRITE_POST_COLLECTIONS_ID'
+```
+
+6. Modify the `config.ts` file
+
+```ts
+import { Client, Account, Databases, Storage, Avatars } from "appwrite";
+
+export const appwriteConfig = {
+  url: import.meta.env.VITE_APPWRITE_URL,
+  projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
+  databaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID,
+  storageId: import.meta.env.VITE_APPWRITE_STORAGE_ID,
+  userCollectionId: import.meta.env.VITE_APPWRITE_USER_COLLECTION_ID,
+  postCollectionId: import.meta.env.VITE_APPWRITE_POST_COLLECTION_ID,
+  savesCollectionId: import.meta.env.VITE_APPWRITE_SAVES_COLLECTION_ID,
+};
+
+export const client = new Client();
+// console.log(import.meta.env.MODE);
+
+client.setEndpoint(appwriteConfig.url);
+client.setProject(appwriteConfig.projectId);
+
+console.log(appwriteConfig.url);
+console.log(appwriteConfig.projectId);
+
+export const account = new Account(client);
+export const databases = new Databases(client);
+export const storage = new Storage(client);
+export const avatars = new Avatars(client);
+```
+quede en el [video 1 hora y 21 min](https://youtu.be/_W3R2VwRyF4?t=4875)
 
 
 ### II 
