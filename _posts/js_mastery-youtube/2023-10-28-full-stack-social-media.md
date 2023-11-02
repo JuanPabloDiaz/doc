@@ -1316,7 +1316,7 @@ export async function saveUserToDB(user: {
 }
 ```
 
-### VI. Add a [Toast](https://ui.shadcn.com/docs/components/toast) from [Shadcn UI](https://ui.shadcn.com/) to the Project
+### VI. Add [Toast](https://ui.shadcn.com/docs/components/toast) from Shadcn UI
 
 A. Install Toast
 ```bash
@@ -1508,14 +1508,21 @@ const SignupForm = () => {
 
 export default SignupForm;
 ```
+## 8. [TanStack Query](https://tanstack.com/query/latest) (React Query)
 
-### II 
+### I. Create a `queriesAndMutations.ts` located in `src/lib/react-query/queriesAndMutations.ts`
 
-### III 
+A. Install [React Query](https://www.npmjs.com/package/@tanstack/react-query)
+```bash
+npm install @tanstrack/react-query
+```
 
-### IV 
+### II.
 
-## 8. TanStack Query
+### III. 
+
+### IV.
+
 ## 9. HomePage
 ## 10. Create Post
 ## 11. Post Card
