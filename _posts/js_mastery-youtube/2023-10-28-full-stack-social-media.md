@@ -729,9 +729,9 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
 
   export default SignupForm;
   ```
-## 6. Auth Functionality - [Appwrite](https://cloud.appwrite.io/)
+## 6. Auth Functionality
 
-### I. Appwrite
+### I. [Appwrite](https://cloud.appwrite.io/)
 
 A. Install appwrite dependency
   ```bash
@@ -755,7 +755,7 @@ export const appwriteConfig = {
 E. Create a `.env.local` file **`OUTSIDE`** of the `src`. In the path `./.env.local` and add the code below:
 > Warning: Make sure it's save at the `root` of the project and not in the `src` folder (I had issues bc I save it in the wrong place.)
 
-```js
+```bash
 VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
 ```
 > Replace the *'YOUR_APPWRITE_PROJECT_ID'* with your actual ID number.
@@ -787,14 +787,13 @@ export const avatars = new Avatars(client);
 ```
 
 H. Modify the `.env.local` file. Which should be located in the root of the project (`./.env.local`)
-```js
+```bash
 VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
 VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
 ```
 > Replace the *'YOUR_APPWRITE_PROJECT_ID'* with your actual ID number.
 
-> Learn More: [Appwrite user](https://appwrite.io/docs/references/cloud/server-nodejs/users) | 
-[Appwrite React](https://appwrite.io/docs/quick-starts/react#step-4) | [.Env Variables](https://vitejs.dev/guide/env-and-mode.html)
+- Learn More: [Appwrite user](https://appwrite.io/docs/references/cloud/server-nodejs/users) | [Appwrite React](https://appwrite.io/docs/quick-starts/react#step-4) | [.Env Variables](https://vitejs.dev/guide/env-and-mode.html)
 
 I. Create a `api.ts` file in the path `src/lib/appwrite/api.ts`
 
@@ -1009,7 +1008,48 @@ export default SignupForm;
 
 L. Go to the Sign up page (`http://localhost:5173/Sign-up`) and fill out the form.
 
-M. Go to the Auth tab in the Appwrite page to check that the new user has been created. (reload page if needed)
+M. Go to the Auth tab in the [Appwrite](https://cloud.appwrite.io/) page to check that the new user has been created. (reload page if needed)
+
+## 7. Storage & Database Design
+
+### I. [Storage](https://appwrite.io/docs/products/storage)
+
+A. Go to the Storage tab in the [Appwrite](https://cloud.appwrite.io/) page, click on `Create bucket` and type `media` under the name of the bucket.
+
+B. Copy the Storage ID (media) and paste it in the `./.env.local` file:
+
+```bash
+VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
+VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
+VITE_APPWRITE_STORAGE_ID='YOUR_APPWRITE_STORAGE_ID'
+```
+
+### II. [Database](https://appwrite.io/docs/products/databases)
+
+A. Go to the Database tab in the [Appwrite](https://cloud.appwrite.io/) page, click on `Create Database` and type `snapgram` under the name of the database. (no need to enter a database ID, it will be generated automaticaly)
+
+B. Copy the Database ID (snapgram) and paste it in the `./.env.local` file:
+
+```bash
+VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
+VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
+VITE_APPWRITE_STORAGE_ID='YOUR_APPWRITE_STORAGE_ID'
+VITE_APPWRITE_DATABASE_ID='YOUR_APPWRITE_DATABASE_ID'
+```
+
+C. Under the new Database (snapgram), click on `Create Collection` and type `Posts` then create.
+
+D. Go to `settings` (inside Posts) > `Permissions` > `+` > `Any` > check all the boxes > `update`.
+
+E. Under the new Database (snapgram), click on `Create Collection` and type `Users` then create.
+
+F. Go to `settings` (inside Users) > `Permissions` > `+` > `Any` > check all the boxes > `update`.
+
+G. Under the new Database (snapgram), click on `Create Collection` and type `Saves` then create.
+
+D. Go to `settings` (inside Saves) > `Permissions` > `+` > `Any` > check all the boxes > `update`.
+
+
 
 ### II 
 
@@ -1017,13 +1057,6 @@ M. Go to the Auth tab in the Appwrite page to check that the new user has been c
 
 ### IV 
 
-
-
-
-
-
-
-## 7. Storage & Database Design
 ## 8. TanStack Query
 ## 9. HomePage
 ## 10. Create Post
