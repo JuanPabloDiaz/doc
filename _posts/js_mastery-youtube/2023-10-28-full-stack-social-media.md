@@ -1049,6 +1049,69 @@ G. Under the new Database (snapgram), click on `Create Collection` and type `Sav
 
 D. Go to `settings` (inside Saves) > `Permissions` > `+` > `Any` > check all the boxes > `update`.
 
+### III. Database Relations...
+
+A. **`Posts` Collection**
+1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
+2. **Relationship**,
+    - Select `Two-Way Relationship`
+    - Related Collection: `Users`
+    - Attribute Key: `creator` (delete `users`)
+    - Attribute Key(related collection): `posts`
+    - Relation: `Many-to-One`
+    - On deleting a document: `Null`.
+    - Create
+
+B. **`Posts` Collection**
+1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
+2. **Relationship**,
+    - Select `Two-Way Relationship`
+    - Related Collection: `Users`
+    - Attribute Key: `likes` (delete `users`)
+    - Attribute Key(related collection): `liked`
+    - Relation: `Many-to-Many`
+    - On deleting a document: `Null`.
+    - Create
+
+C. **`Posts` Collection**
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `caption`
+    - size: `2200`
+    - Default: `null`
+    - Create
+
+D. **`Posts` Collection**
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `tags`
+    - size: `2200`
+    - Default: `null`
+    - `Array`
+    - Create
+
+E. **`Posts` Collection**
+1. Click the `Attributes` tab > `Create Attribute` > *`URL`*
+2. **URL**,
+    - Attribute Key: `imageUrl`
+    - `Required`
+    - Create
+
+F. **`Posts` Collection**
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `imageId`
+    - size: `2200`
+    - Default: `null`
+    - `Required`
+    - Create
+
+G. **`Posts` Collection**
+1. Click the `Attributes` tab > `Create Attribute` > *`String`*
+2. **String**,
+    - Attribute Key: `location`
+    - size: `2200`
+    - Create
 
 
 ### II 
