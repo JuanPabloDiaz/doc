@@ -1253,9 +1253,6 @@ export const storage = new Storage(client);
 export const avatars = new Avatars(client);
 ```
 
-
-quede en el [video 1 hora y 21 min](https://youtu.be/_W3R2VwRyF4?t=4875)
-
 ### V. Complete Back-End SetUp
 
 6. Modify the `api.ts` file (`src/lib/appwrite/api.ts`)
@@ -1516,6 +1513,7 @@ A. Install [React Query](https://www.npmjs.com/package/@tanstack/react-query)
 ```bash
 npm install @tanstrack/react-query
 ```
+11/3/23 - Quede en el [video](https://youtu.be/_W3R2VwRyF4?t=7458)
 
 ### II.
 
