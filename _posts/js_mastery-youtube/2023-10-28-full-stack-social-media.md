@@ -20,8 +20,9 @@ This project was developed using
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=white)](https://vitejs.dev//)
+[![React-Router](https://img.shields.io/badge/React%20Router-CA4245.svg?style=for-the-badge&logo=React-Router&logoColor=white)](https://reactrouter.com/en/main)
 
-## 1. Create a React Project using ![](https://img.shields.io/badge/vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=white)[^tutorial-vidio-1]
+## 1. Create a React Project using Vite[^tutorial-vidio-1]
 
 ```bash
 npm create vite@latest
@@ -33,7 +34,7 @@ npm run dev
 
 - [Getting Started with Vite](https://vitejs.dev/guide/)
 
-## 2. Customize the Project (SetUp)[^tutorial-vidio-2] ⚙️
+## 2. Customize the Project (SetUp)[^tutorial-vidio-2]
 
 A. Starting Point Of The Project: `Delete` the `src` folder and create a new one with the files `App.tsx`, `main.tsx` and edit the files [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/a537dd5495959114c2afa51767249d972c657b88)
 
@@ -1551,7 +1552,7 @@ npm install @tanstrack/react-query
 
 
 
-## last step. Deployment[^tutorial-vidio-17] 🚀
+## last step. Deployment[^tutorial-vidio-17]
 
 There are multiple ways to deploy a React app in just minutes. Here is an article that explains 8 different ways to [Deploy a React App](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.).
 
