@@ -1627,7 +1627,7 @@ Resources list that I find helpful and would like to give credit to.
 - [Pesticides extension](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi) to check the layout of the page
 - How to set [React background Image](https://www.freecodecamp.org/news/react-background-image-tutorial-how-to-set-backgroundimage-with-inline-css-style/)
 
-<!-- Footnotes  Time Stamps 👇 -->
+## Footnotes  Time Stamps 🎦
 [^tutorial-vidio-1]: [00:00:00 - Intro](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=0s)
 [^tutorial-vidio-2]: [00:05:56 - Setup](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=356s)
 [^tutorial-vidio-3]: [00:15:50 - Routing](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=950s)
