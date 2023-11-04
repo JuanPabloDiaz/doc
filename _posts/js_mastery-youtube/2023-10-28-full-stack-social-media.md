@@ -109,7 +109,7 @@ export default App;
 ```
 ## 4. File & Folder Structure[^tutorial-vidio-4]
 
-### Create & edit the files:
+### A. Create & edit the files:
 
 <ol type="a">
   <li>Create two folders: <b>"src/_auth"</b> for the Public content: sign-in & register pages. <b>"src/_root"</b> for the Private content once the user sign in</li>
@@ -1511,17 +1511,621 @@ export default SignupForm;
 ```
 ## 8. [TanStack Query](https://tanstack.com/query/latest) (React Query)[^tutorial-vidio-8]
 
-### I. Create a `queriesAndMutations.ts` located in `src/lib/react-query/queriesAndMutations.ts`
+### I. Install [React Query](https://www.npmjs.com/package/@tanstack/react-query)
 
-A. Install [React Query](https://www.npmjs.com/package/@tanstack/react-query)
 ```bash
 npm install @tanstrack/react-query
 ```
-11/3/23 - Quede en el [video](https://youtu.be/_W3R2VwRyF4?t=7458)
+### II. Create a `queriesAndMutations.ts` file 
 
+Located in `src/lib/react-query/queriesAndMutations.ts` and copy the code below:
 
+```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
 
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
 
+import { createUserAccount, signInAccount } from "@/lib/appwrite/api";
+import { INewUser } from "@/types";
+
+export const useCreateUserAccount = () => {
+  return useMutation({
+    mutationFn: (user: INewUser) => createUserAccount(user),
+  });
+};
+
+export const useSignInAccount = () => {
+  return useMutation({
+    mutationFn: (user: { email: string; password: string }) =>
+      signInAccount(user),
+  });
+};
+```
+
+### IV. Modify the `SignupForm.tsx` file
+
+```tsx
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useToast } from "@/components/ui/use-toast";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+import { Input } from "@/components/ui/input";
+
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import Loader from "@/components/shared/Loader";
+import { SignupValidation } from "@/lib/validation";
+import { z } from "zod";
+import {
+  useCreateUserAccount,
+  useSignInAccount,
+} from "@/lib/react-query/queriesAndMutations";
+import { useUserContext } from "@/context/AuthContext";
+
+const SignupForm = () => {
+  const { toast } = useToast();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const navigate = useNavigate();
+
+  const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
+    useCreateUserAccount();
+
+  const { mutateAsync: signInAccount, isPending: isSigningIn } =
+    useSignInAccount();
+
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof SignupValidation>>({
+    resolver: zodResolver(SignupValidation),
+    defaultValues: {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
+    const newUser = await createUserAccount(values);
+
+    if (!newUser) {
+      return toast({
+        title: "Sign up failed. Please try again later.",
+      });
+      // console.log(newUser);
+    }
+
+    const session = await signInAccount({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (!session) {
+      return toast({
+        title: "Sign in failed. Please try again later.",
+      });
+    }
+
+    const isLoggedIn = await checkAuthUser();
+
+    if (!isLoggedIn) {
+      form.reset();
+
+      navigate("/");
+    } else {
+      return toast({ title: "Sign up failed. Please try again later." });
+    }
+  }
+
+  return (
+    <Form {...form}>
+      <div className="sm:w-420 flex-center flex-col">
+        <img src="/assets/images/logo.svg" alt="logo" />
+
+        <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+          Create a new account
+        </h2>
+        <p className="text-light-3 small-medium md:base-regular mt-2">
+          To use Snapgram, Please enter your details
+        </p>
+
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 w-full mt-4"
+        >
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input type="text" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input type="text" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input type="password" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className="shad-button_primary">
+            {isCreatingAccount || isSigningIn || isUserLoading ? (
+              <div className="flex-center gap-2">
+                <Loader />
+                Loading...
+              </div>
+            ) : (
+              "Sign up"
+            )}
+          </Button>
+          <p className="text-small-regular text-light-2 text-center mt-2">
+            Already have an account?
+            <Link
+              to="/sign-in"
+              className="text-primary-500 text-small-semibold ml-1"
+            >
+              Log in
+            </Link>
+          </p>
+        </form>
+      </div>
+    </Form>
+  );
+};
+
+export default SignupForm;
+```
+
+### V. Modify the `api.ts` file
+
+Located in `src/lib/appwrite/api.ts`
+
+```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import { ID, Query } from "appwrite";
+
+import { appwriteConfig, account, databases, avatars } from "./config";
+import { INewUser } from "@/types";
+
+export async function createUserAccount(user: INewUser) {
+  try {
+    const newAccount = await account.create(
+      ID.unique(),
+      user.email,
+      user.password,
+      user.name
+    );
+
+    if (!newAccount) throw Error;
+
+    const avatarUrl = avatars.getInitials(user.name);
+
+    const newUser = await saveUserToDB({
+      accountId: newAccount.$id,
+      email: newAccount.email,
+      name: newAccount.name,
+      username: user.username,
+      imageUrl: avatarUrl,
+    });
+
+    return newUser;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+
+export async function saveUserToDB(user: {
+  accountId: string;
+  email: string;
+  name: string;
+  imageUrl: URL;
+  username?: string;
+}) {
+  try {
+    const newUser = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      ID.unique(),
+      user
+    );
+    return newUser;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function signInAccount(user: { email: string; password: string }) {
+  try {
+    const session = await account.createEmailSession(user.email, user.password);
+    return session;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getCurrentUser() {
+  try {
+    const currentAccount = await account.get();
+    if (!currentAccount) throw Error;
+
+    const currentUser = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", currentAccount.$id)]
+    );
+    if (!currentUser) throw Error;
+    return currentUser.documents[0];
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+```
+
+### VI. Create a `AuthContext.tsx` file
+
+Located in `src/context/AuthContext.tsx`
+
+```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import { getCurrentUser } from "@/lib/appwrite/api";
+import { IContextType, IUser } from "@/types";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export const INITIAL_USER = {
+  id: "",
+  name: "",
+  username: "",
+  email: "",
+  imageUrl: "",
+  bio: "",
+};
+
+const INITIAL_STATE = {
+  user: INITIAL_USER,
+  isLoading: false, //* check this line ---> isPending maybe
+  isAuthenticated: false,
+  setUser: () => {},
+  setIsAuthenticated: () => {},
+  checkAuthUser: async () => false as boolean,
+};
+
+const AuthContext = createContext<IContextType>(INITIAL_STATE);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<IUser>(INITIAL_USER);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const navigate = useNavigate();
+
+  const checkAuthUser = async () => {
+    setIsLoading(true);
+    try {
+      const currentAccount = await getCurrentUser();
+      if (currentAccount) {
+        setUser({
+          id: currentAccount.$id,
+          name: currentAccount.name,
+          username: currentAccount.username,
+          email: currentAccount.email,
+          imageUrl: currentAccount.imageUrl,
+          bio: currentAccount.bio,
+        });
+        setIsAuthenticated(true);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("cookieFallback") === "[]" ||
+      localStorage.getItem("cookieFallback") === null
+    )
+      navigate("/sign-in");
+
+    checkAuthUser();
+  }, []);
+
+  const value = {
+    user,
+    setUser,
+    isLoading,
+    isAuthenticated,
+    setIsAuthenticated,
+    checkAuthUser,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export const useUserContext = () => useContext(AuthContext);
+```
+
+### VII. Modify the `main.tsx` file
+
+Located in `src/main.tsx`
+
+```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+
+import { AuthProvider } from "@/context/AuthContext";
+import { QueryProvider } from "@/lib/react-query/QueryProvider";
+
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <QueryProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </QueryProvider>
+  </BrowserRouter>
+);
+```
+
+### VII. Create a `QueryProvider.tsx` file
+
+Located in `src/lib/react-query/QueryProvider.tsx`
+
+```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import React from "react";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+};
+```
+
+### VIII. Test the Sign up Section
+
+A. Go to the http://localhost:5173/sign-up and fill out the form.
+
+B. Check in [Appwrite](https://cloud.appwrite.io/) if the new account has been created.
+- Under **Auth** > Users.
+- Under **Databases** > snapgram > Users.
+
+C. Debugging as needed
+
+Debugging example from the [video](https://youtu.be/_W3R2VwRyF4?t=6975).
+
+### IX. Modify the `SigninForm.tsx` file
+
+Located in `src/_auth/forms/SigninForm.tsx`
+
+```tsx
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+import {
+  Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
+} from "@/components/ui/form";
+import { useToast } from "@/components/ui/use-toast";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { SigninValidation } from "@/lib/validation";
+import { z } from "zod";
+import Loader from "@/components/shared/Loader";
+import { useSignInAccount } from "@/lib/react-query/queriesAndMutations";
+import { useUserContext } from "@/context/AuthContext";
+
+const SigninForm = () => {
+  const { toast } = useToast();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const navigate = useNavigate();
+
+  const { mutateAsync: signInAccount } = useSignInAccount();
+
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof SigninValidation>>({
+    resolver: zodResolver(SigninValidation),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof SigninValidation>) {
+    const session = await signInAccount({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (!session) {
+      return toast({
+        title: "Sign in failed. Please try again later.",
+      });
+    }
+
+    const isLoggedIn = await checkAuthUser();
+
+    if (!isLoggedIn) {
+      form.reset();
+
+      navigate("/");
+    } else {
+      return toast({ title: "Sign in failed. Please try again later." });
+    }
+  }
+
+  return (
+    <Form {...form}>
+      <div className="sm:w-420 flex-center flex-col">
+        <img src="/assets/images/logo.svg" alt="logo" />
+
+        <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+          Log in to your account
+        </h2>
+        <p className="text-light-3 small-medium md:base-regular mt-2">
+          Welcome back! Please enter your details to enjoy Snapgram
+        </p>
+
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 w-full mt-4"
+        >
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input type="password" className="shad-input" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className="shad-button_primary">
+            {isUserLoading ? (
+              <div className="flex-center gap-2">
+                <Loader />
+                Loading...
+              </div>
+            ) : (
+              "Sign in"
+            )}
+          </Button>
+          <p className="text-small-regular text-light-2 text-center mt-2">
+            Don't have an account?
+            <Link
+              to="/sign-up"
+              className="text-primary-500 text-small-semibold ml-1"
+            >
+              Sign up
+            </Link>
+          </p>
+        </form>
+      </div>
+    </Form>
+  );
+};
+
+export default SigninForm;
+```
+
+### X. Modify the `index.ts` file
+
+Located in `src/lib/validation/index.ts`
+
+```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import * as z from "zod";
+
+export const SignupValidation = z.object({
+  name: z
+    .string()
+    .min(2, { message: "Name is too short" })
+    .max(50, { message: "Name is too long" }),
+  username: z
+    .string()
+    .min(2, { message: "Username is too short" })
+    .max(50, { message: "Username is too short" }),
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters" })
+    .max(60, { message: "Password is too long" }),
+});
+
+export const SigninValidation = z.object({
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters" })
+    .max(60, { message: "Password is too long" }),
+});
+```
 
 ## 9. HomePage[^tutorial-vidio-9]
 ## 10. Create Post[^tutorial-vidio-10]
@@ -1532,33 +2136,8 @@ npm install @tanstrack/react-query
 ## 15. Search Results[^tutorial-vidio-15]
 ## 16. Active Lesson[^tutorial-vidio-16]
 
-### II.
 
-### III. 
-
-### IV.
-
-1: I
-2: II
-3: III
-4: IV
-5: V
-6: VI
-7: VII
-8: VIII
-9: IX
-10: X
-11: XI
-12: XII
-13: XIII
-14: XIV
-15: XV
-
-
-
-
-
-## last step. Deployment[^tutorial-vidio-17]
+## 17. Deployment[^tutorial-vidio-17]
 
 There are multiple ways to deploy a React app in just minutes. Here is an article that explains 8 different ways to [Deploy a React App](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.).
 
