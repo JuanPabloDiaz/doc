@@ -16,11 +16,13 @@ Build a modern social app with a stunning UI with a native mobile feel, a specia
 This project was developed using
 
 [![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
+[![Vite](https://img.shields.io/badge/Vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=white)](https://vitejs.dev//)
 [![Appwrite](https://img.shields.io/badge/Appwrite-F02E65.svg?style=for-the-badge&logo=Appwrite&logoColor=white)](https://appwrite.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=white)](https://vitejs.dev//)
 [![React-Router](https://img.shields.io/badge/React%20Router-CA4245.svg?style=for-the-badge&logo=React-Router&logoColor=white)](https://reactrouter.com/en/main)
+[![React-Query](https://img.shields.io/badge/React%20Query-FF4154.svg?style=for-the-badge&logo=React-Query&logoColor=white)](https://tanstack.com/query/v3/)
+[![React-Hook-Form](https://img.shields.io/badge/React%20Hook%20Form-EC5990.svg?style=for-the-badge&logo=React-Hook-Form&logoColor=white)](https://react-hook-form.com/)
 
 ## 1. Create a React Project using Vite[^tutorial-vidio-1]
 
@@ -1517,11 +1519,9 @@ npm install @tanstrack/react-query
 ```
 11/3/23 - Quede en el [video](https://youtu.be/_W3R2VwRyF4?t=7458)
 
-### II.
 
-### III. 
 
-### IV.
+
 
 ## 9. HomePage[^tutorial-vidio-9]
 ## 10. Create Post[^tutorial-vidio-10]
@@ -1531,6 +1531,12 @@ npm install @tanstrack/react-query
 ## 14. Explore Page[^tutorial-vidio-14]
 ## 15. Search Results[^tutorial-vidio-15]
 ## 16. Active Lesson[^tutorial-vidio-16]
+
+### II.
+
+### III. 
+
+### IV.
 
 1: I
 2: II
