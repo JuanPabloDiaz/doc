@@ -20,7 +20,7 @@ This project was developed using
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
 
-## 1. Create a React Project using Vite
+## 1. Create a React Project using Vite[^tutorial-vidio-1]
 
 ```bash
 npm create vite@latest
@@ -32,16 +32,7 @@ npm run dev
 
 - [Getting Started with Vite](https://vitejs.dev/guide/)
 
-## 2. Customize the Project (SetUp)[^tutorial-vidio-1]
-
-----
-
-Here's a simple footnote,[^1]
-
-[^1]: This is the first footnote.
-[^tutorial-vidio-1]: tutorial-vidio-1
-
-----
+## 2. Customize the Project (SetUp)[^tutorial-vidio-2]
 
 A. Starting Point Of The Project: `Delete` the `src` folder and create a new one with the files `App.tsx`, `main.tsx` and edit the files [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/a537dd5495959114c2afa51767249d972c657b88)
 
@@ -63,7 +54,7 @@ D. Modify the `tailwind.config` file by adding the info in the [Github gist](htt
   ```
   > Make sure to install the plugin and modify [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/755a5aa625577a880d3b7b55ffac063e220236a2)
 
-## 3. Routing
+## 3. Routing[^tutorial-vidio-3]
 
 ### Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom) [(repo details)](https://github.com/JuanPabloDiaz/socialMedia/commit/1a1e9f1263e4723f20a76587f319b1ae9cf54668)
 
@@ -112,7 +103,7 @@ const App = () => {
 
 export default App;
 ```
-## 4. File & Folder Structure
+## 4. File & Folder Structure[^tutorial-vidio-4]
 
 ### Create & edit the files:
 
@@ -159,7 +150,7 @@ const App = () => {
 export default App;
 ```
 
-## 5. Auth Pages
+## 5. Auth Pages[^tutorial-vidio-5]
 
 ### I. SetUp [Shadcn UI](https://ui.shadcn.com/) in the Project
 
@@ -738,7 +729,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
 
   export default SignupForm;
   ```
-## 6. Auth Functionality
+## 6. Auth Functionality[^tutorial-vidio-6]
 
 ### I. [Appwrite](https://cloud.appwrite.io/)
 
@@ -1019,7 +1010,7 @@ L. Go to the Sign up page (`http://localhost:5173/Sign-up`) and fill out the for
 
 M. Go to the Auth tab in the [Appwrite](https://cloud.appwrite.io/) page to check that the new user has been created. (reload page if needed)
 
-## 7. Storage & Database Design
+## 7. Storage & Database Design[^tutorial-vidio-7]
 
 ### I. [Storage](https://appwrite.io/docs/products/storage)
 
@@ -1514,7 +1505,7 @@ const SignupForm = () => {
 
 export default SignupForm;
 ```
-## 8. [TanStack Query](https://tanstack.com/query/latest) (React Query)
+## 8. [TanStack Query](https://tanstack.com/query/latest) (React Query)[^tutorial-vidio-8]
 
 ### I. Create a `queriesAndMutations.ts` located in `src/lib/react-query/queriesAndMutations.ts`
 
@@ -1530,14 +1521,14 @@ npm install @tanstrack/react-query
 
 ### IV.
 
-## 9. HomePage
-## 10. Create Post
-## 11. Post Card
-## 12. Post CRUD
-## 13. Post Details
-## 14. Explore Page
-## 15. Search Results
-## 16. Active Lesson
+## 9. HomePage[^tutorial-vidio-9]
+## 10. Create Post[^tutorial-vidio-10]
+## 11. Post Card[^tutorial-vidio-11]
+## 12. Post CRUD[^tutorial-vidio-12]
+## 13. Post Details[^tutorial-vidio-13]
+## 14. Explore Page[^tutorial-vidio-14]
+## 15. Search Results[^tutorial-vidio-15]
+## 16. Active Lesson[^tutorial-vidio-16]
 
 1: I
 2: II
@@ -1559,7 +1550,7 @@ npm install @tanstrack/react-query
 
 
 
-## last step. Deployment
+## last step. Deployment[^tutorial-vidio-17]
 
 There are multiple ways to deploy a React app in just minutes. Here is an article that explains 8 different ways to [Deploy a React App](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.).
 
@@ -1635,3 +1626,22 @@ Resources list that I find helpful and would like to give credit to.
 - [Create a Landing Page with React.JS and tailwind CSS](https://medium.com/@chiragmehta900/create-a-responsive-landing-page-with-react-js-and-tailwind-css-fa09ffb24cb7)
 - [Pesticides extension](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi) to check the layout of the page
 - How to set [React background Image](https://www.freecodecamp.org/news/react-background-image-tutorial-how-to-set-backgroundimage-with-inline-css-style/)
+
+<!-- Footnotes  Time Stamps 👇 -->
+[^tutorial-vidio-1]: [00:00:00 - Intro](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=0s)
+[^tutorial-vidio-2]: [00:05:56 - Setup](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=356s)
+[^tutorial-vidio-3]: [00:15:50 - Routing](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=950s)
+[^tutorial-vidio-4]: [00:18:51 - File & Folder Structure](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=1131s)
+[^tutorial-vidio-5]: [00:23:49 - Auth Pages](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=1429s)
+[^tutorial-vidio-6]: [00:51:16 - Auth Functionality - Appwrite](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=3076s)
+[^tutorial-vidio-7]: [01:02:39 - Storage & Database Design](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=3759s)
+[^tutorial-vidio-8]: [01:31:21 - TanStack Query](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=5481s)
+[^tutorial-vidio-9]: [02:15:48 - HomePage](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=8148s)
+[^tutorial-vidio-10]: [02:48:27 - Create Post](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=10107s)
+[^tutorial-vidio-11]: [03:39:48 - Post Card](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=13188s)
+[^tutorial-vidio-12]: [04:32:53 - Post CRUD](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=16373s)
+[^tutorial-vidio-13]: [04:49:44 - Post Details](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=17384s)
+[^tutorial-vidio-14]: [05:02:03 - Explore Page](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=18123s)
+[^tutorial-vidio-15]: [05:29:03 - Search Results](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=19743s)
+[^tutorial-vidio-16]: [05:39:22 - Active Lesson](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=20362s)
+[^tutorial-vidio-17]: [05:45:58 - Deployment](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=20758s)
