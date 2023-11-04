@@ -32,17 +32,14 @@ npm run dev
 
 - [Getting Started with Vite](https://vitejs.dev/guide/)
 
-## 2. Customize the Project (SetUp)
+## 2. Customize the Project (SetUp)[^tutorial-vidio-1]
 
 ----
 
-Footnote:
-Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+Here's a simple footnote,[^1]
 
 [^1]: This is the first footnote.
-
-[^bignote]: Here's one with multiple paragraphs and code.
-
+[^tutorial-vidio-1]: tutorial-vidio-1
 
 ----
 
