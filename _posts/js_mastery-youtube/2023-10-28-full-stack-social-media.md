@@ -1053,7 +1053,7 @@ G. Under the new Database (snapgram), click on `Create Collection` and type `Sav
 
 D. Go to `settings` (inside Saves) > `Permissions` > `+` > `Any` > check all the boxes > `update`.
 
-### III. Database Relations[^tutorial-vidio-7a]...
+### III. Database Relations in Appwrite[^tutorial-vidio-7a]...
 
 A. **`Posts` Collection** > *`Relationship`*
 1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
