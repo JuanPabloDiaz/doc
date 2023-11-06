@@ -1117,8 +1117,8 @@ G. **`Posts` Collection** > *`String`*
     - Create
 
 ----
-#### Index tab:
-Go to the index tab under Posts
+#### Indexes tab:
+Go to the indexes tab under Posts
 
 H. **`Posts` Collection** > *`String`*
 1. Click the `Indexes` tab > `Create index` > *`String`*
