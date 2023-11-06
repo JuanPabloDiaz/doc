@@ -1053,7 +1053,9 @@ G. Under the new Database (snapgram), click on `Create Collection` and type `Sav
 
 D. Go to `settings` (inside Saves) > `Permissions` > `+` > `Any` > check all the boxes > `update`.
 
-### III. Database Relations...
+### III. Database Relations[^tutorial-vidio-7.1]...
+
+
 
 A. **`Posts` Collection** > *`Relationship`*
 1. Click the `Attributes` tab > `Create Attribute` > *`Relationship`*
@@ -2222,6 +2224,7 @@ Resources list that I find helpful and would like to give credit to.
 [^tutorial-vidio-5]: [00:23:49 - Auth Pages](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=1429s)
 [^tutorial-vidio-6]: [00:51:16 - Auth Functionality - Appwrite](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=3076s)
 [^tutorial-vidio-7]: [01:02:39 - Storage & Database Design](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=3759s)
+[^tutorial-vidio-7.1]: [01:05:40 - Create Relations in AppWrite](https://youtu.be/_W3R2VwRyF4?t=3943)
 [^tutorial-vidio-8]: [01:31:21 - TanStack Query](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=5481s)
 [^tutorial-vidio-9]: [02:15:48 - HomePage](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=8148s)
 [^tutorial-vidio-10]: [02:48:27 - Create Post](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=10107s)
