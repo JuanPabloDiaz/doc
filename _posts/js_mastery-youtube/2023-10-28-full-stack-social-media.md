@@ -1130,6 +1130,7 @@ H. **`Posts` Collection** > *`String`*
     - Create
 
 ---
+#### Users:
 
 I. **`Users` Collection** > *`String`*
 1. Click the `Attributes` tab > `Create Attribute` > *`String`*
