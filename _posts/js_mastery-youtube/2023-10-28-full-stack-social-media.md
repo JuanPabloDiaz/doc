@@ -2164,7 +2164,12 @@ const RootLayout = () => {
 export default RootLayout;
 ```
 
-### II. Create component: `Topbar.tsx` 
+- Create a component name `Topbar.tsx` Located in `src/components/shared/Topbar.tsx` and run `rafce`.
+-  Create a component name `LeftSidebar.tsx` Located in `src/components/shared/LeftSidebar.tsx` and run `rafce`.
+-  Create a component name `Bottombar.tsx` Located in `src/components/shared/Bottombar.tsx` and run `rafce`.
+
+
+### II. Modify component: `Topbar.tsx` 
 
 Located in `src/components/shared/Topbar.tsx`
 
@@ -2363,7 +2368,7 @@ export async function signOutAccount() {
 }
 ```
 
-### V. Create component: `LeftSidebar.tsx` 
+### V. Modify component: `LeftSidebar.tsx` 
 
 Located in `src/components/shared/LeftSidebar.tsx`
 
@@ -2449,15 +2454,8 @@ const LeftSidebar = () => {
 export default LeftSidebar;
 ```
 
-### IV. Create component: `Bottombar.tsx` 
-
-Located in `src/components/shared/Bottombar.tsx`
-
-```tsx
-
-```
-
 ### V. Create a constants: `index.ts` file 
+
 Located in `src/constants/index.ts` | From [(Github gist)](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
 
 ```tsx
@@ -2529,7 +2527,7 @@ export const bottombarLinks = [
 12. Create a `.tsx` file and run `rafce`.
 
 
-### . modify the `index.ts` pages file 
+### . Modify the `index.ts` pages file 
 
 Located in `src/_root/pages/index.ts`
 
@@ -2546,6 +2544,13 @@ export { default as LikedPosts } from "./LikedPosts";
 export { default as AllUsers } from "./AllUsers";
 ```
 
+### IV. Modify component: `Bottombar.tsx` 
+
+Located in `src/components/shared/Bottombar.tsx`
+
+```tsx
+
+```
 
 
 
