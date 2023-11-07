@@ -2368,6 +2368,8 @@ export async function signOutAccount() {
 Located in `src/components/shared/LeftSidebar.tsx`
 
 ```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
@@ -2392,22 +2394,16 @@ const LeftSidebar = () => {
         <Link to="/" className="flex gap-3 items-center">
           <img
             src="/assets/images/logo.svg"
-            alt="logo"
-            width={170}
-            height={36}
+            alt="logo" width={170} height={36}
           />
         </Link>
         <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
           <img
             src={user.imageUrl || "/assets/icons/profile-placeholder.svg"}
-            alt="profile"
-            className="h-14 w-14 rounded-full"
-          />
+            alt="profile" className="h-14 w-14 rounded-full"/>
           <div className="flex flex-col">
-            <p className="body-bold">Name here {user.name}</p>
-            <p className="body-regular text-light-3">
-              username here @{user.username}
-            </p>
+            <p className="body-bold">{user.name}</p>
+            <p className="body-regular text-light-3">@{user.username}</p>
           </div>
         </Link>
         <ul className="flex flex-col gap-6">
