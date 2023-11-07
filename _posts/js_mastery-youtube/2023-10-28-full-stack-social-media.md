@@ -2633,11 +2633,13 @@ const Bottombar = () => {
 export default Bottombar;
 ```
 
-
-
-
-
 ## 10. Create Post[^tutorial-vidio-10]
+
+
+
+
+
+
 ## 11. Post Card[^tutorial-vidio-11]
 ## 12. Post CRUD[^tutorial-vidio-12]
 ## 13. Post Details[^tutorial-vidio-13]
