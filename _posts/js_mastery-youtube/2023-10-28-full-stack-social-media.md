@@ -2138,6 +2138,8 @@ export const SigninValidation = z.object({
 Located in `src/_root/RootLayout.tsx` and copy the code below:
 
 ```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
 import Bottombar from "@/components/shared/Bottombar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import Topbar from "@/components/shared/Topbar";
@@ -2167,6 +2169,8 @@ export default RootLayout;
 Located in `src/components/shared/Topbar.tsx`
 
 ```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
@@ -2216,6 +2220,47 @@ const Topbar = () => {
 };
 
 export default Topbar;
+```
+
+### III. Modify the `queriesAndMutations.ts`
+
+Located in `src/lib/react-query/queriesAndMutations.ts`
+
+```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
+
+import {
+  createUserAccount,
+  signInAccount,
+  signOutAccount,
+} from "@/lib/appwrite/api";
+import { INewUser } from "@/types";
+
+export const useCreateUserAccount = () => {
+  return useMutation({
+    mutationFn: (user: INewUser) => createUserAccount(user),
+  });
+};
+
+export const useSignInAccount = () => {
+  return useMutation({
+    mutationFn: (user: { email: string; password: string }) =>
+      signInAccount(user),
+  });
+};
+
+export const useSignOutAccount = () => {
+  return useMutation({
+    mutationFn: signOutAccount,
+  });
+};
 ```
 
 ### III. Create component: `LeftSidebar.tsx` 
