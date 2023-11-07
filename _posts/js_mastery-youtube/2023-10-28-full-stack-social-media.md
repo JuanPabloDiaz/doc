@@ -2454,7 +2454,7 @@ const LeftSidebar = () => {
 export default LeftSidebar;
 ```
 
-### V. Create a constants: `index.ts` file 
+### VI. Create a constants: `index.ts` file 
 
 Located in `src/constants/index.ts` | From [(Github gist)](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
 
@@ -2511,9 +2511,57 @@ export const bottombarLinks = [
 ];
 ```
 
-### VI. Create multiple files under the pages folder and run `rafce`
+### VII. Modify the `App.tsx` file 
 
-1. Located in `src/_root/pages/`
+Located in `src/App.tsx`
+
+```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import { Routes, Route } from "react-router-dom";
+
+import "./globals.css";
+import SigninForm from "./_auth/forms/SigninForm";
+import SignupForm from "./_auth/forms/SignupForm";
+import { AllUsers, CreatePost, EditPost, Explore, Home, PostDetails, Profile, Saved, UpdateProfile, } from "./_root/Pages";
+import AuthLayout from "./_auth/AuthLayout";
+import RootLayout from "./_root/RootLayout";
+import { Toaster } from "@/components/ui/toaster";
+
+const App = () => {
+  return (
+    <main className="flex h-screen">
+      <Routes>
+        {/* Public Routes */}
+        <Route element={<AuthLayout />}>
+          <Route path="/sign-in" element={<SigninForm />} />
+          <Route path="/sign-up" element={<SignupForm />} />
+        </Route>
+        {/* Private Routes */}
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/saved" element={<Saved />} />
+          <Route path="/all-users" element={<AllUsers />} />
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/update-post/:id" element={<EditPost />} />
+          <Route path="/posts/:id" element={<PostDetails />} />
+          <Route path="/profile/:id/*" element={<Profile />} />
+          <Route path="/update-profile/:id" element={<UpdateProfile />} />
+        </Route>
+      </Routes>
+
+      <Toaster />
+    </main>
+  );
+};
+
+export default App;
+```
+
+### VIII. Create multiple files under the pages folder and run `rafce`
+
+1. Located on `src/_root/pages/`
 2. Create a `Explore.tsx` file and run `rafce`.
 3. Create a `Saved.tsx` file and run `rafce`.
 4. Create a `CreatePost.tsx` file and run `rafce`.
@@ -2527,7 +2575,7 @@ export const bottombarLinks = [
 12. Create a `.tsx` file and run `rafce`.
 
 
-### . Modify the `index.ts` pages file 
+### . Modify the `index.ts` file on pages 
 
 Located in `src/_root/pages/index.ts`
 
