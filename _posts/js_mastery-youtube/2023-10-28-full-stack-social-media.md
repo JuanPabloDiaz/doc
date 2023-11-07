@@ -581,7 +581,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
     e. The `tailwind.config` file got modify too. Overwrite it using the [previous tailwind.config](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac) file.
 
 
-### IV. Add a the Loader Component
+### IV. Add the Loader Component
 
 #### a. Create the `Loader.tsx` file in the path: `src/components/shared/Loader.tsx` and copy the code:
 
