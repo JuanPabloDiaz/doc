@@ -1241,9 +1241,9 @@ export const appwriteConfig = {
   projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
   databaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID,
   storageId: import.meta.env.VITE_APPWRITE_STORAGE_ID,
-  userCollectionId: import.meta.env.VITE_APPWRITE_USER_COLLECTION_ID,
-  postCollectionId: import.meta.env.VITE_APPWRITE_POST_COLLECTION_ID,
-  savesCollectionId: import.meta.env.VITE_APPWRITE_SAVES_COLLECTION_ID,
+  userCollectionId: import.meta.env.VITE_APPWRITE_USER_COLLECTIONS_ID,
+  postCollectionId: import.meta.env.VITE_APPWRITE_POST_COLLECTIONS_ID,
+  savesCollectionId: import.meta.env.VITE_APPWRITE_SAVES_COLLECTIONS_ID,
 };
 
 export const client = new Client();
@@ -1260,6 +1260,10 @@ export const databases = new Databases(client);
 export const storage = new Storage(client);
 export const avatars = new Avatars(client);
 ```
+> Warning: Double check that your config.ts (appwrite) are using the exact same names as your ENV.LOCAL variables.
+
+> I had a `bug` When I sign up a user, the new account gets created on Appwrite. But I was only seeing it on the `Auth` section and not in the `database > users` section on Appwrite. (Resolved it by using the EXACT same variable names)
+
 
 ### V. Complete Back-End SetUp
 
