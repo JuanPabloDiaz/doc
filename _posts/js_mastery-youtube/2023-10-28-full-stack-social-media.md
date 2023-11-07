@@ -2635,10 +2635,42 @@ export default Bottombar;
 
 ## 10. Create Post[^tutorial-vidio-10]
 
+### I. Create a `PostForm.tsx` file 
+Located in `src/components/forms/PostForm.tsx`
+
+```tsx
+
+```
+- Install Textarea component from shadcn-ui
+
+  ```bash 
+  npx shadcn-ui@latest add textarea
+  ```
+
+### II. Modify the `CreatePost.tsx` file 
+Located in `src/_root/pages/CreatePost.tsx`
+
+```tsx
+
+```
+
+### III. Create a `FileUploader.tsx` file component
+Located in `src/_root/pages/CreatePost.tsx`
+
+- Install [React dropzone](https://www.npmjs.com/package/react-dropzone)
+
+```tsx
+npm install react-dropzone
+```
+
+- Copy the code below
+```tsx
+
+```
 
 
-
-
+Create a `FileUploader.tsx` file component and run `rafce`
+Located in `src/components/shared/FileUploader.tsx`
 
 ## 11. Post Card[^tutorial-vidio-11]
 ## 12. Post CRUD[^tutorial-vidio-12]
