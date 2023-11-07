@@ -2132,6 +2132,134 @@ export const SigninValidation = z.object({
 ```
 
 ## 9. HomePage[^tutorial-vidio-9]
+
+
+### I. modify the `RootLayout.tss` file 
+
+Located in `src/_root/RootLayout.tsx` and copy the code below:
+
+```tsx
+
+```
+
+### II. Create component: `Topbar.tsx` 
+
+Located in `src/components/shared/Topbar.tsx`
+
+```tsx
+
+```
+
+### III. Create component: `LeftSidebar.tsx` 
+
+Located in `src/components/shared/LeftSidebar.tsx`
+
+```tsx
+
+```
+
+### IV. Create component: `Bottombar.tsx` 
+
+Located in `src/components/shared/Bottombar.tsx`
+
+```tsx
+
+```
+
+### V. Create a constants: `index.ts` file 
+Located in `src/constants/index.ts` | From [(Github gist)](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+
+```tsx
+export const sidebarLinks = [
+  {
+    imgURL: "/assets/icons/home.svg",
+    route: "/",
+    label: "Home",
+  },
+  {
+    imgURL: "/assets/icons/wallpaper.svg",
+    route: "/explore",
+    label: "Explore",
+  },
+  {
+    imgURL: "/assets/icons/people.svg",
+    route: "/all-users",
+    label: "People",
+  },
+  {
+    imgURL: "/assets/icons/bookmark.svg",
+    route: "/saved",
+    label: "Saved",
+  },
+  {
+    imgURL: "/assets/icons/gallery-add.svg",
+    route: "/create-post",
+    label: "Create Post",
+  },
+];
+
+export const bottombarLinks = [
+  {
+    imgURL: "/assets/icons/home.svg",
+    route: "/",
+    label: "Home",
+  },
+  {
+    imgURL: "/assets/icons/wallpaper.svg",
+    route: "/explore",
+    label: "Explore",
+  },
+  {
+    imgURL: "/assets/icons/bookmark.svg",
+    route: "/saved",
+    label: "Saved",
+  },
+  {
+    imgURL: "/assets/icons/gallery-add.svg",
+    route: "/create-post",
+    label: "Create",
+  },
+];
+```
+
+### VI. Create multiple files under the pages folder and run `rafce`
+
+1. Located in `src/_root/pages/`
+2. Create a `Explore.tsx` file and run `rafce`.
+3. Create a `Saved.tsx` file and run `rafce`.
+4. Create a `CreatePost.tsx` file and run `rafce`.
+5. Create a `Profile.tsx` file and run `rafce`.
+6. Create a `UpdateProfile.tsx` file and run `rafce`.
+7. Create a `EditPost.tsx` file and run `rafce`.
+8. Create a `PostDetails.tsx` file and run `rafce`.
+9. Create a `LikedPosts.tsx` file and run `rafce`.
+10. Create a `AllUsers.tsx` file and run `rafce`.
+11. Create a `.tsx` file and run `rafce`.
+12. Create a `.tsx` file and run `rafce`.
+
+
+### . modify the `index.ts` pages file 
+
+Located in `src/_root/pages/index.ts`
+
+```ts
+export { default as Home } from "./Home";
+export { default as Explore } from "./Explore";
+export { default as Saved } from "./Saved";
+export { default as CreatePost } from "./CreatePost";
+export { default as Profile } from "./Profile";
+export { default as UpdateProfile } from "./UpdateProfile";
+export { default as EditPost } from "./EditPost";
+export { default as PostDetails } from "./PostDetails";
+export { default as LikedPosts } from "./LikedPosts";
+export { default as AllUsers } from "./AllUsers";
+```
+
+
+
+
+
+
 ## 10. Create Post[^tutorial-vidio-10]
 ## 11. Post Card[^tutorial-vidio-11]
 ## 12. Post CRUD[^tutorial-vidio-12]
