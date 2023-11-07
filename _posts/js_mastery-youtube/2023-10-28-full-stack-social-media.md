@@ -2133,7 +2133,7 @@ export const SigninValidation = z.object({
 
 ## 9. HomePage[^tutorial-vidio-9]
 
-### I. modify the `RootLayout.tss` file 
+### I. Modify the `RootLayout.tss` file 
 
 Located in `src/_root/RootLayout.tsx` and copy the code below:
 
@@ -2574,8 +2574,7 @@ export default App;
 11. Create a `.tsx` file and run `rafce`.
 12. Create a `.tsx` file and run `rafce`.
 
-
-### . Modify the `index.ts` file on pages 
+### IX. Modify the `index.ts` file on pages 
 
 Located in `src/_root/pages/index.ts`
 
