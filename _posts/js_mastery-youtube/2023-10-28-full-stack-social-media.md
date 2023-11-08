@@ -2412,7 +2412,7 @@ const LeftSidebar = () => {
             alt="profile" className="h-14 w-14 rounded-full"/>
           <div className="flex flex-col">
             <p className="body-bold">{user.name}</p>
-            <p className="body-regular text-light-3">@{user.username}</p>
+            <p className="small-regular text-light-3">@{user.username}</p>
           </div>
         </Link>
         <ul className="flex flex-col gap-6">
@@ -2675,6 +2675,15 @@ npm install react-dropzone
 
 Create a `FileUploader.tsx` file component and run `rafce`
 Located in `src/components/shared/FileUploader.tsx`
+
+
+
+
+
+
+Appwrite Permissions
+
+1. appwrite > Storage > media > Settings > Permissions > any > all checkmarks > update.
 
 ## 11. Post Card[^tutorial-vidio-11]
 ## 12. Post CRUD[^tutorial-vidio-12]
