@@ -2637,49 +2637,127 @@ export default Bottombar;
 
 ## 10. Create Post[^tutorial-vidio-10]
 
-### I. Create a `PostForm.tsx` file 
-Located in `src/components/forms/PostForm.tsx`
+### I. Modify the `CreatePost.tsx` file 
+Located in `src/_root/pages/CreatePost.tsx`
 
 ```tsx
+import PostForm from "@/components/forms/PostForm";
 
+const CreatePost = () => {
+  return (
+    <div className="flex flex-1">
+      <div className="common-container">
+        <div className="max-w-5xl flex-start gap-3 justify-start w-full">
+          <img
+            src="/assets/icons/add-post.svg"
+            width={36}
+            height={36}
+            alt="add"
+          />
+          <h2 className="h3-bold md:h2-bold text-left w-full">Create Post</h2>
+        </div>
+
+        <PostForm />
+      </div>
+    </div>
+  );
+};
+
+export default CreatePost;
 ```
+
+### II. Create a `PostForm.tsx` file 
+
+Located in `src/components/forms/PostForm.tsx` and run `rafce`
+
+- Go to [Shadcn-ui Components forms](https://ui.shadcn.com/docs/components/form).
+
+Follow the steps on the Shadcn-UI site and check the documentation for more details.
+
 - Install Textarea component from shadcn-ui
 
   ```bash 
   npx shadcn-ui@latest add textarea
   ```
 
-### II. Modify the `CreatePost.tsx` file 
-Located in `src/_root/pages/CreatePost.tsx`
+The components: `Form`, `input` & `button` should be already install.
+- If not, please install them:
+  ```bash
+  npx shadcn-ui@latest add form
+  
+  npx shadcn-ui@latest add input
+  ```
+
+Modify the `PostForm.tsx` file. Located in `src/components/forms/PostForm.tsx`
 
 ```tsx
 
 ```
 
 ### III. Create a `FileUploader.tsx` file component
-Located in `src/_root/pages/CreatePost.tsx`
+
+Located in `src/_root/pages/CreatePost.tsx` and run `rafce`
 
 - Install [React dropzone](https://www.npmjs.com/package/react-dropzone)
+  ```tsx
+  npm install react-dropzone
+  ```
 
-```tsx
-npm install react-dropzone
-```
-
-- Copy the code below
-```tsx
-
-```
-
-
-Create a `FileUploader.tsx` file component and run `rafce`
+Modify a `FileUploader.tsx` component
 Located in `src/components/shared/FileUploader.tsx`
 
+```tsx
+
+```
+
+- Modify the validation file: `index.ts`
+Located in `src/lib/validation/index.ts`
+
+```ts
+import * as z from "zod";
+
+export const SignupValidation = z.object({
+  name: z
+    .string()
+    .min(2, { message: "Name is too short" })
+    .max(50, { message: "Name is too long" }),
+  username: z
+    .string()
+    .min(2, { message: "Username is too short" })
+    .max(50, { message: "Username is too short" }),
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters" })
+    .max(60, { message: "Password is too long" }),
+});
+
+export const SigninValidation = z.object({
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters" })
+    .max(60, { message: "Password is too long. Maximum 60 caracters" }),
+});
+
+export const PostValidation = z.object({
+  caption: z
+    .string()
+    .min(5, { message: "Minimum 5 caracters" })
+    .max(2200, { message: "Maximum 2,200 caracters" }),
+  file: z.custom<File[]>(),
+  location: z
+    .string()
+    .min(1, { message: "This field is required" })
+    .max(100, { message: "This field is too long" }),
+  tags: z.string(),
+});
+```
 
 
 
 
-
-Appwrite Permissions
+### IV. Appwrite Permissions
 
 1. appwrite > Storage > media > Settings > Permissions > any > all checkmarks > update.
 
