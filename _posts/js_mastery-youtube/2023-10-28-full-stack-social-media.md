@@ -2575,8 +2575,6 @@ export default App;
 8. Create a `PostDetails.tsx` file and run `rafce`.
 9. Create a `LikedPosts.tsx` file and run `rafce`.
 10. Create a `AllUsers.tsx` file and run `rafce`.
-11. Create a `.tsx` file and run `rafce`.
-12. Create a `.tsx` file and run `rafce`.
 
 ### IX. Modify the `index.ts` file on pages 
 
