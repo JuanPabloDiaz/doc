@@ -2771,12 +2771,12 @@ The Components: `Form`, `input` & `button` should be already install.
 Modify the Component: `PostForm.tsx`. Located in `src/components/forms/PostForm.tsx`
 
 ```tsx
-
+******************************* ADD POSTFORM HERE ****************************
 ```
 
 ### III. Create a Component: `FileUploader.tsx` 
 
-Located in `src/_root/pages/CreatePost.tsx` and run `rafce`
+Located in `src/_root/pages/CreatePost.tsx` and run `rafce`. Delete `import React from "react";`
 
 - Install [React dropzone](https://www.npmjs.com/package/react-dropzone)
   ```tsx
@@ -2787,10 +2787,10 @@ Modify the Component: `FileUploader.tsx`
 Located in `src/components/shared/FileUploader.tsx`
 
 ```tsx
-
+************************* ADD FILE UPLOADER HERE ****************************
 ```
 
-- Modify the validation file: `index.ts`
+### IV. Modify the Validation file: `index.ts`
 Located in `src/lib/validation/index.ts`
 
 ```ts
@@ -2837,11 +2837,71 @@ export const PostValidation = z.object({
 ```
 
 
+### V. Modify the `api.ts`
+Located in `src/lib/appwrite/api.ts`
+
+```ts
+
+```
+
+### VI. Modify the `queriesAndMutations.ts` file 
+
+Located in `src/lib/react-query/queriesAndMutations.ts`
+
+```ts
+
+```
+
+### VI. Create a `queryKeys.ts` file
+
+Located in `src/lib/react-query/queryKeys.ts`
+
+```ts
+export enum QUERY_KEYS {
+  // AUTH KEYS
+  CREATE_USER_ACCOUNT = "createUserAccount",
+
+  // USER KEYS
+  GET_CURRENT_USER = "getCurrentUser",
+  GET_USERS = "getUsers",
+  GET_USER_BY_ID = "getUserById",
+
+  // POST KEYS
+  GET_POSTS = "getPosts",
+  GET_INFINITE_POSTS = "getInfinitePosts",
+  GET_RECENT_POSTS = "getRecentPosts",
+  GET_POST_BY_ID = "getPostById",
+  GET_USER_POSTS = "getUserPosts",
+  GET_FILE_PREVIEW = "getFilePreview",
+
+  //  SEARCH KEYS
+  SEARCH_POSTS = "getSearchPosts",
+}
+```
+From [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
 
 
-### IV. Appwrite Permissions
+### VI. Appwrite Permissions
 
-1. appwrite > Storage > media > Settings > Permissions > any > all checkmarks > update.
+1. Go to Appwrite > Storage > media > Settings > Permissions > any > all checkmarks > update.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 11. Post Card[^tutorial-vidio-11]
 ## 12. Post CRUD[^tutorial-vidio-12]
