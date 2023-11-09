@@ -2673,7 +2673,7 @@ export default CreatePost;
 
 ### II. Create a Component: `PostForm.tsx` 
 
-Located in `src/components/forms/PostForm.tsx` and run `rafce`
+Located in `src/components/forms/PostForm.tsx` and run `rafce`. Delete `import React from "react";`
 
 - Go to [Shadcn-ui Components forms](https://ui.shadcn.com/docs/components/form).
 
@@ -2685,7 +2685,7 @@ Follow the steps on the Shadcn-UI site and check the documentation for more deta
   npx shadcn-ui@latest add textarea
   ```
 
-The components: `Form`, `input` & `button` should be already install.
+The Components: `Form`, `input` & `button` should be already install.
 - If not, please install them:
   ```bash
   npx shadcn-ui@latest add form
