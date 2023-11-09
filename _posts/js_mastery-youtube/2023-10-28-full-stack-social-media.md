@@ -202,8 +202,9 @@ export default defineConfig({
 ```bash
 npx shadcn-ui@latest init
 ```
-#### e. Configure components.json
-You will be asked a few questions to configure components.json:
+#### e. Configure `components.json`
+
+You will be asked a few questions to configure `components.json`:
 ```bash
 Would you like to use TypeScript (recommended)? no / `yes`
 Which style would you like to use? › `Default`
@@ -255,7 +256,7 @@ export default AuthLayout;
 
 #### c. Modify the `SignupForm.tsx` file
 
-- Install the button component from shadcn:
+- Install the `button` component from shadcn:
   ```bash
   npx shadcn-ui@latest add button
   ```
@@ -1325,7 +1326,7 @@ export async function saveUserToDB(user: {
 }
 ```
 
-### VI. Add [Toast](https://ui.shadcn.com/docs/components/toast) from Shadcn UI
+### VI. Add [Toast](https://ui.shadcn.com/docs/components/toast) Component from Shadcn UI
 
 A. Install Toast
 ```bash
@@ -2168,12 +2169,12 @@ const RootLayout = () => {
 export default RootLayout;
 ```
 
-- Create a component name `Topbar.tsx` Located in `src/components/shared/Topbar.tsx` and run `rafce`.
--  Create a component name `LeftSidebar.tsx` Located in `src/components/shared/LeftSidebar.tsx` and run `rafce`.
--  Create a component name `Bottombar.tsx` Located in `src/components/shared/Bottombar.tsx` and run `rafce`.
+- Create a Component name `Topbar.tsx` Located in `src/components/shared/Topbar.tsx` and run `rafce`.
+-  Create a Component name `LeftSidebar.tsx` Located in `src/components/shared/LeftSidebar.tsx` and run `rafce`.
+-  Create a Component name `Bottombar.tsx` Located in `src/components/shared/Bottombar.tsx` and run `rafce`.
 
 
-### II. Modify component: `Topbar.tsx` 
+### II. Modify Component: `Topbar.tsx` 
 
 Located in `src/components/shared/Topbar.tsx`
 
@@ -2372,7 +2373,7 @@ export async function signOutAccount() {
 }
 ```
 
-### V. Modify component: `LeftSidebar.tsx` 
+### V. Modify Component: `LeftSidebar.tsx` 
 
 Located in `src/components/shared/LeftSidebar.tsx`
 
@@ -2593,7 +2594,7 @@ export { default as LikedPosts } from "./LikedPosts";
 export { default as AllUsers } from "./AllUsers";
 ```
 
-### IV. Modify component: `Bottombar.tsx` 
+### IV. Modify Component: `Bottombar.tsx` 
 
 Located in `src/components/shared/Bottombar.tsx`
 
@@ -2668,7 +2669,7 @@ const CreatePost = () => {
 export default CreatePost;
 ```
 
-### II. Create a `PostForm.tsx` file 
+### II. Create a Component: `PostForm.tsx` 
 
 Located in `src/components/forms/PostForm.tsx` and run `rafce`
 
@@ -2690,13 +2691,13 @@ The components: `Form`, `input` & `button` should be already install.
   npx shadcn-ui@latest add input
   ```
 
-Modify the `PostForm.tsx` file. Located in `src/components/forms/PostForm.tsx`
+Modify the Component: `PostForm.tsx`. Located in `src/components/forms/PostForm.tsx`
 
 ```tsx
 
 ```
 
-### III. Create a `FileUploader.tsx` file component
+### III. Create a Component: `FileUploader.tsx` 
 
 Located in `src/_root/pages/CreatePost.tsx` and run `rafce`
 
@@ -2705,7 +2706,7 @@ Located in `src/_root/pages/CreatePost.tsx` and run `rafce`
   npm install react-dropzone
   ```
 
-Modify a `FileUploader.tsx` component
+Modify the Component: `FileUploader.tsx` 
 Located in `src/components/shared/FileUploader.tsx`
 
 ```tsx
