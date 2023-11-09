@@ -2900,20 +2900,119 @@ Located in `src/_root/pages/Home.tsx`
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## 11. Post Card[^tutorial-vidio-11]
+
+### I. Create Component: `PostCard.tsx`
+
+Located in `src/components/shared/PostCard.tsx` and run `rafce`
+
+```tsx
+
+```
+
+#### A. Use ChatGPT or Copilot to create a function for you to modify the date string.
+
+My Output:
+
+It suggested me to...
+
+1. Install the [date-fns](https://www.npmjs.com/package/date-fns) library by running:
+    ```bash
+    npm install date-fns --save
+    ```
+    > This will modify the string of date to a more human friendly readable date.
+
+2. Then, you can import the `formatDistanceToNow` function and use it to format the `post.$createdAt` date. Here's how you can modify your code:
+    ```ts
+    import { formatDistanceToNow } from 'date-fns';
+
+    // ...
+
+    return (
+      <div className="post-card">
+        {/* ... */}
+        <p className="subtle-semibold lg:small-regular">
+          {formatDistanceToNowStrict(new Date(post.$createdAt), { addSuffix: true })}
+        </p>
+        {/* ... */}
+      </div>
+    );
+
+    //  Input
+    Date String = 2023-11-09T15:39:36.442+00:00
+    
+    // Output 
+    3 hours ago
+    ```
+    [Learn More](https://date-fns.org/v2.30.0/docs/formatDistanceToNow)
+
+#### B. Or Just use the code from [`utils.ts`](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+
+Located in `src/lib/utils.ts`
+
+```ts
+// Code Source: https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac
+
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
+
+export function formatDateString(dateString: string) {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString("en-US", options);
+
+  const time = date.toLocaleTimeString([], {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+
+  return `${formattedDate} at ${time}`;
+}
+
+// 
+export const multiFormatDateString = (timestamp: string = ""): string => {
+  const timestampNum = Math.round(new Date(timestamp).getTime() / 1000);
+  const date: Date = new Date(timestampNum * 1000);
+  const now: Date = new Date();
+
+  const diff: number = now.getTime() - date.getTime();
+  const diffInSeconds: number = diff / 1000;
+  const diffInMinutes: number = diffInSeconds / 60;
+  const diffInHours: number = diffInMinutes / 60;
+  const diffInDays: number = diffInHours / 24;
+
+  switch (true) {
+    case Math.floor(diffInDays) >= 30:
+      return formatDateString(timestamp);
+    case Math.floor(diffInDays) === 1:
+      return `${Math.floor(diffInDays)} day ago`;
+    case Math.floor(diffInDays) > 1 && diffInDays < 30:
+      return `${Math.floor(diffInDays)} days ago`;
+    case Math.floor(diffInHours) >= 1:
+      return `${Math.floor(diffInHours)} hours ago`;
+    case Math.floor(diffInMinutes) >= 1:
+      return `${Math.floor(diffInMinutes)} minutes ago`;
+    default:
+      return "Just now";
+  }
+};
+
+export const checkIsLiked = (likeList: string[], userId: string) => {
+  return likeList.includes(userId);
+};
+```
+
 ## 12. Post CRUD[^tutorial-vidio-12]
 ## 13. Post Details[^tutorial-vidio-13]
 ## 14. Explore Page[^tutorial-vidio-14]
