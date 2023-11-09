@@ -2852,7 +2852,7 @@ Located in `src/lib/react-query/queriesAndMutations.ts`
 
 ```
 
-### VI. Create a `queryKeys.ts` file
+### VII. Create a `queryKeys.ts` file
 
 Located in `src/lib/react-query/queryKeys.ts`
 
@@ -2881,15 +2881,24 @@ export enum QUERY_KEYS {
 From [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
 > [Learn more about Query Keys](https://tanstack.com/query/v4/docs/react/guides/query-keys)
 
-
-### VI. Appwrite Permissions
+### VIII. Appwrite Permissions
 
 1. Go to Appwrite > Storage > media > Settings > Permissions > any > all checkmarks > update.
 
+- [Keep watching video](https://youtu.be/_W3R2VwRyF4?t=12752)
 
 
+### IX. Test Create Post
 
+- [Testing this section](https://youtu.be/_W3R2VwRyF4?t=11801)
 
+### X. Modify the `Home.tsx`
+
+Located in `src/_root/pages/Home.tsx`
+
+```tsx
+
+```
 
 
 
