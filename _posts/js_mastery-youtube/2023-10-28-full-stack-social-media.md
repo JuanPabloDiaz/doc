@@ -2879,6 +2879,7 @@ export enum QUERY_KEYS {
 }
 ```
 From [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+> [Learn more about Query Keys](https://tanstack.com/query/v4/docs/react/guides/query-keys)
 
 
 ### VI. Appwrite Permissions
