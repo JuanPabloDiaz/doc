@@ -2641,6 +2641,8 @@ export default Bottombar;
 Located in `src/_root/pages/CreatePost.tsx`
 
 ```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
 import PostForm from "@/components/forms/PostForm";
 
 const CreatePost = () => {
@@ -2714,6 +2716,8 @@ Located in `src/components/shared/FileUploader.tsx`
 Located in `src/lib/validation/index.ts`
 
 ```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
+
 import * as z from "zod";
 
 export const SignupValidation = z.object({
