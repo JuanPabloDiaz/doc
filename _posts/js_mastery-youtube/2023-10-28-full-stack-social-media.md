@@ -2577,6 +2577,8 @@ export default App;
 9. Create a `LikedPosts.tsx` file and run `rafce`.
 10. Create a `AllUsers.tsx` file and run `rafce`.
 
+> Delete `import React from "react";` from all the new files.
+
 ### IX. Modify the `index.ts` file on pages 
 
 Located in `src/_root/pages/index.ts`
@@ -2638,7 +2640,7 @@ export default Bottombar;
 
 ## 10. Create Post[^tutorial-vidio-10]
 
-### I. Modify the `CreatePost.tsx` file 
+### I. Open & Modify the `CreatePost.tsx` file 
 Located in `src/_root/pages/CreatePost.tsx`
 
 ```tsx
