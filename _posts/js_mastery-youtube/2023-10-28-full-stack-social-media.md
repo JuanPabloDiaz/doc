@@ -2698,7 +2698,7 @@ The Components: `Form`, `input` & `button` should be already install.
 
 - Here is an example of a Basic form that could be use as a **_Form Template_**
 
-```jsx
+```tsx
   import * as z from "zod";
   import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -2771,7 +2771,165 @@ The Components: `Form`, `input` & `button` should be already install.
 Modify the Component: `PostForm.tsx`. Located in `src/components/forms/PostForm.tsx`
 
 ```tsx
-******************************* ADD POSTFORM HERE ****************************
+*************************** MODIFY POSTFORM BELOW ****************************
+```
+```tsx
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "../ui/textarea";
+import FileUploader from "../shared/FileUploader";
+import { PostValidation } from "@/lib/validation";
+import { Models } from "appwrite";
+import { useCreatePost } from "@/lib/react-query/queriesAndMutations";
+import { useUserContext } from "@/context/AuthContext";
+import { useToast } from "../ui/use-toast";
+import { useNavigate } from "react-router-dom";
+
+type PostFormProps = {
+  post?: Models.Document;
+};
+
+const PostForm = ({ post }: PostFormProps) => {
+  const {
+    mutateAsync: createPost,
+    // isPending: isLoadingCreate
+  } = useCreatePost();
+  // Hooks:
+  const { user } = useUserContext();
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof PostValidation>>({
+    resolver: zodResolver(PostValidation),
+    defaultValues: {
+      caption: post ? post?.caption : "",
+      file: [],
+      location: post ? post?.location : "",
+      tags: post ? post.tags.join(",") : "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof PostValidation>) {
+    const newPost = await createPost({
+      ...values,
+      userId: user.id,
+    });
+
+    // if NO new post, show error
+    if (!newPost) {
+      toast({
+        title: "Please try again",
+      });
+    }
+    // if new post, redirect to home page
+    navigate("/");
+  }
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-9 w-full max-w-5xl"
+      >
+        <FormField
+          control={form.control}
+          name="caption"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="shad-form_label">Caption</FormLabel>
+              <FormControl>
+                <Textarea
+                  className="shad-textarea custom-scrollbar"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage className="shad-form_message" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="file"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="shad-form_label">Add Photos</FormLabel>
+              <FormControl>
+                <FileUploader
+                  fieldChange={field.onChange}
+                  mediaUrl={post?.imageUrl}
+                />
+              </FormControl>
+              <FormMessage className="shad-form_message" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="shad-form_label">Add Location</FormLabel>
+              <FormControl>
+                <Input type="text" className="shad-input" {...field} />
+              </FormControl>
+              <FormMessage className="shad-form_message" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="tags"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="shad-form_label">
+                Add Tags (separated by comma " , ")
+              </FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  className="shad-input"
+                  placeholder="JS, React, NextJS"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage className="shad-form_message" />
+            </FormItem>
+          )}
+        />
+
+        <div className="flex gap-4 items-center justify-end">
+          <Button type="button" className="shad-button_dark_4">
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            className="shad-button_primary whitespace-nowrap"
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
+    </Form>
+  );
+};
+
+export default PostForm;
 ```
 
 ### III. Create a Component: `FileUploader.tsx` 
@@ -2786,8 +2944,78 @@ Located in `src/_root/pages/CreatePost.tsx` and run `rafce`. Delete `import Reac
 Modify the Component: `FileUploader.tsx` 
 Located in `src/components/shared/FileUploader.tsx`
 
+``` tsx
+************************* MODIFY FILE UPLOADER BELOW *************************
+```
 ```tsx
-************************* ADD FILE UPLOADER HERE ****************************
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import React, { useState, useCallback } from "react";
+import { FileWithPath, useDropzone } from "react-dropzone";
+import { Button } from "../ui/button";
+
+type FileUploaderProps = {
+  fieldChange: (FILES: File[]) => void;
+  mediaUrl: string;
+};
+
+const FileUploader = ({
+  fieldChange, //  mediaUrl
+}: FileUploaderProps) => {
+  const [file, setFile] = useState<File[]>([]);
+  const [fileUrl, setFileUrl] = useState("");
+
+  const onDrop = useCallback(
+    (acceptedFiles: FileWithPath[]) => {
+      setFile(acceptedFiles);
+      fieldChange(acceptedFiles);
+      setFileUrl(URL.createObjectURL(acceptedFiles[0]));
+    },
+    [file]
+  );
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: { "image/*": [".png", ".jpg", ".jpeg", ".svg"] },
+  });
+
+  return (
+    <div
+      {...getRootProps()}
+      className="flex flex-center flex-col bg-dark-3 rounded-xl cursor-pointer"
+    >
+      <input {...getInputProps()} className="cursor-pointer" />
+      {fileUrl ? (
+        <>
+          <div className="flex flex-1 justify-center w-full p-5 lg:p-10">
+            <img
+              src={fileUrl}
+              alt="uploaded image"
+              className="file_uploader-img"
+            />
+          </div>
+          <p className="file_uploader-label">Click or drag photo to replace</p>
+        </>
+      ) : (
+        <div className="file_uploader-box">
+          <img
+            src="/assets/icons/file-upload.svg"
+            width={96}
+            height={77}
+            alt="file-upload"
+          />
+          <h3 className="base-medium text-light-2 mb-2 mt-6">
+            Drag Photo here
+          </h3>
+          <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
+          <Button className="shad-button_dark_4">Browse from computer</Button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default FileUploader;
 ```
 
 ### IV. Modify the Validation file: `index.ts`
@@ -2841,7 +3069,222 @@ export const PostValidation = z.object({
 Located in `src/lib/appwrite/api.ts`
 
 ```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
 
+import { ID, Query } from "appwrite";
+
+import { appwriteConfig, account, databases, avatars, storage } from "./config";
+import { INewPost, INewUser } from "@/types";
+
+// ============================================================
+// AUTH
+// ============================================================
+
+// ============================== SIGN UP
+export async function createUserAccount(user: INewUser) {
+  try {
+    const newAccount = await account.create(
+      ID.unique(),
+      user.email,
+      user.password,
+      user.name
+    );
+
+    if (!newAccount) throw Error;
+
+    const avatarUrl = avatars.getInitials(user.name);
+
+    const newUser = await saveUserToDB({
+      accountId: newAccount.$id,
+      email: newAccount.email,
+      name: newAccount.name,
+      username: user.username,
+      imageUrl: avatarUrl,
+    });
+
+    return newUser;
+    console.log("new user created: " + newUser);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+
+// ============================== SAVE USER TO DB
+export async function saveUserToDB(user: {
+  accountId: string;
+  email: string;
+  name: string;
+  imageUrl: URL;
+  username?: string;
+}) {
+  try {
+    const newUser = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      ID.unique(),
+      user
+    );
+    return newUser;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== SIGN IN
+export async function signInAccount(user: { email: string; password: string }) {
+  try {
+    const session = await account.createEmailSession(user.email, user.password);
+    return session;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== GET USER
+export async function getCurrentUser() {
+  try {
+    const currentAccount = await account.get();
+    if (!currentAccount) throw Error;
+
+    const currentUser = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", currentAccount.$id)]
+    );
+    if (!currentUser) throw Error;
+
+    return currentUser.documents[0];
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+// ============================== SIGN OUT
+export async function signOutAccount() {
+  try {
+    const session = await account.deleteSession("current");
+
+    return session;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================================================
+// POSTS
+// ============================================================
+
+// ============================== CREATE POST
+export async function createPost(post: INewPost) {
+  try {
+    // *** Upload file to appwrite storage ***
+    const uploadedFile = await uploadFile(post.file[0]);
+
+    // If No file, throw error
+    if (!uploadedFile) throw Error;
+
+    // *** Get file url ***
+    const fileUrl = getFilePreview(uploadedFile.$id);
+    // If no file url, delete file from storage and throw error
+    if (!fileUrl) {
+      await deleteFile(uploadedFile.$id);
+      throw Error;
+    }
+
+    // *** Convert tags into array ***
+    const tags = post.tags?.replace(/ /g, "").split(",") || [];
+
+    // *** Create post ***
+    const newPost = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.postCollectionId,
+      ID.unique(),
+      {
+        creator: post.userId,
+        caption: post.caption,
+        imageUrl: fileUrl,
+        imageId: uploadedFile.$id,
+        location: post.location,
+        tags: tags,
+      }
+    );
+
+    // If No New POST, delete file from storage
+    if (!newPost) {
+      await deleteFile(uploadedFile.$id);
+      throw Error;
+    }
+
+    return newPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== UPLOAD FILE
+export async function uploadFile(file: File) {
+  try {
+    const uploadedFile = await storage.createFile(
+      appwriteConfig.storageId,
+      ID.unique(),
+      file
+    );
+
+    return uploadedFile;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== GET FILE URL
+export function getFilePreview(fileId: string) {
+  try {
+    const fileUrl = storage.getFilePreview(
+      appwriteConfig.storageId,
+      fileId,
+      2000,
+      2000,
+      "top",
+      100
+    );
+
+    if (!fileUrl) throw Error;
+
+    return fileUrl;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== DELETE FILE
+export async function deleteFile(fileId: string) {
+  try {
+    await storage.deleteFile(appwriteConfig.storageId, fileId);
+
+    return { status: "ok" };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== GET POPULAR POSTS (BY HIGHEST LIKE COUNT)
+export async function getRecentPosts() {
+  try {
+    const posts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.postCollectionId,
+      [Query.orderDesc("$createdAt"), Query.limit(20)]
+    );
+
+    if (!posts) throw Error;
+
+    return posts;
+  } catch (error) {
+    console.log(error);
+  }
+}
 ```
 
 ### VI. Modify the `queriesAndMutations.ts` file 
@@ -2849,7 +3292,71 @@ Located in `src/lib/appwrite/api.ts`
 Located in `src/lib/react-query/queriesAndMutations.ts`
 
 ```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
 
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  // useInfiniteQuery,
+} from "@tanstack/react-query";
+
+import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
+
+import {
+  createUserAccount,
+  signInAccount,
+  signOutAccount,
+  createPost,
+  getRecentPosts,
+} from "@/lib/appwrite/api";
+import { INewPost, INewUser } from "@/types";
+
+// ============================================================
+// AUTH QUERIES
+// ============================================================
+
+export const useCreateUserAccount = () => {
+  return useMutation({
+    mutationFn: (user: INewUser) => createUserAccount(user),
+  });
+};
+
+export const useSignInAccount = () => {
+  return useMutation({
+    mutationFn: (user: { email: string; password: string }) =>
+      signInAccount(user),
+  });
+};
+
+export const useSignOutAccount = () => {
+  return useMutation({
+    mutationFn: signOutAccount,
+  });
+};
+// ============================================================
+// POST QUERIES
+// ============================================================
+
+export const useCreatePost = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (post: INewPost) => createPost(post),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+      });
+    },
+  });
+};
+
+export const useGetRecentPosts = () => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+    queryFn: getRecentPosts,
+  });
+};
 ```
 
 ### VII. Create a `queryKeys.ts` file
@@ -2895,9 +3402,45 @@ From [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596
 ### X. Modify the `Home.tsx`
 
 Located in `src/_root/pages/Home.tsx`
-
+``` tsx
+************************* MODIFY FILE HOMR BELOW *************************
+```
 ```tsx
+import Loader from "@/components/shared/Loader";
+import PostCard from "@/components/shared/PostCard";
+import { useGetRecentPosts } from "@/lib/react-query/queriesAndMutations";
+import { Models } from "appwrite";
 
+const Home = () => {
+  // Hook:
+  const {
+    data: posts,
+    isPending: isPostLoading,
+    // isError: isErrorPosts,
+  } = useGetRecentPosts();
+
+  return (
+    <div className="flex flex-1">
+      <div className="home-container">
+        <div className="home-posts">
+          <h2 className="h3-bold md:h2-bold text-left w-full">Home Feed</h2>
+          {isPostLoading && !posts ? (
+            <Loader />
+          ) : (
+            <ul className="flex flex-col flex-1 gap-9 w-full">
+              {posts?.documents.map((post: Models.Document) => (
+                // <li>{post.caption}</li>
+                <PostCard post={post} key={post.caption} />
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
 ```
 
 ## 11. Post Card[^tutorial-vidio-11]
