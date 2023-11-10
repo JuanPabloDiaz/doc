@@ -3403,7 +3403,7 @@ From [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596
 
 Located in `src/_root/pages/Home.tsx`
 ``` tsx
-************************* MODIFY FILE HOMR BELOW *************************
+************************* MODIFY HOME BELOW *************************
 ```
 ```tsx
 import Loader from "@/components/shared/Loader";
@@ -3450,7 +3450,85 @@ export default Home;
 Located in `src/components/shared/PostCard.tsx` and run `rafce`
 
 ```tsx
+// import { formatDateString } from "@/lib/utils";
+import { formatDistanceToNowStrict } from "date-fns";
 
+import { Models } from "appwrite";
+import { Link } from "react-router-dom";
+import { useUserContext } from "@/context/AuthContext";
+import PostStats from "./PostStats";
+
+type PostCardProps = {
+  post: Models.Document;
+};
+const PostCard = ({ post }: PostCardProps) => {
+  const { user } = useUserContext();
+  //   console.log("post:", post);
+
+  if (!post.creator) return;
+
+  return (
+    <div className="post-card">
+      <div className="flex-between">
+        <div className="flex items-center gap-3">
+          <Link to={`/profile/${post.creator.$id}`}>
+            <img
+              src={
+                post?.creator?.imageUrl ||
+                "/assets/icons/profile-placeholder.svg"
+              }
+              alt="creator"
+              className="rounded-full w-12 lg:h-12"
+            />
+          </Link>
+          <div className="flex flex-col">
+            <p className="base-medium lg:body-bold text-light-1">
+              {post.creator.name}
+            </p>
+            <div className="flex-center gap-2 text-light-3">
+              <p className="subtle-semibold lg:small-regular">
+                {/* {formatDateString(post.$createdAt)} */}
+                {formatDistanceToNowStrict(new Date(post.$createdAt), {
+                  addSuffix: true,
+                })}
+              </p>
+              -
+              <p className="subtle-semibold lg:small-regular">
+                {post.location}
+              </p>
+            </div>
+          </div>
+        </div>
+        <Link
+          to={`/update-post/${post.$id}`}
+          className={`${user.id !== post.creator.$id && "hidden"}`}
+        >
+          <img src="/assets/icons/edit.svg" alt="edit" width={20} height={20} />
+        </Link>
+      </div>
+      <Link to={`/posts/${post.$id}`}>
+        <div className="small-medium lg:base-medium py-5 ">
+          <p>{post.caption}</p>
+          <ul className="flex gap-1 mt-2">
+            {post.tags.map((tag: string) => (
+              <li key={tag} className="text-light-3">
+                #{tag}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <img
+          src={post.imageUrl || "/assets/icons/profile-placeholder.svg"}
+          alt="post image"
+          className="post-card_img"
+        />
+      </Link>
+      <PostStats post={post} userId={user.id} />
+    </div>
+  );
+};
+
+export default PostCard;
 ```
 
 #### A. Use ChatGPT or Copilot to create a function for you to modify the date string.
@@ -3555,6 +3633,566 @@ export const checkIsLiked = (likeList: string[], userId: string) => {
   return likeList.includes(userId);
 };
 ```
+
+
+### II. Create `PostStats.tsx`
+
+Located in `src/components/shared/PostStats.tsx` and run `rafce`
+
+```tsx
+import React, { useState, useEffect } from "react";
+import {
+  useLikePost,
+  useSavePost,
+  useDeleteSavedPost,
+  useGetCurrentUser,
+} from "@/lib/react-query/queriesAndMutations";
+import { Models } from "appwrite";
+import { checkIsLiked } from "@/lib/utils";
+import Loader from "./Loader";
+
+type PostStatsProps = {
+  post: Models.Document;
+  userId: string;
+};
+
+const PostStats = ({ post, userId }: PostStatsProps) => {
+  const likesList = post.likes.map((user: Models.Document) => user.$id); // list of user ids who liked the post
+  //  console.log("likesList:", likesList);
+
+  // useState:
+  const [likes, setLikes] = useState<string[]>(likesList); // list of user ids who liked the post
+  const [isSaved, setIsSaved] = useState(false); // is the post saved by the current user?
+
+  const { mutate: likePost } = useLikePost();
+  const { mutate: savePost, isPending: isSavingPost } = useSavePost();
+  const { mutate: deleteSavePost, isPending: isDeletingSaved } =
+    useDeleteSavedPost();
+
+  // who is the current user?
+  const { data: currentUser } = useGetCurrentUser();
+
+  const savedPostRecord = currentUser?.save.find(
+    (record: Models.Document) => record.post.$id === post.$id
+  );
+
+  useEffect(() => {
+    setIsSaved(savedPostRecord ? true : false); // or: setIsSaved(!!savedPostRecord);
+    // { Saved: true } => !savedPostRecord => !false = true
+    // { Saved: false } => !savedPostRecord => !true = false
+  }, [currentUser]);
+
+  const handleLikePost = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    let likesArray = [...likes];
+
+    const hasLiked = likesArray.includes(userId);
+
+    if (hasLiked) {
+      likesArray = likesArray.filter((Id) => Id !== userId);
+    } else {
+      likesArray.push(userId);
+    }
+
+    setLikes(likesArray);
+    likePost({ postId: post.$id, likesArray });
+  };
+
+  const handleSavePost = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    if (savedPostRecord) {
+      setIsSaved(false);
+      return deleteSavePost(savedPostRecord.$id);
+    }
+
+    savePost({ userId: userId, postId: post.$id });
+    setIsSaved(true);
+  };
+
+  const containerStyles = location.pathname.startsWith("/profile")
+    ? "w-full"
+    : "";
+
+  return (
+    <div
+      className={`flex justify-between items-center z-20 ${containerStyles}`}
+    >
+      <div className="flex gap-2 mr-5">
+        <img
+          src={`${
+            checkIsLiked(likes, userId)
+              ? "/assets/icons/liked.svg"
+              : "/assets/icons/like.svg"
+          }`}
+          alt={checkIsLiked(likes, userId) ? "liked" : "like"}
+          width={20}
+          height={20}
+          onClick={(e) => handleLikePost(e)}
+          className="cursor-pointer"
+        />
+
+        <p className="small-medium lg:base-medium">{likes.length}</p>
+      </div>
+
+      <div className="flex gap-2">
+        {isSavingPost || isDeletingSaved ? (
+          <Loader />
+        ) : (
+          <img
+            src={isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"}
+            alt="share"
+            width={20}
+            height={20}
+            className="cursor-pointer"
+            onClick={handleSavePost}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default PostStats;
+```
+
+### III. Modify the `api.ts`
+Located in `src/lib/appwrite/api.ts`
+
+```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import { ID, Query } from "appwrite";
+
+import { appwriteConfig, account, databases, avatars, storage } from "./config";
+import { INewPost, INewUser } from "@/types";
+
+// ============================================================
+// AUTH
+// ============================================================
+
+// ============================== SIGN UP
+export async function createUserAccount(user: INewUser) {
+  try {
+    const newAccount = await account.create(
+      ID.unique(),
+      user.email,
+      user.password,
+      user.name
+    );
+
+    if (!newAccount) throw Error;
+
+    const avatarUrl = avatars.getInitials(user.name);
+
+    const newUser = await saveUserToDB({
+      accountId: newAccount.$id,
+      email: newAccount.email,
+      name: newAccount.name,
+      username: user.username,
+      imageUrl: avatarUrl,
+    });
+
+    return newUser;
+    console.log("new user created: " + newUser);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+
+// ============================== SAVE USER TO DB
+export async function saveUserToDB(user: {
+  accountId: string;
+  email: string;
+  name: string;
+  imageUrl: URL;
+  username?: string;
+}) {
+  try {
+    const newUser = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      ID.unique(),
+      user
+    );
+    return newUser;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== SIGN IN
+export async function signInAccount(user: { email: string; password: string }) {
+  try {
+    const session = await account.createEmailSession(user.email, user.password);
+    return session;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== GET USER
+export async function getCurrentUser() {
+  try {
+    const currentAccount = await account.get();
+    if (!currentAccount) throw Error;
+
+    const currentUser = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", currentAccount.$id)]
+    );
+    if (!currentUser) throw Error;
+
+    return currentUser.documents[0];
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+// ============================== SIGN OUT
+export async function signOutAccount() {
+  try {
+    const session = await account.deleteSession("current");
+
+    return session;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================================================
+// POSTS
+// ============================================================
+
+// ============================== CREATE POST
+export async function createPost(post: INewPost) {
+  try {
+    // *** Upload file to appwrite storage ***
+    const uploadedFile = await uploadFile(post.file[0]);
+
+    // If No file, throw error
+    if (!uploadedFile) throw Error;
+
+    // *** Get file url ***
+    const fileUrl = getFilePreview(uploadedFile.$id);
+    // If no file url, delete file from storage and throw error
+    if (!fileUrl) {
+      await deleteFile(uploadedFile.$id);
+      throw Error;
+    }
+
+    // *** Convert tags into array ***
+    const tags = post.tags?.replace(/ /g, "").split(",") || [];
+
+    // *** Create post ***
+    const newPost = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.postCollectionId,
+      ID.unique(),
+      {
+        creator: post.userId,
+        caption: post.caption,
+        imageUrl: fileUrl,
+        imageId: uploadedFile.$id,
+        location: post.location,
+        tags: tags,
+      }
+    );
+
+    // If No New POST, delete file from storage
+    if (!newPost) {
+      await deleteFile(uploadedFile.$id);
+      throw Error;
+    }
+
+    return newPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== UPLOAD FILE
+export async function uploadFile(file: File) {
+  try {
+    const uploadedFile = await storage.createFile(
+      appwriteConfig.storageId,
+      ID.unique(),
+      file
+    );
+
+    return uploadedFile;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== GET FILE URL
+export function getFilePreview(fileId: string) {
+  try {
+    const fileUrl = storage.getFilePreview(
+      appwriteConfig.storageId,
+      fileId,
+      2000,
+      2000,
+      "top",
+      100
+    );
+
+    if (!fileUrl) throw Error;
+
+    return fileUrl;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== DELETE FILE
+export async function deleteFile(fileId: string) {
+  try {
+    await storage.deleteFile(appwriteConfig.storageId, fileId);
+
+    return { status: "ok" };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== GET POPULAR POSTS (BY HIGHEST LIKE COUNT)
+export async function getRecentPosts() {
+  try {
+    const posts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.postCollectionId,
+      [Query.orderDesc("$createdAt"), Query.limit(20)]
+    );
+
+    if (!posts) throw Error;
+
+    return posts;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== LIKE / UNLIKE POST
+export async function likePost(postId: string, likesArray: string[]) {
+  try {
+    const updatedPost = await databases.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.postCollectionId,
+      postId,
+      {
+        likes: likesArray,
+      }
+    );
+    // if there is no updated post, throw error
+    if (!updatedPost) throw Error;
+
+    return updatedPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== SAVE POST
+export async function savePost(userId: string, postId: string) {
+  try {
+    const updatedPost = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.savesCollectionId,
+      ID.unique(),
+      {
+        user: userId,
+        post: postId,
+      }
+    );
+
+    if (!updatedPost) throw Error;
+
+    return updatedPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================== DELETE SAVED POST
+export async function deleteSavedPost(savedRecordId: string) {
+  try {
+    const statusCode = await databases.deleteDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.savesCollectionId,
+      savedRecordId
+    );
+
+    if (!statusCode) throw Error;
+
+    return { status: "Ok" };
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
+### IV. Modify the `queriesAndMutations.ts` file 
+
+Located in `src/lib/react-query/queriesAndMutations.ts`
+
+```ts
+// Source code: https://github.com/adrianhajdin/social_media_app
+
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  // useInfiniteQuery,
+} from "@tanstack/react-query";
+
+import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
+
+import {
+  createUserAccount,
+  signInAccount,
+  signOutAccount,
+  createPost,
+  getRecentPosts,
+  likePost,
+  savePost,
+  deleteSavedPost,
+  getCurrentUser,
+} from "@/lib/appwrite/api";
+import { INewPost, INewUser } from "@/types";
+
+// ============================================================
+// AUTH QUERIES
+// ============================================================
+
+export const useCreateUserAccount = () => {
+  return useMutation({
+    mutationFn: (user: INewUser) => createUserAccount(user),
+  });
+};
+
+export const useSignInAccount = () => {
+  return useMutation({
+    mutationFn: (user: { email: string; password: string }) =>
+      signInAccount(user),
+  });
+};
+
+export const useSignOutAccount = () => {
+  return useMutation({
+    mutationFn: signOutAccount,
+  });
+};
+// ============================================================
+// POST QUERIES
+// ============================================================
+
+export const useCreatePost = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (post: INewPost) => createPost(post),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+      });
+    },
+  });
+};
+
+export const useGetRecentPosts = () => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+    queryFn: getRecentPosts,
+  });
+};
+
+export const useLikePost = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      postId,
+      likesArray,
+    }: {
+      postId: string;
+      likesArray: string[];
+    }) => likePost(postId, likesArray),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_POSTS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+      });
+    },
+  });
+};
+
+export const useSavePost = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ userId, postId }: { userId: string; postId: string }) =>
+      savePost(userId, postId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_POSTS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+      });
+    },
+  });
+};
+
+export const useDeleteSavedPost = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (savedRecordId: string) => deleteSavedPost(savedRecordId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_POSTS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+      });
+    },
+  });
+};
+
+// ============================================================
+// USER QUERIES
+// ============================================================
+
+export const useGetCurrentUser = () => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+    queryFn: getCurrentUser,
+  });
+};
+```
+
+
 
 
 
