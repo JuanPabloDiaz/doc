@@ -1230,9 +1230,9 @@ VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
 VITE_APPWRITE_PROJECT_ID='YOUR_APPWRITE_PROJECT_ID'
 VITE_APPWRITE_STORAGE_ID='YOUR_APPWRITE_STORAGE_ID'
 VITE_APPWRITE_DATABASE_ID='YOUR_APPWRITE_DATABASE_ID'
-VITE_APPWRITE_SAVES_COLLECTIONS_ID='YOUR_APPWRITE_SAVES_COLLECTIONS_ID'
-VITE_APPWRITE_USER_COLLECTIONS_ID='YOUR_APPWRITE_USER_COLLECTIONS_ID'
-VITE_APPWRITE_POST_COLLECTIONS_ID='YOUR_APPWRITE_POST_COLLECTIONS_ID'
+VITE_APPWRITE_SAVES_COLLECTION_ID='YOUR_APPWRITE_SAVES_COLLECTION_ID'
+VITE_APPWRITE_USER_COLLECTION_ID='YOUR_APPWRITE_USER_COLLECTION_ID'
+VITE_APPWRITE_POST_COLLECTION_ID='YOUR_APPWRITE_POST_COLLECTION_ID'
 ```
 
 6. Modify the `config.ts` file (`src/lib/appwrite/config.ts`)
@@ -1245,9 +1245,9 @@ export const appwriteConfig = {
   projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
   databaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID,
   storageId: import.meta.env.VITE_APPWRITE_STORAGE_ID,
-  userCollectionId: import.meta.env.VITE_APPWRITE_USER_COLLECTIONS_ID,
-  postCollectionId: import.meta.env.VITE_APPWRITE_POST_COLLECTIONS_ID,
-  savesCollectionId: import.meta.env.VITE_APPWRITE_SAVES_COLLECTIONS_ID,
+  userCollectionId: import.meta.env.VITE_APPWRITE_USER_COLLECTION_ID,
+  postCollectionId: import.meta.env.VITE_APPWRITE_POST_COLLECTION_ID,
+  savesCollectionId: import.meta.env.VITE_APPWRITE_SAVES_COLLECTION_ID,
 };
 
 export const client = new Client();
@@ -3555,6 +3555,17 @@ export const checkIsLiked = (likeList: string[], userId: string) => {
   return likeList.includes(userId);
 };
 ```
+
+
+
+
+
+
+
+
+
+
+
 
 ## 12. Post CRUD[^tutorial-vidio-12]
 ## 13. Post Details[^tutorial-vidio-13]
