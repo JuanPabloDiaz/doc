@@ -4229,7 +4229,7 @@ This project will be deploy using:
 
 The page is up but there is an error due to the CORS policy.
 
-![](./img/deploymentError.PNG)
+![Deployment Error image](./img/deploymentError.PNG)
 
 
 ### How to Fix The CORS Policy Error?
