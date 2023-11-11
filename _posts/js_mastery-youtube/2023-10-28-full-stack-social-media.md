@@ -4214,14 +4214,38 @@ export const useGetCurrentUser = () => {
 
 ## 17. Deployment[^tutorial-vidio-17]
 
-There are multiple ways to deploy a React app in just minutes. Here is an article that explains 8 different ways to [Deploy a React App](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.).
+This project will be deploy using:
 
 [![Vercel](https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white)](https://www.Vercel.com)
 
-> Add the environment variables to Vercel by coping the code from `.env.local` 
+1. Go to their [website](https://www.Vercel.com) and login with Github.
+2. In the Vercel Dashboard, click on `Add New` > `Project`
+3. Select the Github Repo from the list
+4. Under Configure Project > **Environment Variables**
+> Add the Environment Variables to Vercel by coping the code from `.env.local` 
+5. Click `Deploy`
 
-- From a [Github Repo](https://www.youtube.com/watch?v=sauV-3_Nn60)
-- From a [new project on your machine](https://www.youtube.com/watch?v=FvsvHzcwOmQ)
+### Deployment is Done but Trow Error
+
+The page is up but there is an error due to the CORS policy.
+
+![](./img/deploymentError.PNG)
+
+
+### How to Fix The CORS Policy Error?
+
+1. Go to the `Project` in Appwrite > and add the new plataform
+- Project: `SocialMedia`
+- Add a Platform: `web` > `+`
+2. Under `Register your hostname`
+- Name: `socialmedia`
+- Hostname: `*.vercel.app`
+- Click `Next`
+- Click `Skip optional Steps`
+
+
+
+
 
 
 <!-- LICENSE -->
