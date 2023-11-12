@@ -5019,13 +5019,262 @@ export const useDeletePost = () => {
 };
 ```
 
-
-
-
-
-
-
 ## 13. Post Details[^tutorial-vidio-13]
+
+### I. Modify the `PostDetails.tsx`
+
+Located in `src/_root/Pages/PostDetails.tsx`
+
+```tsx
+import { useGetPostById } from "@/lib/react-query/queriesAndMutations";
+import { useParams, Link } from "react-router-dom";
+import PostStats from "@/components/shared/PostStats";
+import { useUserContext } from "@/context/AuthContext";
+import { formatDistanceToNowStrict } from "date-fns";
+import Loader from "@/components/shared/Loader";
+import { Button } from "@/components/ui/button";
+
+const PostDetails = () => {
+  const { id } = useParams();
+  const { user } = useUserContext();
+
+  // fetch
+  const { data: post, isPending } = useGetPostById(id);
+
+  const handleDeletePost = () => {};
+
+  return (
+    <div className="post_details-container">
+      {isPending ? (
+        <Loader />
+      ) : (
+        <div className="post_details-card">
+          <img src={post?.imageUrl} alt="post" className="post_details-img" />
+
+          <div className="post_details-info">
+            <div className="flex-between w-full">
+              <Link
+                to={`/profile/${post?.creator.$id}`}
+                className="flex items-center gap-3"
+              >
+                <img
+                  src={
+                    post?.creator.imageUrl ||
+                    "/assets/icons/profile-placeholder.svg"
+                  }
+                  alt="creator"
+                  className="w-8 h-8 lg:w-12 lg:h-12 rounded-full"
+                />
+                <div className="flex gap-1 flex-col">
+                  <p className="base-medium lg:body-bold text-light-1">
+                    {post?.creator.name}
+                  </p>
+                  <div className="flex-center gap-2 text-light-3">
+                    <p className="subtle-semibold lg:small-regular ">
+                      {formatDistanceToNowStrict(
+                        new Date(post?.$createdAt || ""),
+                        {
+                          addSuffix: true,
+                        }
+                      )}
+                    </p>
+                    •
+                    <p className="subtle-semibold lg:small-regular">
+                      {post?.location}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+
+              <div className="flex-center">
+                <Link
+                  to={`/update-post/${post?.$id}`}
+                  className={`${user.id !== post?.creator.$id && "hidden"}`} // hide edit button if user is not the creator
+                >
+                  <img
+                    src={"/assets/icons/edit.svg"}
+                    alt="edit"
+                    width={24}
+                    height={24}
+                  />
+                </Link>
+
+                <Button
+                  onClick={handleDeletePost}
+                  variant="ghost"
+                  className={`ghost_details-delete_btn ${
+                    user.id !== post?.creator.$id && "hidden" // hide delete button if user is not the creator
+                  }`}
+                >
+                  <img
+                    src={"/assets/icons/delete.svg"}
+                    alt="delete"
+                    width={24}
+                    height={24}
+                  />
+                </Button>
+              </div>
+            </div>
+
+            <hr className="border w-full border-dark-4/80" />
+
+            <div className="flex flex-col flex-1 w-full small-medium lg:base-regular">
+              <p>{post?.caption}</p>
+              <ul className="flex gap-1 mt-2">
+                {post?.tags.map((tag: string, index: string) => (
+                  <li
+                    key={`${tag}${index}`}
+                    className="text-light-3 small-regular"
+                  >
+                    #{tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="w-full">
+              <PostStats post={post} userId={user.id} />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PostDetails;
+```
+
+### II. Modify the `PostStats.tsx`
+
+Located in `src/_root/Pages/PostStats.tsx`
+
+```tsx
+import React, { useState, useEffect } from "react";
+import {
+  useLikePost,
+  useSavePost,
+  useDeleteSavedPost,
+  useGetCurrentUser,
+} from "@/lib/react-query/queriesAndMutations";
+import { Models } from "appwrite";
+import { checkIsLiked } from "@/lib/utils";
+import Loader from "./Loader";
+
+type PostStatsProps = {
+  post: Models.Document;
+  userId: string;
+};
+
+const PostStats = ({ post, userId }: PostStatsProps) => {
+  const likesList = post.likes.map((user: Models.Document) => user.$id); // list of user ids who liked the post
+  //  console.log("likesList:", likesList);
+
+  // useState:
+  const [likes, setLikes] = useState<string[]>(likesList); // list of user ids who liked the post
+  const [isSaved, setIsSaved] = useState(false); // is the post saved by the current user?
+
+  const { mutate: likePost } = useLikePost();
+  const { mutate: savePost, isPending: isSavingPost } = useSavePost();
+  const { mutate: deleteSavePost, isPending: isDeletingSaved } =
+    useDeleteSavedPost();
+
+  // who is the current user?
+  const { data: currentUser } = useGetCurrentUser();
+
+  const savedPostRecord = currentUser?.save.find(
+    (record: Models.Document) => record.post.$id === post.$id
+  );
+
+  useEffect(() => {
+    setIsSaved(savedPostRecord ? true : false); // or: setIsSaved(!!savedPostRecord);
+    // { Saved: true } => !savedPostRecord => !false = true
+    // { Saved: false } => !savedPostRecord => !true = false
+  }, [currentUser]);
+
+  const handleLikePost = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    let likesArray = [...likes];
+
+    const hasLiked = likesArray.includes(userId);
+
+    if (hasLiked) {
+      likesArray = likesArray.filter((Id) => Id !== userId);
+    } else {
+      likesArray.push(userId);
+    }
+
+    setLikes(likesArray);
+    likePost({ postId: post.$id, likesArray });
+  };
+
+  const handleSavePost = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    if (savedPostRecord) {
+      setIsSaved(false);
+      return deleteSavePost(savedPostRecord.$id);
+    }
+
+    savePost({ userId: userId, postId: post.$id });
+    setIsSaved(true);
+  };
+
+  const containerStyles = location.pathname.startsWith("/profile")
+    ? "w-full"
+    : "";
+
+  return (
+    <div
+      className={`flex justify-between items-center z-20 ${containerStyles}`}
+    >
+      <div className="flex gap-2 mr-5">
+        <img
+          src={`${
+            checkIsLiked(likes, userId)
+              ? "/assets/icons/liked.svg"
+              : "/assets/icons/like.svg"
+          }`}
+          alt={checkIsLiked(likes, userId) ? "liked" : "like"}
+          width={20}
+          height={20}
+          onClick={(e) => handleLikePost(e)}
+          className="cursor-pointer"
+        />
+
+        <p className="small-medium lg:base-medium">{likes.length}</p>
+      </div>
+
+      <div className="flex gap-2">
+        {isSavingPost || isDeletingSaved ? (
+          <Loader />
+        ) : (
+          <img
+            src={isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"}
+            alt="share"
+            width={20}
+            height={20}
+            className="cursor-pointer"
+            onClick={handleSavePost}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default PostStats;
+```
+
+
+
+
+
 ## 14. Explore Page[^tutorial-vidio-14]
 ## 15. Search Results[^tutorial-vidio-15]
 ## 16. Active Lesson[^tutorial-vidio-16]
