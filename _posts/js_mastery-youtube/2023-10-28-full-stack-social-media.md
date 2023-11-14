@@ -29,9 +29,27 @@ This project was developed using
 
 ## 1. Create a React Project using Vite[^tutorial-vidio-1]
 
+### I. Go to [Vite](https://vitejs.dev//).js and click on [Get Started](https://vitejs.dev/guide/#scaffolding-your-first-vite-project)
+
+### II. Run command:
+
 ```bash
-npm create vite@latest
+npm create vite@latest ./
 ```
+
+### III. Configure the **Vite Project**
+
+You will be asked a few questions:
+```bash
+Need to install the following packages:
+create-vite@4.4.1
+Ok to proceed? (y) no / `yes`
+Select a Framework: › `React`
+Select a variant? › `Javascript`
+```
+
+### IV. Run command:
+
 ```bash
 npm install
 npm run dev
