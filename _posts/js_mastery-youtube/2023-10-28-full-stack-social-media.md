@@ -6247,6 +6247,8 @@ const Explore = () => {
 export default Explore;
 ```
 
+> The infinite Scrolling was implemented here. Check an example provided by React Query on [Infinite Scroll](https://tanstack.com/query/v4/docs/react/examples/react/load-more-infinite-scroll).
+
 ## 16. Active Lesson[^tutorial-vidio-16]
 
 ![active lesson image](./img/activeLesson.PNG)
@@ -6315,10 +6317,13 @@ Resources list that I find helpful and would like to give credit to.
 
 - [Tailwindcss.com](https://tailwindcss.com/)
 - [Tailwind CSS Cheat Sheet](https://tailwindcomponents.com/cheatsheet/)
-- Video: [How To Use Tailwind CSS With React](https://www.youtube.com/watch?v=W99CEOBCPSI)
-- [Create a Landing Page with React.JS and tailwind CSS](https://medium.com/@chiragmehta900/create-a-responsive-landing-page-with-react-js-and-tailwind-css-fa09ffb24cb7)
-- [Pesticides extension](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi) to check the layout of the page
-- How to set [React background Image](https://www.freecodecamp.org/news/react-background-image-tutorial-how-to-set-backgroundimage-with-inline-css-style/)
+- [Query Key](https://tanstack.com/query/latest/docs/react/guides/query-keys)
+- [Query Function](https://tanstack.com/query/latest/docs/react/guides/query-functions)
+- [Infinite Query](https://tanstack.com/query/v4/docs/react/guides/infinite-queries)
+- [Appwrite Pagination](https://appwrite.io/docs/products/databases/pagination)
+- [Appwrite Queries](https://appwrite.io/docs/products/databases/queries)
+- [Appwrite List Documents](https://appwrite.io/docs/products/databases/documents#list-documents)
+- [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
 
 ## Footnotes  Time Stamps 📺
 [^tutorial-vidio-1]: [00:00:00 - Intro](https://www.youtube.com/watch?v=_W3R2VwRyF4&t=0s)
