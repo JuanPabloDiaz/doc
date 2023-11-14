@@ -9,6 +9,9 @@ image: https://camo.githubusercontent.com/20115e5e8c49fa30a940add791a2a5e5623d99
 
 Build a modern social app with a stunning UI with a native mobile feel, a special tech stack, an infinite scroll feature, and amazing performance using React JS, Appwrite, TypeScript, and more.
 
+Visit the [Figma Design](https://www.figma.com/file/TGm6gNug6PEwEbV8M0Kyll/JSM-YT---Instagram-Clone?type=design&node-id=1-113&mode=design) and see how the feature should look like
+
+
 #### [Demo]()
 
 <!-- ABOUT THE PROJECT -->
