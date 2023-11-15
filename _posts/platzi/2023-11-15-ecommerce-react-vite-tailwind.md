@@ -66,34 +66,87 @@ npm run dev
 
 - [Getting Started with Vite](https://vitejs.dev/guide/)
 
-## 2. Customize the Project (SetUp)
+## 2. SetUp by Customizing the Project
 
-### I. Delete
+This is the Starting Point Of The Project, where we will...
 
-Starting Point Of The Project: `Delete` the `src` folder and create a new one with the files `App.tsx`, `main.tsx` and edit the files [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/a537dd5495959114c2afa51767249d972c657b88)
+### I. Delete unnecesary files
 
-### II. Create
+- Delete the `assets` folder and create a new `assets` folder.
+- Delete the `public` folder and create a new `public` folder.
+- Delete the content from `src/App.css` (keep the file)
+- Delete the content from `src/index.css` (keep the file)
+- Delete the content from `src/App.jsx` (keep the file)
+- Add the code below to `src/App.jsx`:
+    ```jsx
+    import "./App.css";
+    function App() {
+    return (
+        <>
+        <div>
+        Hello World
+        </div>
+        </>
+    );
+    }
+    export default App;
+    ```
 
-Create a `global.css` file and add the tailwind classes that we will use in the project. [(more info)](https://github.com/JuanPabloDiaz/socialMedia/commit/63c49b3a8043f76157c9e84d7f3c3702e8f79fed) [(Github gist)](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+### II. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
 
-### III. Tailwind CSS
+- Run commands:
 
-[Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
+    ```bash
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    ```
 
-```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-> Note: it will show an error if I run the project at this point. the `bg-dark-1` and `font-Inter` needs to be install (step D) 
+### III. Follow the [Tailwind documentation for Vite](https://tailwindcss.com/docs/guides/vite).
 
-### IV. Modify the `tailwind.config` file
+- Modify the `tailwind.config` file
 
- by adding the info in the [Github gist](https://gist.github.com/adrianhajdin/4d2500bf5af601bbd9f4f596298d33ac)
+    ```js
+    /** @type {import('tailwindcss').Config} */
+    export default {
+    content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+    }
+    ```
 
-  - Install the necesary plugins: 
-  ```
-  npm install -D tailwindcss-animate
-  ```
+- Add the Tailwind directives to your CSS
+
+    ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
+
+- Run the project
+
+    ```bash
+    npm run dev
+    ```
+
+## 3. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
