@@ -187,7 +187,31 @@ This is the Starting Point Of The Project, where we will...
     );
     ```
 
+## 3. Routing
 
+### Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom) 
+
+```bash
+npm i react-router-dom
+```
+
+### A. Edit the `main.tsx` file:
+
+```jsx
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+```
+
+```jsx
+
+```
 
 
 
