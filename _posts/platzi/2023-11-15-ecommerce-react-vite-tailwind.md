@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "E-commerce Site with React.js, Vite.js and Tailwind CSS"
-date: 2023-04-16
+date: 2023-11-15
 categories: platzi 2023
 tags: react vite tailwind
 image: /assets/img/featured-posts/learn.jpg
@@ -60,7 +60,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Resources list that I find helpful and would like to give credit to.
 
-<p align="right">(<a href="#top">👆 Top 👆</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
