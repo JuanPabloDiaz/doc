@@ -145,7 +145,7 @@ For the [Structure](https://blog.webdevsimplified.com/2022-07/react-folder-struc
     - `MyOrders/index.jsx`
     - `NotFound/index.jsx`
     - `SignIn/index.jsx`
-> Run `rafce` and ensure the routing works and the app is not broken. (modify the `main.jsx` & `App.jsx`)
+> Run `rafce`, delete `import React from "react";` and ensure the routing works and the app is not broken. (modify the `main.jsx` & `App.jsx`)
 
 - Move and rename the `App.jsx` file >> to `src/Pages/App/index.jsx`
 - Modify the `src/Pages/App/index.jsx`
@@ -232,7 +232,7 @@ const App = () => {
 export default App;
 ```
 
-## 4. Navbar Component
+## 4. **Navbar** Component
 
 ### I. Create the `Navbar` Component
 
@@ -245,7 +245,7 @@ const Navbar = () => {
   const activeStyle = "underline text-gray-500 underline-offset-4";
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light">
+    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light top-0">
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg">
           <NavLink to="/">Shopi</NavLink>
@@ -362,9 +362,48 @@ const App = () => {
 export default App;
 ```
 
+## 4.  **Layout** Componente
 
+### I. Create the `Layout` Component
 
+Located in `src/Components/Layout/index.jsx`
 
+```jsx
+const Layout = ({ children }) => {
+  return (
+  <div className="flex flex-col items-center mt-20">
+    {children}
+  </div>;
+  )
+};
+
+export default Layout;
+```
+
+### II. Add the Layout to all my pages:
+
+- `Home/index.jsx`
+- `MyAccount/index.jsx`
+- `MyOrder/index.jsx`
+- `MyOrders/index.jsx`
+- `NotFound/index.jsx`
+- `SignIn/index.jsx`
+
+Include the following structure:
+
+```jsx
+import Layout from "../../Components/Layout";
+
+const NameHere = () => {
+  return (
+  <Layout>
+  NameHere
+  </Layout>;
+};
+
+export default NameHere;
+```
+> Replace the `NameHere` with the name of the folder.
 
 
 
