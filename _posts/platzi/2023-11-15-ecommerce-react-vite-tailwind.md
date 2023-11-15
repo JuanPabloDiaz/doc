@@ -232,14 +232,135 @@ const App = () => {
 export default App;
 ```
 
+## 4. Navbar Component
 
+### I. Create the `Navbar` Component
 
+Located in `src/Components/Navbar/index.jsx`
 
+```jsx
+import { NavLink } from "react-router-dom";
 
+const Navbar = () => {
+  const activeStyle = "underline text-gray-500 underline-offset-4";
 
+  return (
+    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light">
+      <ul className="flex items-center gap-3">
+        <li className="font-semibold text-lg">
+          <NavLink to="/">Shopi</NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            All
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/clothes"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            Clothes
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/electronics"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            Electronics
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/furnitures"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            Furnitures
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/toys"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            Toys
+          </NavLink>
+        </li>
+      </ul>
 
+      <ul className="flex items-center gap-3">
+        <li>
+          <NavLink
+            to="/my-orders"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            My Orders
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/my-account"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            My Account
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/sign-in"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            Sign In
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/card"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            Card 0
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
+export default Navbar;
+```
 
+### II. Modify the `App` file
+
+Located in `src/Pages/App/index.jsx`
+
+```jsx
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import Navbar from "../../Components/Navbar";
+import "./App.css";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+      <Navbar />
+    </BrowserRouter>
+  );
+};
+export default App;
+```
 
 
 
