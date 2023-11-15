@@ -187,7 +187,7 @@ This is the Starting Point Of The Project, where we will...
     );
     ```
 
-## 3. Routing
+## 4. Routing
 
 ### Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom) 
 
@@ -195,22 +195,39 @@ This is the Starting Point Of The Project, where we will...
 npm i react-router-dom
 ```
 
-### A. Edit the `main.tsx` file:
+### I. Edit the `App/index.jsx` file:
+Located in `src/Pages/App/index.jsx`
 
 ```jsx
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import "./App.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
-```
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
 
-```jsx
-
+const App = () => {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+};
+export default App;
 ```
 
 
