@@ -133,7 +133,59 @@ This is the Starting Point Of The Project, where we will...
     npm run dev
     ```
 
-## 3. 
+## 3. Create The Pages and Routes
+
+- Create a `Pages` folder inside the `src` folder
+- Inside `src/Pages`, create files:
+    - `Home/index.jsx`
+    - `MyAccount/index.jsx`
+    - `MyOrder/index.jsx`
+    - `MyOrders/index.jsx`
+    - `NotFound/index.jsx`
+    - `SignIn/index.jsx`
+> Run `rafce` and ensure the routing works and the app is not broken. (modify the `main.jsx` & `App.jsx`)
+
+- Move and rename the `App.jsx` file >> to `src/Pages/App/index.jsx`
+- Modify the `src/Pages/App/index.jsx`
+    ```jsx
+    import "./App.css";
+    import Home from "../Home";
+    import MyAccount from "../MyAccount";
+    import MyOrder from "../MyOrder";
+    import MyOrders from "../MyOrders";
+    import NotFound from "../NotFound";
+    import SignIn from "../SignIn";
+
+    function App() {
+    return (
+        <>
+        <div className="flex flex-col">
+            <Home />
+            <MyAccount />
+            <MyOrder />
+            <MyOrders />
+            <NotFound />
+            <SignIn />
+        </div>
+        </>
+    );
+    }
+
+    export default App;
+    ```
+- Modify the `main.jsx`
+    ```jsx
+    import React from "react";
+    import ReactDOM from "react-dom/client";
+    import App from "./Pages/App/index.jsx";
+    import "./index.css";
+
+    ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+    );
+    ```
 
 
 
