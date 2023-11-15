@@ -22,7 +22,7 @@ Build an Online Store with React.js, the most in-demand tool for frontend develo
 
 Visit the [Figma Design](https://www.figma.com/file/TGm6gNug6PEwEbV8M0Kyll/JSM-YT---Instagram-Clone?type=design&node-id=1-113&mode=design) and see how the feature should look like
 
-### [Demo]()
+### [Demo](https://shopi.jpdiaz.work)
 
 ### Built With 🔑
 
@@ -134,6 +134,8 @@ This is the Starting Point Of The Project, where we will...
     ```
 
 ## 3. Create The Pages and Routes
+
+For the [Structure](https://blog.webdevsimplified.com/2022-07/react-folder-structure/):
 
 - Create a `Pages` folder inside the `src` folder
 - Inside `src/Pages`, create files:
@@ -304,3 +306,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Resources list that I find helpful and would like to give credit to.
 
+- [How To Structure React Projects From Beginner To Advanced](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
