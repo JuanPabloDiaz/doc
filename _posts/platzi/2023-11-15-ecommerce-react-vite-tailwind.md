@@ -1089,10 +1089,116 @@ const Navbar = () => {
 export default Navbar;
 ```
 
+## 13. Functions to Open And Close the Product Detail
 
+### I. Modify the `Context` file
 
+Located in `src/Context/index.jsx`
 
+```jsx
+import { createContext, useState } from "react";
 
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  // Hook to add the info from the API to the state:
+  const [count, setCount] = useState(0);
+  // To inspect the value of count:  // console.log(count);
+  // Hook to open and close the product detail component:
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  return (
+    <AppContext.Provider
+      value={{
+        count,
+        setCount,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
+
+### II. Modify the `Product Detail` Component
+
+Located in `src/Components/ProductDetail/index.jsx`
+
+```jsx
+import { HiOutlineX } from "react-icons/hi";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+
+const ProductDetail = () => {
+  const context = useContext(AppContext);
+  return (
+    <aside
+      className={`${
+        context.isProductDetailOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      {/* top-[68px] w-[360px] h-[calc(100vh-68px)] */}
+      <div className="flex justify-between items-center ">
+        <h2 className="font-medium">Product Detail</h2>
+        <HiOutlineX onClick={() => context.closeProductDetail()} />
+      </div>
+    </aside>
+  );
+};
+
+export default ProductDetail;
+```
+
+### III. Modify the `Card` Component
+
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiPlusSm } from "react-icons/hi";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+
+  return (
+    <div
+      className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg"
+      onClick={() => context.openProductDetail()}
+    >
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {/* {data.data.category.name} is for the Platzi API (which is not very stable) */}
+          {/* {data.data.category.name}  */}
+          {/* {data.data.category} is for the Fake Store API */}
+          {data.data.category}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          src={data.data.image} // This is for the Fake Store API
+          // src={data.data.images} // This is for the Platzi API (which is not very stable)
+          alt={data.data.title}
+        />
+        <HiPlusSm
+          onClick={() => context.setCount(context.count + 1)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"
+        />
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
 
 
 
