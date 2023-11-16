@@ -133,6 +133,18 @@ This is the Starting Point Of The Project, where we will...
     npm run dev
     ```
 
+### IV. App Plugings
+
+A. Install [React Icons](https://www.npmjs.com/package/react-icons)
+
+```bash
+npm i react-icons
+```
+> In this proyect. I will use [Heroicons](https://react-icons.github.io/react-icons/icons/hi/)
+
+B. 
+
+C. 
 ## 3. Create The Pages and Routes
 
 For the [Structure](https://blog.webdevsimplified.com/2022-07/react-folder-structure/):
@@ -858,7 +870,7 @@ const ProductDetail = () => {
 export default ProductDetail;
 ```
 
-### I. Modify the `Home` Page
+### II. Modify the `Home` Page
 
 Located in `src/Pages/Home/index.jsx`
 
@@ -898,7 +910,192 @@ const Home = () => {
 export default Home;
 ```
 
-## 12. 
+## 12. Add React Icon to the Proyect
+
+> React Icon needs to be install. ([Docs](https://react-icons.github.io/react-icons/)).
+
+### I. Modify the `ProductDetail` Component
+
+Located in `src/Components/ProductDetail/index.jsx`
+
+> Add the Exit icon (x)
+
+```jsx
+import { HiOutlineX } from "react-icons/hi";
+
+const ProductDetail = () => {
+  return (
+    <aside className="flex flex-col fixed right-0 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2">
+      {/* top-[68px] w-[360px] h-[calc(100vh-68px)] */}
+      <div className="flex justify-between items-center ">
+        <h2 className="font-medium">Product Detail</h2>
+        <HiOutlineX />
+      </div>
+    </aside>
+  );
+};
+
+export default ProductDetail;
+```
+
+### II. Modify the `Card` Component
+
+Located in `src/Components/Card/index.jsx`
+
+> Add the Plus icon (+)
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiPlusSm } from "react-icons/hi";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+
+  return (
+    <div className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg">
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {data.data.category.name}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          src={data.data.image} // This is for the Fake Store API
+          // src={data.data.images} // This is for the Platzi API (which is not very stable)
+          alt={data.data.title}
+        />
+        <HiPlusSm
+          onClick={() => context.setCount(context.count + 1)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"
+        />
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
+
+### III. Modify the `Navbar` Component
+
+Located in `src/Components/Navbar/index.jsx`
+
+> Add the Shopping Cart icon (🛒)
+
+```jsx
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+
+const Navbar = () => {
+  const activeStyle = "underline text-gray-500 underline-offset-4";
+  const context = useContext(AppContext);
+
+  return (
+    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light top-0">
+      <ul className="flex items-center gap-3">
+        <li className="font-semibold text-lg">
+          <NavLink to="/">Shopi</NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            All
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/clothes"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Clothes
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/electronics"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Electronics
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/furnitures"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Furnitures
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/toys"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Toys
+          </NavLink>
+        </li>
+      </ul>
+
+      <ul className="flex items-center gap-3">
+        <li>
+          <NavLink
+            to="/my-orders"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            My Orders
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/my-account"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            My Account
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/sign-in"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Sign In
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/card"
+            className={`flex justify-center items-center ${({ isActive }) =>
+              isActive ? activeStyle : undefined}`}
+          >
+            <HiOutlineShoppingCart className="mr-1" /> {context.count}
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- OTHER PROJECTS -->
