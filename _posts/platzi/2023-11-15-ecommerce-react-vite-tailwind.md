@@ -1335,6 +1335,136 @@ const Card = (data) => {
 export default Card;
 ```
 
+## 15. Add Products to Cart
+
+### I. Modify the `Context` file
+
+Located in `src/Context/index.jsx`
+
+```jsx
+import { createContext, useState } from "react";
+
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  // Shopping Cart · Increment quantity
+  const [count, setCount] = useState(0);
+
+  // Product Detail · Open/Close
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  // Product Detail · Show product
+  const [productToShow, setProductToShow] = useState({});
+
+  // Shopping Cart · add product to cart
+  const [cartProducts, setCartProducts] = useState([]);
+
+  return (
+    <AppContext.Provider
+      value={{
+        count,
+        setCount,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        cartProducts,
+        setCartProducts,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
+
+### II. Modify the `Card` Component
+
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiPlusSm } from "react-icons/hi";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+
+  const showProduct = (productDetail) => {
+    context.openProductDetail();
+    context.setProductToShow(productDetail);
+  };
+  const addProductToCart = (productData) => {
+    context.setCount(context.count + 1);
+    context.setCartProducts([...context.cartProducts, productData]);
+    console.log(context.cartProducts);
+  };
+  return (
+    <div
+      className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg"
+      onClick={() => showProduct(data.data)}
+    >
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {data.data.category}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          src={data.data.image}
+          alt={data.data.title}
+        />
+        <HiPlusSm
+          onClick={() => addProductToCart(data.data)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"
+        />
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
