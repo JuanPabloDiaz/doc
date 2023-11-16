@@ -1200,7 +1200,140 @@ const Card = (data) => {
 export default Card;
 ```
 
+## 14. Show the Productos on `ProductDetail`
 
+### I. Modify the `Context` file
+
+Located in `src/Context/index.jsx`
+
+```jsx
+import { createContext, useState } from "react";
+
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  // Shopping Cart · Increment quantity
+  const [count, setCount] = useState(0);
+
+  // Product Detail · Open/Close
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  // Product Detail · Show product
+  const [productToShow, setProductToShow] = useState({});
+
+  return (
+    <AppContext.Provider
+      value={{
+        count,
+        setCount,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
+
+### II. Modify the `Product Detail` Component
+
+Located in `src/Components/ProductDetail/index.jsx`
+
+```jsx
+import { HiOutlineX } from "react-icons/hi";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+
+const ProductDetail = () => {
+  const context = useContext(AppContext);
+  return (
+    <aside
+      className={`${
+        context.isProductDetailOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      {/* top-[68px] w-[360px] h-[calc(100vh-68px)] */}
+      <div className="flex justify-between items-center ">
+        <h2 className="font-medium">Product Detail</h2>
+        <HiOutlineX onClick={() => context.closeProductDetail()} />
+      </div>
+      <figure className="px-6">
+        <img
+          className="w-full h-full rounded-lg"
+          src={context.productToShow.image}
+          alt={context.productToShow.title}
+        />
+      </figure>
+      <p className="flex flex-col p-6">
+        <span className="font-medium text-2xl mb-2">
+          ${context.productToShow.price}
+        </span>
+        <span className="font-medium text-md">
+          ${context.productToShow.title}
+        </span>
+        <span className="font-light text-sm">
+          ${context.productToShow.description}
+        </span>
+      </p>
+    </aside>
+  );
+};
+
+export default ProductDetail;
+```
+
+### III. Modify the `Card` Component
+
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiPlusSm } from "react-icons/hi";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+
+  const showProduct = (productDetail) => {
+    context.openProductDetail();
+    context.setProductToShow(productDetail);
+  };
+
+  return (
+    <div
+      className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg"
+      onClick={() => showProduct(data.data)}
+    >
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {data.data.category}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          src={data.data.image}
+          alt={data.data.title}
+        />
+        <HiPlusSm
+          onClick={() => context.setCount(context.count + 1)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"
+        />
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
 
 
 
