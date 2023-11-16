@@ -956,8 +956,11 @@ const Card = (data) => {
     <div className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg">
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
-          {data.data.category.name}
-        </span>
+          {/* {data.data.category.name} is for the Platzi API (which is not very stable) */}
+          {/* {data.data.category.name}  */}
+          {/* {data.data.category} is for the Fake Store API */}
+          {data.data.category}
+        </span>        </span>
         <img
           className="rounded-lg w-full h-full object-cover"
           src={data.data.image} // This is for the Fake Store API
