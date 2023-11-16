@@ -1335,7 +1335,7 @@ const Card = (data) => {
 export default Card;
 ```
 
-## 15. Add Products to Cart
+## 15. Add Products to My Order
 
 ### I. Modify the `Context` file
 
@@ -1432,8 +1432,15 @@ const Card = (data) => {
 export default Card;
 ```
 
+## 16. Create the **Side Menu** for the Shopping cart
 
+### I. Create a `CheckoutSideMenu` Component
 
+Located in `src/Components/CheckoutSideMenu/index.jsx`
+
+```jsx
+
+```
 
 
 
