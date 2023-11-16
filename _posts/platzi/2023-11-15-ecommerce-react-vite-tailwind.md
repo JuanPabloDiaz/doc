@@ -664,9 +664,177 @@ const App = () => {
 export default App;
 ```
 
-## 10.
+## 10. Cart Counter
 
+### I. Modify the `Card` Component
 
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+
+  return (
+    <div className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg">
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {data.data.category.name}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          src={data.data.image} // This is for the Fake Store API
+          // src={data.data.images} // This is for the Platzi API (which is not very stable)
+          alt={data.data.title}
+        />
+        <div
+          onClick={() => context.setCount(context.count + 1)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"
+        >
+          +
+        </div>
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
+
+### II. Modify the `Navbar` Component
+
+Located in `src/Components/Navbar/index.jsx`
+
+```jsx
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+
+const Navbar = () => {
+  const activeStyle = "underline text-gray-500 underline-offset-4";
+  const context = useContext(AppContext);
+
+  return (
+    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light top-0">
+      <ul className="flex items-center gap-3">
+        <li className="font-semibold text-lg">
+          <NavLink to="/">Shopi</NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            All
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/clothes"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Clothes
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/electronics"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Electronics
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/furnitures"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Furnitures
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/toys"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Toys
+          </NavLink>
+        </li>
+      </ul>
+
+      <ul className="flex items-center gap-3">
+        <li>
+          <NavLink
+            to="/my-orders"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            My Orders
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/my-account"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            My Account
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/sign-in"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Sign In
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/card"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            🛒 {context.count}
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+```
+
+### II. Modify the `Context` file
+
+Located in `src/Context/index.jsx`
+
+```jsx
+import { createContext, useState } from "react";
+
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  // UseState is a hook to add the info from the API to the state
+  const [count, setCount] = useState(0);
+  // To inspect the value of count:  // console.log(count);
+
+  return (
+    <AppContext.Provider
+      value={{
+        count,
+        setCount,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
 
 
 
