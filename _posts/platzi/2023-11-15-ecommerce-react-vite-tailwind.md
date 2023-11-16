@@ -454,14 +454,122 @@ const Home = () => {
 export default Home;
 ```
 
+## 7. Consume an API
 
+Consuming APIs is the process by which the application developer accesses the various APIs that are exposed by you
 
+### I. Go the API Website and read the Documentation
 
+It is Extremely important to understand how to use and consume the API we are about to use.
 
+API Examples:
+- [Platzi Fake Store API](https://fakeapi.platzi.com/) 🕮 [Docs](https://fakeapi.platzi.com/en/about/introduction/)
+- [Fake Store API](https://fakestoreapi.com/) 🕮 [Docs](https://fakestoreapi.com/docs)
+- [Rapid API](https://rapidapi.com/hub)
 
+### II. Use the API
 
+After finding what we needed to do to be able to use the **API**
 
+- Get the API URL from the section/element that we want to use
 
+Example: [Fake Store API](https://fakestoreapi.com/docs#p-all)
+```js
+// Get all products:
+fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+```
+```js
+ // Output:
+  [
+      {
+          id:1,
+          title:'...',
+          price:'...',
+          category:'...',
+          description:'...',
+          image:'...'
+      },
+      /*...*/
+      {
+          id:30,
+          title:'...',
+          price:'...',
+          category:'...',
+          description:'...',
+          image:'...'
+      }
+  ]
+```
+
+>*State* and *Effect* are use to consume an API
+
+### III. Modify the `Home` Page
+
+Located in `src/Pages/Home/index.jsx`
+
+```jsx
+import { useState, useEffect } from "react";
+import Card from "../../Components/Card";
+import Layout from "../../Components/Layout";
+
+const Home = () => {
+  // UseState is a hook to add the info from the API to the state
+  const [items, setItems] = useState(null);
+
+  // UseEffect is a hook to fetch the data from the API
+  useEffect(() => {
+    fetch("https://api.escuelajs.co/api/v1/products")
+      .then((response) => response.json())
+      .then((json) => setItems(json));
+  }, []);
+
+  return (
+    <Layout>
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {items?.map((item) => (
+          <Card key={item.id} data={item} />
+        ))}
+      </div>
+    </Layout>
+  );
+};
+
+export default Home;
+```
+
+### IV. Modify the `Card` Component
+
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+const Card = (data) => {
+  return (
+    <div className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg">
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {data.data.category.name}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          src={data.data.images}
+          alt={data.data.title}
+        />
+        <div className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2">
+          +
+        </div>
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
 
 
 
