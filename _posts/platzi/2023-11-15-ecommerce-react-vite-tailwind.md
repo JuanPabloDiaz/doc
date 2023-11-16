@@ -836,13 +836,69 @@ export const AppProvider = ({ children }) => {
 };
 ```
 
+## 11. **SideBar** Component
 
+### I. Create the `ProductDetail` Component
 
+Located in `src/Components/ProductDetail/index.jsx`
 
+```jsx
+const ProductDetail = () => {
+  return (
+    <aside className="flex flex-col fixed right-0 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2">
+      {/* top-[68px] w-[360px] h-[calc(100vh-68px)] */}
+      <div>
+        <h1>Product Detail</h1>
+        <img src="" alt="image" />
+      </div>
+    </aside>
+  );
+};
 
+export default ProductDetail;
+```
 
+### I. Modify the `Home` Page
 
+Located in `src/Pages/Home/index.jsx`
 
+- Add the `ProductDetail` Component
+
+```jsx
+import { useState, useEffect } from "react";
+import Card from "../../Components/Card";
+import Layout from "../../Components/Layout";
+import ProductDetail from "../../Components/ProductDetail";
+
+const Home = () => {
+  // UseState is a hook to add the info from the API to the state
+  const [items, setItems] = useState(null);
+
+  // UseEffect is a hook to fetch the data from the API
+  useEffect(() => {
+    // fetch("https://api.escuelajs.co/api/v1/products") // This is for the Platzi API (which is not very stable)
+    fetch("https://fakestoreapi.com/products") // This is for the Fake Store API
+      .then((response) => response.json())
+      .then((json) => setItems(json));
+  }, []);
+
+  return (
+    <Layout>
+      Home
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {items?.map((item) => (
+          <Card key={item.id} data={item} />
+        ))}
+      </div>
+      <ProductDetail />
+    </Layout>
+  );
+};
+
+export default Home;
+```
+
+## 12. 
 
 
 <!-- OTHER PROJECTS -->
