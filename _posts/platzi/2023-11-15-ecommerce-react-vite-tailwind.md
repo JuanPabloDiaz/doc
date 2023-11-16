@@ -232,7 +232,7 @@ const App = () => {
 export default App;
 ```
 
-## 4. **Navbar** Component
+## 5. **Navbar** Component
 
 ### I. Create the `Navbar` Component
 
@@ -313,7 +313,7 @@ const Navbar = () => {
           <NavLink
             to="/card"
             className={({ isActive }) => (isActive ? activeStyle : undefined)} >
-            Card 0
+            🛒 0
           </NavLink>
         </li>
       </ul>
@@ -362,7 +362,7 @@ const App = () => {
 export default App;
 ```
 
-## 5.  **Layout** Componente
+## 6.  **Layout** Componente
 
 ### I. Create the `Layout` Component
 
@@ -405,7 +405,7 @@ export default NameHere;
 ```
 > Replace the `NameHere` with the name of the folder.
 
-## 6.  **Card** Componente
+## 7. **Card** Componente
 
 ### I. Create the `Card` Component
 
@@ -454,7 +454,7 @@ const Home = () => {
 export default Home;
 ```
 
-## 7. Consume an API
+## 8. Consume an API
 
 Consuming APIs is the process by which the application developer accesses the various APIs that are exposed by you
 
@@ -473,7 +473,7 @@ After finding what we needed to do to be able to use the **API**
 
 - Get the API URL from the section/element that we want to use
 
-Example: [Fake Store API](https://fakestoreapi.com/docs#p-all)
+Example: [Fake **Store** API](https://fakestoreapi.com/docs#p-all)
 ```js
 // Get all products:
 fetch('https://fakestoreapi.com/products')
@@ -502,6 +502,35 @@ fetch('https://fakestoreapi.com/products')
       }
   ]
 ```
+Example: [Fake **Platzi** API](https://fakeapi.platzi.com/en/rest/products/)
+```js
+// Get all products:
+fetch('https://api.escuelajs.co/api/v1/products')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+```
+```js
+ // Output:
+ [
+  {
+    "id": 4,
+    "title": "Handmade Fresh Table",
+    "price": 687,
+    "description": "Andy shoes are designed to keeping in...",
+    "category": {
+      "id": 5,
+      "name": "Others",
+      "image": "https://placeimg.com/640/480/any?r=0.591926261873231"
+    },
+    "images": [
+      "https://placeimg.com/640/480/any?r=0.9178516507833767",
+      "https://placeimg.com/640/480/any?r=0.9300320592588625",
+      "https://placeimg.com/640/480/any?r=0.8807778235430017"
+    ]
+  }
+  // ...
+]
+```
 
 >*State* and *Effect* are use to consume an API
 
@@ -510,7 +539,7 @@ fetch('https://fakestoreapi.com/products')
 Located in `src/Pages/Home/index.jsx`
 
 ```jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; // Hooks to consume the API
 import Card from "../../Components/Card";
 import Layout from "../../Components/Layout";
 
@@ -571,8 +600,71 @@ const Card = (data) => {
 export default Card;
 ```
 
+## 9. [Global Context](https://legacy.reactjs.org/docs/context.html) (or use [useContext](https://react.dev/reference/react/useContext) instead)
 
+Global state with the Context API
 
+### I. Create the Context file
+
+Located in `src/Context/index.jsx`
+
+```jsx
+import { createContext } from "react";
+
+const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  return (
+  <AppContext.Provider>
+	{children}
+</AppContext.Provider>
+)
+};
+```
+
+### II. Modify the `App` file
+
+Located in `src/Pages/App/index.jsx`
+
+```jsx
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import { AppProvider } from "../../Context";
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import Navbar from "../../Components/Navbar";
+// import TestNavbar from "../../Components/TestJp/Navbar.jsx";
+import "./App.css";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+export default App;
+```
+
+## 10.
 
 
 
