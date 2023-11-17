@@ -1432,7 +1432,158 @@ const Card = (data) => {
 export default Card;
 ```
 
-## 16. Create the **Side Menu** for the Shopping cart
+## 16. Add a BackUp API
+
+> Include a Backup API in case the current API is down
+
+During the building of this proyect, the Fake APi I was using went down. I had to use another one to continuouse with the course.
+
+### I. Modify the **Home** Page
+
+Located in `src/Pages/Home/index.jsx`
+
+```jsx
+import { useState, useEffect } from "react";
+import Card from "../../Components/Card";
+import Layout from "../../Components/Layout";
+import ProductDetail from "../../Components/ProductDetail";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
+
+const Home = () => {
+  // UseState is a hook to add the info from the API to the state
+  const [items, setItems] = useState(null);
+
+  // UseEffect is a hook to fetch the data from the API
+  useEffect(() => {
+    // fetch("https://fakestoreapi.com/products") // Fake Store API
+    fetch("https://api.escuelajs.co/api/v1/products") // Platzi API
+      .then((response) => response.json())
+      .then((json) => setItems(json));
+  }, []);
+
+  return (
+    <Layout>
+      Home
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {items?.map((item) => (
+          <Card key={item.id} data={item} />
+        ))}
+      </div>
+      <ProductDetail />
+      <CheckoutSideMenu />
+    </Layout>
+  );
+};
+
+export default Home;
+```
+
+### II. Modify the **Card** Components
+
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiPlusSm } from "react-icons/hi";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+
+  const showProduct = (productDetail) => {
+    context.openProductDetail();
+    context.setProductToShow(productDetail);
+  };
+  const addProductToCart = (productData) => {
+    context.setCount(context.count + 1);
+    context.setCartProducts([...context.cartProducts, productData]);
+    console.log(context.cartProducts);
+  };
+  return (
+    <div
+      className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg"
+      onClick={() => showProduct(data.data)}
+    >
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {/* Fake Store API: */}
+          {/* {data.data.category} */}
+          {/* Platzi API: */}
+          {data.data.category.name}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          // src={data.data.image} // Fake Store API
+          src={data.data.images} // Platzi API
+          alt={data.data.title} // Fake Store API
+        />
+        <HiPlusSm
+          onClick={() => addProductToCart(data.data)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"
+        />
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
+
+### III. Modify the **ProductDetail** Components
+
+Located in `src/Components/ProductDetail/index.jsx`
+
+```jsx
+import { HiOutlineX } from "react-icons/hi";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+
+const ProductDetail = () => {
+  const context = useContext(AppContext);
+  return (
+    <aside
+      className={`${
+        context.isProductDetailOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      {/* top-[68px] w-[360px] h-[calc(100vh-68px)] */}
+      <div className="flex justify-between items-center ">
+        <h2 className="font-medium">Product Detail</h2>
+        <HiOutlineX onClick={() => context.closeProductDetail()} />
+      </div>
+      <figure className="px-6">
+        <img
+          className="w-full h-full rounded-lg"
+          alt={context.productToShow.title}
+          // Platzi API:
+          // src={context.productToShow.image}
+          // Fake Store API:
+          src={context.productToShow.images}
+        />
+      </figure>
+      <p className="flex flex-col p-6">
+        <span className="font-medium text-2xl mb-2">
+          ${context.productToShow.price}
+        </span>
+        <span className="font-medium text-md">
+          ${context.productToShow.title}
+        </span>
+        <span className="font-light text-sm">
+          ${context.productToShow.description}
+        </span>
+      </p>
+    </aside>
+  );
+};
+
+export default ProductDetail;
+```
+
+## 17. Create the **Side Menu** for the Shopping cart
 
 ### I. Create a `CheckoutSideMenu` Component
 
