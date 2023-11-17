@@ -1856,7 +1856,7 @@ const CheckoutSideMenu = () => {
 export default CheckoutSideMenu;
 ```
 
-## 19. Evitando productos duplicados en el carrito
+## 19. [Evitando productos duplicados en el carrito](https://platzi.com/comentario/4762780/)
 
 por si alguien le sirve, yo desde antes habia creado es una funcion que agrega los productos al carrito y si se vuelve a dar al mismo producto lo que hace es sumar la cantidad y el precio
 
