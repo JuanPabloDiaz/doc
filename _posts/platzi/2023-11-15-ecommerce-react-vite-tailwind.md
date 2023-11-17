@@ -1590,15 +1590,186 @@ export default ProductDetail;
 Located in `src/Components/CheckoutSideMenu/index.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { HiOutlineX } from "react-icons/hi";
+import { AppContext } from "../../Context";
 
+const CheckoutSideMenu = () => {
+  const context = useContext(AppContext);
+  return (
+    <aside
+      className={`${
+        context.isCheckoutSideMenuOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 top-20 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      <div className="flex justify-between items-center ">
+        <h2 className="font-medium">My Order</h2>
+        <div>
+          <HiOutlineX onClick={() => context.closeCheckoutSideMenu()} />
+        </div>
+      </div>
+    </aside>
+  );
+};
+
+export default CheckoutSideMenu;
 ```
 
+### II. Modify the `Context` file
 
+Located in `src/Context/index.jsx`
 
+```jsx
+import { createContext, useState } from "react";
 
+export const AppContext = createContext();
 
+export const AppProvider = ({ children }) => {
+  // Shopping Cart · Increment quantity
+  const [count, setCount] = useState(0);
 
+  // Product Detail · Open/Close
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
 
+  // Product Detail · Show product
+  const [productToShow, setProductToShow] = useState({});
+
+  // Shopping Cart · add product to cart
+  const [cartProducts, setCartProducts] = useState([]);
+
+  // Checkout Side Menu · Open/Close
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
+  return (
+    <AppContext.Provider
+      value={{
+        count,
+        setCount,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        cartProducts,
+        setCartProducts,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
+
+### III. Modify the **Card** Components
+
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiPlusSm } from "react-icons/hi";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+
+  const showProduct = (productDetail) => {
+    context.openProductDetail();
+    context.setProductToShow(productDetail);
+    context.closeCheckoutSideMenu();
+  };
+  const addProductToCart = (event, productData) => {
+    event.stopPropagation(); // Para que no se abra el modal de detalle de producto
+
+    context.setCount(context.count + 1);
+    context.setCartProducts([...context.cartProducts, productData]);
+    // console.log(context.cartProducts);
+    context.openCheckoutSideMenu();
+    context.closeProductDetail();
+  };
+  return (
+    <div
+      className="bg-amber-700/40 cursor-pointer w-56 h-60 rounded-lg"
+      onClick={() => showProduct(data.data)}
+    >
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {/* Fake Store API: */}
+          {/* {data.data.category} */}
+          {/* Platzi API: */}
+          {data.data.category.name}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-cover"
+          // src={data.data.image} // Fake Store API
+          src={data.data.images} // Platzi API
+          alt={data.data.title} // Fake Store API
+        />
+        <HiPlusSm
+          onClick={(event) => addProductToCart(event, data.data)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"
+        />
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
+
+### IV. Modify the `App` file
+
+Located in `src/Pages/App/index.jsx`
+
+```jsx
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import { AppProvider } from "../../Context";
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import Navbar from "../../Components/Navbar";
+// import TestNavbar from "../../Components/TestJp/Navbar.jsx";
+import "./App.css";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+        <CheckoutSideMenu />
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+export default App;
+```
 
 
 
