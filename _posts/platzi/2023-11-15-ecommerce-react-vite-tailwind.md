@@ -1560,9 +1560,9 @@ const ProductDetail = () => {
           className="w-full h-full rounded-lg"
           alt={context.productToShow.title}
           // Platzi API:
-          // src={context.productToShow.image}
-          // Fake Store API:
           src={context.productToShow.images}
+          // Fake Store API:
+          // src={context.productToShow.image}
         />
       </figure>
       <p className="flex flex-col p-6">
@@ -1573,7 +1573,7 @@ const ProductDetail = () => {
           ${context.productToShow.title}
         </span>
         <span className="font-light text-sm">
-          ${context.productToShow.description}
+          {context.productToShow.description}
         </span>
       </p>
     </aside>
