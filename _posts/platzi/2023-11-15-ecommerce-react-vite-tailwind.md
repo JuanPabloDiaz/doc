@@ -1771,10 +1771,90 @@ const App = () => {
 export default App;
 ```
 
+## 18. **Order Card** Component
 
+### I. Create the `OrderCard` Component
 
+Located in `src/Components/OrderCard/index.jsx`
 
+```jsx
+import { HiOutlineX } from "react-icons/hi";
+import { AppContext } from "../../Context";
+import { useContext } from "react";
 
+const OrderCard = (props) => {
+  const { title, imageUrl, price } = props;
+  const context = useContext(AppContext);
+  return (
+    <div className="flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <figure className="w-20 h-20 m-0.5">
+          <img
+            className="w-full h-full rounded-lg object-cover"
+            src={imageUrl}
+            alt={title}
+          />
+        </figure>
+        <p className="text-sm font-light">{title}</p>
+      </div>
+      <div className="flex items-center gap-2">
+        <p className="text-lg font-medium">$ {price}</p>
+
+        <>
+          <HiOutlineX
+            onClick={() => context.closeCheckoutSideMenu()}
+            className="h-6 w-6 text-black cursor-pointer"
+          />
+        </>
+      </div>
+    </div>
+  );
+};
+
+export default OrderCard;
+```
+
+### II. Modify the `CheckoutSideMenu` Component
+
+Located in `src/Components/CheckoutSideMenu/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { HiOutlineX } from "react-icons/hi";
+import { AppContext } from "../../Context";
+import OrderCard from "../OrderCard";
+
+const CheckoutSideMenu = () => {
+  const context = useContext(AppContext);
+  return (
+    <aside
+      className={`${
+        context.isCheckoutSideMenuOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 top-20 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      <div className="flex justify-between items-center p-6">
+        <h2 className="font-medium">My Order</h2>
+        <div>
+          <HiOutlineX onClick={() => context.closeCheckoutSideMenu()} />
+        </div>
+      </div>
+      <div className="px-6">
+        {context.cartProducts.map((product) => (
+          <OrderCard
+            key={product.id}
+            title={product.title}
+            // imageUrl={product.image} // Fake Store API
+            imageUrl={product.images} // Platzi API
+            price={product.price}
+          />
+        ))}
+      </div>
+    </aside>
+  );
+};
+
+export default CheckoutSideMenu;
+```
 
 
 
