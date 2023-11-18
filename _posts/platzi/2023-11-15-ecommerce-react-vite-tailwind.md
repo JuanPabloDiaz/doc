@@ -2644,9 +2644,8 @@ const MyOrders = () => {
     <Layout>
       <h1 className="">MyOrders</h1>
       {context.order.map((order, index) => (
-        <Link to={`/my-orders/${order.id}`} key={index}>
+        <Link to={`/my-orders/${index}`} key={index}>
           <OrdersCard
-            key={order.id}
             totalProducts={order.totalProducts}
             totalPrice={order.totalPrice}
           />
@@ -2673,7 +2672,13 @@ import { Link } from "react-router-dom";
 
 const MyOrder = () => {
   const context = useContext(AppContext);
-  // console.log(context.order?.slice(-1)[0]);
+
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+
+  if (index === "last") {
+    index = context.order?.length - 1;
+  }
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80">
@@ -2683,7 +2688,7 @@ const MyOrder = () => {
         <h1 className="">My Order</h1>
       </div>
       <div className="flex flex-col w-80">
-        {context.order?.slice(-1)[0].products.map((product) => (
+        {context.order?.[index]?.products.map((product) => (
           <OrderCard
             key={product.id}
             id={product.id}
@@ -2702,6 +2707,51 @@ const MyOrder = () => {
 export default MyOrder;
 ```
 
+### IV. Modify the `App` file
+
+Located in `src/Pages/App/index.jsx`
+
+```jsx
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import { AppProvider } from "../../Context";
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import Navbar from "../../Components/Navbar";
+// import TestNavbar from "../../Components/TestJp/Navbar.jsx";
+import "./App.css";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/my-orders/last", element: <MyOrder /> },
+    { path: "/my-orders/:id", element: <MyOrder /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+        <CheckoutSideMenu />
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+export default App;
+```
 
 
 
