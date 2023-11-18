@@ -2388,7 +2388,7 @@ const CheckoutSideMenu = () => {
 export default CheckoutSideMenu;
 ```
 
-## 25. Checkout Products from Cart to My orders
+## 25. Checkout Products from Cart to My Last Order
 
 ### I. Modify the `CheckoutSideMenu` Component
 
@@ -2601,9 +2601,106 @@ export default MyOrder;
 ```
 
 
+## 26. My Orders Page
 
+### I. Create the `OrdersCard` Component
 
+Located in `src/Components/OrdersCard/index.jsx`
 
+```jsx
+// import {} from "react-icons/hi";
+
+const OrdersCard = (props) => {
+  const { totalPrice, totalProducts } = props;
+  return (
+    <div className="flex justify-between items-center w-80 bg-slate-500">
+      <p className="flex-col justify-center items-center text-white text-2xl font-bold">
+        <span className="text-gray-400 text-xl p-5">date</span>
+        <span className="p-2">{totalProducts} items</span>
+        <span>${totalPrice}</span>
+      </p>
+    </div>
+  );
+};
+
+export default OrdersCard;
+```
+
+### II. Modify the `MyOrders` Page
+
+Located in `src/Pages/MyOrders/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import Layout from "../../Components/Layout";
+import { AppContext } from "../../Context";
+import OrdersCard from "../../Components/OrdersCard";
+import { Link } from "react-router-dom";
+
+const MyOrders = () => {
+  const context = useContext(AppContext);
+
+  return (
+    <Layout>
+      <h1 className="">MyOrders</h1>
+      {context.order.map((order, index) => (
+        <Link to={`/my-orders/${order.id}`} key={index}>
+          <OrdersCard
+            key={order.id}
+            totalProducts={order.totalProducts}
+            totalPrice={order.totalPrice}
+          />
+        </Link>
+      ))}
+    </Layout>
+  );
+};
+
+export default MyOrders;
+```
+
+### III. Modify the `MyOrder` Page
+
+Located in `src/Pages/MyOrder/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import Layout from "../../Components/Layout";
+import OrderCard from "../../Components/OrderCard";
+import { AppContext } from "../../Context";
+import { HiChevronLeft } from "react-icons/hi";
+import { Link } from "react-router-dom";
+
+const MyOrder = () => {
+  const context = useContext(AppContext);
+  // console.log(context.order?.slice(-1)[0]);
+  return (
+    <Layout>
+      <div className="flex items-center justify-center relative w-80">
+        <Link to="/my-orders" className="absolute left-0">
+          <HiChevronLeft className="h-4 w-4 cursor-pointer" />
+        </Link>
+        <h1 className="">My Order</h1>
+      </div>
+      <div className="flex flex-col w-80">
+        {context.order?.slice(-1)[0].products.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            // imageUrl={product.image} // Fake Store API
+            imageUrl={product.images} // Platzi API
+            price={product.price}
+            quantity={product.quantity}
+          />
+        ))}
+      </div>
+    </Layout>
+  );
+};
+
+export default MyOrder;
+```
 
 
 
