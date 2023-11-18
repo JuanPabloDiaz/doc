@@ -2542,7 +2542,7 @@ const AppRoutes = () => {
     { path: "/my-account", element: <MyAccount /> },
     { path: "/my-order", element: <MyOrder /> },
     { path: "/my-orders", element: <MyOrders /> },
-    { path: "/my-orders/last", element: <MyOrders /> },
+    { path: "/my-orders/last", element: <MyOrder /> },
     { path: "/sign-in", element: <SignIn /> },
     { path: "*", element: <NotFound /> },
   ]);
@@ -2563,9 +2563,9 @@ const App = () => {
 export default App;
 ```
 
-### IV. Modify the `MyOrders` Component
+### IV. Modify the `MyOrder` Component
 
-Located in `src/Components/MyOrders/index.jsx`
+Located in `src/Components/MyOrder/index.jsx`
 
 ```jsx
 import { useContext } from "react";
@@ -2573,12 +2573,12 @@ import Layout from "../../Components/Layout";
 import OrderCard from "../../Components/OrderCard";
 import { AppContext } from "../../Context";
 
-const MyOrders = () => {
+const MyOrder = () => {
   const context = useContext(AppContext);
   // console.log(context.order?.slice(-1)[0]);
   return (
     <Layout>
-      <h1>MyOrders</h1>
+      <h1>MyOrder</h1>
 
       <div className="flex flex-col w-80">
         {context.order?.slice(-1)[0].products.map((product) => (
@@ -2597,7 +2597,7 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default MyOrder;
 ```
 
 
