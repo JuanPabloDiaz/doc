@@ -2068,10 +2068,102 @@ npx shadcn-ui@latest add dropdown-menu
 
 - Modify the `Order`
 
+## 22. Delete an Item From the Order
 
+### I. Modify the `CheckoutSideMenu` Component
 
+Located in `src/Components/CheckoutSideMenu/index.jsx`
 
+```jsx
+import { useContext } from "react";
+import { HiOutlineX } from "react-icons/hi";
+import { AppContext } from "../../Context";
+import OrderCard from "../OrderCard";
 
+const CheckoutSideMenu = () => {
+  const context = useContext(AppContext);
+
+  const handleDeleteProduct = (id) => {
+    const newCartProducts = context.cartProducts.filter(
+      (product) => product.id !== id
+    );
+    context.setCartProducts(newCartProducts);
+    context.setCart(context.cart - 1);
+  };
+
+  return (
+    <aside
+      className={`${
+        context.isCheckoutSideMenuOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 top-20 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      <div className="flex justify-between items-center p-6">
+        <h2 className="font-medium">My Order</h2>
+        <div>
+          <HiOutlineX onClick={() => context.closeCheckoutSideMenu()} />
+        </div>
+      </div>
+      <div className="px-6 overflow-y-scroll">
+        {context.cartProducts.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            // imageUrl={product.image} // Fake Store API
+            imageUrl={product.images} // Platzi API
+            price={product.price}
+            quantity={product.quantity}
+            handleDeleteProduct={handleDeleteProduct}
+          />
+        ))}
+      </div>
+    </aside>
+  );
+};
+
+export default CheckoutSideMenu;
+```
+
+### II. Modify the `OrderCard` Component
+
+Located in `src/Components/OrderCard/index.jsx`
+
+```jsx
+import { HiOutlineTrash } from "react-icons/hi";
+import { AppContext } from "../../Context";
+import { useContext } from "react";
+
+const OrderCard = (props) => {
+  const { id, title, imageUrl, price, handleDeleteProduct } = props;
+
+  return (
+    <div className="flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <figure className="w-20 h-20 m-0.5">
+          <img
+            className="w-full h-full rounded-lg object-cover"
+            src={imageUrl}
+            alt={title}
+          />
+        </figure>
+        {/* <p className="text-sm font-light">{title}</p> */}
+      </div>
+      <div className="flex items-center gap-2">
+        <p className="text-lg font-medium">${price}</p>
+
+        <>
+          <HiOutlineTrash
+            onClick={() => handleDeleteProduct(id)}
+            className="h-6 w-6 text-black cursor-pointer"
+          />
+        </>
+      </div>
+    </div>
+  );
+};
+
+export default OrderCard;
+```
 
 
 
