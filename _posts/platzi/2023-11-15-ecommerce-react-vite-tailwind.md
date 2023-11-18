@@ -1996,15 +1996,77 @@ export default OrderCard;
 
 > I asked Copilote with this and it was pretty simple.
 
-## 21. 
+## 21. Use Components from Shadcn-Ui
 
+### SetUp [Shadcn UI](https://ui.shadcn.com/) in the Project
 
+### I. Install [Shadcn UI](https://ui.shadcn.com/docs/installation/vite) for Vite. 
 
+[Shadcn UI](https://ui.shadcn.com/). is a library with multiple designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source. it will be use to style the page.
+- Create a `jsconfig.json` file by adding the following code to the paths section:
+```bash
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
 
+- Install Node.
+  ```bash
+  npm i -D @types/node
+  ``` 
+- Overwrite the `vite.config.ts` file:
+  ```bash
+  import path from "path"
+  import react from "@vitejs/plugin-react"
+  import { defineConfig } from "vite"
 
+  export default defineConfig({
+    plugins: [react()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+  })
+  ```
+- Run the shadcn-ui init command to setup your project:
+  ```bash
+  npx shadcn-ui@latest init
+  ```
+- Configure `components.json`
 
+You will be asked a few questions to configure `components.json`:
+```bash
+Would you like to use TypeScript (recommended)? `no` / yes ... no
+Which style would you like to use? › `Default`
+Which color would you like to use as base color? › `Slate`
+Where is your global CSS file? › › `src/Pages/App/App.css`
+Do you want to use CSS variables for colors? › `no` / yes ... no
+Where is your tailwind.config.js located? › `tailwind.config.js`
+Configure the import alias for components: › `@/components`
+Configure the import alias for utils: › `@/lib/utils`
+Are you using React Server Components? › no / `yes` ... yes
+√ Write configuration to components.json. Proceed? ... yes      
+```
+This will install all the necesary components
 
+### II. Add a **Dropdown Menu** Component from [shadcn-UI](https://ui.shadcn.com/docs/components/dropdown-menu)
 
+- Install component
+```jsx
+npx shadcn-ui@latest add dropdown-menu
+```
+
+- Modify the `Order`
 
 
 
