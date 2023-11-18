@@ -2165,6 +2165,106 @@ const OrderCard = (props) => {
 export default OrderCard;
 ```
 
+## 23. Total Items and Total Price of the Order
+
+### I. Create a `Utils` file
+
+Located in `src/Utils/index.js`
+
+```js
+// **
+// * @description: This function calculates the total price of the new order
+// * @param {Array} products
+// * @return: {Number} total price
+// **
+
+export const totalPrice = (products) => {
+  let sum = 0;
+  products.forEach((product) => (sum += product.price));
+  return sum;
+};
+```
+
+### II. Modify the `CheckoutSideMenu` Component
+
+Located in `src/Components/CheckoutSideMenu/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { HiOutlineX } from "react-icons/hi";
+import { AppContext } from "../../Context";
+import OrderCard from "../OrderCard";
+import { totalPrice } from "../../Utils/index.js";
+
+const CheckoutSideMenu = () => {
+  const context = useContext(AppContext);
+
+  const handleDeleteProduct = (id) => {
+    const newCartProducts = context.cartProducts.filter(
+      (product) => product.id !== id
+    );
+    context.setCartProducts(newCartProducts);
+    context.setCart(context.cart - 1);
+  };
+
+  return (
+    <aside
+      className={`${
+        context.isCheckoutSideMenuOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 top-20 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      <div className="flex justify-between items-center p-6">
+        <h2 className="font-medium">My Order</h2>
+        <div>
+          <HiOutlineX onClick={() => context.closeCheckoutSideMenu()} />
+        </div>
+      </div>
+      <div className="px-6 overflow-y-scroll">
+        {context.cartProducts.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            // imageUrl={product.image} // Fake Store API
+            imageUrl={product.images} // Platzi API
+            price={product.price}
+            quantity={product.quantity}
+            handleDeleteProduct={handleDeleteProduct}
+          />
+        ))}
+      </div>
+      <div className="p-6">
+        <p>
+          <span className="font-medium">Total</span>
+          <span className="font-medium">
+            ${totalPrice(context.cartProducts)}
+          </span>
+        </p>
+      </div>
+    </aside>
+  );
+};
+
+export default CheckoutSideMenu;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
