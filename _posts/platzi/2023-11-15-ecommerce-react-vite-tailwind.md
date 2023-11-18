@@ -2388,6 +2388,227 @@ const CheckoutSideMenu = () => {
 export default CheckoutSideMenu;
 ```
 
+## 25. Checkout Products from Cart to My orders
+
+### I. Modify the `CheckoutSideMenu` Component
+
+Located in `src/Components/CheckoutSideMenu/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { HiOutlineX } from "react-icons/hi";
+import { AppContext } from "../../Context";
+import OrderCard from "../OrderCard";
+import { totalPrice } from "../../Utils/index.js";
+
+const CheckoutSideMenu = () => {
+  const context = useContext(AppContext);
+
+  const handleDeleteProduct = (id) => {
+    const newCartProducts = context.cartProducts.filter(
+      (product) => product.id !== id
+    );
+    context.setCartProducts(newCartProducts);
+    context.setCart(context.cart - 1);
+  };
+
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: "2021-10-10",
+      products: context.cartProducts,
+      totalProducts: context.cartProducts.length,
+      totalPrice: totalPrice(context.cartProducts),
+    };
+
+    context.setOrder([...context.order, orderToAdd]);
+    context.setCartProducts([]);
+  };
+
+  return (
+    <aside
+      className={`${
+        context.isCheckoutSideMenuOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 top-20 w-[360px] h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white/70 p-2 m-2`}
+    >
+      <div className="flex justify-between items-center p-6">
+        <h2 className="font-medium">My Order</h2>
+        <div>
+          <HiOutlineX onClick={() => context.closeCheckoutSideMenu()} />
+        </div>
+      </div>
+      <div className="px-6 overflow-y-scroll flex-1">
+        {context.cartProducts.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            // imageUrl={product.image} // Fake Store API
+            imageUrl={product.images} // Platzi API
+            price={product.price}
+            quantity={product.quantity}
+            handleDeleteProduct={handleDeleteProduct}
+          />
+        ))}
+      </div>
+      <div className="p-6">
+        <p className="flex justify-around items-center ">
+          <span className="font-light">Total</span>
+          <span className="font-medium">
+            ${totalPrice(context.cartProducts)}
+          </span>
+        </p>
+        <Link to="/my-orders/last">
+          <button
+            className="w-full bg-black text-white font-medium py-2 rounded-lg mt-2 hover:bg-gray-900/50 transition duration-300"
+            onClick={() => handleCheckout()}
+          >
+            Checkout
+          </button>
+        </Link>
+      </div>
+    </aside>
+  );
+};
+
+export default CheckoutSideMenu;
+```
+
+### II. Modify the `OrderCard` Component
+
+Located in `src/Components/OrderCard/index.jsx`
+
+```jsx
+import { HiOutlineTrash } from "react-icons/hi";
+import { AppContext } from "../../Context";
+import { useContext } from "react";
+
+const OrderCard = (props) => {
+  const { id, title, imageUrl, price, handleDeleteProduct } = props;
+  let renderTrash;
+  if (handleDeleteProduct) {
+    renderTrash = (
+      <HiOutlineTrash
+        onClick={() => handleDeleteProduct(id)}
+        className="cursor-pointer"
+      />
+    );
+  }
+  return (
+    <div className="flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <figure className="w-20 h-20 m-0.5">
+          <img
+            className="w-full h-full rounded-lg object-cover"
+            src={imageUrl}
+            alt={title}
+          />
+        </figure>
+        {/* <p className="text-sm font-light">{title}</p> */}
+      </div>
+      <div className="flex items-center gap-2">
+        <p className="text-lg font-medium">${price}</p>
+
+        <>{renderTrash} </>
+      </div>
+    </div>
+  );
+};
+
+export default OrderCard;
+```
+
+### III. Modify the `App` file
+
+Located in `src/Pages/App/index.jsx`
+
+```jsx
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import { AppProvider } from "../../Context";
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import Navbar from "../../Components/Navbar";
+// import TestNavbar from "../../Components/TestJp/Navbar.jsx";
+import "./App.css";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/my-orders/last", element: <MyOrders /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+        <CheckoutSideMenu />
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+export default App;
+```
+
+### IV. Modify the `MyOrders` Component
+
+Located in `src/Components/MyOrders/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import Layout from "../../Components/Layout";
+import OrderCard from "../../Components/OrderCard";
+import { AppContext } from "../../Context";
+
+const MyOrders = () => {
+  const context = useContext(AppContext);
+  // console.log(context.order?.slice(-1)[0]);
+  return (
+    <Layout>
+      <h1>MyOrders</h1>
+
+      <div className="flex flex-col w-80">
+        {context.order?.slice(-1)[0].products.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            // imageUrl={product.image} // Fake Store API
+            imageUrl={product.images} // Platzi API
+            price={product.price}
+            quantity={product.quantity}
+          />
+        ))}
+      </div>
+    </Layout>
+  );
+};
+
+export default MyOrders;
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
