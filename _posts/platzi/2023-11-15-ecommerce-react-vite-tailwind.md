@@ -2976,8 +2976,159 @@ export const AppProvider = ({ children }) => {
 
 ```
 
-## 29. 
+## 29. Filter by Title
 
+### I. Modify the `Home` Component
+
+Located in `src/Components/Home/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import Card from "../../Components/Card";
+import Layout from "../../Components/Layout";
+import ProductDetail from "../../Components/ProductDetail";
+import { AppContext } from "../../Context";
+
+const Home = () => {
+  const context = useContext(AppContext);
+
+  const renderView = () => {
+    if (context.searchByTitle?.length > 0) {
+      if (context.filteredItems?.length > 0) {
+        return context.filteredItems?.map((item) => (
+          <Card key={item.id} data={item} />
+        ));
+      } else {
+        return (
+          <div className="flex items-center justify-center w-full">
+            <h3 className="font-light text-md">No results found</h3>
+          </div>
+        );
+      }
+    } else {
+      return context.items?.map((item) => <Card key={item.id} data={item} />);
+    }
+  };
+
+  return (
+    <Layout>
+      <div className="flex items-center justify-center relative w-80 mb-4">
+        <h1 className="font-medium text-xl">Products</h1>
+      </div>
+      <input
+        type="text"
+        placeholder="Search a product..."
+        className="border border-black rounded-xl w-96 px-4 py-2 mb-4"
+        onChange={(event) => context.setSearchByTitle(event.target.value)}
+      />
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {renderView()}
+      </div>
+      <ProductDetail />
+    </Layout>
+  );
+};
+
+export default Home;
+```
+
+## II. Modify the `Context` file
+
+Located in `src/Context/index.jsx`
+
+```jsx 
+import { createContext, useEffect, useState } from "react";
+
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  // Shopping Cart · Increment quantity
+  const [cart, setCart] = useState(0);
+
+  // Product Detail · Open/Close
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  // Product Detail · Show product
+  const [productToShow, setProductToShow] = useState({});
+
+  // Shopping Cart · add product to cart
+  const [cartProducts, setCartProducts] = useState([]);
+
+  // Checkout Side Menu · Open/Close
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
+  // Shopping Cart · Order
+  const [order, setOrder] = useState([]);
+  // console.log(order);
+
+  // Get Products ·
+  // Fetch data from API · hook to add the info from the API to the state
+  const [items, setItems] = useState(null);
+
+  // Get Products · Search a product
+  const [searchByTitle, setSearchByTitle] = useState("");
+  // console.log(searchByTitle);
+
+  // Filter items by search
+  const [filteredItems, setFilteredItems] = useState(null);
+
+  // UseEffect is a hook to fetch the data from the API
+  useEffect(() => {
+    // fetch("https://fakestoreapi.com/products") // Fake Store API
+    fetch("https://api.escuelajs.co/api/v1/products") // Platzi API
+      .then((response) => response.json())
+      .then((json) => setItems(json));
+  }, []);
+
+  // Filter items by search
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+    );
+  };
+
+  // Filter items by search · useEffect
+  useEffect(() => {
+    if (searchByTitle) {
+      return setFilteredItems(filteredItemsByTitle(items, searchByTitle));
+    }
+  }, [items, searchByTitle]);
+  // console.log("filteredItems: ", filteredItems);
+
+  return (
+    <AppContext.Provider
+      value={{
+        items,
+        setItems,
+        cart,
+        setCart,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        cartProducts,
+        setCartProducts,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        order,
+        setOrder,
+        searchByTitle,
+        setSearchByTitle,
+        filteredItems,
+        setFilteredItems,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
 
 
 
