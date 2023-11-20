@@ -2883,7 +2883,7 @@ const Home = () => {
         type="text"
         placeholder="Search a product..."
         className="border border-black rounded-xl w-96 px-4 py-2 mb-4"
-        onChange={(event) => context.setSearch(event.target.value)}
+        onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {context.items?.map((item) => (
@@ -2908,18 +2908,6 @@ import { createContext, useEffect, useState } from "react";
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  // Get Products · Fetch data from API
-  // UseState is a hook to add the info from the API to the state
-  const [items, setItems] = useState(null);
-
-  // UseEffect is a hook to fetch the data from the API
-  useEffect(() => {
-    // fetch("https://fakestoreapi.com/products") // Fake Store API
-    fetch("https://api.escuelajs.co/api/v1/products") // Platzi API
-      .then((response) => response.json())
-      .then((json) => setItems(json));
-  }, []);
-
   // Shopping Cart · Increment quantity
   const [cart, setCart] = useState(0);
 
@@ -2941,11 +2929,22 @@ export const AppProvider = ({ children }) => {
 
   // Shopping Cart · Order
   const [order, setOrder] = useState([]);
-  // console.log(order);
+
+  // Get Products ·
+  // Fetch data from API · hook to add the info from the API to the state
+  const [items, setItems] = useState(null);
 
   // Get Products · Search a product
-  const [search, setSearch] = useState("");
-  console.log(search);
+  const [searchByTitle, setSearchByTitle] = useState("");
+  console.log(searchByTitle);
+
+  // UseEffect is a hook to fetch the data from the API
+  useEffect(() => {
+    // fetch("https://fakestoreapi.com/products") // Fake Store API
+    fetch("https://api.escuelajs.co/api/v1/products") // Platzi API
+      .then((response) => response.json())
+      .then((json) => setItems(json));
+  }, []);
 
   return (
     <AppContext.Provider
@@ -2966,14 +2965,15 @@ export const AppProvider = ({ children }) => {
         closeCheckoutSideMenu,
         order,
         setOrder,
-        search,
-        setSearch,
+        searchByTitle,
+        setSearchByTitle,
       }}
     >
       {children}
     </AppContext.Provider>
   );
 };
+
 ```
 
 ## 29. 
