@@ -3130,6 +3130,413 @@ export const AppProvider = ({ children }) => {
 };
 ```
 
+## 29. Filter by Category && Title
+
+### I. Modify the `Navbar` Component
+
+Located in `src/Components/Navbar/index.jsx`
+
+```jsx
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+
+const Navbar = () => {
+  const activeStyle = "underline text-gray-500 underline-offset-4";
+  const context = useContext(AppContext);
+
+  return (
+    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light top-0">
+      <ul className="flex items-center gap-3">
+        <li className="font-semibold text-lg">
+          <NavLink to="/" onClick={() => context.setSearchByCategory(null)}>
+            Shopi
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => context.setSearchByCategory(null)}
+          >
+            All
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/clothes"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => context.setSearchByCategory("clothes")}
+          >
+            Clothes
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/electronics"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => context.setSearchByCategory("electronics")}
+          >
+            Electronics
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/furnitures"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => context.setSearchByCategory("furnitures")}
+          >
+            Furnitures
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/toys"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => context.setSearchByCategory("toys")}
+          >
+            Toys
+          </NavLink>
+        </li>
+      </ul>
+
+      <ul className="flex items-center gap-3">
+        <li>
+          <NavLink
+            to="/my-orders"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            My Orders
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/my-account"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            My Account
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/sign-in"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Sign In
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/card"
+            className={`flex justify-center items-center ${({ isActive }) =>
+              isActive ? activeStyle : undefined}`}
+          >
+            <HiOutlineShoppingCart className="mr-1" />
+            <p>{context.cartProducts.length}</p>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+```
+
+### II. Modify the `App` file
+
+Located in `src/Pages/App/index.jsx`
+
+```jsx
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import { AppProvider } from "../../Context";
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import Navbar from "../../Components/Navbar";
+// import TestNavbar from "../../Components/TestJp/Navbar.jsx";
+import "./App.css";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/clothes", element: <Home /> },
+    { path: "/electronics", element: <Home /> },
+    { path: "/furnitures", element: <Home /> },
+    { path: "/toys", element: <Home /> },
+    { path: "/others", element: <Home /> },
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/my-orders/last", element: <MyOrder /> },
+    { path: "/my-orders/:id", element: <MyOrder /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+        <CheckoutSideMenu />
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+export default App;
+```
+
+## III. Modify the `Context` file
+
+Located in `src/Context/index.jsx`
+
+```jsx 
+import { createContext, useEffect, useState } from "react";
+
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  // Shopping Cart · Increment quantity
+  const [cart, setCart] = useState(0);
+
+  // Product Detail · Open/Close
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  // Product Detail · Show product
+  const [productToShow, setProductToShow] = useState({});
+
+  // Shopping Cart · add product to cart
+  const [cartProducts, setCartProducts] = useState([]);
+
+  // Checkout Side Menu · Open/Close
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
+  // Shopping Cart · Order
+  const [order, setOrder] = useState([]);
+  // console.log(order);
+
+  // Get Products
+  // Fetch data from API · hook to add the info from the API to the state
+  const [items, setItems] = useState(null);
+
+  // UseEffect is a hook to fetch the data from the API
+  useEffect(() => {
+    // fetch("https://fakestoreapi.com/products") // Fake Store API
+    fetch("https://api.escuelajs.co/api/v1/products") // Platzi API
+      .then((response) => response.json())
+      .then((json) => setItems(json));
+  }, []);
+
+  // Get Products · Search a Product
+  const [searchByTitle, setSearchByTitle] = useState(null);
+  // console.log(searchByTitle);
+
+  // Get Products · Filter items by category
+  const [searchByCategory, setSearchByCategory] = useState(null);
+  // console.log("searchByCategory: ", searchByCategory);
+
+  // Filter items by search
+  const [filteredItems, setFilteredItems] = useState(null);
+
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+    );
+  };
+
+  const filteredItemsByCategory = (items, searchByCategory) => {
+    return items?.filter((item) =>
+      item.category.name.toLowerCase().includes(searchByCategory.toLowerCase())
+    );
+  };
+
+  const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+    // Filter by title
+    if (searchType === "BY_TITLE") {
+      return filteredItemsByTitle(items, searchByTitle);
+    }
+
+    // Filter by category
+    if (searchType === "BY_CATEGORY") {
+      return filteredItemsByCategory(items, searchByCategory);
+    }
+
+    // Filter by title and category
+    if (searchType === "BY_TITLE_AND_CATEGORY") {
+      return filteredItemsByCategory(items, searchByCategory).filter((item) =>
+        item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+      );
+    }
+
+    // The is NO Filter, return all items
+    if (!searchType) {
+      return items;
+    }
+  };
+
+  useEffect(() => {
+    // Filter by title and category
+    if (searchByTitle && searchByCategory) {
+      return setFilteredItems(
+        filterBy(
+          "BY_TITLE_AND_CATEGORY",
+          items,
+          searchByTitle,
+          searchByCategory
+        )
+      );
+    }
+    // Filter by title
+    if (searchByTitle && !searchByCategory) {
+      return setFilteredItems(
+        filterBy("BY_TITLE", items, searchByTitle, searchByCategory)
+      );
+    }
+    // Filter by category
+    if (!searchByTitle && searchByCategory) {
+      return setFilteredItems(
+        filterBy("BY_CATEGORY", items, searchByTitle, searchByCategory)
+      );
+    }
+    // No Filter, return all items
+    if (!searchByTitle && !searchByCategory) {
+      return setFilteredItems(
+        filterBy(null, items, searchByTitle, searchByCategory)
+      );
+    }
+  }, [items, searchByTitle, searchByCategory]);
+
+  console.log("searchByCategory: ", searchByCategory);
+  console.log("searchByTitle: ", searchByTitle);
+  console.log("filteredItems: ", filteredItems);
+
+  return (
+    <AppContext.Provider
+      value={{
+        items,
+        setItems,
+        cart,
+        setCart,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        cartProducts,
+        setCartProducts,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        order,
+        setOrder,
+        filteredItems,
+        setFilteredItems,
+        searchByTitle,
+        setSearchByTitle,
+        searchByCategory,
+        setSearchByCategory,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
+
+### IV. Modify the `Home` Component
+
+Located in `src/Components/Home/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import Card from "../../Components/Card";
+import Layout from "../../Components/Layout";
+import ProductDetail from "../../Components/ProductDetail";
+import { AppContext } from "../../Context";
+
+const Home = () => {
+  const context = useContext(AppContext);
+
+  const renderView = () => {
+    // if there are items in the filteredItems array, render them
+    // Filter by title and category
+    if (context.filteredItems?.length > 0) {
+      return context.filteredItems?.map((item) => (
+        <Card key={item.id} data={item} />
+      ));
+    } else {
+      return (
+        <div className="flex flex-col gap-3 w-full">
+          <h3 className="font-light text-md">
+            No results for:
+            <span className="font-medium text-md text-gray-400 pl-2">
+              {context.searchByTitle}
+            </span>
+          </h3>
+          <p className="font-light text-sm text-gray-400/80">
+            Try searching for another product
+          </p>
+        </div>
+      );
+    }
+  };
+
+  return (
+    <Layout>
+      <div className="flex items-center justify-center relative w-80 mb-4">
+        <h1 className="font-medium text-xl">Products</h1>
+      </div>
+      <input
+        type="text"
+        placeholder="Search a product..."
+        className="border border-black rounded-xl w-96 px-4 py-2 mb-4"
+        onChange={(event) => context.setSearchByTitle(event.target.value)}
+      />
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {renderView()}
+      </div>
+      <ProductDetail />
+    </Layout>
+  );
+};
+
+export default Home;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
