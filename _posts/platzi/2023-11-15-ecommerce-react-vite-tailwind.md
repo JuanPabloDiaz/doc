@@ -3130,7 +3130,7 @@ export const AppProvider = ({ children }) => {
 };
 ```
 
-## 29. Filter by Category && Title
+## 30. Filter by Category && Title
 
 ### I. Modify the `Navbar` Component
 
@@ -3516,14 +3516,56 @@ const Home = () => {
 export default Home;
 ```
 
+## 31. Testing and debugging
 
+This is one of the most important parts.
 
+### I. Cart Count
 
+One problem I found was that the cart count was an independent number and need it to be the same as the order. I change it to the lenght of the array.
 
+- Modify the `Navbar` Component
 
+Located in `src/Components/Navbar/index.jsx`
 
+```jsx
+// Stop using the cart value:
 
+context.cart
+// And use the lenght of the products array
+context.cartProducts.length
 
+```
+
+### II. Checkout Button  
+
+After placing an order, if the user previously typed something on the screen and didn't refresh the page, that input remained saved on the `setSearchByTitle`. I had to reset it after checkout.
+
+- Check the values in `Context` file
+
+```jsx
+console.log("searchByCategory: ", searchByCategory);
+console.log("searchByTitle: ", searchByTitle);
+console.log("filteredItems: ", filteredItems);
+```
+- Modify the `CheckoutSideMenu` Component
+
+Located in `src/Components/CheckoutSideMenu/index.jsx`
+
+```jsx
+// under handleCheckout, reset Title and Category 
+
+const handleCheckout = () => {
+
+  // ... code ...
+
+  context.setSearchByTitle(null); // Reset the search
+  context.setSearchByCategory(null); // Reset the search
+
+}
+```
+
+## 32. Make the Site Responsive
 
 
 
