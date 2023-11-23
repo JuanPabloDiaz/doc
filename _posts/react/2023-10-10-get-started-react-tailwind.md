@@ -280,7 +280,7 @@ How To Make Nav Bar Styles In React Change On Scroll
 
 ### Create a Custom Hook to Track Scroll Position
 
-- Create a folder `src/hooks/useScrollPosition.js`
+#### I. Create a folder `src/hooks/useScrollPosition.js`
 
 ```js
 import { useEffect, useState } from "react";
@@ -304,7 +304,7 @@ export const useScrollPosition = () => {
 };
 ```
 
-- Use the Custom Hook on the **Navbar** Component
+#### II. Use the Custom Hook on the **Navbar** Component
 #### [Example 1](https://github.com/JuanPabloDiaz/brothers-landingPage/blob/main/src/hooks/useScrollPosition.js):
 
 ```js
