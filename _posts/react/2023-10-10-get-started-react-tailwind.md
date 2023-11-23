@@ -9,6 +9,17 @@ image: /assets/img/featured-posts/react_tailwind.jpg
 
 This is an step by step article on how to create, setup and deploy a simple React App using React.js, and Tailwind CSS.
 
+<!-- BUILD WITH -->
+
+### Built With 🔑
+
+This project was developed using
+
+[![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
+[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
+
+<!-- RELATED PROJECT -->
+
 ### Projects
 
 | Project | Github | Demo | Other |
@@ -18,12 +29,10 @@ This is an step by step article on how to create, setup and deploy a simple Reac
 <!-- | Landing |  [Repo]() | [Description]() | [VideoTutorial, Figma]() | -->
 
 
-<!-- ABOUT THE PROJECT -->
 
-This project was developed using
+<!-- CONTENT -->
 
-[![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)](https://www.w3schools.com/whatis/whatis_react.asp)
-[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
+# Content 🚦
 
 ## 1. Create a React Project
 
