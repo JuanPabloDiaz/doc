@@ -26,7 +26,9 @@ This project was developed using
 | :--- | :--- | :---- | :--- |
 | Data Landing | [Repo]() | [Landing Page](https://data-landing-page-react-tailwind.vercel.app/) | [Youtube Tutorial](https://www.youtube.com/watch?v=ZU-drSVodBw&t=590s) |
 | Brothers Landing |  [Repo](https://github.com/JuanPabloDiaz/brothers-landingPage) | [Responsive LP](https://landing-page-brothers.vercel.app/) | [Figma](https://www.figma.com/file/iJhszXggNzjpQKkF4pm840/IT-WEBSITE-(Community)?type=design&node-id=0-1&mode=design&t=v8dq6vfVKJpCJclk-0) |
-<!-- | Landing |  [Repo]() | [Description]() | [VideoTutorial, Figma]() | -->
+
+
+<!--- | Landing |  [Repo]() | [Description]() | [VideoTutorial, Figma]() | --->
 
 
 
@@ -144,12 +146,6 @@ npm install framer-motion
    }
    ```
 
-   Example
-
-   ```js
-
-   ```
-
    [Work around](https://create-react-app.dev/docs/title-and-meta-tags/)
 
 For the Icon App:
@@ -219,7 +215,7 @@ const MyComponent = () => {
 Install [React Scroll](https://www.npmjs.com/package/react-scroll#-react-scroll) to the project
 
 ```bash
-$ npm install react-scroll
+npm install react-scroll
 ```
 
 - Add `react-scroll` to the fileComponent.jsx:
@@ -249,35 +245,145 @@ Example
 ### Prettier Plugin Tailwind
 
 1. make sure to have Prettier already install in the PROJECT
+  ```bash
+  npm i --save-dev prettier
+  # or
+  npm install -D prettier`
+  ```
 
-`npm i --save-dev prettier
+> To save it with the exact version:
 
-or
-
-npm install -D prettier`
-
-to save it with the exact version:
-`npm i --save-dev --save-exact prettier`
+  ```bash
+  npm i --save-dev --save-exact prettier
+  ```
 
 2. install:
 
-`npm i prettier-plugin-tailwind
-
-or
-
-npm i prettier-plugin-tailwindcss`
+  ```bash
+  npm i prettier-plugin-tailwind
+  # or
+  npm i prettier-plugin-tailwindcss
+  ```
 
 - [NPM site](https://www.npmjs.com/package/prettier-plugin-tailwind)
 - [other](https://www.youtube.com/shorts/MD_-XzdX0oo)
 [Video](https://www.youtube.com/watch?v=_CntOc4hBcg)
 
- Tutorial To Change NavBar On Scroll https://www.youtube.com/watch?v=UvWMlNZuQTc&t=237s
- Add Effects to NavBar: https://www.youtube.com/watch?v=z9sHOXheE_M
+### [Tutorial To Change Style of NavBar On Scroll](https://www.youtube.com/watch?v=UvWMlNZuQTc&t=237s)
+
+#### [Github repo: ](https://github.com/hunterbecton/react-scroll-position-hook?sale_id=-cWc4TIddroQ9rOhoqHwAQ%3D%3D&product_id=AilaYnpTaxB81rZn9YvETQ%3D%3D&product_permalink=zolij)React-scroll-position-hook
+
+How To Make Nav Bar Styles In React Change On Scroll
+
+- Add the **sticky** or **fixed** tailwind class to make the navbar stay on screen when scrolling.
+- Add a **shadow** to separate navbar from the rest.
+
+### Create a Custom Hook to Track Scroll Position
+
+- Create a folder `src/hooks/useScrollPosition.js`
+```js
+import { useEffect, useState } from "react";
+
+export const useScrollPosition = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      setScrollPosition(window.pageYOffset);
+    };
+
+    window.addEventListener("scroll", updatePosition);
+
+    updatePosition();
+
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+
+  return scrollPosition;
+};
+```
+
+- Use the Custom Hook on the **Navbar** Component
+#### [Example 1](https://github.com/JuanPabloDiaz/brothers-landingPage/blob/main/src/hooks/useScrollPosition.js):
+
+```js
+// ...your code
+
+import { useScrollPosition } from "../hooks";
+import { useState } from "react";
+
+// ...your code
+
+function classNamesNavBarScroll(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+export default function navbar() {
+const scrollPosition = useScrollPosition();
+  // console.log(scrollPosition);
+
+  return (
+    <header
+            className={classNamesNavBarScroll(
+              scrollPosition > 0
+                ? "md:shadow md:bg-[#132577] md:-translate-y-6 md:h-auto"
+                : "md:shadow-none md:bg-none md:translate-y-0 md:h-none",
+              "absolute md:fixed top-0 inset-x-0 z-40 md:transition-shadow-xl md:shadow-black md:transition-color duration-500 md:-translate-y-6 md:h-20 lg:h-24"
+            )}
+          >
+
+    { /* ...your code */ }
+
+    </header>
+    // ...your code
+  );
+}
+```
+
+#### [Example 2](https://github.com/hunterbecton/react-scroll-position-hook/blob/main/components/Nav.jsx):
+
+```js
+// ...your code
+
+import { useScrollPosition } from "../hooks";
+import { useState } from "react";
+
+// ...your code
+
+function classNamesNavBarScroll(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+export default function navbar() {
+const scrollPosition = useScrollPosition();
+  // console.log(scrollPosition);
+
+  return (
+    <header
+      className={classNamesNavBarScroll(
+        scrollPosition > 0 ? 'shadow' : 'shadow-none',
+        'transition-shadow sticky top-0 bg-white z-20'
+      )}
+    >
+
+    { /* ...your code */ }
+
+    </header>
+    // ...your code
+  );
+}
+```
+
+
+
+### [Tutorial to Add Effects to NavBar](https://www.youtube.com/watch?v=z9sHOXheE_M)
+
+
 
 ## 5. Run the App in Localhost
 
 ```bash
 npm start
+# Or
+npm run dev
 ```
 
 Go to `localhost:3000`
