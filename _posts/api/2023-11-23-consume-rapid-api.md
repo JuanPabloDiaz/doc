@@ -4,7 +4,7 @@ title: "How to Consume Rapid API's"
 date: 2023-11-23
 categories: react api
 tags: api react tailwindcss responsive
-image: /assets/img/featured-posts/react_tailwind.jpg
+# image: /assets/img/featured-posts/react_tailwind.jpg
 ---
 
 This is an step by step article on how to Consume a Rapid API.
@@ -37,38 +37,94 @@ This project was developed using
 
 ## 1. Create the Rapid-API React Project
 
+Follow the steps on this previous project to [Create a React Project using Vite](https://docs.jpdiaz.dev/posts/ecommerce-react-vite-tailwind/)(recommended)
+
 ```bash
-npx create-react-app react-rapid-api-1
+npm create vite@latest react-rapid-api-1
 ```
 
-- [Getting Started with React.js](https://www.w3schools.com/react/react_getstarted.asp)
+Or, you can also do it with **Create-React-App** (Vite's performance is better)
 
-## 2. Modify the React App
+## 2. SetUp by Customizing the Project
 
-A. `Delete` the `App.css` and the `logo.svg`
-  - Warning: I will get some error if I start the server (thats ok)
+Continue following the steps 1 and 2 on this previous project to [Create a React Project using Vite](https://docs.jpdiaz.dev/posts/ecommerce-react-vite-tailwind/) and SetUp the Project by deleting unnecesary files, installing Tailwind CSS, and add App Plugings.
 
-B. Edit `App.js` by deleting the `<header>`, delete the `import App.css, import logo and add import React from react;` (Try changing the HTML content and save the file.)
+## 3. Find an API to Consume at [Rapid API](https://rapidapi.com/)
 
-C. Create components:
+### I. Login to [Rapid API](https://rapidapi.com/).
 
-- Create the `components` folder inside `src`
-- Create the `FileComponents.jsx` inside the `components` folder.
+### II. Add *New App* on [Rapid API](https://rapidapi.com/developer/apps/new-app).
 
-## 3. [Install Tailwind CSS](https://tailwindcss.com/docs/guides/create-react-app)
+- APPs > Add New App > give it a name > add app
 
+examle: APPs > Add New App > 'Movies' > add app
 
+### III. Search for Free API's
 
+For this tutorial, we Will be using [IMDb](https://rapidapi.com/apidojo/api/imdb8/)
 
+Some other Free and cool API's: 
+- [Spotify](https://rapidapi.com/Glavier/api/spotify23/)
+- [Call of Duty](https://rapidapi.com/sohamp2812/api/call-of-duty8/)
 
+### IV. Get Information From the [IMDb](https://rapidapi.com/apidojo/api/imdb8/) API
 
+- Go to the **Endpoints** tab in [IMDb](https://rapidapi.com/apidojo/api/imdb8/)
+- Click on **Subscribe to Test** > select the *free* option.
+- Select the **RapidAPI App** previously created above. (Movies)
+- From the dropdown menu on the right, select **(Javascript) > fetch**
+- Copy the code:
+  ```js
+  const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a',
+      'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+    }
+  };
 
+  try {
+    const response = await fetch(url, options);
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+  ```
+- Paste it on `App.js`
+  ```js
+  import "./App.css";
 
+  function App() {
+    // API That I Used: https://rapidapi.com/apidojo/api/imdb8
+  const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a',
+      'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+    }
+  };
 
+  try {
+    const response = await fetch(url, options);
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }  
+    return (
+      <>
+        <div className="flex justify-center items-center h-screen w-screen">
+          <h1 className="text-7xl">Rapid API</h1>
+        </div>
+      </>
+    );
+  }
 
-
-
-
+  export default App;
+  ```
 
 ## 6. Deployment
 
