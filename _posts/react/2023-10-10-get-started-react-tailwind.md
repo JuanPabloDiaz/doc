@@ -9,7 +9,14 @@ image: /assets/img/featured-posts/react_tailwind.jpg
 
 This is an step by step article on how to create, setup and deploy a simple React App using React.js, and Tailwind CSS.
 
-#### [Demo]()
+### Projects
+
+| Project | Github | Demo | Other |
+| :--- | :--- | :---- | :--- |
+| Data Landing | [Repo]() | [Landing Page](https://data-landing-page-react-tailwind.vercel.app/) | [Youtube Tutorial](https://www.youtube.com/watch?v=ZU-drSVodBw&t=590s) |
+| Brothers Landing |  [Repo](https://github.com/JuanPabloDiaz/brothers-landingPage) | [Responsive LP](https://landing-page-brothers.vercel.app/) | [Figma](https://www.figma.com/file/iJhszXggNzjpQKkF4pm840/IT-WEBSITE-(Community)?type=design&node-id=0-1&mode=design&t=v8dq6vfVKJpCJclk-0) |
+<!-- | Landing |  [Repo]() | [Description]() | [VideoTutorial, Figma]() | -->
+
 
 <!-- ABOUT THE PROJECT -->
 
