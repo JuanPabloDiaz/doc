@@ -69,10 +69,14 @@ Some other Free and cool API's:
 
 ### IV. Get Information From the [IMDb](https://rapidapi.com/apidojo/api/imdb8/) API
 
-- Go to the **Endpoints** tab in [IMDb](https://rapidapi.com/apidojo/api/imdb8/)
-- Click on **Subscribe to Test** > select the *free* option.
-- Select the **RapidAPI App** previously created above. (Movies)
-- From the dropdown menu on the right, select **(Javascript) > fetch**
+A. Go to the **Endpoints** tab in [IMDb](https://rapidapi.com/apidojo/api/imdb8/)
+
+B. Click on **Subscribe to Test** > select the *free* option.
+
+C. Select the **RapidAPI App** previously created above. (Movies)
+
+D. From the dropdown menu on the right, select **(Javascript) > fetch**
+ 
 - Copy the code:
   ```js
   const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr';
@@ -92,11 +96,15 @@ Some other Free and cool API's:
     console.error(error);
   }
   ```
-- Paste it on `App.js`
+
+## 4. Consume the API
+
+ ### I. Paste the code above on `App.js`
   ```js
   import "./App.css";
 
-  function App() {
+  async function App() { // async Function
+
     // API That I Used: https://rapidapi.com/apidojo/api/imdb8
   const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr';
   const options = {
@@ -125,6 +133,115 @@ Some other Free and cool API's:
 
   export default App;
   ```
+
+- Got an Error:
+> Make sure to add an `async` function to `App` function. this is because the code has an `await` keyword.
+
+### II. Modify the `App.js`
+
+```js
+import React, { useEffect } from 'react';
+import "./App.css";
+
+function App() {
+  // API That I Used: https://rapidapi.com/apidojo/api/imdb8
+  const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a',
+      'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => { // async function
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <div className="flex justify-center items-center h-screen w-screen">
+        <h1 className="text-7xl">Rapid API</h1>
+      </div>
+    </>
+  );
+}
+
+export default App;
+```
+
+## 5. Style `App.js` using Tailwind CSS
+
+```js
+import React, { useEffect } from "react";
+import "./App.css";
+
+function App() {
+  const url = "https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr";
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a",
+      "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+    },
+  };
+
+  useEffect(() => {
+    // async function:
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Rapid API</h1>
+        </div>
+        <form className="w-full max-w-md">
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Search for a movie..."
+            value={endPoint}
+          />
+          <button
+            className="mt-4 bg-blue-500 hover:bg-blue-700 transition duration-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </>
+  );
+}
+
+export default App;
+```
+
+
+
+
 
 ## 6. Deployment
 
