@@ -239,11 +239,97 @@ function App() {
 export default App;
 ```
 
+## 6. Create **useState** Hooks
+
+Modify the `App.js` file. Read the comments
+
+```js
+import React, { useEffect, useState } from "react";
+import "./App.css";
+
+function App() {
+  const url = "https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr";
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a",
+      "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+    },
+  };
+  // First element from useState is the state itself (""). The initial value, in this case an empty string
+  // Second is the function that will update the state (setEndPoint). The "Changer" function
+  const [endPoint, setEndPoint] = useState("");
+  // "Changer" function: it change the state of the endPoint variable by taking the value from the input
+  const onChangeHandler = (event) => {
+    setEndPoint(event.target.value);
+  };
+
+  // "Submit" function: it prevent the default behaviour of the form. It won't refresh the page
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log("submit");
+  };
+
+  // container is an empty array. setContainer is the function that will update the state of the container
+  const [container, setContainer] = useState([]);
+
+  useEffect(() => {
+    // async function:
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        // console.log(result);    console.log(result.d);
+        setContainer(result.d); // setContainer is now an array of objects that contains the data from the API
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Rapid API</h1>
+        </div>
+        <form className="w-full max-w-md" onSubmit={onSubmitHandler}>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Search for a movie..."
+            value={endPoint}
+            onChange={onChangeHandler}
+          />
+          <button
+            className="mt-4 bg-blue-500 hover:bg-blue-700 transition duration-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </>
+  );
+}
+
+export default App;
+```
 
 
 
 
-## 6. Deployment
+
+
+
+
+
+
+
+
+Deployment
 
 There are multiple ways to deploy a React app in just minutes. Here is an article that explains 8 different ways to [Deploy a React App](https://blog.logrocket.com/8-ways-deploy-react-app-free/#:~:text=For%20your%20React%20app%2C%20you,whenever%20you%20push%20your%20changes.).
 
