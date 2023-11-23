@@ -305,7 +305,7 @@ export const useScrollPosition = () => {
 ```
 
 #### II. Use the Custom Hook on the **Navbar** Component
-#### [Example 1](https://github.com/JuanPabloDiaz/brothers-landingPage/blob/main/src/hooks/useScrollPosition.js):
+##### [Example 1](https://github.com/JuanPabloDiaz/brothers-landingPage/blob/main/src/hooks/useScrollPosition.js):
 
 ```js
 // ...your code
@@ -340,7 +340,7 @@ const scrollPosition = useScrollPosition();
 }
 ```
 
-#### [Example 2](https://github.com/hunterbecton/react-scroll-position-hook/blob/main/components/Nav.jsx):
+##### [Example 2](https://github.com/hunterbecton/react-scroll-position-hook/blob/main/components/Nav.jsx):
 
 ```js
 // ...your code
