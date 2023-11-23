@@ -271,7 +271,7 @@ Example
 
 ### [Tutorial To Change Style of NavBar On Scroll](https://www.youtube.com/watch?v=UvWMlNZuQTc&t=237s)
 
-#### [Github repo: ](https://github.com/hunterbecton/react-scroll-position-hook?sale_id=-cWc4TIddroQ9rOhoqHwAQ%3D%3D&product_id=AilaYnpTaxB81rZn9YvETQ%3D%3D&product_permalink=zolij)React-scroll-position-hook
+#### [Github Repo: ](https://github.com/hunterbecton/react-scroll-position-hook?sale_id=-cWc4TIddroQ9rOhoqHwAQ%3D%3D&product_id=AilaYnpTaxB81rZn9YvETQ%3D%3D&product_permalink=zolij)React-scroll-position-hook
 
 How To Make Nav Bar Styles In React Change On Scroll
 
@@ -281,6 +281,7 @@ How To Make Nav Bar Styles In React Change On Scroll
 ### Create a Custom Hook to Track Scroll Position
 
 - Create a folder `src/hooks/useScrollPosition.js`
+
 ```js
 import { useEffect, useState } from "react";
 
