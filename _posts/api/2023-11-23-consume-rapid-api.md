@@ -67,7 +67,7 @@ Some other Free and cool API's:
 - [Spotify](https://rapidapi.com/Glavier/api/spotify23/)
 - [Call of Duty](https://rapidapi.com/sohamp2812/api/call-of-duty8/)
 
-### IV. Get Information From the [IMDb](https://rapidapi.com/apidojo/api/imdb8/) API
+### IV. Get Endpoint Information From the [IMDb](https://rapidapi.com/apidojo/api/imdb8/) API
 
 A. Go to the **Endpoints** tab in [IMDb](https://rapidapi.com/apidojo/api/imdb8/)
 
@@ -97,9 +97,11 @@ D. From the dropdown menu on the right, select **(Javascript) > fetch**
   }
   ```
 
+> Notice that I am calling a variable: `VITE_RAPID_API_KEY`. This is where its store my actual API Key. For security reasons, You don't want to expose your API key. This `VITE_RAPID_API_KEY` it's commonly saved on a `.env` file.
+
 ## 4. Consume the API
 
- ### I. Paste the code above on `App.js`
+### I. Paste the code above on `App.js`
   ```js
   import "./App.css";
 
@@ -180,7 +182,13 @@ function App() {
 export default App;
 ```
 
-## 5. Style `App.js` using Tailwind CSS
+## 5. How to Hide Your API Keys SAFELY in React
+
+- Follow this [Tutorial](https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s) from Ania.
+
+
+
+## 6. Style `App.js` using Tailwind CSS
 
 ```js
 import React, { useEffect } from "react";
@@ -239,7 +247,7 @@ function App() {
 export default App;
 ```
 
-## 6. Create **useState** Hooks
+## 7. Create **useState** Hooks
 
 Modify the `App.js` file. Read the comments
 
@@ -318,7 +326,7 @@ function App() {
 export default App;
 ```
 
-## 7. Search for Movies
+## 8. Search for Movies
 
 ### I. Modify the URL
 
@@ -347,7 +355,7 @@ The `App.js` should look like this:
 
 ```
 
-## 8. Display or Render data from the API
+## 9. Display or Render data from the API
 
 Modify the `App.js`
 
@@ -355,7 +363,7 @@ Modify the `App.js`
 
 ```
 
-## 9. Render Data when clicking Submit
+## 10. Render Data when clicking Submit
 
 The app has an issue, it is rendering everytime you type a letter in the input.
 Instead. We want to render when clicking on Search button.
