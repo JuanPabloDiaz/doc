@@ -186,9 +186,16 @@ export default App;
 
 - Follow this [Tutorial](https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s) from Ania.
 
-### Create an environment file: `.env` file
+### I. Create an environment file: `.env` file
 
 You can create an `.env` file in the application's root directory that contains key/value pairs defining the project's required environment variables. The dotenv library reads this .env file and appends it to process.env.
+
+- For [Vite React app](#Vite_title)
+- For [react-create-app](#How do I create an .env file?)
+
+#### [Vite_title]()
+
+
 
 #### [How do I create an .env file?](https://gist.github.com/Haugen/f6d685f18b4bd8a3cf5bcf6272577c5b)
 
@@ -201,7 +208,7 @@ Here is a simple way to use environment variables in your `react-create-app` pro
 
 Additinal notes:
 
-- Since we commonly store secrets in .env you probably want to add it to .gitignore.
+- Since we commonly store secrets in `.env` you probably want to add it to `.gitignore`.
 - You don't need to install the `dotenv` package or anything else for this to work.
 
 
