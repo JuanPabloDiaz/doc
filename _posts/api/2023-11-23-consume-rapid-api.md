@@ -83,7 +83,7 @@ D. From the dropdown menu on the right, select **(Javascript) > fetch**
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a',
+      'X-RapidAPI-Key': 'VITE_RAPID_API_KEY',
       'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
     }
   };
@@ -110,7 +110,7 @@ D. From the dropdown menu on the right, select **(Javascript) > fetch**
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a',
+      'X-RapidAPI-Key': 'VITE_RAPID_API_KEY',
       'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
     }
   };
@@ -149,7 +149,7 @@ function App() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a',
+      'X-RapidAPI-Key': 'VITE_RAPID_API_KEY',
       'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
     }
   };
@@ -191,7 +191,7 @@ function App() {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a",
+      "X-RapidAPI-Key": "VITE_RAPID_API_KEY",
       "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
     },
   };
@@ -252,7 +252,7 @@ function App() {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "db2542358dmsh9f6d5b036b73a56p1ad6dbjsnd4d4bab6da8a",
+      "X-RapidAPI-Key": "VITE_RAPID_API_KEY",
       "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
     },
   };
@@ -318,11 +318,51 @@ function App() {
 export default App;
 ```
 
+## 7. Search for Movies
 
+### I. Modify the URL
 
+In the API's URL, replace the information after the `q=` for `+${endPoint}`
 
+in other words:
+```js
+// change:
+  const url = "https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr";
 
+// for:
+  const url = `https://imdb8.p.rapidapi.com/auto-complete?q=+${endPoint}`;
+```
 
+> I also had to organize the code by moving the use states to the top since its trying to use variables that havent been declared and it was giving me an error (*Uncaught ReferenceError: Cannot access 'endPoint' before initialization at App*).
+
+> Note: The error message is indicating that you're trying to access the endPoint variable before it's been initialized. This is happening because you're using endPoint in the url constant declaration, which is above the useState hook where endPoint is initialized.
+
+### II. Move the URL inside the useEffect 
+
+This way, the url is updated every time endPoint changes.
+
+The `App.js` should look like this:
+
+```js
+
+```
+
+## 8. Display or Render data from the API
+
+Modify the `App.js`
+
+```js
+
+```
+
+## 9. Render Data when clicking Submit
+
+The app has an issue, it is rendering everytime you type a letter in the input.
+Instead. We want to render when clicking on Search button.
+
+```js
+
+```
 
 
 
