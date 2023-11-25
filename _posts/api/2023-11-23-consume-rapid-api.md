@@ -190,12 +190,26 @@ export default App;
 
 You can create an `.env` file in the application's root directory that contains key/value pairs defining the project's required environment variables. The dotenv library reads this .env file and appends it to process.env.
 
-- For [Vite React app](#Vite_title)
+- For [Vite React app](#Env Variables in Vite)
 - For [react-create-app](#How do I create an .env file?)
 
-#### [Vite_title]()
+#### [Env Variables in Vite](https://vitejs.dev/guide/env-and-mode)
 
+If you're using Vite, you can access environment variables in your project using `import.meta.env`
 
+Vite has a special handling for environment variables. If you want to expose environment variables to your Vite application, they need to be prefixed with `VITE_`
+
+1. Create a new file named `.env` in the root of your project.
+2. In your new `.env` file, add a new key=value pair. For security reasons, you must prepend your key with `VITE_`, for example `VITE_API_KEY=abcdefg123456789`
+3. Access it in your code like this: `"X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY`
+4. Restart your server development server. In order for React to find and register your newly created environment variable you must restart your server. Do this every time you add or change a variable.
+> Remember, you should not commit your .env file to the version control system. It's a good practice to create a .env.example file with all the environment variables used in the application, without the values.
+
+Next steps:
+
+- Check if the environment variable is correctly set in your .env file.
+- Make sure to restart your development server after setting the new variables.
+- Try to log the environment variable to see if it's correctly loaded.
 
 #### [How do I create an .env file?](https://gist.github.com/Haugen/f6d685f18b4bd8a3cf5bcf6272577c5b)
 
@@ -203,8 +217,9 @@ Here is a simple way to use environment variables in your `react-create-app` pro
 
 1. Create a new file named `.env` in the root of your project.
 2. In your new `.env` file, add a new key=value pair. For security reasons, you must prepend your key with `REACT_APP`, for example `REACT_APP_API_KEY=abcdefg123456789`
-3. Restart your server development server. In order for React to find and register your newly created environment variable you must restart your server. Do this every time you add or change a variable.
-4. Your new variables will now be available throughout your React app via the global `process.env` object. In our case, we could get our API key using `process.env.REACT_APP_API_KEY`.
+3. Access it in your code like this: `"X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY`
+4. Restart your server development server. In order for React to find and register your newly created environment variable you must restart your server. Do this every time you add or change a variable.
+5. Your new variables will now be available throughout your React app via the global `process.env` object. In our case, we could get our API key using `process.env.REACT_APP_API_KEY`.
 
 Additinal notes:
 
