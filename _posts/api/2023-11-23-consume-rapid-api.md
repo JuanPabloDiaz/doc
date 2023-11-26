@@ -282,7 +282,7 @@ app.listen(PORT, () => {
 
 > Got an Error? Use code from `step F` instead.
 
-B. Install the dependencies: `express cors node-fetch dotenv`
+B. Install the dependencies: [express](https://www.npmjs.com/package/express) [cors](https://www.npmjs.com/package/cors) [node-fetch](https://www.npmjs.com/package/node-fetch) [dotenv](https://www.npmjs.com/package/dotenv)
 
 ```bash
 npm install express cors node-fetch dotenv
@@ -334,7 +334,7 @@ It should look like this...
 }
 ```
 
-D. Install `nodemon`
+D. Install [nodemon](https://www.npmjs.com/package/nodemon)
 
 ```bash
 npm install nodemon
@@ -612,3 +612,11 @@ For more information regarding my completed courses and certificates, please cli
 
 Resources list that I find helpful and would like to give credit to.
 
+- [Rapid API](https://rapidapi.com/developer/apps/new-app).
+- [IMDb](https://rapidapi.com/apidojo/api/imdb8/)
+- [Tutorial](https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s)
+- [express](https://www.npmjs.com/package/express)
+- [cors](https://www.npmjs.com/package/cors)
+- [node-fetch](https://www.npmjs.com/package/node-fetch)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [nodemon](https://www.npmjs.com/package/nodemon)
