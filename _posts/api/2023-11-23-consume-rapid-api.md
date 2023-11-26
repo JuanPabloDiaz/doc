@@ -193,7 +193,7 @@ You can create an `.env` file in the application's root directory that contains 
 - For [Vite React app](#Env Variables in Vite)
 - For [react-create-app](#How do I create an .env file?)
 
-#### [Env Variables in Vite](https://vitejs.dev/guide/env-and-mode)
+#### [How to hide API key on Vite? - Env Variables](https://vitejs.dev/guide/env-and-mode)
 
 If you're using Vite, you can access environment variables in your project using `import.meta.env`
 
@@ -211,7 +211,9 @@ Next steps:
 - Make sure to restart your development server after setting the new variables.
 - Try to log the environment variable to see if it's correctly loaded.
 
-#### [How do I create an .env file?](https://gist.github.com/Haugen/f6d685f18b4bd8a3cf5bcf6272577c5b)
+#### How to hide API key on React create app
+
+[How do I create an .env file for a React-create-app?](https://gist.github.com/Haugen/f6d685f18b4bd8a3cf5bcf6272577c5b)
 
 Here is a simple way to use environment variables in your `react-create-app` project, follow these steps:
 
@@ -225,6 +227,28 @@ Additinal notes:
 
 - Since we commonly store secrets in `.env` you probably want to add it to `.gitignore`.
 - You don't need to install the `dotenv` package or anything else for this to work.
+
+#### How to hide API key on Nextjs
+
+To hide your API key in a Next.js project, you should use environment variables. Here's how you can do it:
+
+1. Create a `.env.local` file in the root of your project if it doesn't exist already.
+2. Add your API key to this file like so: `NEXT_PUBLIC_RAPID_API_KEY=your_api_key_here`. The `NEXT_PUBLIC_` prefix is necessary if you want to access this variable in the browser. If it's server-side only, you can omit this prefix.
+3. Now you can access this variable in your code using `process.env.NEXT_PUBLIC_RAPID_API_KEY` for browser-accessible variables, or `process.env.RAPID_API_KEY` for server-side only variables.
+4. Make sure to add `.env.local` to your `.gitignore` file to prevent it from being tracked by Git.
+
+Here's the code:
+```bash
+// Accessing the API key in your code
+const apiKey = process.env.NEXT_PUBLIC_RAPID_API_KEY;
+```
+Remember to replace `your_api_key_here` with your actual API key. Also, don't forget to restart your development server after setting the environment variables.
+
+For your next steps, you might want to:
+
+- Use the API key in your application
+- Test that the API key is working correctly
+- Make sure the `.env.local` file is ignored by Git
 
 
 ## 6. Style `App.js` using Tailwind CSS
