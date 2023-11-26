@@ -184,9 +184,7 @@ export default App;
 
 ## 5. How to Hide Your API Keys SAFELY in React
 
-- Follow this [Tutorial](https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s) from Ania.
-
-### I. Create an environment file: `.env` file
+### I. Create an Environment File( `.env` ). Then, Save API Key on `.env`
 
 You can create an `.env` file in the application's root directory that contains key/value pairs defining the project's required environment variables. The dotenv library reads this .env file and appends it to process.env.
 
@@ -249,6 +247,145 @@ For your next steps, you might want to:
 - Use the API key in your application
 - Test that the API key is working correctly
 - Make sure the `.env.local` file is ignored by Git
+
+### II. Create a Backend to Store your Key
+
+Storing the API key on an `.env` file and adding the `.env` file to `.gitignore` is good practice but not completely safe.
+
+Anyone can inspect your code and get the API key from the browser.
+
+Here is how you can prevent people from stealing your API key.
+
+- Follow this [Tutorial](https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s) from Ania.
+
+A. Create a `./backend.js` in the root of your project
+
+```js
+const PORT = 8000;
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv").config();
+// run: npm install express cors node-fetch dotenv
+
+const app = express();
+
+// Use dynamic import for 'node-fetch'
+let fetch;
+import("node-fetch").then((nodeFetch) => {
+  fetch = nodeFetch;
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+```
+
+> Got an Error? Use code from `step F` instead.
+
+B. Install the dependencies: `express cors node-fetch dotenv`
+
+```bash
+npm install express cors node-fetch dotenv
+```
+
+C. Add a Script on `package.json`
+
+```json
+ "scripts": {
+    "backend": "nodemon index.js",
+```
+
+It should look like this...
+```json
+{
+  "name": "movies",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "backend": "nodemon index.js",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^5.0.0"
+  }
+}
+```
+
+D. Install `nodemon`
+
+```bash
+npm install nodemon
+```
+
+E. Run the Backend to test it
+
+```bash
+npm run backend
+```
+> Warning: If you got an error: `require is not defined in ES module scope, you can use import instead. This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\juanc\Documents\Github\ju\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extens`
+
+F. Fixing Error
+
+The error message indicates that `require` is not defined in ES module scope. This is because your project is set to use ES modules due to the "type": "module" in your `package.json` file.
+
+You should change all your `require` statements to `import` statements. Here's how you can modify your `backend.js` code:
+
+```js
+import express from "express";
+import cors from "cors";
+import { config as dotenvConfig } from "dotenv";
+import nodeFetch from "node-fetch";
+
+const PORT = 8000;
+
+// run: npm install express cors node-fetch dotenv
+
+const app = express();
+
+let fetch = nodeFetch;
+
+dotenvConfig();
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+```
+
+> Run the Backend to test it again `npm run backend`
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 6. Style `App.js` using Tailwind CSS
