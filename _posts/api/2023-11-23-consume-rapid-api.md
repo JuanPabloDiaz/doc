@@ -258,7 +258,7 @@ Here is how you can prevent people from stealing your API key.
 
 - Follow this [Tutorial](https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s) from Ania.
 
-A. Create a `./backend.js` in the root of your project
+A. Create a `backend.js` in the root `./` of your project
 
 ```js
 const PORT = 8000;
@@ -292,7 +292,7 @@ C. Add a Script on `package.json`
 
 ```json
  "scripts": {
-    "backend": "nodemon index.js",
+    "backend": "nodemon backend.js",
 ```
 
 It should look like this...
@@ -303,7 +303,7 @@ It should look like this...
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "backend": "nodemon index.js",
+    "backend": "nodemon backend.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -345,6 +345,7 @@ E. Run the Backend to test it
 ```bash
 npm run backend
 ```
+
 > Warning: If you got an error: `require is not defined in ES module scope, you can use import instead. This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\juanc\Documents\Github\ju\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extens`
 
 F. Fixing Error
@@ -376,11 +377,57 @@ app.listen(PORT, () => {
 
 > Run the Backend to test it again `npm run backend`
 
+G. Add code to `backend.js` file and run `npm run backend`
+
+```js
+app.get("/", (req, res) => {
+  res.json("Hello World!");
+});
+```
+
+`backend.js` should look like this:
+```js
+// Tutorial: https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s
+
+import express from "express";
+import cors from "cors";
+import { config as dotenvConfig } from "dotenv";
+import nodeFetch from "node-fetch";
+
+const PORT = 8000;
+
+// run: npm install express cors node-fetch dotenv
+
+const app = express();
+
+let fetch = nodeFetch;
+
+dotenvConfig();
+
+app.get("/", (req, res) => {
+  res.json("Hello World!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+```
+
+> Go to `http://localhost:8000/` to check if its working
+
+H. 
 
 
 
 
 
+I.
+
+
+J. 
+
+
+K.
 
 
 
