@@ -136,10 +136,10 @@ D. From the dropdown menu on the right, select **(Javascript) > fetch**
   export default App;
   ```
 
-- Got an Error:
+- Got an Error?...
 > Make sure to add an `async` function to `App` function. this is because the code has an `await` keyword.
 
-### II. Modify the `App.js`
+### II. Modify the `App.js` to Fix Error
 
 ```js
 import React, { useEffect } from 'react';
@@ -157,7 +157,7 @@ function App() {
   };
 
   useEffect(() => {
-    const fetchData = async () => { // async function
+    const fetchData = async () => { // <- async function
       try {
         const response = await fetch(url, options);
         const result = await response.json();
@@ -303,7 +303,7 @@ It should look like this...
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "backend": "nodemon backend.js",
+    "backend": "nodemon backend.js",     // < -- Backend Script
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -375,7 +375,7 @@ app.listen(PORT, () => {
 });
 ```
 
-> Run the Backend to test it again `npm run backend`
+> Run the Backend to test it again: `npm run backend`
 
 G. Add code to `backend.js` file and run `npm run backend`
 
@@ -386,6 +386,7 @@ app.get("/", (req, res) => {
 ```
 
 `backend.js` should look like this:
+
 ```js
 // Tutorial: https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s
 
@@ -413,16 +414,241 @@ app.listen(PORT, () => {
 });
 ```
 
-> Go to `http://localhost:8000/` to check if its working
+> Go to `http://localhost:8000/` to check if it's working
 
-H. 
+H. Move **Fetch code** from `App.js` To `backend.js`
 
+Moving the fetch code from `App.js` to `backend.js` is a common practice when dealing with APIs for several reasons:
 
+1. **Security**: It's safer to store sensitive data like API keys on the server side. If you make the API request from the client side (like in `App.js`), your API key would be exposed to anyone who views the source code of your website.
 
+2. **CORS** (Cross-Origin Resource Sharing): Some APIs don't allow requests from certain origins (like from a browser). By making the request from your server, you can avoid these issues.
 
+3. **Centralization**: By making all API requests from your server, you can centralize your data fetching logic in one place. This makes your code easier to maintain and debug.
 
-I.
+In your case, the `options` object contains your API key, so it's safer to keep this on the server side. Your server can make the request to the external API, then send the response data back to your client-side React app.
 
+- `backend.js`
+
+```js
+// Tutorial: https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s
+
+import express from "express";
+import cors from "cors";
+import { config as dotenvConfig } from "dotenv";
+import nodeFetch from "node-fetch";
+
+const PORT = 8000;
+
+// run: npm install express cors node-fetch dotenv
+
+const app = express();
+
+let fetch = nodeFetch;
+
+dotenvConfig();
+
+app.get("/", (req, res) => {
+  res.json("Server running on port 8000! Check port * 8000/backend * for data");
+});
+
+app.get("/backend", (req, res) => {
+  // options is required ~ Rapid API
+  const options = {
+    method: "GET",
+    headers: {
+      // "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY, // -->> Default API key from Rapid API. imported for Vite.
+      "X-RapidAPI-Key": process.env.RAPID_API_KEY, // -->> To access env variables. In Node.js, env variables are accessed via process.env, not import.meta.env.
+      "X-RapidAPI-Host": "edamam-food-and-grocery-database.p.rapidapi.com",
+    },
+  };
+
+  const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr'; // IMDb API
+
+  // async function:
+  const fetchData = async () => {
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
+      // console.log(result.hints);
+      console.log(result.hints.food);
+      // setContainer(result.hints); // setContainer is now an array of objects that contains the data from the API
+      res.json(result.hints);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  fetchData();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+```
+
+- `App.jsx`
+
+# Reemplazar el codigo de abajo con el del projecto de movies. Tiene el de food y no movies.
+
+```jsx
+import { useEffect, useState } from "react";
+import "./App.css";
+import Layout from "./Components/Layout";
+import Card from "./Components/Card";
+
+function App() {
+  // API options was here. I moved it to the backend.js file
+
+  // First element from useState is the state itself (""). The initial value, in this case an empty string
+  // Second is the function that will update the state (setEndPoint). The "Changer" function
+  const [endPoint, setEndPoint] = useState("");
+  // "Changer" function: it change the state of the endPoint variable by taking the value from the input
+  const onChangeHandler = (event) => {
+    setEndPoint(event.target.value);
+  };
+
+  // "Submit" function: it prevent the default behaviour of the form. It won't refresh the page
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log("submit");
+  };
+
+  // container is an empty array. setContainer is the function that will update the state of the container
+  const [container, setContainer] = useState([]);
+
+  useEffect(() => {
+    // url was here. I moved it to the backend.js file
+
+    // fetchData  function was here. I moved it to the backend.js file
+
+    const url = "http://localhost:8000/backend";
+
+    // async function:
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+        // console.log(result.hints);
+        console.log(result.hints.food);
+        setContainer(result.hints); // setContainer is now an array of objects that contains the data from the API
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [endPoint]);
+
+  return (
+    <>
+      <Layout>
+        <div className="flex flex-col items-center justify-center  pb-2">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">Food API</h1>
+            <p className="text-xl md:text-2xl p-2">
+              The best food API for your app, website or recipe using Edamam
+              Food and Grocery Database
+            </p>
+            <p className="text-xs md:text-md py-5 text-gray-400 w-80 md:w-fit">
+              Food and Grocery Database API: using Rapid API, React, Vite and
+              Tailwind CSS
+            </p>
+          </div>
+          <div className="grid gap-4 grid-row justify-center sm:grid-cols-2 md:grid-cols-3 w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
+            {/* {container.map((item) => { */}
+            {/* return ( */}
+            {/* <div> */}
+            {/* <p>{item.image}</p> */}
+            {/* <img src={item.image} /> */}
+            {/* </div> */}
+            {/* ); */}
+            {/* })} */}
+            {/* Card */}
+
+            {container.map((item) => (
+              <Card key={item.id} data={item} />
+            ))}
+          </div>
+        </div>
+      </Layout>
+    </>
+  );
+}
+
+export default App;
+```
+
+- Check that everything is working:
+
+Run `npm run backend`
+
+You might have to run `npm run dev` to see project on `localhost:5173`, backend server on `localhost:8000` and the API data on `localhost:8000/backend`
+
+> Got a CORS error?
+
+I. **Fix CORS error** by using CORS package
+
+> Error: `Access to fetch at 'http://localhost:8000/backend' from origin 'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled`
+
+Add CORS `app.use(cors());` to `backend.js`
+
+```js
+// Tutorial: https://www.youtube.com/watch?v=FcwfjMebjTU&t=0s
+
+import express from "express";
+import cors from "cors";
+import { config as dotenvConfig } from "dotenv";
+import nodeFetch from "node-fetch";
+
+const PORT = 8000;
+
+// run: npm install express cors node-fetch dotenv
+
+const app = express();
+
+app.use(cors());
+
+let fetch = nodeFetch;
+
+dotenvConfig();
+
+app.get("/", (req, res) => {
+  res.json("Server running on port 8000! Check port * 8000/backend * for data");
+});
+
+app.get("/backend", (req, res) => {
+  // options is required ~ Rapid API
+  const options = {
+    method: "GET",
+    headers: {
+      // "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY, // -->> Default API key from Rapid API. imported for Vite.
+      "X-RapidAPI-Key": process.env.RAPID_API_KEY, // -->> To access env variables. In Node.js, env variables are accessed via process.env, not import.meta.env.
+      "X-RapidAPI-Host": "edamam-food-and-grocery-database.p.rapidapi.com",
+    },
+  };
+
+  const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr'; // IMDb API
+
+  // async function:
+  const fetchData = async () => {
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
+      // console.log(result.hints);
+      console.log(result.hints.food);
+      // setContainer(result.hints); // setContainer is now an array of objects that contains the data from the API
+      res.json(result.hints);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  fetchData();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+```
 
 J. 
 
