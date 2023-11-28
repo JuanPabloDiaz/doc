@@ -1,5 +1,9 @@
 #  The contact options.
 
+- type: Juan Diaz's Portfolio
+  icon: "fas fa-suitcase" # "fas fa-user"
+  url: "https://jpdiaz.dev/"
+
 - type: github
   icon: "fab fa-github"
 
