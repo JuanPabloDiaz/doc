@@ -20,3 +20,9 @@ jekyll server --drafts
 ```bash
 jekyll server --watch --drafts
 ```
+
+> Or
+
+```bash
+bundle exec jekyll s --livereload --drafts
+```
