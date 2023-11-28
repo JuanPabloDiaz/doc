@@ -4,7 +4,7 @@ title: "How to Consume Rapid API's"
 date: 2023-11-23
 categories: react api
 tags: api react tailwindcss responsive
-image: https://mms.businesswire.com/media/20220323005325/en/1398284/23/RapidAPI_logo_blue_%281%29.jpg
+image: https://miro.medium.com/v2/resize:fit:1200/1*ab47q2YujbrbOpIiVHtxhw.jpeg
 ---
 
 This is an step by step article on how to Consume a Rapid API.
