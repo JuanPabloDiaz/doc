@@ -1215,7 +1215,7 @@ const Card = (data) => {
 export default Card;
 ```
 
-## 14. Show the Productos on `ProductDetail`
+## 14. Show the Products on `ProductDetail`
 
 ### I. Modify the `Context` file
 
@@ -1240,7 +1240,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      valu e={{
         count,
         setCount,
         openProductDetail,
