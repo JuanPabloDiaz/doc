@@ -1240,7 +1240,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      // value={{
+      // value={
       //   count,
       //   setCount,
       //   openProductDetail,
@@ -1248,7 +1248,7 @@ export const AppProvider = ({ children }) => {
       //   isProductDetailOpen,
       //   productToShow,
       //   setProductToShow,
-      // }}
+      // }
     >
       {children}
     </AppContext.Provider>
