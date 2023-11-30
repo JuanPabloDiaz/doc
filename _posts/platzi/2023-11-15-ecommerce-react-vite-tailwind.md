@@ -1954,6 +1954,8 @@ export default Card;
 
 ## 20. To Modify the Quantity of the Products on my Order
 
+> In beta for now. I didnt actually add it to the project.
+
 ### Modify the `OrderCard` Component
 
 Located in `src/Components/OrderCard/index.jsx`
@@ -2016,6 +2018,8 @@ export default OrderCard;
 > I asked Copilote with this and it was pretty simple.
 
 ## 21. Use Components from Shadcn-Ui
+
+> In beta for now. I didnt actually add it to the project.
 
 ### SetUp [Shadcn UI](https://ui.shadcn.com/) in the Project
 
