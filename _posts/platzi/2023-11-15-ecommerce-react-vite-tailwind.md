@@ -492,6 +492,7 @@ API Examples:
 - [Platzi Fake Store API](https://fakeapi.platzi.com/) 🕮 [Docs](https://fakeapi.platzi.com/en/about/introduction/)
 - [Fake Store API](https://fakestoreapi.com/) 🕮 [Docs](https://fakestoreapi.com/docs)
 - [Rapid API](https://rapidapi.com/hub)
+- [Dummy json API](https://dummyjson.com)
 
 ### II. Use the API
 
