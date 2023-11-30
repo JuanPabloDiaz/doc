@@ -852,8 +852,8 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        count,
-        setCount,
+        // count,
+        // setCount,
       }}
     >
       {children}
@@ -861,6 +861,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+> remove the comments from value
 
 ## 11. **SideBar** Component
 
