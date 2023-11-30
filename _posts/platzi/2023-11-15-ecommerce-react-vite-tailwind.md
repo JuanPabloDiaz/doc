@@ -861,7 +861,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. Should look like this: `value={{ count, setCount, }}`
+> `value` is missing another set of `{}`. Should look like this: `value={ { ...content here.... } }`
 
 ## 11. **SideBar** Component
 
