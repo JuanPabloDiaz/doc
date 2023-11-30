@@ -1139,7 +1139,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={ {  } }`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### II. Modify the `Product Detail` Component
 
