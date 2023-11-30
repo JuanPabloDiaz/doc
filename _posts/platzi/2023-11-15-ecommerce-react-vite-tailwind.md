@@ -127,6 +127,22 @@ This is the Starting Point Of The Project, where we will...
     @tailwind utilities;
     ```
 
+- Modify the code below to `src/App.jsx`:
+
+    ```jsx
+    import "./App.css";
+    function App() {
+    return (
+        <>
+        <div classname="bg-gray-500">
+        Hello World
+        </div>
+        </>
+    );
+    }
+    export default App;
+    ```
+
 - Run the project
 
     ```bash
@@ -410,7 +426,8 @@ const NameHere = () => {
   return (
   <Layout>
   NameHere
-  </Layout>;
+  </Layout>
+  )
 };
 
 export default NameHere;
