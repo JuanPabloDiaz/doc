@@ -852,8 +852,8 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        // count,
-        // setCount,
+        count,
+        setCount,
       }}
     >
       {children}
@@ -1240,15 +1240,15 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      valu e={{
-        count,
-        setCount,
-        openProductDetail,
-        closeProductDetail,
-        isProductDetailOpen,
-        productToShow,
-        setProductToShow,
-      }}
+      // value={{
+      //   count,
+      //   setCount,
+      //   openProductDetail,
+      //   closeProductDetail,
+      //   isProductDetailOpen,
+      //   productToShow,
+      //   setProductToShow,
+      // }}
     >
       {children}
     </AppContext.Provider>
