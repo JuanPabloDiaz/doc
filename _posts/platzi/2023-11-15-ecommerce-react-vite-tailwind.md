@@ -1139,7 +1139,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### II. Modify the `Product Detail` Component
 
@@ -1396,7 +1396,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### II. Modify the `Card` Component
 
@@ -1683,7 +1683,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### III. Modify the **Card** Components
 
@@ -2324,7 +2324,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### II. Modify the `CheckoutSideMenu` Component
 
@@ -2875,7 +2875,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 > [Compare old version with the new version of home](https://github.com/JuanPabloDiaz/platzi_shopi/commit/a0801b65fa4d8bc1791db542a69166181c3df37b)
 
@@ -2995,7 +2995,7 @@ export const AppProvider = ({ children }) => {
 };
 
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ## 29. Filter by Title
 
@@ -3150,7 +3150,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ## 30. Filter by Category && Title
 
@@ -3477,7 +3477,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
-> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
+> `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### IV. Modify the `Home` Component
 
