@@ -851,17 +851,17 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         count,
         setCount,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
-> remove the comments from value
+> `value` is missing another set of `{}`. Should look like this: `value={{ count, setCount, }}`
 
 ## 11. **SideBar** Component
 
@@ -1126,19 +1126,20 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         count,
         setCount,
         openProductDetail,
         closeProductDetail,
         isProductDetailOpen,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 ### II. Modify the `Product Detail` Component
 
@@ -1378,7 +1379,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         count,
         setCount,
         openProductDetail,
@@ -1388,13 +1389,14 @@ export const AppProvider = ({ children }) => {
         setProductToShow,
         cartProducts,
         setCartProducts,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 ### II. Modify the `Card` Component
 
@@ -1661,7 +1663,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         count,
         setCount,
         openProductDetail,
@@ -1674,13 +1676,14 @@ export const AppProvider = ({ children }) => {
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
         closeCheckoutSideMenu,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 ### III. Modify the **Card** Components
 
@@ -2299,7 +2302,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         cart,
         setCart,
         openProductDetail,
@@ -2314,13 +2317,14 @@ export const AppProvider = ({ children }) => {
         closeCheckoutSideMenu,
         order,
         setOrder,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 ### II. Modify the `CheckoutSideMenu` Component
 
@@ -2847,7 +2851,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         items,
         setItems,
         cart,
@@ -2864,13 +2868,14 @@ export const AppProvider = ({ children }) => {
         closeCheckoutSideMenu,
         order,
         setOrder,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 > [Compare old version with the new version of home](https://github.com/JuanPabloDiaz/platzi_shopi/commit/a0801b65fa4d8bc1791db542a69166181c3df37b)
 
@@ -2963,7 +2968,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         items,
         setItems,
         cart,
@@ -2982,7 +2987,7 @@ export const AppProvider = ({ children }) => {
         setOrder,
         searchByTitle,
         setSearchByTitle,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
@@ -2990,6 +2995,7 @@ export const AppProvider = ({ children }) => {
 };
 
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 ## 29. Filter by Title
 
@@ -3116,7 +3122,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         items,
         setItems,
         cart,
@@ -3137,13 +3143,14 @@ export const AppProvider = ({ children }) => {
         setSearchByTitle,
         filteredItems,
         setFilteredItems,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 ## 30. Filter by Category && Title
 
@@ -3440,7 +3447,7 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{
+      value={
         items,
         setItems,
         cart,
@@ -3463,13 +3470,14 @@ export const AppProvider = ({ children }) => {
         setSearchByTitle,
         searchByCategory,
         setSearchByCategory,
-      }}
+      }
     >
       {children}
     </AppContext.Provider>
   );
 };
 ```
+> `value` is missing another set of `{}`. It should look like this: `value={{ ...content here.... }}`
 
 ### IV. Modify the `Home` Component
 
