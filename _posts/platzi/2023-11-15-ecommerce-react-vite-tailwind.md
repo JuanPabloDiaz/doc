@@ -158,9 +158,6 @@ npm i react-icons
 ```
 > In this proyect. I will use [Heroicons](https://react-icons.github.io/react-icons/icons/hi/)
 
-B. 
-
-C. 
 ## 3. Create The Pages and Routes
 
 For the [Structure](https://blog.webdevsimplified.com/2022-07/react-folder-structure/):
@@ -401,7 +398,7 @@ const Layout = ({ children }) => {
   return (
   <div className="flex flex-col items-center mt-20">
     {children}
-  </div>;
+  </div>
   )
 };
 
