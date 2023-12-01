@@ -3175,6 +3175,8 @@ export const AppProvider = ({ children }) => {
 
 ### I. Modify the `Navbar` Component
 
+Add an `onClick` event to filter by category (`setSearchByCategory`) in the *NavLink* tag.
+
 Located in `src/Components/Navbar/index.jsx`
 
 ```jsx
