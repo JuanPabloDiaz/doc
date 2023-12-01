@@ -2629,6 +2629,8 @@ export default MyOrder;
 
 ### I. Create the `OrdersCard` Component
 
+> It is order**S**card. A **NEW** file different than `OrderCard`.
+
 Located in `src/Components/OrdersCard/index.jsx`
 
 ```jsx
