@@ -2627,9 +2627,9 @@ export default MyOrder;
 
 ## 26. My Orders Page
 
-### I. Create the `OrdersCard` Component (NOT `OrderCard`)
+### I. Create the **Order<ins>s</ins>Card** Component. (<ins>not</ins> `OrderCard`)
 
-> It is order**S**card. A **NEW** file different than `OrderCard`.
+> **Order<ins>s</ins>Card** is a **NEW** file. It is not the same as `OrderCard`.
 
 Located in `src/Components/OrdersCard/index.jsx`
 
