@@ -2735,6 +2735,8 @@ export default MyOrder;
 
 ### IV. Modify the `App` file
 
+By adding a new route: `{ path: "/my-orders/:id", element: <MyOrder /> },`
+
 Located in `src/Pages/App/index.jsx`
 
 ```jsx
