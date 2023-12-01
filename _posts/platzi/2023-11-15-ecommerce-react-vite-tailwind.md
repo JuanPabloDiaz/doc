@@ -3623,23 +3623,13 @@ const handleCheckout = () => {
 
 ## 32. Improve the UI (User Interface) and UX (User Experience) 
 
-
 ### I. Make the Site Responsive
 
 Responsive design is a part of both UI (User Interface) and UX (User Experience). From a UI perspective, it involves designing interfaces that adapt to different screen sizes. From a UX perspective, it ensures that the user has a seamless experience on any device.
 
-
-
-
-
-
 ### II. Change the Icons
 
 Changing the icons is a part of both UI (User Interface) and UX (User Experience). From a UI perspective, it involves updating the visual elements of the interface. From a UX perspective, it can improve the user's interaction with the system by making icons more intuitive or easier to understand.
-
-
-
-
 
 ### III. Modify the Styling of some pages
 
