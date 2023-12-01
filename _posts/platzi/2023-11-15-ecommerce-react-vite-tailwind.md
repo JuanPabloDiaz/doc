@@ -3571,6 +3571,7 @@ const Home = () => {
 
 export default Home;
 ```
+> Note: the category feature on the navbar is not rendering the products yet. However, in the console, the `searchByCategory` gets the input. 
 
 ## 31. Testing and debugging
 
