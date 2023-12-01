@@ -3342,6 +3342,16 @@ export default App;
 
 ## III. Modify the `Context` file
 
+By adding all the logic to filter the render products by `title`, `category`, `title and category`.
+
+In other words, render the view depending on the action:
+
+- Display all the products with NO filters.
+- Display product/s when searching (filtering `title`)
+- Display product/s by filtering `category`
+- Display by filtering `title and category`
+
+
 Located in `src/Context/index.jsx`
 
 ```jsx 
