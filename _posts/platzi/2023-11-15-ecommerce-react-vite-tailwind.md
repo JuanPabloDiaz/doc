@@ -3014,6 +3014,8 @@ export const AppProvider = ({ children }) => {
 
 ### I. Modify the `Home` Component
 
+Add a `renderView` function to filter the products while typing.
+
 Located in `src/Components/Home/index.jsx`
 
 ```jsx
@@ -3067,6 +3069,10 @@ export default Home;
 ```
 
 ## II. Modify the `Context` file
+
+Add a `Filter items by search` function (`filteredItemsByTitle`)
+
+As well as a `useEffect` to implement the filtering.
 
 Located in `src/Context/index.jsx`
 
