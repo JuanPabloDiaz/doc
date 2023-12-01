@@ -3289,6 +3289,8 @@ export default Navbar;
 
 ### II. Modify the `App` file
 
+By adding all the new routes: `{ path: "/newPath", element: <Home /> }`
+
 Located in `src/Pages/App/index.jsx`
 
 ```jsx
