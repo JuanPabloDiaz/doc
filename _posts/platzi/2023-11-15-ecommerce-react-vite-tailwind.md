@@ -2627,7 +2627,7 @@ export default MyOrder;
 
 ## 26. My Orders Page
 
-### I. Create the `OrdersCard` Component
+### I. Create the `OrdersCard` Component (NOT `OrderCard`)
 
 > It is order**S**card. A **NEW** file different than `OrderCard`.
 
