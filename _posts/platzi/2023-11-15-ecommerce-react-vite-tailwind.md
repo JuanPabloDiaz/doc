@@ -2892,6 +2892,8 @@ export const AppProvider = ({ children }) => {
 
 ### I. Modify the `Home` Component
 
+Add an input to search products
+
 Located in `src/Components/Home/index.jsx`
 
 ```jsx
@@ -2928,6 +2930,8 @@ export default Home;
 ```
 
 ## II. Modify the `Context` file
+
+Add the logic to search products. Searching by title(input)
 
 Located in `src/Context/index.jsx`
 
