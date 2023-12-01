@@ -2837,7 +2837,7 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   // Shopping Cart · Increment quantity
-  const [cart, setCart] = useState(0);
+  const [count, setCount,] = useState(0);
 
   // Product Detail · Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
@@ -2863,8 +2863,8 @@ export const AppProvider = ({ children }) => {
       value={
         items,
         setItems,
-        cart,
-        setCart,
+        count,
+        setCount,
         openProductDetail,
         closeProductDetail,
         isProductDetailOpen,
