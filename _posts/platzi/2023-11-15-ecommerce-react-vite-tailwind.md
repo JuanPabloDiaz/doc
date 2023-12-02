@@ -346,6 +346,8 @@ const Navbar = () => {
 export default Navbar;
 ```
 
+> [Learn more](https://platzi.com/new-home/clases/3468-react-router/51619-link-vs-navlink/)
+
 ### II. Modify the `App` file
 
 Located in `src/Pages/App/index.jsx`
