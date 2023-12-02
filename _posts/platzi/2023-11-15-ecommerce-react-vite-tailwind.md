@@ -16,13 +16,10 @@ Here is how to create an E-commerce site using React.js, Vite.js and TailwindCSS
 Build an Online Store with React.js, the most in-demand tool for frontend developers. It integrates Vite.js for the development environment, TailwindCSS for style management and React Router DOM for routes and navigation. Transform Figma prototypes into professional web applications and deploy them to production with your Teffcode teacher.
 
 - Build components to view products, purchase orders and filter by category
-- Implement client-side navigation with React Router.
+- Implement client-side navigation with React Router. Server-Side rendering (SSR)
 - Consume the Platzi Fake Store using React.js.
 
-
-Visit the [Figma Design](https://www.figma.com/file/TGm6gNug6PEwEbV8M0Kyll/JSM-YT---Instagram-Clone?type=design&node-id=1-113&mode=design) and see how the feature should look like
-
-### [Demo](https://shopi.jpdiaz.work)
+### Demos: [JP·Shop](https://jpshop.jpdiaz.dev/) | [Shopi](https://shopi.jpdiaz.work)
 
 ### Built With 🔑
 
