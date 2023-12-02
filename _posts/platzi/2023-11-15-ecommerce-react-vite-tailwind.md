@@ -3636,7 +3636,17 @@ Styling is a part of both UI (User Interface) and UX (User Experience). From a U
 
 
 
+## 33. Clean Up the Project
 
+It's good practice to check if we are repeating code and clean up the project. Here is an example of code that we can clean.
+
+### Modify the `Navbar` Component
+
+Located in `src/Components/Navbar/index.jsx`
+
+```jsx
+
+```
 
 
 
