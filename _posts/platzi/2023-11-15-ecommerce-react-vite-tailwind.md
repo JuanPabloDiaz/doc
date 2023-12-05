@@ -3751,6 +3751,8 @@ export default Navbar;
 
 ## 34. Create Private Routes and Public Routes
 
+> Note: I implemented the private & public router in another project called [JP·Shop](https://jpshop.jpdiaz.dev/). Shopi does not have a working sign in, sign out, my account features.
+
 Private and Public Routes refer to the accessibility of certain routes (or pages) based on the user's authentication status.
 
 **Private Routes**: These are routes that are only accessible to authenticated users. If a user is not authenticated and tries to access a private route, they are typically redirected to a login page.
@@ -3758,6 +3760,7 @@ Private and Public Routes refer to the accessibility of certain routes (or pages
 **Public Routes**: These are routes that are accessible to all users, regardless of their authentication status. Examples of public routes might include the login page, the registration page, or a public homepage.
 
 ### How can I implement Private and Public Routes in React?
+
 
 - useAuth: login y logout
 
