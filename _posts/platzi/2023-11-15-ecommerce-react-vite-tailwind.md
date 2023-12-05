@@ -3761,7 +3761,6 @@ Private and Public Routes refer to the accessibility of certain routes (or pages
 
 ### How can I implement Private and Public Routes in React?
 
-
 - useAuth: login y logout
 
 [Learn more](https://platzi.com/new-home/clases/3468-react-router/51623-useauth-login-y-logout/)
@@ -3947,10 +3946,245 @@ const App = () => {
 export default App;
 ```
 
+#### V. Modify the `Navbar.jsx` Component
 
+In your Navbar component, you can use the auth context to conditionally render links based on whether the user is authenticated or not. For example, you might only want to show the "My Account" and "Logout" links if the user is authenticated, and only show the "Sign In" link if the user is not authenticated.
 
+Here's how you can do that:
 
+```jsx
+<ul className="hidden sm:flex items-center gap-3">
+  {auth.user && (
+    <li>
+      <NavLink
+        to="/my-account"
+        className={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
+        My Account
+      </NavLink>
+    </li>
+  )}
+  {auth.user ? (
+    <li>
+      <NavLink
+        to="/Logout"
+        className={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
+        Logout
+      </NavLink>
+    </li>
+  ) : (
+    <li>
+      <NavLink
+        to="/sign-in"
+        className={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
+        Sign In
+      </NavLink>
+    </li>
+  )}
+</ul>
+```
+> if auth.user is truthy (i.e., the user is authenticated), the "Logout" and "My Account" links are rendered. If auth.user is falsy (i.e., the user is not authenticated), the "Sign In" link is rendered.
 
+Here's how the `Navbar.jsx` should look like:
+
+```jsx
+import { NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AppContext } from "../../Context";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+import { useScrollPosition } from "../../Utils/useScrollPosition";
+import { useAuth } from "../../Context/auth";
+
+const Navbar = () => {
+  const activeStyle = "underline text-gray-500 underline-offset-4";
+  const context = useContext(AppContext);
+
+  //scrollPosition:
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdownTech, setShowDropdownTech] = useState(false);
+
+  function classNamesNavBarScroll(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  const scrollPosition = useScrollPosition();
+  // console.log(scrollPosition);
+
+  // AuthContext:
+  const auth = useAuth();
+  console.log("in Navbar, Auth.user: ", auth.user);
+
+  return (
+    <header
+      className={classNamesNavBarScroll(
+        scrollPosition > 0
+          ? "md:shadow md:bg-white md:-translate-y-6 md:h-auto"
+          : "md:shadow-none md:bg-none md:translate-y-0 md:h-none",
+        "absolute md:fixed top-2 inset-x-0 z-40 md:transition-shadow-xl md:shadow-black md:transition-color duration-500 md:-translate-y-6 md:h-20 lg:h-14"
+      )}
+    >
+      <nav className="hidden sm:flex flex-col sm:flex-row justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light top-0">
+        <ul className="flex flex-col sm:flex-row items-center gap-3">
+          <li className="font-semibold text-lg">
+            <NavLink to="/" onClick={() => context.setSearchByCategory(null)}>
+              JP·Shop
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => context.setSearchByCategory(null)}
+            >
+              All
+            </NavLink>
+          </li>
+          <li onClick={() => setShowDropdownTech(!showDropdownTech)}>
+            Electronics
+            {showDropdownTech && (
+              <div>
+                <NavLink
+                  to="/smartphones"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("smartphones")}
+                >
+                  Phone
+                </NavLink>
+                <NavLink
+                  to="/laptops"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("laptops")}
+                >
+                  Laptop
+                </NavLink>
+              </div>
+            )}
+          </li>
+          <li onClick={() => setShowDropdown(!showDropdown)}>
+            Cosmetics
+            {showDropdown && (
+              <div>
+                <NavLink
+                  to="/fragrances"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("fragrances")}
+                >
+                  Perfumes
+                </NavLink>
+                <NavLink
+                  to="/skincare"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("skincare")}
+                >
+                  Skin Care
+                </NavLink>
+              </div>
+            )}
+          </li>
+          <li>
+            <NavLink
+              to="/groceries"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => context.setSearchByCategory("groceries")}
+            >
+              Groceries
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/home-decoration"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => context.setSearchByCategory("home-decoration")}
+            >
+              HomeGoods
+            </NavLink>
+          </li>
+        </ul>
+
+        <ul className="hidden sm:flex items-center gap-3">
+          <li>
+            <NavLink
+              to="/my-orders"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              My Orders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/card"
+              className={`flex justify-center items-center ${({ isActive }) =>
+                isActive ? activeStyle : undefined}`}
+            >
+              <HiOutlineShoppingCart className="mr-1" />
+              <p>{context.cartProducts.length}</p>
+            </NavLink>
+          </li>
+        </ul>
+        <ul className="hidden sm:flex items-center gap-3">
+          {auth.user && (
+            <li>
+              <NavLink
+                to="/my-account"
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
+                My Account
+              </NavLink>
+            </li>
+          )}
+          {auth.user ? (
+            <li>
+              <NavLink
+                to="/Logout"
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
+                Logout
+              </NavLink>
+            </li>
+          ) : (
+            <li>
+              <NavLink
+                to="/sign-in"
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
+                Sign In
+              </NavLink>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Navbar;
+```
+
+### Private and Public Routes
+
+To create private and public routes, you can create two components: PrivateRoute and PublicRoute.
+
+PrivateRoute will check if the user is authenticated. If they are, it will render the component passed to it. If not, it will redirect the user to the login page.
+
+PublicRoute will check if the user is authenticated. If they are, it will redirect them to the dashboard (or another page). If not, it will render the component passed to it.
+
+Here's how you can create these components:
 
 
 <!-- OTHER PROJECTS -->
