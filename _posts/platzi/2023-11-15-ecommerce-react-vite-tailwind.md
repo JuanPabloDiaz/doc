@@ -4182,9 +4182,750 @@ To create private and public routes, you can create two components: PrivateRoute
 
 PrivateRoute will check if the user is authenticated. If they are, it will render the component passed to it. If not, it will redirect the user to the login page.
 
-PublicRoute will check if the user is authenticated. If they are, it will redirect them to the dashboard (or another page). If not, it will render the component passed to it.
+PublicRoute will check if the user is authenticated. If they are, it will redirect them to the "My Account" (or another page). If not, it will render the component passed to it.
+
+The PrivateRoute and PublicRoute are components that you will create to handle private and public routes in your application. They will use the useAuth hook to check if a user is authenticated and the useNavigate hook to redirect users based on their authentication status.
 
 Here's how you can create these components:
+
+#### I. Create a new Component: `PrivateRoute`
+
+Located in `src/Components/PrivateRoute/index.jsx`
+
+```jsx
+import { Route, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Context/auth';
+
+const PrivateRoute = ({ children, ...rest }) => {
+  let auth = useAuth();
+  let navigate = useNavigate();
+  if (!auth.user) navigate("/sign-in");
+  return (
+    <Route {...rest}>
+      {auth.user ? children : null}
+    </Route>
+  );
+};
+
+export default PrivateRoute;
+```
+
+#### II. Create a new Component: `PublicRoute`
+
+Located in `src/Components/PublicRoute/index.jsx`
+
+```jsx
+import { Route, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Context/auth';
+
+const PublicRoute = ({ children, restricted, ...rest }) => {
+  let auth = useAuth();
+  let navigate = useNavigate();
+  if (auth.user && restricted) navigate("/my-account");
+  return (
+    <Route {...rest}>
+      {!auth.user || !restricted ? children : null}
+    </Route>
+  );
+};
+
+export default PublicRoute;
+```
+
+#### III. Modify the `App.jsx` Page
+
+Then, You can modify the AppRoutes component to use the PrivateRoute and PublicRoute components. Here's how you can do that:
+
+```jsx
+import { BrowserRouter, useRoutes } from "react-router-dom";
+import { AppProvider } from "../../Context";
+
+import { AuthProvider } from "../../Context/auth"; // AuthContext is the context that will be used to store the user's data
+import Navbar from "../../Components/Navbar";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
+import "./App.css";
+
+import Home from "../Home";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import MyAccount from "../MyAccount";
+import SignIn from "../SignIn";
+import Logout from "../Logout";
+
+import PublicRoute from "../../Components/PublicRoute";
+import PrivateRoute from "../../Components/PrivateRoute";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    {
+      path: "/",
+      element: (
+        <PublicRoute restricted={false}>
+          <Home />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/smartphones",
+      element: (
+        <PublicRoute restricted={false}>
+          <Home />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/laptops",
+      element: (
+        <PublicRoute restricted={false}>
+          <Home />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/fragrances",
+      element: (
+        <PublicRoute restricted={false}>
+          <Home />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/skincare",
+      element: (
+        <PublicRoute restricted={false}>
+          <Home />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/groceries",
+      element: (
+        <PublicRoute restricted={false}>
+          <Home />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/home-decoration",
+      element: (
+        <PublicRoute restricted={false}>
+          <Home />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/my-order",
+      element: (
+        <PrivateRoute>
+          <MyOrder />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-orders",
+      element: (
+        <PrivateRoute>
+          <MyOrders />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-orders/last",
+      element: (
+        <PrivateRoute>
+          <MyOrder />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-orders/:id",
+      element: (
+        <PrivateRoute>
+          <MyOrder />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-account",
+      element: (
+        <PrivateRoute>
+          <MyAccount />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/sign-in",
+      element: (
+        <PublicRoute restricted={true}>
+          <SignIn />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/logout",
+      element: (
+        <PrivateRoute>
+          <Logout />
+        </PrivateRoute>
+      ),
+    },
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+          <Navbar />
+          <CheckoutSideMenu />
+        </AuthProvider>
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+export default App;
+```
+
+
+
+## 34. Add Product to Cart From `ProductDetail` page (or any page) 
+
+To use the `addProductToCart` function in your `ProductDetail` page, you need to move this function to the context so that it can be shared between different components. Here's how you can do it:
+
+### I. Modify the `Context` file
+
+In your AppContext, add a new function addProductToCart.
+
+```jsx
+import React, { createContext, useState } from 'react';
+
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  const [count, setCount] = useState(0);
+  const [cartProducts, setCartProducts] = useState([]);
+  // other states...
+
+  const addProductToCart = (productData) => {
+    setCount(count + 1);
+    setCartProducts([...cartProducts, productData]);
+    // other actions...
+  };
+
+  return (
+    <AppContext.Provider value={{ count, setCount, cartProducts, setCartProducts, addProductToCart }}>
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
+
+`Context` should look something like this:
+
+Located in `src/Context/index.jsx`
+
+```jsx
+import { createContext, useEffect, useState } from "react";
+
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  // Get Products · State to store the data from the dummy API. It's an empty array because the data is an array of objects
+  // Fetch data from API · hook to add the info from the API to the state
+  const [items, setItems] = useState([]);
+
+  // UseEffect is a hook to fetch the data from the API
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((response) => response.json())
+      .then((json) => {
+        // console.log("Data from Dummy API: ", json); // Log the data
+        // console.log("Products inside Data Dummy API: ", json.products); // Products is an array of objects inside the data from the API
+        setItems(json.products); // Add the data to the state (setItems) and specify the data to be added (json.products)
+      });
+  }, []);
+
+  // Shopping Cart · Increment quantity
+  const [count, setCount] = useState(0);
+
+  // Product Detail · Open/Close
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  // Product Detail · Show product
+  const [productToShow, setProductToShow] = useState({});
+
+  // Shopping Cart · add product to cart
+  const [cartProducts, setCartProducts] = useState([]);
+
+  // Checkout Side Menu · Open/Close
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
+  // Shopping Cart · Order
+  const [order, setOrder] = useState([]);
+
+  // add product to cart
+  const addProductToCart = (productData) => {
+    setCount(count + 1);
+    setCartProducts([...cartProducts, productData]);
+    // console.log("cartProducts: ", cartProducts);
+    // console.log("productData: ", productData);
+    openCheckoutSideMenu();
+    closeProductDetail();
+  };
+
+  // Get Products · Search a product
+  // const [searchByTitle, setSearchByTitle] = useState("");
+  const [searchByTitle, setSearchByTitle] = useState(null);
+  // console.log(searchByTitle);
+
+  // Get Products · Filter items by category
+  const [searchByCategory, setSearchByCategory] = useState(null);
+  // console.log("searchByCategory: ", searchByCategory);
+
+  // Filter items by search
+  const [filteredItems, setFilteredItems] = useState(null);
+
+  // Filter items by search
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+    );
+  };
+
+  // Filter items by category
+  const filteredItemsByCategory = (items, searchByCategory) => {
+    return items?.filter((item) =>
+      item.category.toLowerCase().includes(searchByCategory.toLowerCase())
+    );
+  };
+
+  const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+    // Filter by title
+    if (searchType === "BY_TITLE") {
+      return filteredItemsByTitle(items, searchByTitle);
+    }
+
+    // Filter by category
+    if (searchType === "BY_CATEGORY") {
+      return filteredItemsByCategory(items, searchByCategory);
+    }
+
+    // Filter by title and category
+    if (searchType === "BY_TITLE_AND_CATEGORY") {
+      return filteredItemsByCategory(items, searchByCategory).filter((item) =>
+        item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+      );
+    }
+
+    // The is NO Filter, return all items
+    if (!searchType) {
+      return items;
+    }
+  };
+
+  useEffect(() => {
+    // Filter by title and category
+    if (searchByTitle && searchByCategory) {
+      return setFilteredItems(
+        filterBy(
+          "BY_TITLE_AND_CATEGORY",
+          items,
+          searchByTitle,
+          searchByCategory
+        )
+      );
+    }
+    // Filter by title
+    if (searchByTitle && !searchByCategory) {
+      return setFilteredItems(
+        filterBy("BY_TITLE", items, searchByTitle, searchByCategory)
+      );
+    }
+    // Filter by category
+    if (!searchByTitle && searchByCategory) {
+      return setFilteredItems(
+        filterBy("BY_CATEGORY", items, searchByTitle, searchByCategory)
+      );
+    }
+    // No Filter, return all items
+    if (!searchByTitle && !searchByCategory) {
+      return setFilteredItems(
+        filterBy(null, items, searchByTitle, searchByCategory)
+      );
+    }
+  }, [items, searchByTitle, searchByCategory]);
+
+  // console.log("searchByCategory: ", searchByCategory);
+  // console.log("searchByTitle: ", searchByTitle);
+  // console.log("filteredItems: ", filteredItems);
+
+  return (
+    <AppContext.Provider
+      value={{
+        items,
+        setItems,
+        count,
+        setCount,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        cartProducts,
+        setCartProducts,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        order,
+        setOrder,
+        searchByTitle,
+        setSearchByTitle,
+        filteredItems,
+        setFilteredItems,
+        searchByCategory,
+        setSearchByCategory,
+        addProductToCart,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+```
+
+
+### II. Modify the `Card` Component
+
+In your Card component, use the addProductToCart from context.
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+
+const Card = (data) => {
+  const { addProductToCart } = useContext(AppContext);
+
+  // other code...
+
+  const renderIcon = (id) => {
+    // other code...
+
+    return (
+      <TbShoppingCartPlus
+        onClick={(event) => {
+          event.stopPropagation();
+          addProductToCart(data.data);
+        }}
+        className="w-4 h-4"
+      />
+    );
+  };
+
+  // other code...
+};
+```
+
+`Card` should look something like this:
+
+Located in `src/Components/Card/index.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+import { HiCheck } from "react-icons/hi";
+import { TbShoppingCartPlus } from "react-icons/tb";
+
+const Card = (data) => {
+  const context = useContext(AppContext);
+  const { addProductToCart } = useContext(AppContext);
+
+  const showProduct = (productDetail) => {
+    context.openProductDetail();
+    context.setProductToShow(productDetail);
+    context.closeCheckoutSideMenu();
+  };
+
+  // Check if the product is in the cart:
+  const renderIcon = (id) => {
+    if (data && data.data && data.data.id) {
+      const productIsInCart =
+        context.cartProducts.filter((product) => product.id === id).length > 0;
+
+      if (productIsInCart) {
+        return (
+          <div className="absolute top-0 right-0 flex justify-center items-center bg-black text-white rounded-full border-none m-2 p-1">
+            <HiCheck className="w-4 h-4" />
+          </div>
+        );
+      } else {
+        return (
+          <div className="absolute top-0 right-0 flex justify-center items-center bg-white/50 hover:bg-white transition duration-300 rounded-full border-none m-2 p-1">
+            <TbShoppingCartPlus
+              onClick={(event) => {
+                event.stopPropagation();
+                addProductToCart(data.data);
+              }}
+              className="w-4 h-4"
+            />
+          </div>
+        );
+      }
+    }
+    return null;
+  };
+
+  return (
+    <div
+      className="bg-white border shadow-lg cursor-pointer w-56 h-60 rounded-lg  hover:scale-105 transition duration-300"
+      onClick={() => showProduct(data.data)}
+    >
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          {data.data.category}
+        </span>
+        <img
+          className="rounded-lg w-full h-full object-scale-down"
+          src={data.data.images[0]}
+          alt={data.data.title}
+        />
+        {renderIcon(data.data.id)}
+      </figure>
+      <p className="flex justify-around">
+        <span className="text-sm font-light">
+          {data.data.title.split(" ").slice(0, 3).join(" ")}
+        </span>
+        <span className="text-lg font-medium">${data.data.price}</span>
+      </p>
+    </div>
+  );
+};
+
+export default Card;
+```
+
+### III. Modify the `ProductDetail` Component
+
+In the ProductDetail component, use the addProductToCart from context.
+
+```jsx
+import { useContext } from "react";
+import { AppContext } from "../../Context";
+
+const ProductDetail = (data) => {
+  const { addProductToCart } = useContext(AppContext);
+
+  // other code...
+
+  return (
+    <button onClick={() => addProductToCart(data.data)}>
+      Add to cart
+    </button>
+  );
+};
+```
+
+`ProductDetail` should look something like this:
+
+Located in `src/Components/ProductDetail/index.jsx`
+
+```jsx
+import {
+  HiOutlineX,
+  HiOutlineTag,
+  HiOutlineShoppingCart,
+  HiOutlineStar,
+  HiOutlineCash,
+  HiOutlineTruck,
+  HiOutlinePhotograph,
+  HiOutlineDocumentText,
+  HiOutlineBadgeCheck,
+  HiOutlineArrowNarrowLeft,
+  HiOutlineArrowNarrowRight,
+} from "react-icons/hi";
+
+import { useContext, useState } from "react";
+import { AppContext } from "../../Context";
+
+import { BeatLoader } from "react-spinners"; // npm install react-spinners
+
+const ProductDetail = (data) => {
+  const context = useContext(AppContext);
+  // console.log("context.productToShow: ", context.productToShow);
+
+  const { addProductToCart } = useContext(AppContext);
+
+  // Inside your component
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const [isLoading, setIsLoading] = useState(false); // for image loading
+
+  const handleNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === context.productToShow?.images?.length - 1
+        ? 0
+        : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0
+        ? context.productToShow?.images?.length - 1
+        : prevIndex - 1
+    );
+  };
+  // tailwind css classes for table:
+  const tdElements = "flex justify-start items-center gap-2 py-0.5";
+
+  return (
+    <aside
+      className={`${
+        context.isProductDetailOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 top-20 w-[360px] h-min sm:h-[90vh] border border-black shadow-xl shadow-black rounded-lg bg-white sm:bg-white/70 p-2 m-2`}
+    >
+      <div className="flex justify-between items-center p-6">
+        <h2 className="font-medium">Product Detail</h2>
+        <HiOutlineX onClick={() => context.closeProductDetail()} />
+      </div>
+      {/* <figure className="flex justify-center items-center px-6">
+        <img
+          className="w-fit h-60 rounded-lg"
+          src={context.productToShow?.images?.[0]}
+          alt={context.productToShow?.title}
+        />
+      </figure> */}
+      {/* Image Slices: */}
+      <figure className="flex justify-center items-center px-6">
+        {isLoading ? (
+          <BeatLoader color="#123abc" />
+        ) : (
+          context.productToShow?.images?.[currentImageIndex] && (
+            <img
+              className="w-fit h-60 rounded-lg"
+              src={context.productToShow?.images[currentImageIndex]}
+              alt={context.productToShow?.title}
+            />
+          )
+        )}
+      </figure>
+      <div className="flex justify-around items-center">
+        <button
+          onClick={handlePrev}
+          className="flex justify-evenly items-center w-32 bg-black text-white font-medium py-2 rounded-lg mt-2 hover:bg-gray-900/50 transition duration-300"
+        >
+          <HiOutlineArrowNarrowLeft />
+          Previous
+        </button>
+        <button
+          onClick={handleNext}
+          className="flex justify-evenly items-center w-32 bg-black text-white font-medium py-2 rounded-lg mt-2 hover:bg-gray-900/50 transition duration-300"
+        >
+          Next
+          <HiOutlineArrowNarrowRight />
+        </button>
+      </div>
+
+      {/* // ... other code */}
+      <div className="p-6">
+        {/* <HiOutlineBadgeCheck /> */}
+        <h3 className="font-bold text-2xl mb-2 border-b">
+          {context.productToShow?.title}
+        </h3>
+
+        {/* table */}
+
+        <table className="table-auto w-full mt-4">
+          <tbody className="text-gray-700">
+            <tr>
+              <td className={tdElements}>
+                <HiOutlineCash /> Price
+              </td>
+              <td>${context.productToShow?.price}</td>
+            </tr>
+            <tr>
+              <td className={tdElements}>
+                <HiOutlineBadgeCheck /> Brand
+              </td>
+              <td>{context.productToShow?.brand}</td>
+            </tr>
+            <tr>
+              <td className={tdElements}>
+                <HiOutlinePhotograph />
+                Category
+              </td>
+              <td>{context.productToShow?.category}</td>
+            </tr>
+            <tr>
+              <td className={tdElements}>
+                <HiOutlineTag /> Discount
+              </td>
+              <td>{context.productToShow?.discountPercentage} %</td>
+            </tr>
+            <tr>
+              <td className={tdElements}>
+                <HiOutlineStar /> Rating
+              </td>
+              <td>{context.productToShow?.rating}</td>
+            </tr>
+            <tr>
+              <td className={tdElements}>
+                <HiOutlineTruck /> Stock
+              </td>
+              <td>{context.productToShow?.stock} available</td>
+            </tr>
+            {/* <tr>
+              <td className={tdElements}>Thumbnail</td>
+              <td>{context.productToShow?.thumbnail}</td>
+            </tr> */}
+          </tbody>
+        </table>
+        {/* end table */}
+        <div className={tdElements}>
+          <HiOutlineDocumentText />
+          <p className="mb-1 mt-2">Description</p>
+        </div>
+        <p className="text-gray-700 text-base">
+          {context.productToShow?.description}
+        </p>
+        <button
+          className="flex justify-center gap-2 items-center w-full bg-black text-white font-medium py-2 rounded-lg mt-2 hover:bg-gray-900/50 transition duration-300"
+          onClick={() => addProductToCart(data.data)}
+        >
+          <HiOutlineShoppingCart /> Add to Cart
+        </button>
+      </div>
+      {/* ... other code */}
+    </aside>
+  );
+};
+
+export default ProductDetail;
+```
+
+
+### Fix the error
+
+I am able to add products from the card as before. However, I am not able to do it from the `ProductDetail` page. I am getting some errors.
+
+>`Cannot read properties of undefined (reading 'id') at index.jsx:29:56 at Array.filter () at renderIcon (index.jsx:29:28) at Card (index.jsx:66:10) at renderWithHooks (react-dom.development.js:16305:18) at updateFunctionComponent (react-dom.development.js:19588:20) at beginWork (react-dom.development.js:21601:16) at HTMLUnknownElement.callCallback2 (react-dom.development.js:4164:14) at Object.invokeGuardedCallbackDev (react-dom.development.js:4213:16) at invokeGuardedCallback (react-dom.development.js:4277:31)`
+
+
+
+
+
+
+
+
+
 
 
 <!-- OTHER PROJECTS -->
