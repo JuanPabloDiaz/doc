@@ -3634,8 +3634,6 @@ Changing the icons is a part of both UI (User Interface) and UX (User Experience
 
 Styling is a part of both UI (User Interface) and UX (User Experience). From a UI perspective, it involves choosing colors, fonts, and layouts. From a UX perspective, good styling can make the interface easier to use and more enjoyable for the user.
 
-
-
 ## 33. Clean Up the Project
 
 It's good practice to check if we are repeating code and clean up the project. Here is an example of code that we can clean.
@@ -3751,12 +3749,200 @@ export default Navbar;
 
 > Notice that the "Shopi" item has its own unique styles and does not share the same styles as the other NavItem components, you can directly use the NavLink component for it instead of the NavItem component.
 
+## 34. Create Private Routes and Public Routes
 
+Private and Public Routes refer to the accessibility of certain routes (or pages) based on the user's authentication status.
 
+**Private Routes**: These are routes that are only accessible to authenticated users. If a user is not authenticated and tries to access a private route, they are typically redirected to a login page.
 
+**Public Routes**: These are routes that are accessible to all users, regardless of their authentication status. Examples of public routes might include the login page, the registration page, or a public homepage.
 
+### How can I implement Private and Public Routes in React?
 
+- useAuth: login y logout
 
+[Learn more](https://platzi.com/new-home/clases/3468-react-router/51623-useauth-login-y-logout/)
+
+#### I. Create an `auth.jsx` file in context
+
+Locate in `src/Context/auth.jsx`
+
+```jsx
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
+const AuthContext = React.createContext();
+
+function AuthProvider({ children }) {
+  const navigate = useNavigate();
+  const [user, setUser] = React.useState(null);
+
+  const login = (username, password) => {
+    if (typeof username !== "string") {
+      throw new Error("Username must be a string");
+    }
+    setUser({ username, password });
+    navigate("/my-account");
+  };
+
+  const logout = () => {
+    setUser(null);
+    navigate("/");
+  };
+
+  const auth = { user, login, logout };
+
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+}
+
+function useAuth() {
+  //here?
+  const auth = React.useContext(AuthContext);
+  return auth;
+}
+export { AuthProvider, useAuth };
+```
+
+#### II. Modify the `SignIn.jsx` page
+
+```jsx
+import React, { useState } from "react";
+import Layout from "../../Components/Layout";
+import { useAuth } from "../../Context/auth";
+
+function SignIn() {
+  const auth = useAuth(); // console.log("auth: ", auth);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // console.log("username: ", username);
+    // console.log("password: ", password);
+    auth.login(username, password);
+    //    onLogin(username, password); this is from copilot-signin. and onlogin needs to be passed in as a prop. at the beginning of... function SignIn({ onLogin }) {
+  };
+
+  return (
+    <Layout>
+      <div className="flex items-center justify-center relative mb-4">
+        <h1 className="font-medium text-md sm:text-xl">Sign In</h1>
+      </div>
+      <form
+        onSubmit={handleLogin}
+        className="flex flex-col justify-center items-center w-screen h-screen gap-5"
+      >
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          className="border border-gray-300 rounded-md px-2 py-1"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="border border-gray-300 rounded-md px-2 py-1"
+        />
+        <button
+          type="submit"
+          className="w-48 bg-black text-white font-medium py-2 rounded-lg mt-2 hover:bg-gray-900/50 transition duration-300"
+        >
+          Sign In
+        </button>
+      </form>
+    </Layout>
+  );
+}
+
+export default SignIn;
+```
+
+#### III. Modify the `MyAccount.jsx` page
+
+```jsx
+import Layout from "../../Components/Layout";
+import { useAuth } from "../../Context/auth";
+
+const MyAccount = () => {
+  const auth = useAuth();
+  return (
+    <Layout>
+      <div className="flex flex-col gap-7 items-center justify-center relative mb-4">
+        <h1 className="font-medium text-md sm:text-xl">My Account</h1>
+        <p className="font-semibold text-2xl">Welcome, {auth.user.username}</p>
+
+        {console.log("username: ", auth.user.username)}
+        {console.log("password: ", auth.user.password)}
+      </div>
+    </Layout>
+  );
+};
+
+export default MyAccount;
+```
+
+#### IV. Modify the `App.jsx`
+
+```jsx
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import { AppProvider } from "../../Context";
+
+import { AuthProvider } from "../../Context/auth"; // AuthContext is the context that will be used to store the user's data
+import Navbar from "../../Components/Navbar";
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
+import "./App.css";
+
+import Home from "../Home";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import MyAccount from "../MyAccount";
+import SignIn from "../SignIn";
+import Logout from "../Logout";
+
+const AppRoutes = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/smartphones", element: <Home /> },
+    { path: "/laptops", element: <Home /> },
+    { path: "/fragrances", element: <Home /> },
+    { path: "/skincare", element: <Home /> },
+    { path: "/groceries", element: <Home /> },
+    { path: "/home-decoration", element: <Home /> },
+    // Should be Private Route but for testing purposes it is public
+    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-orders", element: <MyOrders /> },
+    { path: "/my-orders/last", element: <MyOrder /> },
+    { path: "/my-orders/:id", element: <MyOrder /> },
+    // Private Routes
+    { path: "/my-account", element: <MyAccount /> },
+    { path: "/sign-in", element: <SignIn /> },
+    { path: "/logout", element: <Logout /> },
+    // Not Found
+    { path: "*", element: <NotFound /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+          <Navbar />
+          <CheckoutSideMenu />
+        </AuthProvider>
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+export default App;
+```
 
 
 
@@ -3765,6 +3951,7 @@ export default Navbar;
 
 
 <!-- OTHER PROJECTS -->
+
 
 ## Projects 🚀
 
