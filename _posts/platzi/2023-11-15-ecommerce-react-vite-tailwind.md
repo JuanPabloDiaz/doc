@@ -78,16 +78,7 @@ This is the Starting Point Of The Project, where we will...
 - Add the code below to `src/App.jsx`:
 
 <details>
- <summary>Summary</summary>
-
-```js
-const x = 1;
-```
-
-</details>
-
-<details>
-<summary>View code order</summary>
+  <summary>View code order</summary>
 
 ```jsx
 import "./App.css";
