@@ -4204,48 +4204,10 @@ The PrivateRoute and PublicRoute are components that you will create to handle p
 
 Here's how you can create these components:
 
-#### I. Create a new Component: `PrivateRoute`
-
-Located in `src/Components/PrivateRoute/index.jsx`
+#### I. Modify the `App.jsx` Page
 
 ```jsx
-import { Route, useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/auth";
-
-const PrivateRoute = ({ children, ...rest }) => {
-  let auth = useAuth();
-  let navigate = useNavigate();
-  if (!auth.user) navigate("/sign-in");
-  return <Route {...rest}>{auth.user ? children : null}</Route>;
-};
-
-export default PrivateRoute;
-```
-
-#### II. Create a new Component: `PublicRoute`
-
-Located in `src/Components/PublicRoute/index.jsx`
-
-```jsx
-import { Route, useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/auth";
-
-const PublicRoute = ({ children, restricted, ...rest }) => {
-  let auth = useAuth();
-  let navigate = useNavigate();
-  if (auth.user && restricted) navigate("/my-account");
-  return <Route {...rest}>{!auth.user || !restricted ? children : null}</Route>;
-};
-
-export default PublicRoute;
-```
-
-#### III. Modify the `App.jsx` Page
-
-Then, You can modify the AppRoutes component to use the PrivateRoute and PublicRoute components. Here's how you can do that:
-
-```jsx
-import { BrowserRouter, useRoutes } from "react-router-dom";
+import { useRoutes, BrowserRouter, Navigate } from "react-router-dom";
 import { AppProvider } from "../../Context";
 
 import { AuthProvider } from "../../Context/auth"; // AuthContext is the context that will be used to store the user's data
@@ -4261,123 +4223,38 @@ import MyAccount from "../MyAccount";
 import SignIn from "../SignIn";
 import Logout from "../Logout";
 
-import PublicRoute from "../../Components/PublicRoute";
-import PrivateRoute from "../../Components/PrivateRoute";
+// Implementing the Private and Public Routes:
+import { useAuth } from "../../Context/auth"; // make sure you have a useAuth hook in your auth context
+
+const PrivateRoute = ({ children }) => {
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/sign-in" />;
+};
+
+const PublicRoute = ({ children }) => {
+  const { user } = useAuth();
+  return user ? <Navigate to="/" /> : children;
+};
 
 const AppRoutes = () => {
   let routes = useRoutes([
-    {
-      path: "/",
-      element: (
-        <PublicRoute restricted={false}>
-          <Home />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/smartphones",
-      element: (
-        <PublicRoute restricted={false}>
-          <Home />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/laptops",
-      element: (
-        <PublicRoute restricted={false}>
-          <Home />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/fragrances",
-      element: (
-        <PublicRoute restricted={false}>
-          <Home />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/skincare",
-      element: (
-        <PublicRoute restricted={false}>
-          <Home />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/groceries",
-      element: (
-        <PublicRoute restricted={false}>
-          <Home />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/home-decoration",
-      element: (
-        <PublicRoute restricted={false}>
-          <Home />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/my-order",
-      element: (
-        <PrivateRoute>
-          <MyOrder />
-        </PrivateRoute>
-      ),
-    },
-    {
-      path: "/my-orders",
-      element: (
-        <PrivateRoute>
-          <MyOrders />
-        </PrivateRoute>
-      ),
-    },
-    {
-      path: "/my-orders/last",
-      element: (
-        <PrivateRoute>
-          <MyOrder />
-        </PrivateRoute>
-      ),
-    },
-    {
-      path: "/my-orders/:id",
-      element: (
-        <PrivateRoute>
-          <MyOrder />
-        </PrivateRoute>
-      ),
-    },
-    {
-      path: "/my-account",
-      element: (
-        <PrivateRoute>
-          <MyAccount />
-        </PrivateRoute>
-      ),
-    },
-    {
-      path: "/sign-in",
-      element: (
-        <PublicRoute restricted={true}>
-          <SignIn />
-        </PublicRoute>
-      ),
-    },
-    {
-      path: "/logout",
-      element: (
-        <PrivateRoute>
-          <Logout />
-        </PrivateRoute>
-      ),
-    },
+    { path: "/", element: <Home /> },
+    { path: "/smartphones", element: <Home /> },
+    { path: "/laptops", element: <Home /> },
+    { path: "/fragrances", element: <Home /> },
+    { path: "/skincare", element: <Home /> },
+    { path: "/groceries", element: <Home /> },
+    { path: "/home-decoration", element: <Home /> },
+    // Private Routes
+    { path: "/my-order", element: <PrivateRoute><MyOrder /></PrivateRoute> },
+    { path: "/my-orders", element: <PrivateRoute><MyOrders /></PrivateRoute> },
+    { path: "/my-orders/last", element: <PrivateRoute><MyOrder /></PrivateRoute> },
+    { path: "/my-orders/:id", element: <PrivateRoute><MyOrder /></PrivateRoute> },
+    { path: "/my-account", element: <PrivateRoute><MyAccount /></PrivateRoute> },
+    { path: "/logout", element: <PrivateRoute><Logout /></PrivateRoute> },
+    // Public Routes
+    { path: "/sign-in", element: <PublicRoute><SignIn /></PublicRoute> },
+    // Not Found
     { path: "*", element: <NotFound /> },
   ]);
   return routes;
@@ -4399,7 +4276,7 @@ const App = () => {
 export default App;
 ```
 
-## 34. Add Product to Cart From `ProductDetail` page (or any page)
+## 35. Add Product to Cart From `ProductDetail` page (or any page)
 
 To use the `addProductToCart` function in your `ProductDetail` page, you need to move this function to the context so that it can be shared between different components. Here's how you can do it:
 
