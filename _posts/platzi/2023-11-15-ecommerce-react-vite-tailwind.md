@@ -78,9 +78,9 @@ This is the Starting Point Of The Project, where we will...
 - Add the code below to `src/App.jsx`:
 
 <details>
-  <summary>View code order</summary>
+  <summary>View code using tags</summary>
 
-```jsx
+  <code class="language-jsx">
 import "./App.css";
 function App() {
   return (
@@ -90,8 +90,7 @@ function App() {
   );
 }
 export default App;
-```
-
+<code>
 </details>
 
 ### II. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
