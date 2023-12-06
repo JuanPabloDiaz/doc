@@ -76,23 +76,17 @@ This is the Starting Point Of The Project, where we will...
 - Delete the content from `src/index.css` (keep the file)
 - Delete the content from `src/App.jsx` (keep the file)
 - Add the code below to `src/App.jsx`:
-
-<details>
-  <summary>View code using tags</summary>
-
-  <code class="language-jsx">
-    import "./App.css";
-    function App() {
-      return (
-        <>
-          <div>Hello World</div>
-        </>
-      );
-    }
-    export default App;
-</code>
-
-</details>
+  ```jsx
+  import "./App.css";
+  function App() {
+    return (
+      <>
+        <div>Hello World</div>
+      </>
+    );
+  }
+  export default App;
+  ```
 
 ### II. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
 
