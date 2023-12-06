@@ -78,24 +78,8 @@ This is the Starting Point Of The Project, where we will...
 - Add the code below to `src/App.jsx`:
 
 <details>
-  <summary>View code</summary>
-
-  <code>
-    import "./App.css";
-    function App() {
-      return (
-        <>
-          <div>Hello World</div>
-        </>
-      );
-    }
-    export default App;
-  </code>
-</details>
-
-<details>
-  <summary>View code jsx</summary>
-
+<summary>View code jsx</summary>
+<div>
 ```jsx
 import "./App.css";
 function App() {
@@ -107,7 +91,7 @@ function App() {
 }
 export default App;
 ```
-
+</div>
 </details>
 
 ### II. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
