@@ -3967,6 +3967,7 @@ In your Navbar component, you can use the auth context to conditionally render l
 
 Here's how you can do that:
 
+- Option 1:
 ```jsx
 <ul className="hidden sm:flex items-center gap-3">
   {auth.user && (
@@ -4003,7 +4004,71 @@ Here's how you can do that:
 
 > if auth.user is truthy (i.e., the user is authenticated), the "Logout" and "My Account" links are rendered. If auth.user is falsy (i.e., the user is not authenticated), the "Sign In" link is rendered.
 
-Here's how the `Navbar.jsx` should look like:
+- Option 2:
+```jsx
+// ...
+<ul className="hidden sm:flex items-center gap-3">
+  {auth.user && (
+    <>
+      <li>
+        <NavLink
+          to="/my-account"
+          className={({ isActive }) =>
+            isActive ? activeStyle : undefined
+          }
+        >
+          My Account
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/my-orders"
+          className={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+          My Orders
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/card"
+          className={`flex justify-center items-center ${({ isActive }) =>
+            isActive ? activeStyle : undefined}`}
+        >
+          <HiOutlineShoppingCart className="mr-1" />
+          <p>{context.cartProducts.length}</p>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/Logout"
+          className={({ isActive }) =>
+            isActive ? activeStyle : undefined
+          }
+        >
+          Logout
+        </NavLink>
+      </li>
+    </>
+  )}
+  {!auth.user && (
+    <li>
+      <NavLink
+        to="/sign-in"
+        className={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }
+      >
+        Sign In
+      </NavLink>
+    </li>
+  )}
+</ul>
+// ...
+```
+
+> You can also have the links to "My Account", "My Orders", "Card", and "Logout" will only be shown if auth.user is truthy, indicating that a user is authenticated. If auth.user is falsy, indicating that no user is authenticated, only the "Sign In" link will be shown. 
+
+Here's how the `Navbar.jsx` should look like using option 2:
 
 ```jsx
 import { NavLink } from "react-router-dom";
@@ -4126,52 +4191,53 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
-
-        <ul className="hidden sm:flex items-center gap-3">
-          <li>
-            <NavLink
-              to="/my-orders"
-              className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
-              My Orders
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/card"
-              className={`flex justify-center items-center ${({ isActive }) =>
-                isActive ? activeStyle : undefined}`}
-            >
-              <HiOutlineShoppingCart className="mr-1" />
-              <p>{context.cartProducts.length}</p>
-            </NavLink>
-          </li>
-        </ul>
         <ul className="hidden sm:flex items-center gap-3">
           {auth.user && (
-            <li>
-              <NavLink
-                to="/my-account"
-                className={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
-              >
-                My Account
-              </NavLink>
-            </li>
+            <>
+              <li>
+                <NavLink
+                  to="/my-account"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                >
+                  My Account
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/my-orders"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                >
+                  My Orders
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/card"
+                  className={`flex justify-center items-center ${({
+                    isActive,
+                  }) => (isActive ? activeStyle : undefined)}`}
+                >
+                  <HiOutlineShoppingCart className="mr-1" />
+                  <p>{context.cartProducts.length}</p>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/Logout"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                >
+                  Logout
+                </NavLink>
+              </li>
+            </>
           )}
-          {auth.user ? (
-            <li>
-              <NavLink
-                to="/Logout"
-                className={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
-              >
-                Logout
-              </NavLink>
-            </li>
-          ) : (
+          {!auth.user && (
             <li>
               <NavLink
                 to="/sign-in"
@@ -4191,6 +4257,7 @@ const Navbar = () => {
 
 export default Navbar;
 ```
+
 
 ### Private and Public Routes
 
