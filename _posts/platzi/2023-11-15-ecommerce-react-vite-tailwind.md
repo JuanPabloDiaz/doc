@@ -4874,6 +4874,290 @@ I am able to add products from the card as before. However, I am not able to do 
 
 > `Cannot read properties of undefined (reading 'id') at index.jsx:29:56 at Array.filter () at renderIcon (index.jsx:29:28) at Card (index.jsx:66:10) at renderWithHooks (react-dom.development.js:16305:18) at updateFunctionComponent (react-dom.development.js:19588:20) at beginWork (react-dom.development.js:21601:16) at HTMLUnknownElement.callCallback2 (react-dom.development.js:4164:14) at Object.invokeGuardedCallbackDev (react-dom.development.js:4213:16) at invokeGuardedCallback (react-dom.development.js:4277:31)`
 
+## 36. `Logout` from the `Navbar` Component
+
+For a better user experience, there is no need to make the user go to a logout page to logout if they can simply logout from the navegation menu
+
+Here is what I change in the code:
+
+
+### I. Modify the `Navbar` Component
+
+Move the logout functionality to the navbar. Here's a step-by-step plan:
+
+- Copy the "handleLogout" function from `Logout` page and paste it in the `navbar` Component.
+- Attach an onClick event handler to the logout Navlink that calls the logout function.
+
+```jsx
+// Navbar.jsx
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+
+const Navbar = () => {
+  const history = useHistory();
+
+  const handleLogout = () => {
+    // Add your logout logic here
+    console.log("You have been logged out.");
+    history.push('/'); // Redirect to home page after logout
+  };
+
+  return (
+    <nav>
+      {/* Other navbar items */}
+      <button onClick={handleLogout}>Logout</button>
+    </nav>
+  );
+};
+
+export default Navbar;
+```
+
+The `navbar` should looks like this:
+
+```jsx
+import { NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AppContext } from "../../Context";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+import { useScrollPosition } from "../../Utils/useScrollPosition";
+import { useAuth } from "../../Context/auth";
+import { useNavigate } from "react-router-dom";
+
+const Navbar = () => {
+  const activeStyle = "underline text-gray-500 underline-offset-4";
+  const context = useContext(AppContext);
+
+  //scrollPosition:
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdownTech, setShowDropdownTech] = useState(false);
+
+  function classNamesNavBarScroll(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  const scrollPosition = useScrollPosition();
+  // console.log(scrollPosition);
+
+  // AuthContext:
+  const auth = useAuth();
+  console.log("in Navbar, Auth.user: ", auth.user);
+
+  // Navigate:
+  let navigate = useNavigate();
+
+  // logout:
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+  //   auth.logout();
+  //   console.log("You have been logged out.");
+  //   navigate("/"); // Redirect to home page after logout
+  // };
+  // logout with confirmation (window.confirm)
+  // window.confirm() function to display a confirmation dialog when the user clicks on the logout button
+  const handleLogout = (e) => {
+    e.preventDefault();
+    if (
+      window.confirm(`${auth.user.username}, Are you sure you want to logout?`)
+    ) {
+      auth.logout();
+      console.log("You have been logged out.");
+      navigate("/"); // Redirect to home page after logout
+    }
+  };
+  return (
+    <header
+      className={classNamesNavBarScroll(
+        scrollPosition > 0
+          ? "md:shadow md:bg-white md:-translate-y-6 md:h-auto"
+          : "md:shadow-none md:bg-none md:translate-y-0 md:h-none",
+        "absolute md:fixed top-2 inset-x-0 z-40 md:transition-shadow-xl md:shadow-black md:transition-color duration-500 md:-translate-y-6 md:h-20 lg:h-14"
+      )}
+    >
+      <nav className="hidden sm:flex flex-col sm:flex-row justify-between items-center fixed z-10 w-full py-5 px-8 text-md font-light top-0">
+        <ul className="flex flex-col sm:flex-row items-center gap-3">
+          <li className="font-semibold text-lg">
+            <NavLink to="/" onClick={() => context.setSearchByCategory(null)}>
+              JP·Shop
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => context.setSearchByCategory(null)}
+            >
+              All
+            </NavLink>
+          </li>
+          <li onClick={() => setShowDropdownTech(!showDropdownTech)}>
+            Electronics
+            {showDropdownTech && (
+              <div>
+                <NavLink
+                  to="/smartphones"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("smartphones")}
+                >
+                  Phone
+                </NavLink>
+                <NavLink
+                  to="/laptops"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("laptops")}
+                >
+                  Laptop
+                </NavLink>
+              </div>
+            )}
+          </li>
+          <li onClick={() => setShowDropdown(!showDropdown)}>
+            Cosmetics
+            {showDropdown && (
+              <div>
+                <NavLink
+                  to="/fragrances"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("fragrances")}
+                >
+                  Perfumes
+                </NavLink>
+                <NavLink
+                  to="/skincare"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  onClick={() => context.setSearchByCategory("skincare")}
+                >
+                  Skin Care
+                </NavLink>
+              </div>
+            )}
+          </li>
+          <li>
+            <NavLink
+              to="/groceries"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => context.setSearchByCategory("groceries")}
+            >
+              Groceries
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/home-decoration"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => context.setSearchByCategory("home-decoration")}
+            >
+              HomeGoods
+            </NavLink>
+          </li>
+        </ul>
+        <ul className="hidden sm:flex items-center gap-3">
+          {auth.user && (
+            <>
+              <li>
+                <NavLink
+                  to="/my-account"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                >
+                  My Account
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/my-orders"
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                >
+                  My Orders
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/card"
+                  className={`flex justify-center items-center ${({
+                    isActive,
+                  }) => (isActive ? activeStyle : undefined)}`}
+                >
+                  <HiOutlineShoppingCart className="mr-1" />
+                  <p>{context.cartProducts.length}</p>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  // to="/Logout"
+                  onClick={handleLogout}
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                >
+                  Logout
+                </NavLink>
+              </li>
+            </>
+          )}
+          {!auth.user && (
+            <li>
+              <NavLink
+                to="/sign-in"
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
+                Sign In
+              </NavLink>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Navbar;
+```
+
+### II. Delete the `logout` page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- OTHER PROJECTS -->
 
 ## Projects 🚀
