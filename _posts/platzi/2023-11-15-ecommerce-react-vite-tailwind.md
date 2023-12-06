@@ -77,10 +77,10 @@ This is the Starting Point Of The Project, where we will...
 - Delete the content from `src/App.jsx` (keep the file)
 - Add the code below to `src/App.jsx`:
 
-    <details>
-    <summary>View code</summary>
+<details>
+  <summary>View code</summary>
 
-    <code>
+  <code>
     import "./App.css";
     function App() {
       return (
@@ -90,12 +90,25 @@ This is the Starting Point Of The Project, where we will...
       );
     }
     export default App;
-    </code>
-  </details>
+  </code>
+</details>
 
-      ```jsx
+<details>
+  <summary>View code jsx</summary>
 
-      ```
+```jsx
+import "./App.css";
+function App() {
+  return (
+    <>
+      <div>Hello World</div>
+    </>
+  );
+}
+export default App;
+```
+
+</details>
 
 ### II. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
 
