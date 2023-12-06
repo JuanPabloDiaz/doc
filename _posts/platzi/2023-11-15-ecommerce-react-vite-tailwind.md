@@ -81,16 +81,17 @@ This is the Starting Point Of The Project, where we will...
   <summary>View code using tags</summary>
 
   <code class="language-jsx">
-import "./App.css";
-function App() {
-  return (
-    <>
-      <div>Hello World</div>
-    </>
-  );
-}
-export default App;
-<code>
+    import "./App.css";
+    function App() {
+      return (
+        <>
+          <div>Hello World</div>
+        </>
+      );
+    }
+    export default App;
+</code>
+
 </details>
 
 ### II. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
