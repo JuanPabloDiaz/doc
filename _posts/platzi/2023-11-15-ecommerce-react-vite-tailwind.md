@@ -46,6 +46,7 @@ npm create vite@latest ./
 ### III. Configure the **Vite Project**
 
 You will be asked a few questions:
+
 ```bash
 Need to install the following packages:
 create-vite@4.4.1
@@ -75,76 +76,79 @@ This is the Starting Point Of The Project, where we will...
 - Delete the content from `src/index.css` (keep the file)
 - Delete the content from `src/App.jsx` (keep the file)
 - Add the code below to `src/App.jsx`:
-    ```jsx
-    import "./App.css";
-    function App() {
+
+  <details>
+  <summary>View code</summary>
+
+  ```jsx
+  import "./App.css";
+  function App() {
     return (
-        <>
-        <div>
-        Hello World
-        </div>
-        </>
+      <>
+        <div>Hello World</div>
+      </>
     );
-    }
-    export default App;
+  }
+  export default App;
+  ```
+
+</details>
+
+    ```jsx
+
     ```
 
 ### II. [Install Tailwind in the project with Vite](https://tailwindcss.com/docs/guides/vite).
 
 - Run commands:
 
-    ```bash
-    npm install -D tailwindcss postcss autoprefixer
-    npx tailwindcss init -p
-    ```
+  ```bash
+  npm install -D tailwindcss postcss autoprefixer
+  npx tailwindcss init -p
+  ```
 
 ### III. Follow the [Tailwind documentation for Vite](https://tailwindcss.com/docs/guides/vite).
 
 - Modify the `tailwind.config` file
 
-    ```js
-    /** @type {import('tailwindcss').Config} */
-    export default {
-    content: [
-        "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
-    ],
+  ```js
+  /** @type {import('tailwindcss').Config} */
+  export default {
+    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {},
+      extend: {},
     },
     plugins: [],
-    }
-    ```
+  };
+  ```
 
 - Add the Tailwind directives to your CSS
 
-    ```css
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-    ```
+  ```css
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  ```
 
 - Modify the code below to `src/App.jsx`:
 
-    ```jsx
-    import "./App.css";
-    function App() {
+  ```jsx
+  import "./App.css";
+  function App() {
     return (
-        <>
-        <div classname="bg-gray-500">
-        Hello World
-        </div>
-        </>
+      <>
+        <div classname="bg-gray-500">Hello World</div>
+      </>
     );
-    }
-    export default App;
-    ```
+  }
+  export default App;
+  ```
 
 - Run the project
 
-    ```bash
-    npm run dev
-    ```
+  ```bash
+  npm run dev
+  ```
 
 ### IV. App Plugings
 
@@ -153,6 +157,7 @@ A. Install [React Icons](https://www.npmjs.com/package/react-icons)
 ```bash
 npm i react-icons
 ```
+
 > In this proyect. I will use [Heroicons](https://react-icons.github.io/react-icons/icons/hi/)
 
 ## 3. Create The Pages and Routes
@@ -160,66 +165,65 @@ npm i react-icons
 For the [Structure](https://blog.webdevsimplified.com/2022-07/react-folder-structure/):
 
 - Create a `Pages` folder inside the `src` folder
-- Inside `src/Pages`, create files:
-    - `Home/index.jsx`
-    - `MyAccount/index.jsx`
-    - `MyOrder/index.jsx`
-    - `MyOrders/index.jsx`
-    - `NotFound/index.jsx`
-    - `SignIn/index.jsx`
-> Run `rafce`, delete `import React from "react";` and ensure the routing works and the app is not broken. (modify the `main.jsx` & `App.jsx`)
+- Inside `src/Pages`, create files: - `Home/index.jsx` - `MyAccount/index.jsx` - `MyOrder/index.jsx` - `MyOrders/index.jsx` - `NotFound/index.jsx` - `SignIn/index.jsx`
+
+  > Run `rafce`, delete `import React from "react";` and ensure the routing works and the app is not broken. (modify the `main.jsx` & `App.jsx`)
 
 - Move and rename the `App.jsx` file >> to `src/Pages/App/index.jsx`
 - Modify the `src/Pages/App/index.jsx`
-    ```jsx
-    import "./App.css";
-    import Home from "../Home";
-    import MyAccount from "../MyAccount";
-    import MyOrder from "../MyOrder";
-    import MyOrders from "../MyOrders";
-    import NotFound from "../NotFound";
-    import SignIn from "../SignIn";
 
-    function App() {
+  ```jsx
+  import "./App.css";
+  import Home from "../Home";
+  import MyAccount from "../MyAccount";
+  import MyOrder from "../MyOrder";
+  import MyOrders from "../MyOrders";
+  import NotFound from "../NotFound";
+  import SignIn from "../SignIn";
+
+  function App() {
     return (
-        <>
+      <>
         <div className="flex flex-col">
-            <Home />
-            <MyAccount />
-            <MyOrder />
-            <MyOrders />
-            <NotFound />
-            <SignIn />
+          <Home />
+          <MyAccount />
+          <MyOrder />
+          <MyOrders />
+          <NotFound />
+          <SignIn />
         </div>
-        </>
+      </>
     );
-    }
+  }
 
-    export default App;
-    ```
+  export default App;
+  ```
+
 - Modify the `main.jsx`
-    ```jsx
-    import React from "react";
-    import ReactDOM from "react-dom/client";
-    import App from "./Pages/App/index.jsx";
-    import "./index.css";
 
-    ReactDOM.createRoot(document.getElementById("root")).render(
+  ```jsx
+  import React from "react";
+  import ReactDOM from "react-dom/client";
+  import App from "./Pages/App/index.jsx";
+  import "./index.css";
+
+  ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <App />
+      <App />
     </React.StrictMode>
-    );
-    ```
+  );
+  ```
 
 ## 4. Routing
 
-### Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom) 
+### Install [React Router DOM](https://www.npmjs.com/package/react-router-dom#react-router-dom)
 
 ```bash
 npm i react-router-dom
 ```
 
 ### I. Edit the `App/index.jsx` file:
+
 Located in `src/Pages/App/index.jsx`
 
 ```jsx
@@ -275,35 +279,40 @@ const Navbar = () => {
         <li>
           <NavLink
             to="/"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             All
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/clothes"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Clothes
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/electronics"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Electronics
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/furnitures"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Furnitures
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/toys"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Toys
           </NavLink>
         </li>
@@ -313,28 +322,32 @@ const Navbar = () => {
         <li>
           <NavLink
             to="/my-orders"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             My Orders
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/my-account"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             My Account
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/sign-in"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Sign In
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/card"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)} >
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             🛒 0
           </NavLink>
         </li>
@@ -386,7 +399,7 @@ const App = () => {
 export default App;
 ```
 
-## 6.  **Layout** Componente
+## 6. **Layout** Componente
 
 ### I. Create the `Layout` Component
 
@@ -394,11 +407,7 @@ Located in `src/Components/Layout/index.jsx`
 
 ```jsx
 const Layout = ({ children }) => {
-  return (
-  <div className="flex flex-col items-center mt-20">
-    {children}
-  </div>
-  )
+  return <div className="flex flex-col items-center mt-20">{children}</div>;
 };
 
 export default Layout;
@@ -419,15 +428,12 @@ Include the following structure:
 import Layout from "../../Components/Layout";
 
 const NameHere = () => {
-  return (
-  <Layout>
-  NameHere
-  </Layout>
-  )
+  return <Layout>NameHere</Layout>;
 };
 
 export default NameHere;
 ```
+
 > Replace the `NameHere` with the name of the folder.
 
 ## 7. **Card** Componente
@@ -441,13 +447,18 @@ const Card = () => {
   return (
     <div className="bg-amber-600/80 cursor-pointer w-56 h-60 rounded-lg">
       <figure className="relative mb-2 w-full h-4/5">
-        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">tag</span>
+        <span className="absolute bottom-0 bg-white/60 rounded-lg text-black text-xs m-2 py-0.5 px-2">
+          tag
+        </span>
         <img
           className="rounded-lg w-full h-full object-cover"
           src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=300"
           alt="card image"
         />
-        <div className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2"> + </div>
+        <div className="absolute top-0 right-0 flex justify-center items-center bg-white rounded-full w-6 h-6 m-2">
+          {" "}
+          +{" "}
+        </div>
       </figure>
       <p className="flex justify-around">
         <span className="text-sm font-light">Headphones</span>
@@ -488,6 +499,7 @@ Consuming APIs is the process by which the application developer accesses the va
 It is Extremely important to understand how to use and consume the API we are about to use.
 
 API Examples:
+
 - [Platzi Fake Store API](https://fakeapi.platzi.com/) 🕮 [Docs](https://fakeapi.platzi.com/en/about/introduction/)
 - [Fake Store API](https://fakestoreapi.com/) 🕮 [Docs](https://fakestoreapi.com/docs)
 - [Rapid API](https://rapidapi.com/hub)
@@ -500,65 +512,70 @@ After finding what we needed to do to be able to use the **API**
 - Get the API URL from the section/element that we want to use
 
 Example: [Fake **Store** API](https://fakestoreapi.com/docs#p-all)
+
 ```js
 // Get all products:
-fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
-```
-```js
- // Output:
-  [
-      {
-          id:1,
-          title:'...',
-          price:'...',
-          category:'...',
-          description:'...',
-          image:'...'
-      },
-      /*...*/
-      {
-          id:30,
-          title:'...',
-          price:'...',
-          category:'...',
-          description:'...',
-          image:'...'
-      }
-  ]
-```
-Example: [Fake **Platzi** API](https://fakeapi.platzi.com/en/rest/products/)
-```js
-// Get all products:
-fetch('https://api.escuelajs.co/api/v1/products')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
-```
-```js
- // Output:
- [
-  {
-    "id": 4,
-    "title": "Handmade Fresh Table",
-    "price": 687,
-    "description": "Andy shoes are designed to keeping in...",
-    "category": {
-      "id": 5,
-      "name": "Others",
-      "image": "https://placeimg.com/640/480/any?r=0.591926261873231"
-    },
-    "images": [
-      "https://placeimg.com/640/480/any?r=0.9178516507833767",
-      "https://placeimg.com/640/480/any?r=0.9300320592588625",
-      "https://placeimg.com/640/480/any?r=0.8807778235430017"
-    ]
-  }
-  // ...
-]
+fetch("https://fakestoreapi.com/products")
+  .then((res) => res.json())
+  .then((json) => console.log(json));
 ```
 
->*State* and *Effect* are use to consume an API
+```js
+// Output:
+[
+  {
+    id: 1,
+    title: "...",
+    price: "...",
+    category: "...",
+    description: "...",
+    image: "...",
+  },
+  /*...*/
+  {
+    id: 30,
+    title: "...",
+    price: "...",
+    category: "...",
+    description: "...",
+    image: "...",
+  },
+];
+```
+
+Example: [Fake **Platzi** API](https://fakeapi.platzi.com/en/rest/products/)
+
+```js
+// Get all products:
+fetch("https://api.escuelajs.co/api/v1/products")
+  .then((res) => res.json())
+  .then((json) => console.log(json));
+```
+
+```js
+// Output:
+[
+  {
+    id: 4,
+    title: "Handmade Fresh Table",
+    price: 687,
+    description: "Andy shoes are designed to keeping in...",
+    category: {
+      id: 5,
+      name: "Others",
+      image: "https://placeimg.com/640/480/any?r=0.591926261873231",
+    },
+    images: [
+      "https://placeimg.com/640/480/any?r=0.9178516507833767",
+      "https://placeimg.com/640/480/any?r=0.9300320592588625",
+      "https://placeimg.com/640/480/any?r=0.8807778235430017",
+    ],
+  },
+  // ...
+];
+```
+
+> _State_ and _Effect_ are use to consume an API
 
 ### III. Modify the `Home` Page
 
@@ -640,11 +657,7 @@ import { createContext } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  return (
-  <AppContext.Provider>
-	{children}
-</AppContext.Provider>
-)
+  return <AppContext.Provider>{children}</AppContext.Provider>;
 };
 ```
 
@@ -861,6 +874,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. Should look like this: `value={ { ...content here.... } }`
 
 ## 11. **SideBar** Component
@@ -1139,6 +1153,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### II. Modify the `Product Detail` Component
@@ -1396,6 +1411,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### II. Modify the `Card` Component
@@ -1683,6 +1699,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### III. Modify the **Card** Components
@@ -1873,6 +1890,7 @@ const CheckoutSideMenu = () => {
 
 export default CheckoutSideMenu;
 ```
+
 ## 19. Don't Repeat Products in Cart
 
 ### I. Modify the **Card** Components
@@ -2022,10 +2040,12 @@ export default OrderCard;
 
 ### SetUp [Shadcn UI](https://ui.shadcn.com/) in the Project
 
-### I. Install [Shadcn UI](https://ui.shadcn.com/docs/installation/vite) for Vite. 
+### I. Install [Shadcn UI](https://ui.shadcn.com/docs/installation/vite) for Vite.
 
 [Shadcn UI](https://ui.shadcn.com/). is a library with multiple designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source. it will be use to style the page.
+
 - Create a `jsconfig.json` file by adding the following code to the paths section:
+
 ```bash
 {
   "compilerOptions": {
@@ -2044,8 +2064,9 @@ export default OrderCard;
 - Install Node.
   ```bash
   npm i -D @types/node
-  ``` 
+  ```
 - Overwrite the `vite.config.ts` file:
+
   ```bash
   import path from "path"
   import react from "@vitejs/plugin-react"
@@ -2060,6 +2081,7 @@ export default OrderCard;
     },
   })
   ```
+
 - Run the shadcn-ui init command to setup your project:
   ```bash
   npx shadcn-ui@latest init
@@ -2067,6 +2089,7 @@ export default OrderCard;
 - Configure `components.json`
 
 You will be asked a few questions to configure `components.json`:
+
 ```bash
 Would you like to use TypeScript (recommended)? `no` / yes ... no
 Which style would you like to use? › `Default`
@@ -2077,13 +2100,15 @@ Where is your tailwind.config.js located? › `tailwind.config.js`
 Configure the import alias for components: › `@/components`
 Configure the import alias for utils: › `@/lib/utils`
 Are you using React Server Components? › no / `yes` ... yes
-√ Write configuration to components.json. Proceed? ... yes      
+√ Write configuration to components.json. Proceed? ... yes
 ```
+
 This will install all the necesary components
 
 ### II. Add a **Dropdown Menu** Component from [shadcn-UI](https://ui.shadcn.com/docs/components/dropdown-menu)
 
 - Install component
+
 ```jsx
 npx shadcn-ui@latest add dropdown-menu
 ```
@@ -2328,6 +2353,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### II. Modify the `CheckoutSideMenu` Component
@@ -2623,7 +2649,6 @@ const MyOrder = () => {
 export default MyOrder;
 ```
 
-
 ## 26. My Orders Page
 
 ### I. Create the **Order<ins>s</ins>Card** Component. (<ins>not</ins> `OrderCard`)
@@ -2883,6 +2908,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 > [Compare old version with the new version of home](https://github.com/JuanPabloDiaz/platzi_shopi/commit/a0801b65fa4d8bc1791db542a69166181c3df37b)
@@ -3007,6 +3033,7 @@ export const AppProvider = ({ children }) => {
 };
 
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ## 29. Filter by Title
@@ -3075,7 +3102,7 @@ As well as a `useEffect` to implement the filtering.
 
 Located in `src/Context/index.jsx`
 
-```jsx 
+```jsx
 import { createContext, useEffect, useState } from "react";
 
 export const AppContext = createContext();
@@ -3168,13 +3195,14 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ## 30. Filter by Category && Title
 
 ### I. Modify the `Navbar` Component
 
-Add an `onClick` event to filter by category (`setSearchByCategory`) in the *NavLink* tag.
+Add an `onClick` event to filter by category (`setSearchByCategory`) in the _NavLink_ tag.
 
 Located in `src/Components/Navbar/index.jsx`
 
@@ -3350,10 +3378,9 @@ In other words, render the view depending on the action:
 - Display product/s by filtering `category`
 - Display by filtering `title and category`
 
-
 Located in `src/Context/index.jsx`
 
-```jsx 
+```jsx
 import { createContext, useEffect, useState } from "react";
 
 export const AppContext = createContext();
@@ -3509,6 +3536,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 ```
+
 > `value` is missing another set of `{}`. It should look like this: `value={ { ...content here.... } }`
 
 ### IV. Modify the `Home` Component
@@ -3586,13 +3614,12 @@ Located in `src/Components/Navbar/index.jsx`
 ```jsx
 // Stop using the cart value:
 
-context.cart
+context.cart;
 // And use the lenght of the products array
-context.cartProducts.length
-
+context.cartProducts.length;
 ```
 
-### II. Checkout Button  
+### II. Checkout Button
 
 After placing an order, if the user previously typed something on the screen and didn't refresh the page, that input remained saved on the `setSearchByTitle`. I had to reset it after checkout.
 
@@ -3603,24 +3630,23 @@ console.log("searchByCategory: ", searchByCategory);
 console.log("searchByTitle: ", searchByTitle);
 console.log("filteredItems: ", filteredItems);
 ```
+
 - Modify the `CheckoutSideMenu` Component
 
 Located in `src/Components/CheckoutSideMenu/index.jsx`
 
 ```jsx
-// under handleCheckout, reset Title and Category 
+// under handleCheckout, reset Title and Category
 
 const handleCheckout = () => {
-
   // ... code ...
 
   context.setSearchByTitle(null); // Reset the search
   context.setSearchByCategory(null); // Reset the search
-
-}
+};
 ```
 
-## 32. Improve the UI (User Interface) and UX (User Experience) 
+## 32. Improve the UI (User Interface) and UX (User Experience)
 
 ### I. Make the Site Responsive
 
@@ -3639,7 +3665,6 @@ Styling is a part of both UI (User Interface) and UX (User Experience). From a U
 It's good practice to check if we are repeating code and clean up the project. Here is an example of code that we can clean.
 
 In other words, refactoring the code to avoid repetition its good practice.
-
 
 ### Modify the `Navbar` Component
 
@@ -3985,6 +4010,7 @@ Here's how you can do that:
   )}
 </ul>
 ```
+
 > if auth.user is truthy (i.e., the user is authenticated), the "Logout" and "My Account" links are rendered. If auth.user is falsy (i.e., the user is not authenticated), the "Sign In" link is rendered.
 
 Here's how the `Navbar.jsx` should look like:
@@ -4193,18 +4219,14 @@ Here's how you can create these components:
 Located in `src/Components/PrivateRoute/index.jsx`
 
 ```jsx
-import { Route, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Context/auth';
+import { Route, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/auth";
 
 const PrivateRoute = ({ children, ...rest }) => {
   let auth = useAuth();
   let navigate = useNavigate();
   if (!auth.user) navigate("/sign-in");
-  return (
-    <Route {...rest}>
-      {auth.user ? children : null}
-    </Route>
-  );
+  return <Route {...rest}>{auth.user ? children : null}</Route>;
 };
 
 export default PrivateRoute;
@@ -4215,18 +4237,14 @@ export default PrivateRoute;
 Located in `src/Components/PublicRoute/index.jsx`
 
 ```jsx
-import { Route, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Context/auth';
+import { Route, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/auth";
 
 const PublicRoute = ({ children, restricted, ...rest }) => {
   let auth = useAuth();
   let navigate = useNavigate();
   if (auth.user && restricted) navigate("/my-account");
-  return (
-    <Route {...rest}>
-      {!auth.user || !restricted ? children : null}
-    </Route>
-  );
+  return <Route {...rest}>{!auth.user || !restricted ? children : null}</Route>;
 };
 
 export default PublicRoute;
@@ -4391,9 +4409,7 @@ const App = () => {
 export default App;
 ```
 
-
-
-## 34. Add Product to Cart From `ProductDetail` page (or any page) 
+## 34. Add Product to Cart From `ProductDetail` page (or any page)
 
 To use the `addProductToCart` function in your `ProductDetail` page, you need to move this function to the context so that it can be shared between different components. Here's how you can do it:
 
@@ -4402,7 +4418,7 @@ To use the `addProductToCart` function in your `ProductDetail` page, you need to
 In your AppContext, add a new function addProductToCart.
 
 ```jsx
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 export const AppContext = createContext();
 
@@ -4418,7 +4434,15 @@ export const AppProvider = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider value={{ count, setCount, cartProducts, setCartProducts, addProductToCart }}>
+    <AppContext.Provider
+      value={{
+        count,
+        setCount,
+        cartProducts,
+        setCartProducts,
+        addProductToCart,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
@@ -4602,7 +4626,6 @@ export const AppProvider = ({ children }) => {
 };
 ```
 
-
 ### II. Modify the `Card` Component
 
 In your Card component, use the addProductToCart from context.
@@ -4726,9 +4749,7 @@ const ProductDetail = (data) => {
   // other code...
 
   return (
-    <button onClick={() => addProductToCart(data.data)}>
-      Add to cart
-    </button>
+    <button onClick={() => addProductToCart(data.data)}>Add to cart</button>
   );
 };
 ```
@@ -4911,25 +4932,13 @@ const ProductDetail = (data) => {
 export default ProductDetail;
 ```
 
-
 ### Fix the error
 
 I am able to add products from the card as before. However, I am not able to do it from the `ProductDetail` page. I am getting some errors.
 
->`Cannot read properties of undefined (reading 'id') at index.jsx:29:56 at Array.filter () at renderIcon (index.jsx:29:28) at Card (index.jsx:66:10) at renderWithHooks (react-dom.development.js:16305:18) at updateFunctionComponent (react-dom.development.js:19588:20) at beginWork (react-dom.development.js:21601:16) at HTMLUnknownElement.callCallback2 (react-dom.development.js:4164:14) at Object.invokeGuardedCallbackDev (react-dom.development.js:4213:16) at invokeGuardedCallback (react-dom.development.js:4277:31)`
-
-
-
-
-
-
-
-
-
-
+> `Cannot read properties of undefined (reading 'id') at index.jsx:29:56 at Array.filter () at renderIcon (index.jsx:29:28) at Card (index.jsx:66:10) at renderWithHooks (react-dom.development.js:16305:18) at updateFunctionComponent (react-dom.development.js:19588:20) at beginWork (react-dom.development.js:21601:16) at HTMLUnknownElement.callCallback2 (react-dom.development.js:4164:14) at Object.invokeGuardedCallbackDev (react-dom.development.js:4213:16) at invokeGuardedCallback (react-dom.development.js:4277:31)`
 
 <!-- OTHER PROJECTS -->
-
 
 ## Projects 🚀
 
@@ -4937,7 +4946,6 @@ I am able to add products from the card as before. However, I am not able to do 
 [![](https://img.shields.io/badge/2021-222?style=for-the-badge)](https://github.com/JuanPabloDiaz/platzi/tree/main/2021)
 [![](https://img.shields.io/badge/2022-222?style=for-the-badge)](https://github.com/JuanPabloDiaz/platzi/tree/main/2022)
 [![](https://img.shields.io/badge/2023-222?style=for-the-badge)](https://github.com/JuanPabloDiaz/platzi/tree/main/2023)
-
 
 <!-- LICENSE -->
 
