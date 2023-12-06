@@ -4276,6 +4276,8 @@ const App = () => {
 export default App;
 ```
 
+> The code use the useAuth hook from auth context that returns the current user. If the user is null or undefined, it means that the user is not authenticated.
+
 ## 35. Add Product to Cart From `ProductDetail` page (or any page)
 
 To use the `addProductToCart` function in your `ProductDetail` page, you need to move this function to the context so that it can be shared between different components. Here's how you can do it:
