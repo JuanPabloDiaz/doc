@@ -5626,10 +5626,98 @@ const App = () => {
 export default App;
 ```
 
+### II. Modify `Layout`
+
+```jsx
+import PropTypes from "prop-types";
+
+const Layout = ({ children }) => {
+  return (
+    <div className="flex flex-col items-center mt-20 mb-6">{children}</div>
+  );
+};
+
+export default Layout;
+
+Layout.propTypes = {
+  children: PropTypes.node,
+};
+```
+
+### III. Modify `Auth`
+
+The error message is indicating that you haven't defined prop types for the children prop in your AuthProvider component.
+
+In React, it's a good practice to define prop types for your components. This helps catch bugs by validating the types of props passed to your components.
+
+You can define prop types for your AuthProvider component like this:
+
+```jsx
+import PropTypes from "prop-types";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+const AuthContext = React.createContext();
+
+function AuthProvider({ children }) {
+  const navigate = useNavigate();
+  const [user, setUser] = React.useState(null);
+
+  const login = (username, password) => {
+    if (typeof username !== "string") {
+      throw new Error("Username must be a string");
+    }
+    setUser({ username, password });
+    navigate("/my-account");
+  };
+
+  const logout = () => {
+    setUser(null);
+    navigate("/");
+  };
+
+  const auth = { user, login, logout };
+
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+}
+
+AuthProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+function useAuth() {
+  //here?
+  const auth = React.useContext(AuthContext);
+  return auth;
+}
+export { AuthProvider, useAuth };
+```
+
+
+## 39. ...
 
 
 
 
+
+
+### I. Modify ``
+
+```jsx
+
+```
+
+### II. Modify ``
+
+```jsx
+
+```
+
+### III. Modify ``
+
+```jsx
+
+```
 
 
 
