@@ -101,3 +101,10 @@ The following table will help you understand the changes to the favicon files:
 > {: .prompt-info }
 
 The next time you build the site, the favicon will be replaced with a customized edition.
+
+
+## Acknowledgments 📚
+Resources list that I find helpful and would like to give credit to.
+
+- [Real Favicon Generator](https://realfavicongenerator.net/)
+- [favicon.io](https://favicon.io/)
