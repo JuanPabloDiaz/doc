@@ -1,25 +1,17 @@
 ---
 layout: post
-title: "How to Auto Commit on Github"
+title: "Automatiza tus commits diarios con GitHub Actions"
 date: 2023-12-22
 categories: git
 tags: git github githubactions shell devops
 image: /assets/img/featured-posts/github.jpg
 ---
 
-# Como Automatizar un commit diario en Github
+# Automatiza tus commits diarios con GitHub Actions
 
-# Como Automatizar un commit diario en Github
+Un día me propuse un desafío: **hacer un commit diario en GitHub durante todo un año**. Ahora que ya tengo la disciplina de escribir código de manera constante. Se me ocurrió que quiero automatizar este proceso, y así mismo aprender a hacerlo. Pero ¿cómo podría automatizar un commit diario en GitHub? ¿Sera que existe alguna herramienta o script que pueda usar para hacer commits automáticos? Estas eran las preguntas claves que debía resolver.
 
-Un día me propuse un reto: **Hacer un commit diario en Github durante todo un año**. Ahora que ya tengo la disciplina de escribir codigo de manera constante. Se me ocurrio que quiero automatizar este proceso, y asi mismo aprender a hacerlo. Asi que le pregunte a Copilot:
-
-## Instruccion para Copilot
-
-> Un día me propuse un desafío: hacer un commit diario en Github durante todo un año. Ahora que ya tengo la disciplina de escribir codigo de manera constante. Se me ocurrio que quiero automatizar este proceso, y asi mismo aprender a hacerlo. ¿Hay alguna herramienta o script que pueda usar para hacer commits automáticos? preferiria usar Github Actions y Shell, pero estoy abierto a otras opciones.
-
-## Respuesta de Copilot
-
-Puedes automatizar este proceso utilizando **GitHub Actions**, que es una herramienta de _CI/CD_ integrada en GitHub. Aquí hay un ejemplo de cómo podrías configurar un flujo de trabajo para hacer un commit diario a tu repositorio.
+Después de investigar un poco, encontré que puedo automatizar este proceso utilizando **GitHub Actions**, que es una herramienta de _CI/CD_ integrada en GitHub. Sin más preambulos, en este artículo te mostraré un ejemplo de cómo podrías configurar un flujo de trabajo para hacer un commit diario a tu repositorio de manera automática.
 
 Primero, necesitarás un **script que realice el commit**. Aquí hay un ejemplo simple de un **script de shell** que podría hacer esto (.github/scripts/auto_commit.sh):
 
@@ -42,7 +34,7 @@ git commit -m "Commit automatizado"
 git push origin main
 ```
 
-Luego, necesitarás **crear un archivo de workflow de Github Actions para ejecutar este script una vez al día**. Este archivo define una serie de pasos que se ejecutan automáticamente en respuesta a eventos específicos de Github, como un push o un pull request. Aquí hay un ejemplo de cómo podría ser ese archivo de flujo de trabajo (.github/workflows/daily-commit.yml):
+Luego, necesitarás **crear un archivo del flujo de trabajo ("workflow") de GitHub Actions para ejecutar este script una vez al día**. Este archivo define una serie de pasos que se ejecutan automáticamente en respuesta a eventos específicos de GitHub, como un push o un pull request. Aquí hay un ejemplo de cómo podría ser ese archivo del flujo de trabajo (.github/workflows/daily-commit.yml):
 
 ```yaml
 name: Daily Commit
@@ -66,11 +58,11 @@ Este flujo de trabajo se ejecutará todos los días a medianoche y ejecutará tu
 
 Nota: Asegúrate de reemplazar `/path/to/your/repo` y `/path/to/your/script.sh` con las rutas reales a tu repositorio y a tu script, respectivamente. Además, este script asume que estás trabajando en la rama `main`. Si estás trabajando en una rama diferente, reemplaza main con el nombre de tu rama.
 
-Además, necesitarás **configurar las credenciales de Git** en el flujo de trabajo de GitHub Actions para que pueda empujar a tu repositorio. Puedes hacer esto utilizando un **token** de acceso personal de GitHub y configurándolo como una **variable de entorno** en tu flujo de trabajo.
+Además, necesitarás **configurar las credenciales de Git** en el flujo de trabajo de GitHub Actions para que puedas empujar a tu repositorio. Puedes hacer esto utilizando un **token** de acceso personal de GitHub y configurándolo como una **variable de entorno** en tu flujo de trabajo.
 
-Es importante tener en cuenta que **no es una buena práctica almacenar las credenciales de Git en texto plano**. Sin embargo, en este caso, no hay forma de evitarlo, ya que el flujo de trabajo de GitHub Actions se ejecuta en un entorno aislado y no tiene acceso a las credenciales de Git almacenadas en tu máquina local. Por lo tanto, _necesitarás crear un token de acceso personal de GitHub_ y _configurarlo como una variable de entorno_ en tu flujo de trabajo.
+Es importante tener en cuenta que **no es una buena práctica almacenar las credenciales de Git en texto plano**. Sin embargo, en este caso, no hay forma de evitarlo, ya que el flujo de trabajo de GitHub Actions se ejecuta en un entorno aislado y no tienes acceso a las credenciales de Git almacenadas en tu máquina local. Por lo tanto, _necesitarás crear un token de acceso personal de GitHub_ y _configurarlo como una variable de entorno_ en tu flujo de trabajo.
 
-## Como Configurar las Credenciales de Git
+## ¿Cómo configurar las credenciales de Git?
 
 Para _configurar las credenciales de Git_ en el flujo de trabajo de GitHub Actions, necesitarás un **token de acceso personal de GitHub**. Aquí te explico cómo hacerlo:
 
@@ -85,9 +77,9 @@ Para _configurar las credenciales de Git_ en el flujo de trabajo de GitHub Actio
 
 ### 2. **Configura el token** de acceso personal **como una variable de entorno** en tu flujo de trabajo:
 
-En tu archivo de flujo de trabajo (.github/workflows/daily-commit.yml), debes agregar una _nueva etapa_ antes de la etapa **`Run script`** para **configurar las credenciales de Git**. Aquí te muestro cómo:
+En tu archivo del flujo de trabajo (.github/workflows/daily-commit.yml), debes agregar una _nueva etapa_ antes de la etapa **`Run script`** para **configurar las credenciales de Git**. Aquí te muestro cómo:
 
-- Opcion 1:
+- Opción 1:
 
 ```yaml
 - name: Set up Git credentials
@@ -105,7 +97,7 @@ En tu archivo de flujo de trabajo (.github/workflows/daily-commit.yml), debes ag
 > - Reemplaza **"your-username"** y **"your-email@example.com"** con tu nombre de usuario de GitHub y tu correo electrónico.
 > - En la última línea, `TOKEN` es una variable de entorno que contiene tu token de acceso personal. Necesitarás agregar este token a las **"Secrets"** de tu repositorio en GitHub (más sobre esto más adelante).
 
-- Opcion 2:
+- Opción 2:
 
 ```yaml
 - name: Set up Git credentials
@@ -117,10 +109,10 @@ En tu archivo de flujo de trabajo (.github/workflows/daily-commit.yml), debes ag
 
 > Nota:
 >
-> - Al igual que en opcion 1, reemplaza **"your-username"** y **"your-email@example.com"** con tu nombre de usuario de GitHub y tu correo electrónico.
+> - Al igual que en opción 1, reemplaza **"your-username"** y **"your-email@example.com"** con tu nombre de usuario de GitHub y tu correo electrónico.
 
 <details>
-<summary>Asi debería estar quedando el archivo de workflow de Github Actions</summary>
+<summary>Así debería estar quedando el archivo de workflow de GitHub Actions</summary>
 
 ```yaml
 # .github/workflows/daily-commit.yml
@@ -128,7 +120,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: "0 10 * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   build:
@@ -146,15 +138,15 @@ jobs:
 
 </details>
 
-#### Cuales son las diferencias entre las opciones 1 y 2?
+#### ¿Cuales son las diferencias entre las opciones 1 y 2?
 
 La principal diferencia entre estos dos fragmentos de código es cómo se manejan las credenciales de Git:
 
-- En la **Opcion 1**, se utiliza `git config --global credential.helper store` para almacenar las credenciales de usuario en un archivo en su directorio local. Luego, se crea un archivo `.git-credentials` en el directorio home del usuario con la URL que incluye el token de autenticación. Este método almacena las credenciales en un archivo en texto plano en su sistema.
+- En la **Opción 1**, se utiliza `git config --global credential.helper store` para almacenar las credenciales de usuario en un archivo en su directorio local. Luego, se crea un archivo `.git-credentials` en el directorio home del usuario con la URL que incluye el token de autenticación. Este método almacena las credenciales en un archivo en texto plano en su sistema.
 
-- En la **Opcion 2**, se utiliza `git remote set-url origin` para cambiar la URL del repositorio remoto 'origin' a una que incluye el token de autenticación. Este método no almacena las credenciales en su sistema, sino que las incluye en la URL del repositorio remoto.
+- En la **Opción 2**, se utiliza `git remote set-url origin` para cambiar la URL del repositorio remoto 'origin' a una que incluya el token de autenticación. Este método no almacena las credenciales en su sistema, sino que las incluye en la URL del repositorio remoto.
 
-Ambos métodos tienen sus ventajas y desventajas. El almacenamiento de credenciales es más seguro ya que no expone el token en la línea de comandos, pero puede ser menos seguro si otras personas tienen acceso a su sistema. El uso de la URL del repositorio remoto es menos seguro ya que expone el token en la línea de comandos, pero puede ser más seguro si su sistema es seguro y sólo usted tiene acceso a él.
+Ambos métodos tienen sus ventajas y desventajas. El almacenamiento de credenciales es más seguro, ya que no expone el token en la línea de comandos, pero puede ser menos seguro si otras personas tienen acceso a su sistema. El uso de la URL del repositorio remoto es menos seguro ya que expone el token en la línea de comandos, pero puede ser más seguro si tu sistema es seguro y sólo tu tiene acceso a él.
 
 ### 3. Agrega tu token de acceso personal a las **`"Secrets"`** de tu repositorio:
 
@@ -168,7 +160,7 @@ Ahora, tu flujo de trabajo de GitHub Actions debería ser capaz de empujar a tu 
 
 ### 4. Ejecuta tu flujo de trabajo de GitHub Actions manualmente:
 
-En el archivo de flujo de trabajo de GitHub Actions, debes agregar un **evento** que permita ejecutar el flujo de trabajo manualmente. Aquí te muestro cómo:
+En el archivo del flujo de trabajo de GitHub Actions, debes agregar un **evento** que permita ejecutar el flujo de trabajo manualmente. Aquí te muestro cómo:
 
 ```yaml
 on:
@@ -178,7 +170,7 @@ on:
 Ahora, puedes ejecutar tu flujo de trabajo de GitHub Actions manualmente haciendo clic en el botón **`"Run workflow"`** (Ejecutar flujo de trabajo) en la página principal de tu repositorio en GitHub.
 
 <details>
-<summary>Asi debería estar quedando el archivo de workflow de Github Actions</summary>
+<summary>Así debería estar quedando el archivo de workflow de GitHub Actions</summary>
 
 ```yaml
 # .github/workflows/daily-commit.yml
@@ -186,7 +178,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: "0 10 * * *" # Esto se ejecutará todos los días a las 5 AM EST.
+    - cron: "0 0 * * *"
   workflow_dispatch: # This allows you to manually trigger the workflow
 
 jobs:
@@ -205,9 +197,9 @@ jobs:
 
 </details>
 
-## Error al Ejecutar el Script de Shell
+## Error al ejecutar el script de Shell.
 
-Si llegaste hasta aca y aun no puedes ejecutar el script de shell, asegúrate de que el script de shell tenga **`permisos de ejecución`**. Puedes hacer esto agregando el siguiente comando a tu flujo de trabajo de GitHub Actions:
+Si llegaste hasta acá y aun no puedes ejecutar el script de shell, asegúrate de que el script de shell tenga **`permisos de ejecución`**. Puedes hacer esto agregando el siguiente comando a tu flujo de trabajo de GitHub Actions:
 
 ```yaml
 - name: Run script
@@ -217,7 +209,7 @@ Si llegaste hasta aca y aun no puedes ejecutar el script de shell, asegúrate de
 ```
 
 <details>
-<summary>Asi debería estar quedando el archivo de workflow de Github Actions</summary>
+<summary>Así debería estar quedando el archivo de workflow de GitHub Actions</summary>
 
 ```yaml
 # .github/workflows/daily-commit.yml
@@ -225,7 +217,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: "0 10 * * *" # Esto se ejecutará todos los días a las 5 AM EST.
+    - cron: "0 0 * * *"
   workflow_dispatch: # This allows you to manually trigger the workflow
 
 jobs:
@@ -249,9 +241,9 @@ jobs:
 
 </details>
 
-## Error Despues de Correr Github Actions
+## Error después de correr GitHub Actions
 
-En este punto, el script de shell ya corre pero genera un error al intentar hacer el commit y empujar los cambios a tu repositorio. Aquí hay un ejemplo de lo que podría verse en la pestaña **`"Actions"`** (Acciones) de tu repositorio en GitHub:
+En este punto, el script de Shell ya corre pero genera un error al intentar hacer el commit y empujar los cambios a tu repositorio. Aquí hay un ejemplo de lo que podría verse en la pestaña **`"Actions"`** (Acciones) de tu repositorio en GitHub:
 
 ```bash
 Run chmod +x ./.github/scripts/auto_commit.sh
@@ -263,33 +255,32 @@ fatal: unable to access 'https://github.com/username/repoName.git/': The request
 Error: Process completed with exit code 128.
 ```
 
-Si no sabes que significa este error, preguntale a Copilot **what does this error mean?** y te dara una explicacion. Tambien puedes preguntar: **how to solve in github actions write access to the repository not granted**.
+Este error significa que el **flujo de trabajo** de GitHub Actions **NO tiene los permisos** necesarios para escribir/empujar a tu repositorio. Esto puede suceder por varias razones:
 
-### Explicacion del Error
+- Puede ser que el **token de acceso personal que configuraste NO tenga los permisos correctos**. Asegúrate de que el _token de acceso personal_ tenga el permiso **repo**.
+- Asegúrate que el _token de acceso personal_ esté **bien escrito** en el archivo del flujo de trabajo y en las **"Secrets"** de tu repositorio.
+- Asegúrate que los _permisos a los trabajos_ estén bien asignados en el archivo del flujo de trabajo.
 
-Esto significa que **NO tienes permiso** para escribir/empujar a tu repositorio.
+#### Asignar permisos a los trabajos
 
-- Puede ser que el **token de acceso personal que configuraste no tenga los permisos correctos**. Asegúrate de que el token de acceso personal tenga el permiso **repo**.
-
-### Solucion
-
-- Revise que el token de acceso personal tenga el permiso **repo**.
-- Revise que el token de acceso personal este bien escrito en el archivo de flujo de trabajo.
-
-#### [Assigning permissions to jobs](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs)
-
-Necesitará asignar los **permisos a los trabajos** en un flujo de trabajo utilizando la palabra clave **`"permissions"`**. En este caso, deberá asignar el permiso **`"contents"`** al trabajo que está ejecutando el script. Aquí te muestro cómo:
+Necesitarás asignar los **permisos a los trabajos** en un flujo de trabajo utilizando la palabra clave **`"permissions"`**. En este caso, debería asignar el permiso **`"contents"`** al trabajo que estás ejecutando en el script. Aquí te muestro cómo:
 
 ```yaml
-permissions: # Permissions needed for the job to run
+permissions: # Permisos para el flujo de trabajo - Esto es necesario para crear un commit
   issues: write
   pull-requests: write
   contents: write
 ```
 
-## Archivo Terminado del Flujo de Trabajo de Github Actions
+Conoce más sobre los permisos de los trabajos en [Asignar permisos a los trabajos](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs).
 
-Finalmente, aquí está el archivo de flujo de trabajo de GitHub Actions completo:
+---
+
+En resumen, para automatizar tus commits diarios en GitHub con GitHub Actions, necesitarás un script que realice el commit y un flujo de trabajo de GitHub Actions que ejecute ese script una vez al día. Además, necesitarás configurar las credenciales de Git en el flujo de trabajo para que puedas empujar a tu repositorio. Esto se puede hacer utilizando un token de acceso personal de GitHub y configurándolo como una variable de entorno en tu flujo de trabajo. Finalmente, necesitarás asignar los permisos correctos a tu flujo de trabajo para que pueda crear un commit y empujar a tu repositorio. Aquí te dejo los archivos que necesitarás para hacer esto:
+
+## Flujo de Trabajo de GitHub Actions
+
+Aquí está el archivo del _flujo de trabajo_ (workflow) completo:
 
 ```yaml
 # .github/workflows/daily-commit.yml
@@ -297,14 +288,14 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: "0 10 * * *" # Esto se ejecutará todos los días a las 5 AM EST.
-  workflow_dispatch: # This allows you to manually trigger the workflow
+    - cron: "0 0 * * *" # Esto se ejecutará todos los días a medianoche
+  workflow_dispatch: # esto permite ejecutar el flujo de trabajo manualmente
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    permissions: # This grants permissions to the workflow - This is needed to create a commit
+    permissions: # Otorga los permisos para el flujo de trabajo - Esto es necesario para crear un commit
       issues: write
       pull-requests: write
       contents: write
@@ -312,21 +303,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Git credentials
+      - name: Set up Git credentials # Configura las credenciales de Git
         run: |
           git config --global user.name ""your-username"
           git config --global user.email "your-email@example.com"
           git remote set-url origin https://${{ secrets.YOUR_GITHUB_TOKEN }}@github.com/username/repo.git
 
-      - name: Run script
+      - name: Run script # Ejecuta el script
         run: |
           chmod +x ./.github/scripts/auto_commit.sh
           bash ./.github/scripts/auto_commit.sh
 ```
 
-## Archivo Terminado del Script de Shell
+## Script de Shell
 
-Aquí está el archivo de script de shell completo:
+Aquí está el archivo del _script de shell_ completo:
 
 ```bash
 # .github/scripts/auto_commit.sh
@@ -353,10 +344,12 @@ git commit -m "Commit automatizado $(date)"
 git push origin main
 ```
 
+**`git commit -m "Happy coding! 🚀"`**
+
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments 📚
 
 Resources list that I find helpful and would like to give credit to.
 
-- []()
+- [Asignar permisos a los trabajos](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs).
