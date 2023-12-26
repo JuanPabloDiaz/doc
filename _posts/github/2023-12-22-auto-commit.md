@@ -4,7 +4,7 @@ title: "Automatiza tus commits diarios con GitHub Actions"
 date: 2023-12-22
 categories: git
 tags: git github githubactions shell devops
-image: /assets/img/featured-posts/github.jpg
+image: /assets/img/featured-posts/daily-commit.jpg
 ---
 
 Un día me propuse un desafío: **hacer un commit diario en GitHub durante todo un año**. Ahora que ya tengo la disciplina de escribir código de manera constante. Se me ocurrió que quiero automatizar este proceso, y así mismo aprender a hacerlo. Pero ¿cómo podría automatizar un commit diario en GitHub? ¿Será que existe alguna herramienta o script que pueda usar para hacer commits automáticos? Estas eran las preguntas claves que debía resolver.
