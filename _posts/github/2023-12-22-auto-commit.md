@@ -7,11 +7,11 @@ tags: git github githubactions shell devops
 image: /assets/img/featured-posts/github.jpg
 ---
 
-Un día me propuse un desafío: **hacer un commit diario en GitHub durante todo un año**. Ahora que ya tengo la disciplina de escribir código de manera constante. Se me ocurrió que quiero automatizar este proceso, y así mismo aprender a hacerlo. Pero ¿cómo podría automatizar un commit diario en GitHub? ¿Sera que existe alguna herramienta o script que pueda usar para hacer commits automáticos? Estas eran las preguntas claves que debía resolver.
+Un día me propuse un desafío: **hacer un commit diario en GitHub durante todo un año**. Ahora que ya tengo la disciplina de escribir código de manera constante. Se me ocurrió que quiero automatizar este proceso, y así mismo aprender a hacerlo. Pero ¿cómo podría automatizar un commit diario en GitHub? ¿Será que existe alguna herramienta o script que pueda usar para hacer commits automáticos? Estas eran las preguntas claves que debía resolver.
 
-Después de investigar un poco, encontré que puedo automatizar este proceso utilizando **GitHub Actions**, que es una herramienta de _CI/CD_ integrada en GitHub. Sin más preambulos, en este artículo te mostraré un ejemplo de cómo podrías configurar un flujo de trabajo para hacer un commit diario a tu repositorio de manera automática.
+Después de investigar un poco, encontré que puedo automatizar este proceso utilizando **GitHub Actions**, que es una herramienta de _CI/CD_ integrada en GitHub. Sin más preámbulos, en este artículo te mostraré un ejemplo de cómo podrías configurar un flujo de trabajo para hacer un commit diario a tu repositorio de manera automática.
 
-Primero, necesitarás un **script que realice el commit**. Aquí hay un ejemplo simple de un **script de shell** que podría hacer esto (.github/scripts/auto_commit.sh):
+Primero, necesitarás un **script que realice el commit**. Aquí hay un ejemplo simple de un **script de Shell** que podría hacer esto (.github/scripts/auto_commit.sh):
 
 ```bash
 #.github/scripts/auto_commit.sh
@@ -136,7 +136,7 @@ jobs:
 
 </details>
 
-#### ¿Cuales son las diferencias entre las opciones 1 y 2?
+#### ¿Cuáles son las diferencias entre las opciones 1 y 2?
 
 La principal diferencia entre estos dos fragmentos de código es cómo se manejan las credenciales de Git:
 
@@ -144,7 +144,7 @@ La principal diferencia entre estos dos fragmentos de código es cómo se maneja
 
 - En la **Opción 2**, se utiliza `git remote set-url origin` para cambiar la URL del repositorio remoto 'origin' a una que incluya el token de autenticación. Este método no almacena las credenciales en su sistema, sino que las incluye en la URL del repositorio remoto.
 
-Ambos métodos tienen sus ventajas y desventajas. El almacenamiento de credenciales es más seguro, ya que no expone el token en la línea de comandos, pero puede ser menos seguro si otras personas tienen acceso a su sistema. El uso de la URL del repositorio remoto es menos seguro ya que expone el token en la línea de comandos, pero puede ser más seguro si tu sistema es seguro y sólo tu tiene acceso a él.
+Ambos métodos tienen sus ventajas y desventajas. El almacenamiento de credenciales es más seguro, ya que no expone el token en la línea de comandos, pero puede ser menos seguro si otras personas tienen acceso a su sistema. El uso de la URL del repositorio remoto es menos seguro, ya que expone el token en la línea de comandos, pero puede ser más seguro si tu sistema es seguro y sólo tu tiene acceso a él.
 
 ### 3. Agrega tu token de acceso personal a las **`"Secrets"`** de tu repositorio:
 
@@ -197,7 +197,7 @@ jobs:
 
 ## Error al ejecutar el script de Shell.
 
-Si llegaste hasta acá y aun no puedes ejecutar el script de shell, asegúrate de que el script de shell tenga **`permisos de ejecución`**. Puedes hacer esto agregando el siguiente comando a tu flujo de trabajo de GitHub Actions:
+Si llegaste hasta acá y aún no puedes ejecutar el script de Shell, asegúrate de que el script de Shell tenga **`permisos de ejecución`**. Puedes hacer esto agregando el siguiente comando a tu flujo de trabajo de GitHub Actions:
 
 ```yaml
 - name: Run script
@@ -241,7 +241,7 @@ jobs:
 
 ## Error después de correr GitHub Actions
 
-En este punto, el script de Shell ya corre pero genera un error al intentar hacer el commit y empujar los cambios a tu repositorio. Aquí hay un ejemplo de lo que podría verse en la pestaña **`"Actions"`** (Acciones) de tu repositorio en GitHub:
+En este punto, el script de Shell ya corre, pero genera un error al intentar hacer el commit y empujar los cambios a tu repositorio. Aquí hay un ejemplo de lo que podría verse en la pestaña **`"Actions"`** (Acciones) de tu repositorio en GitHub:
 
 ```bash
 Run chmod +x ./.github/scripts/auto_commit.sh
@@ -315,7 +315,7 @@ jobs:
 
 ## Script de Shell
 
-Aquí está el archivo del _script de shell_ completo:
+Aquí está el archivo del _script de Shell_ completo:
 
 ```bash
 # .github/scripts/auto_commit.sh
