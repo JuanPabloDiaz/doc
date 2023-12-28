@@ -1,3 +1,7 @@
+# Juan Diaz's Documentation Site
+
+This is my documentation site, I will be using this site to document my learning process and to share my knowledge with others.
+
 ## What I Did to Run This Documentation Site Using Jekyll (Step by Step)
 
 First some context, Jekyll is a static site generator that transforms your plain text into beautiful static web sites and blogs. It can be use for a documentation site, a blog, an event site, or really any web site you like. It’s fast, secure, easy, and open source. It’s also the same site generator I use to maintain my open source documentation.
@@ -50,25 +54,11 @@ bundle exec jekyll s
 
 > 💡 Remember to install Jekyll, then install the dependences, copy the theme, rename and modify it.
 
-## Prerequisites
-
-Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of the basic environment. [Git](https://git-scm.com/) also needs to be installed.
-
-## Installation
-
-Sign in to GitHub and [**use this template**][use-template] to generate a brand new repository and name it `USERNAME.github.io`, where `USERNAME` represents your GitHub username.
-
-Then clone it to your local machine and run:
-
-```
-$ bundle
-```
-
-## Usage
+### Usage
 
 Please see the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy#documentation).
 
-## License
+### License
 
 This work is published under [MIT][mit] License.
 
