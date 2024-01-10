@@ -55,3 +55,7 @@ Then add the plugin to your Prettier configuration file:
   "plugins": ["prettier-plugin-tailwindcss"]
 }
 ```
+
+### Icons from Heroicons
+
+Check out the icons from [Heroicons](https://heroicons.com/)
