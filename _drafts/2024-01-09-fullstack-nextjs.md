@@ -59,3 +59,32 @@ Then add the plugin to your Prettier configuration file:
 ### Icons from Heroicons
 
 Check out the icons from [Heroicons](https://heroicons.com/)
+
+### [Next Auth](https://next-auth.js.org/)
+
+For the authentication, we will use [Next Auth](https://next-auth.js.org/).
+
+```bash
+yarn add next-auth
+```
+
+Follow the Get Started guide: [Next Auth - Get Started](https://next-auth.js.org/getting-started/example)
+
+Follow the Add API routes guide: [Next Auth - Add API routes](https://next-auth.js.org/getting-started/example#add-api-routes)
+
+```bash
+# src/app/api/auth/[...nextauth]/route.js
+
+export function POST(req) {
+  return Response.json("ok");
+}
+
+```
+
+### [MongoDB](https://www.mongodb.com/)
+
+For the database, we will use [MongoDB](https://www.mongodb.com/).
+
+```bash
+yarn add mongodb
+```
