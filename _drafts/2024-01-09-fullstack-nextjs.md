@@ -68,9 +68,11 @@ For the authentication, we will use [Next Auth](https://next-auth.js.org/).
 yarn add next-auth
 ```
 
-Follow the Get Started guide: [Next Auth - Get Started](https://next-auth.js.org/getting-started/example)
+- Follow the video tutorial for the project: [Video Tutorial](https://youtu.be/nGoSP3MBV2E?t=4940)
 
-Follow the Add API routes guide: [Next Auth - Add API routes](https://next-auth.js.org/getting-started/example#add-api-routes)
+- Follow the Get Started guide: [Next Auth - Get Started](https://next-auth.js.org/getting-started/example)
+
+- Follow the Add API routes guide: [Next Auth - Add API routes for app](https://next-auth.js.org/configuration/initialization#route-handlers-app)
 
 ```bash
 # src/app/api/auth/[...nextauth]/route.js
@@ -78,7 +80,50 @@ Follow the Add API routes guide: [Next Auth - Add API routes](https://next-auth.
 export function POST(req) {
   return Response.json("ok");
 }
+```
 
+#### [Credentials (Provider)](https://next-auth.js.org/configuration/providers/credentials)
+
+Replace the code in the file with:
+
+```bash
+# src/app/api/auth/[...nextauth]/route.js
+
+import NextAuth from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
+
+const handler = NextAuth({
+  providers: [
+  CredentialsProvider({
+    name: 'Credentials',
+    credentials: {
+      username: { label: "email", type: "email", placeholder: "test@example.com" },
+      password: { label: "Password", type: "password" }
+    },
+    async authorize(credentials, req) {
+      // You need to provide your own logic here that takes the credentials
+      // submitted and returns either a object representing a user or value
+      // that is false/null if the credentials are invalid.
+      // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
+      // You can also use the `req` object to obtain additional parameters
+      // (i.e., the request IP address)
+      const res = await fetch("/your/endpoint", {
+        method: 'POST',
+        body: JSON.stringify(credentials),
+        headers: { "Content-Type": "application/json" }
+      })
+      const user = await res.json()
+
+      // If no error and we have user data, return it
+      if (res.ok && user) {
+        return user
+      }
+      // Return null if user data could not be retrieved
+      return null
+	}
+	  })
+  ]
+})
 ```
 
 ### [MongoDB](https://www.mongodb.com/)
