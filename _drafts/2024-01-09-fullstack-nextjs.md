@@ -38,3 +38,20 @@ Run the project:
 cd culinary-code
 yarn dev
 ```
+
+## Install plugins
+
+### Prettier
+
+```bash
+yarn add --dev prettier prettier-plugin-tailwindcss
+```
+
+Then add the plugin to your Prettier configuration file:
+
+```bash
+# file name:    .prettierrc
+{
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
