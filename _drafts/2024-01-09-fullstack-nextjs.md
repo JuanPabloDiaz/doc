@@ -88,3 +88,28 @@ For the database, we will use [MongoDB](https://www.mongodb.com/).
 ```bash
 yarn add mongodb
 ```
+
+1. create a new project on [MongoDB](https://www.mongodb.com/)
+2. Build a new database
+3. Create a new user with admin privileges
+4. save the password in a safe place _(.env file)_
+5. add the IP address
+   > Note: To include `Vercel IP` address in `MongoDB` network access, you can allow connections from all IP addresses by adding `0.0.0.0/0` to the IP Access List.
+
+### [Mongoose](https://mongoosejs.com/)
+
+For
+
+[Mongoose](https://mongoosejs.com/).
+
+```bash
+yarn add mongoose
+```
+
+### [bcrypt](https://yarnpkg.com/package?q=bcrypt&name=bcrypt)
+
+To hash the password, we will use [bcrypt](https://yarnpkg.com/package?q=bcrypt&name=bcrypt).
+
+```bash
+yarn add bcrypt
+```
