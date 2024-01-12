@@ -188,6 +188,11 @@ Example:
 MONGODB_URI="mongodb+srv://1diazdev:<password>@cluster0.37flgxy.mongodb.net/"
 ```
 
+- Replace the `password` with your own value.
+- Add the `.env` file to the .gitignore file.
+
+> Remember to add something after the `.net/` in the `connection string`. if not, it will run as a test database (I believe).
+
 ```bash
 # src/app/api/auth/[...nextauth]/route.js
 ```
