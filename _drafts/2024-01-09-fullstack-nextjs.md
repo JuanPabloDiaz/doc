@@ -176,7 +176,7 @@ Once you have created a new project on [MongoDB](https://www.mongodb.com/), you 
 
 ```bash
 # .env
-MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-url>/<database>?retryWrites=true&w=majority
+MONGODB_URL=mongodb+srv://<username>:<password>@<cluster-url>/<database>?retryWrites=true&w=majority
 ```
 
 Replace the `username`, `password`, `cluster-url` and `database` with your own values.
@@ -185,7 +185,7 @@ Example:
 
 ```bash
 # .env
-MONGODB_URI="mongodb+srv://1diazdev:<password>@cluster0.37flgxy.mongodb.net/"
+MONGODB_URL="mongodb+srv://1diazdev:<password>@cluster0.37flgxy.mongodb.net/"
 ```
 
 - Replace the `password` with your own value.
@@ -193,8 +193,51 @@ MONGODB_URI="mongodb+srv://1diazdev:<password>@cluster0.37flgxy.mongodb.net/"
 
 > Remember to add something after the `.net/` in the `connection string`. if not, it will run as a test database (I believe).
 
+### Password contains unescaped characters
+
+The error message "Password contains unescaped characters" suggests that your MongoDB password contains special characters that need to be URL encoded.
+
+In a MongoDB connection string, the password must be URL encoded if it contains any of the following characters: `/, ?, :, @, &, =, +, $, ,, #`.
+
+#### Solution
+
+Your MongoDB password contains special characters that need to be URL encoded.
+
+You can use an online URL encoder to encode your password. Here's an example of how to encode your password:
+
+1. Go to an online URL encoder, such as [ urlencoder.org](www.urlencoder.org).
+2. Enter your password into the encoder.
+3. Click "Encode".
+4. Copy the encoded password.
+5. Replace the password in your MONGODB_URL with the encoded password. The updated MONGODB_URL should look something like this:
+
+   ```bash
+   MONGODB_URL="mongodb+srv://1diazdev:encodedPassword@cluster0.37flgxy.mongodb.net/culinary-code"
+   ```
+
+6. Replace encodedPassword with the encoded password you got from the URL encoder.
+
+> For more details. Follow the [Video Tutorial](https://youtu.be/nGoSP3MBV2E?t=5451)
+
+Create the register route by creating a new file located at `src/app/api/register/route.js` and add the following:
+
 ```bash
-# src/app/api/auth/[...nextauth]/route.js
+# src/app/api/register/route.js
+import { User } from "@/app/models/User";
+import mongoose from "mongoose";
+
+export async function POST(req) {
+  const body = await req.json();
+  const mongoDbUrl = process.env.MONGODB_URL;
+
+  if (!mongoDbUrl) {
+    throw new Error("The MONGODB_URL environment variable is not set.");
+  }
+
+  mongoose.connect(mongoDbUrl);
+  const createdUser = await User.create(body);
+  return Response.json(createdUser);
+}
 ```
 
 ## Create modules for the app
