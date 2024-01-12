@@ -158,3 +158,36 @@ To hash the password, we will use [bcrypt](https://yarnpkg.com/package?q=bcrypt&
 ```bash
 yarn add bcrypt
 ```
+
+## Connect your project to MongoDB
+
+Once you have created a new project on [MongoDB](https://www.mongodb.com/), you can connect your project to the database.
+
+1. Go to `mongodb.com`, open `your project` > `database` and click on `Connect` button.
+2. Click on `compass` tab and copy the `connection string`.
+
+   > The `connection string` should look like this:
+
+   ```bash
+   mongodb+srv://<username>:<password>@<cluster-url>/<database>?retryWrites=true&w=majority
+   ```
+
+3. Create a new file in the root of the project called `.env.local` and add the following:
+
+```bash
+# .env
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-url>/<database>?retryWrites=true&w=majority
+```
+
+Replace the `username`, `password`, `cluster-url` and `database` with your own values.
+
+Example:
+
+```bash
+# .env
+MONGODB_URI="mongodb+srv://1diazdev:<password>@cluster0.37flgxy.mongodb.net/"
+```
+
+```bash
+# src/app/api/auth/[...nextauth]/route.js
+```
