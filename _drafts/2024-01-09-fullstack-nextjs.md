@@ -196,3 +196,24 @@ MONGODB_URI="mongodb+srv://1diazdev:<password>@cluster0.37flgxy.mongodb.net/"
 ```bash
 # src/app/api/auth/[...nextauth]/route.js
 ```
+
+## Create modules for the app
+
+For [Mongoose](https://mongoosejs.com/), we will create a new folder called `modules` in the `src` folder.
+
+```bash
+# src/modules/User.js
+import { model, models, Schema } from "mongoose";
+
+const UserSchema = new Schema(
+  {
+    name: { type: String },
+    email: { type: String, required: true, unique: true },
+    password: { type: String },
+    image: { type: String },
+  },
+  { timestamps: true },
+);
+
+export const User = models?.User || model("User", UserSchema);
+```
