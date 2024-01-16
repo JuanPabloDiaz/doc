@@ -151,7 +151,7 @@ For
 yarn add mongoose
 ```
 
-### [bcrypt](https://yarnpkg.com/package?q=bcrypt&name=bcrypt)
+### [Bcrypt](https://yarnpkg.com/package?q=bcrypt&name=bcrypt)
 
 To hash the password, we will use [bcrypt](https://yarnpkg.com/package?q=bcrypt&name=bcrypt).
 
