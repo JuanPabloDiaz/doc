@@ -260,3 +260,12 @@ const UserSchema = new Schema(
 
 export const User = models?.User || model("User", UserSchema);
 ```
+
+## Setup Google Provider to login
+
+Follow the video tutorial for the project: [Video Tutorial](https://youtu.be/nGoSP3MBV2E?t=9298)
+
+1. Go to [Google Developers Console](https://console.developers.google.com/)
+2. Create a new project
+3. Go to `Credentials` tab
+4. Click on `Create Credentials` button
