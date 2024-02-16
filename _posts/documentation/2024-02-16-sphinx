@@ -1,0 +1,26 @@
+---
+layout: post
+title: "Autodoc-style extraction into Sphinx for your JS project"
+date: 2024-02-16
+categories: documentation
+tags: docs
+# image: /assets/img/featured-posts/
+---
+
+<!-- Dropdown in Markdown: https://gist.github.com/citrusui/07978f14b11adada364ff901e27c7f61 -->
+
+## How Setup
+
+1. Open an existing Javascript project.
+2. Follow the documentation on https://pypi.org/project/sphinx-js/
+3. I got an error when I run `pip install sphinx-js`:
+
+    > ERROR: Could not install packages due to an OSError: [Errno 13] Permission denied: 
+    > 'C:\\Python312\\Scripts\\rst2html.py'
+    > Consider using the `--user` option or check the permissions.
+
+4. I resolved it by running: 
+
+```bash
+pip install --user sphinx-js
+```
