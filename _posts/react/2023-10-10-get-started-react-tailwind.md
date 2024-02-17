@@ -22,15 +22,12 @@ This project was developed using
 
 ### Projects
 
-| Project | Github | Demo | Other |
-| :--- | :--- | :---- | :--- |
-| Data Landing | [Repo]() | [Landing Page](https://data-landing-page-react-tailwind.vercel.app/) | [Youtube Tutorial](https://www.youtube.com/watch?v=ZU-drSVodBw&t=590s) |
-| Brothers Landing |  [Repo](https://github.com/JuanPabloDiaz/brothers-landingPage) | [Responsive LP](https://landing-page-brothers.vercel.app/) | [Figma](https://www.figma.com/file/iJhszXggNzjpQKkF4pm840/IT-WEBSITE-(Community)?type=design&node-id=0-1&mode=design&t=v8dq6vfVKJpCJclk-0) |
-
+| Project          | Github                                                        | Demo                                                                 | Other                                                                                                                                        |
+| :--------------- | :------------------------------------------------------------ | :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| Data Landing     | [Repo]()                                                      | [Landing Page](https://data-landing-page-react-tailwind.vercel.app/) | [Youtube Tutorial](https://www.youtube.com/watch?v=ZU-drSVodBw&t=590s)                                                                       |
+| Brothers Landing | [Repo](https://github.com/JuanPabloDiaz/brothers-landingPage) | [Responsive LP](https://landing-page-brothers.vercel.app/)           | [Figma](<https://www.figma.com/file/iJhszXggNzjpQKkF4pm840/IT-WEBSITE-(Community)?type=design&node-id=0-1&mode=design&t=v8dq6vfVKJpCJclk-0>) |
 
 <!--- | Landing |  [Repo]() | [Description]() | [VideoTutorial, Figma]() | --->
-
-
 
 <!-- CONTENT -->
 
@@ -47,7 +44,8 @@ npx create-react-app my-project
 ## 2. Modify the React App
 
 A. `Delete` the `App.css` and the `logo.svg`
-  - Warning: I will get some error if I start the server (thats ok)
+
+- Warning: I will get some error if I start the server (thats ok)
 
 B. Edit `App.js` by deleting the `<header>`, delete the `import App.css, import logo and add import React from react;` (Try changing the HTML content and save the file.)
 
@@ -241,33 +239,67 @@ Example
     <p name="home">Home Section</p>
 ```
 
+### [Prettier Plugin Tailwind](https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file)
 
-### Prettier Plugin Tailwind
+Pre-requisites:
 
-1. make sure to have Prettier already install in the PROJECT
-  ```bash
-  npm i --save-dev prettier
-  # or
-  npm install -D prettier`
-  ```
+- Have [Prettier](https://prettier.io/docs/en/install.html) already install in the project.
 
-> To save it with the exact version:
+  > npm install --save-dev --save-exact prettier
 
-  ```bash
-  npm i --save-dev --save-exact prettier
-  ```
+#### Install prettier-plugin-tailwindcss:
 
-2. install:
+1. Install the plugin to the project:
 
-  ```bash
-  npm i prettier-plugin-tailwind
-  # or
-  npm i prettier-plugin-tailwindcss
-  ```
+   ```bash
+   npm install -D prettier prettier-plugin-tailwindcss
+   ```
+
+2. Add the **`plugin`** to your the Prettier config file: `.prettierrc`, `.prettierrc.json`, `prettier.config.js`. Located in the root of the project.:
+
+   ```json
+   // .prettierrc.json
+   {
+     "plugins": ["prettier-plugin-tailwind"]
+   }
+   ```
+
+   This is how the file should look like:
+
+   ```json
+   // .prettierrc.json
+   {
+     "semi": false,
+     "singleQuote": true,
+     "tabWidth": 2,
+     "useTabs": false,
+     "plugins": ["prettier-plugin-tailwind"]
+   }
+   // or:
+   {
+     "semi": true,
+     "tabWidth": 2,
+     "useTabs": false,
+     "singleQuote": true,
+     "trailingComma": "es5",
+     "bracketSpacing": true,
+     "jsxBracketSameLine": true,
+     "arrowParens": "avoid",
+     "plugins": ["prettier-plugin-tailwindcss"]
+   }
+   ```
+
+3. Run the Prettier command to format the code with the new plugin:
+
+   ```bash
+   npx prettier --write "**/*.{js,ts,jsx,tsx}"
+   ```
+
+Prettier resources:
 
 - [NPM site](https://www.npmjs.com/package/prettier-plugin-tailwind)
-- [other](https://www.youtube.com/shorts/MD_-XzdX0oo)
-[Video](https://www.youtube.com/watch?v=_CntOc4hBcg)
+- [Other](https://www.youtube.com/shorts/MD_-XzdX0oo)
+- [Video](https://www.youtube.com/watch?v=_CntOc4hBcg)
 
 ### [Tutorial To Change Style of NavBar On Scroll](https://www.youtube.com/watch?v=UvWMlNZuQTc&t=237s)
 
@@ -305,6 +337,7 @@ export const useScrollPosition = () => {
 ```
 
 #### II. Use the Custom Hook on the **Navbar** Component
+
 ##### [Example 1](https://github.com/JuanPabloDiaz/brothers-landingPage/blob/main/src/hooks/useScrollPosition.js):
 
 ```js
@@ -319,21 +352,19 @@ function classNamesNavBarScroll(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function navbar() {
-const scrollPosition = useScrollPosition();
+  const scrollPosition = useScrollPosition();
   // console.log(scrollPosition);
 
   return (
     <header
-            className={classNamesNavBarScroll(
-              scrollPosition > 0
-                ? "md:shadow md:bg-[#132577] md:-translate-y-6 md:h-auto"
-                : "md:shadow-none md:bg-none md:translate-y-0 md:h-none",
-              "absolute md:fixed top-0 inset-x-0 z-40 md:transition-shadow-xl md:shadow-black md:transition-color duration-500 md:-translate-y-6 md:h-20 lg:h-24"
-            )}
-          >
-
-    { /* ...your code */ }
-
+      className={classNamesNavBarScroll(
+        scrollPosition > 0
+          ? "md:shadow md:bg-[#132577] md:-translate-y-6 md:h-auto"
+          : "md:shadow-none md:bg-none md:translate-y-0 md:h-none",
+        "absolute md:fixed top-0 inset-x-0 z-40 md:transition-shadow-xl md:shadow-black md:transition-color duration-500 md:-translate-y-6 md:h-20 lg:h-24"
+      )}
+    >
+      {/* ...your code */}
     </header>
     // ...your code
   );
@@ -354,30 +385,24 @@ function classNamesNavBarScroll(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function navbar() {
-const scrollPosition = useScrollPosition();
+  const scrollPosition = useScrollPosition();
   // console.log(scrollPosition);
 
   return (
     <header
       className={classNamesNavBarScroll(
-        scrollPosition > 0 ? 'shadow' : 'shadow-none',
-        'transition-shadow sticky top-0 bg-white z-20'
+        scrollPosition > 0 ? "shadow" : "shadow-none",
+        "transition-shadow sticky top-0 bg-white z-20"
       )}
     >
-
-    { /* ...your code */ }
-
+      {/* ...your code */}
     </header>
     // ...your code
   );
 }
 ```
 
-
-
 ### [Tutorial to Add Effects to NavBar](https://www.youtube.com/watch?v=z9sHOXheE_M)
-
-
 
 ## 5. Run the App in Localhost
 

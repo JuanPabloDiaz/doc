@@ -38,17 +38,23 @@ Note: I tried to installed from Bash but it failed. (I opened the github folder 
 
 ## Jekyll Commands
 
-install dependencies by running the following command.
+- Install dependencies by running the following command.
 
-```console
-bundle
-```
+  ```console
+  bundle
+  ```
 
-**To run the project as localhost after completing everything** (serving your site)
+- **To run the project as localhost after completing everything** (serving your site)
 
-```console
-bundle exec jekyll s
-```
+  ```console
+  bundle exec jekyll s
+  ```
+
+- **To Run the Site locally with drafts and livereload**
+
+  ```console
+  bundle exec jekyll s --livereload --drafts
+  ```
 
 <!-- shorter for...   bundle exec jekyll server -->
 
