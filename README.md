@@ -4,6 +4,10 @@ This is my documentation site, I will be using this site to document my learning
 
 ![image](./assets/img/readme/desktop.png)
 
+### Lighthouse Score 🚀
+
+<img src="./assets/img/readme/lighthouse.png"/>
+
 ## What I Did to Run This Documentation Site Using Jekyll (Step by Step)
 
 First some context, Jekyll is a static site generator that transforms your plain text into beautiful static web sites and blogs. It can be use for a documentation site, a blog, an event site, or really any web site you like. It’s fast, secure, easy, and open source. It’s also the same site generator I use to maintain my open source documentation.
