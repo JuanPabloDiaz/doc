@@ -17,9 +17,13 @@ order: 4
   <a href="https://platzi.com/p/1diazdev/"><img src="https://img.shields.io/badge/Platzi-d5d5d5?style=for-the-badge&logo=platzi&logoColor=0A0209" alt="profile of Platzi with username 1diazdev" /></a>
 </div>
 
+<h2 align="center">Hi there <img src="https://user-images.githubusercontent.com/1303154/88677602-1635ba80-d120-11ea-84d8-d263ba5fc3c0.gif" width="28px" alt="hi"> my name is Juan and I am a Front End developer</h2>
+
   <br>
 
 <p align="justify">
-Hello, my name is Juan Diaz. I am originally from Colombia but have relocated to Charlotte, NC. I have completed an A.A.S. in Web Technologies at Central Piedmont Community College in Charlotte, NC. I am deeply interested in developing new skills in both front end and back-end development, and I am particularly passionate about Full Stack Web Development. Although I have gained valuable experience as a Service Desk Analyst over the past few years, I am eagerly seeking opportunities with a startup company that offers professional and personal growth. I value on discipline, loyalty, reliability, and self-motivation above all else.
+I am originally from Colombia but have relocated to Charlotte, NC. I have completed an A.A.S. in Web Technologies at Central Piedmont Community College in Charlotte, NC. I am deeply interested in developing new skills in both front end and back-end development, and I am particularly passionate about Full Stack Web Development. Although I have gained valuable experience as a Service Desk Analyst over the past few years, I am eagerly seeking opportunities with a startup company that offers professional and personal growth. I value on discipline, loyalty, reliability, and self-motivation above all else.
 
 <!-- My name is Juan Diaz. I am originally from Colombia, but recently moved to Asheville, NC. I have completed an A.A.S in Web Technologies at Central Piedmont Community College in Charlotte, NC. I enjoy developing new skills in both front and back-end development and I am passionate about Full stack Web Development. Currently, I have a few years of experience as a Service Desk Analyst. However, I am looking forward to working with a Startup company that allows for professional and personal growth. I value discipline, loyalty, reliability, and self-motivation above all else. -->
+
+  <p align="left"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/JuanPabloDiaz/main/assets/images/avatar.svg" width="200"></p>
