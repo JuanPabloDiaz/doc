@@ -16,7 +16,7 @@ I previously had multiple usernames, but to enhance my digital presence, it is r
 Bellow is a list of all my social media accounts and other plataforms that I use, in which, I have succesfully changed my username to @`1diazdev`.
 
 ★ [Github](https://github.com/JuanPabloDiaz "@JuanPabloDiaz")
-★ [Twitter](https://twitter.com/1diazdev "@1diazdev")
+★ [Twitter](https://twitter.com/JuanDiaz_427 "@1diazdev")
 ★ [Linkedin](https://www.linkedin.com/in/1diazdev "@1diazdev")
 ★ [Medium](https://medium.com/@1diazdev "@1diazdev")
 ★ [Dev](https://dev.to/1diazdev "@1diazdev")

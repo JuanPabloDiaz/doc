@@ -3968,6 +3968,7 @@ In your Navbar component, you can use the auth context to conditionally render l
 Here's how you can do that:
 
 - Option 1:
+
 ```jsx
 <ul className="hidden sm:flex items-center gap-3">
   {auth.user && (
@@ -4005,6 +4006,7 @@ Here's how you can do that:
 > if auth.user is truthy (i.e., the user is authenticated), the "Logout" and "My Account" links are rendered. If auth.user is falsy (i.e., the user is not authenticated), the "Sign In" link is rendered.
 
 - Option 2:
+
 ```jsx
 // ...
 <ul className="hidden sm:flex items-center gap-3">
@@ -4013,9 +4015,7 @@ Here's how you can do that:
       <li>
         <NavLink
           to="/my-account"
-          className={({ isActive }) =>
-            isActive ? activeStyle : undefined
-          }
+          className={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           My Account
         </NavLink>
@@ -4041,9 +4041,7 @@ Here's how you can do that:
       <li>
         <NavLink
           to="/Logout"
-          className={({ isActive }) =>
-            isActive ? activeStyle : undefined
-          }
+          className={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Logout
         </NavLink>
@@ -4054,9 +4052,7 @@ Here's how you can do that:
     <li>
       <NavLink
         to="/sign-in"
-        className={({ isActive }) =>
-          isActive ? activeStyle : undefined
-        }
+        className={({ isActive }) => (isActive ? activeStyle : undefined)}
       >
         Sign In
       </NavLink>
@@ -4066,7 +4062,7 @@ Here's how you can do that:
 // ...
 ```
 
-> You can also have the links to "My Account", "My Orders", "Card", and "Logout" will only be shown if auth.user is truthy, indicating that a user is authenticated. If auth.user is falsy, indicating that no user is authenticated, only the "Sign In" link will be shown. 
+> You can also have the links to "My Account", "My Orders", "Card", and "Logout" will only be shown if auth.user is truthy, indicating that a user is authenticated. If auth.user is falsy, indicating that no user is authenticated, only the "Sign In" link will be shown.
 
 Here's how the `Navbar.jsx` should look like using option 2:
 
@@ -4258,7 +4254,6 @@ const Navbar = () => {
 export default Navbar;
 ```
 
-
 ### Private and Public Routes
 
 To create private and public routes, you can create two components: PrivateRoute and PublicRoute.
@@ -4313,14 +4308,63 @@ const AppRoutes = () => {
     { path: "/groceries", element: <Home /> },
     { path: "/home-decoration", element: <Home /> },
     // Private Routes
-    { path: "/my-order", element: <PrivateRoute><MyOrder /></PrivateRoute> },
-    { path: "/my-orders", element: <PrivateRoute><MyOrders /></PrivateRoute> },
-    { path: "/my-orders/last", element: <PrivateRoute><MyOrder /></PrivateRoute> },
-    { path: "/my-orders/:id", element: <PrivateRoute><MyOrder /></PrivateRoute> },
-    { path: "/my-account", element: <PrivateRoute><MyAccount /></PrivateRoute> },
-    { path: "/logout", element: <PrivateRoute><Logout /></PrivateRoute> },
+    {
+      path: "/my-order",
+      element: (
+        <PrivateRoute>
+          <MyOrder />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-orders",
+      element: (
+        <PrivateRoute>
+          <MyOrders />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-orders/last",
+      element: (
+        <PrivateRoute>
+          <MyOrder />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-orders/:id",
+      element: (
+        <PrivateRoute>
+          <MyOrder />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/my-account",
+      element: (
+        <PrivateRoute>
+          <MyAccount />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/logout",
+      element: (
+        <PrivateRoute>
+          <Logout />
+        </PrivateRoute>
+      ),
+    },
     // Public Routes
-    { path: "/sign-in", element: <PublicRoute><SignIn /></PublicRoute> },
+    {
+      path: "/sign-in",
+      element: (
+        <PublicRoute>
+          <SignIn />
+        </PublicRoute>
+      ),
+    },
     // Not Found
     { path: "*", element: <NotFound /> },
   ]);
@@ -4880,7 +4924,6 @@ For a better user experience, there is no need to make the user go to a logout p
 
 Here is what I change in the code:
 
-
 ### I. Modify the `Navbar` Component
 
 Move the logout functionality to the navbar. Here's a step-by-step plan:
@@ -4890,8 +4933,8 @@ Move the logout functionality to the navbar. Here's a step-by-step plan:
 
 ```jsx
 // Navbar.jsx
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React from "react";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const history = useHistory();
@@ -4899,7 +4942,7 @@ const Navbar = () => {
   const handleLogout = () => {
     // Add your logout logic here
     console.log("You have been logged out.");
-    history.push('/'); // Redirect to home page after logout
+    history.push("/"); // Redirect to home page after logout
   };
 
   return (
@@ -5243,11 +5286,6 @@ const App = () => {
 export default App;
 ```
 
-
-
-
-
-
 ## 37. Add a Skeleton
 
 You can use the Skeleton component from shadcn to show a placeholder while your content is loading.
@@ -5261,6 +5299,7 @@ Follow the steps on [shadcn - Skeleton](https://ui.shadcn.com/docs/components/sk
 ### II. Modify the `home` page:
 
 Add this section:
+
 ```jsx
 // ...
 import { Skeleton } from "@/components/ui/skeleton"; // import the Skeleton component
@@ -5585,8 +5624,6 @@ export const AppProvider = ({ children }) => {
 };
 ```
 
-
-
 ## 38. Fix error: 'children' is missing in props validationeslintreact/prop-types
 
 ### I. Modify `App`
@@ -5782,13 +5819,7 @@ function useAuth() {
 export { AuthProvider, useAuth };
 ```
 
-
 ## 39. ...
-
-
-
-
-
 
 ### I. Modify ``
 
@@ -5807,9 +5838,6 @@ export { AuthProvider, useAuth };
 ```jsx
 
 ```
-
-
-
 
 <!-- OTHER PROJECTS -->
 
@@ -5831,7 +5859,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact 📞
 
 [![](https://img.shields.io/badge/@1diazdev-fff?style=for-the-badge&logo=linkedin&logoColor=0A66C2)](https://www.linkedin.com/in/1diazdev/)
-[![](https://img.shields.io/badge/@1diazdev-fff?style=for-the-badge&logo=Twitter&logoColor=1DA1F2)](https://www.twitter.com/1diazdev)
+[![](https://img.shields.io/badge/@1diazdev-fff?style=for-the-badge&logo=Twitter&logoColor=1DA1F2)](https://www.twitter.com/JuanDiaz_427)
 [![](https://img.shields.io/badge/Gmail-fff?style=for-the-badge&logo=gmail&logoColor=EA4335)](mailto:juan.diaz93@hotmail.com)
 
 [![](https://img.shields.io/badge/Platzi_Profile-121f3d?style=for-the-badge&logo=Platzi&logoColor=98CA3F)](https://platzi.com/p/DiazJuan/)
