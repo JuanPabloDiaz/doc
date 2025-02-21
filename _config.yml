@@ -53,7 +53,7 @@ google_site_verification: # fill in to your verification string
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: "G-KLTPFDWN71"
+  # id: "G-KLTPFDWN71" NO ME SIRVIO! puede ser que este bloqueado. No importa, no lo necesito! Trate por 2 horas y no lo logre
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
