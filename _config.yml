@@ -18,7 +18,7 @@ timezone: America/New_York
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Juan Diaz Documentation # the main title
+title: Juan Diaz Documentation
 
 tagline: Never Stop Learning # it will display as the sub-title
 
@@ -45,7 +45,6 @@ social:
     - https://twitter.com/JuanDiaz_427 # change to your twitter homepage
     - https://github.com/JuanPabloDiaz # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
     - https://www.linkedin.com/in/1diazdev/
 
 google_site_verification: # fill in to your verification string
@@ -54,7 +53,7 @@ google_site_verification: # fill in to your verification string
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: G-KLTPFDWN71
+  id: "G-KLTPFDWN71"
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
