@@ -18,7 +18,7 @@ It is recommend to use the De' Longhi descaling solution which is designed speci
 
 > Use 100ml of descaling solution with 1000ml of water.
 
-> {% include embed/youtube.html id='t-AjNGFF16M' %}
+{% include embed/youtube.html id='t-AjNGFF16M' %}
 
 Or
 
