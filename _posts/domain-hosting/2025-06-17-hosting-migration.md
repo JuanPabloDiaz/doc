@@ -37,7 +37,7 @@ Next: switch the project to static generation, cache SSR, and block crawlers bef
 
     **You only need to change the A and CNAME records**
 
-    ## DNS Records Update
+    <h3>DNS Records Update</h3>
 
     | Tipo  | Host              | Vercel Value           | Netlify Value                 |
     | :---- | :---------------- | :--------------------- | :-------------------------- |
@@ -55,18 +55,30 @@ This experience reminded me of the importance of understanding how SSR impacts s
 
 ----
 
-## My Records (backup)
+## My DNS Configurations (Backup Records)
 
-### jcdistributioncorp.com
-![Records](/assets/img/domain/jcdistributioncorp-records.png)
+Before doing the migration, it's a good idea to save the DNS records.
 
-**Records that you should NOT change:**
-- MX records (email): fwd1.porkbun.com y fwd2.porkbun.com - KEEP IT THE SAME
-- TXT record (SPF for email): El SPF para correo - KEEP IT THE SAME
-- CNAME wildcard *.lujoymoda.com: OPTIONAL, but better keep it
+<details>
+<summary>JCDistributionCorp.com</summary>
 
-### lujoymoda.com
-![Records](/assets/img/domain/lujoymoda-records.png)
+<img src="/assets/img/domain/jcdistributioncorp-records.png" alt="JCDistributionCorp records">
+
+<div>
+    <strong>Records that you should NOT change:</strong>
+    <ul>
+      <li>MX records (email): fwd1.porkbun.com y fwd2.porkbun.com - KEEP IT THE SAME</li>
+      <li>TXT record (SPF for email): El SPF para correo - KEEP IT THE SAME</li>
+      <li>CNAME wildcard *.lujoymoda.com: OPTIONAL, but better keep it</li>
+    </ul>
+</div>
+
+</details>
+
+<details>
+<summary>lujoymoda.com</summary>
+
+<img src="/assets/img/domain/lujoymoda-records.png" alt="lujoymoda.com records">
 
 **You only need to change the A and CNAME records**
 - Record A: `lujoymoda.com` → `76.76.21.21`
@@ -76,12 +88,10 @@ This experience reminded me of the importance of understanding how SSR impacts s
 
 To learn more about how to migrate your Hosting from Vercel to Netlify, check out the [step by step guide](#step-by-step-guide)
 
-### talentoparati.com
+</details>
 
 <details>
-<summary>
-Talento Para Ti records
-</summary>
+<summary>talentoparati.com</summary>
 <br>
 
 <table>
@@ -166,7 +176,6 @@ Talento Para Ti records
   </tbody>
 </table>
 
-</details>
 
 **You only need to change 2 records**:
 
@@ -191,7 +200,11 @@ Because those specific subdomains:
 **Simple approach:**
 Change only what you need for `talentoparati.com` and `www.talentoparati.com` to work. The rest keep it.
 
-### charlotte-us.com
+</details>
+
+<details>
+<summary>charlotte-us.com</summary>
+
 ![Records](/assets/img/domain/charlotte-us-records.png)
 
 **You only need to change the A and CNAME records**
@@ -200,7 +213,10 @@ Change only what you need for `talentoparati.com` and `www.talentoparati.com` to
 - Record CNAME: `www.charlotte-us.com` → `cname.vercel-dns.com`
 - This should change to the domain of Netlify: `charlotte-us.netlify.app`
 
-### miguediaz.com
+</details>
+
+<details>
+<summary>miguediaz.com</summary>
 
 **You only need to change the A and CNAME records**
 - Record A: `miguediaz.com` → `76.76.21.21`
@@ -208,9 +224,13 @@ Change only what you need for `talentoparati.com` and `www.talentoparati.com` to
 - Record CNAME: `www.miguediaz.com` → `cname.vercel-dns.com`
 - This should change to the domain of Netlify: `madiaz.netlify.app`
 
-### jpdiaz.dev 
-![Records jpdiaz.dev](/assets/img/domain/jpdiaz-records.png)
-![Records www.jpdiaz.dev](/assets/img/domain/jpdiaz-records2.png)
+</details>
+
+<details>
+<summary>jpdiaz.dev</summary>
+
+<img src="/assets/img/domain/jpdiaz-records.png" alt="jpdiaz.dev records">
+<img src="/assets/img/domain/jpdiaz-records2.png" alt="www.jpdiaz.dev records">
 
 **You only need to change the A and CNAME records**
 - Record A: `jpdiaz.dev` → `76.76.21.21`
@@ -218,26 +238,47 @@ Change only what you need for `talentoparati.com` and `www.talentoparati.com` to
 - Record CNAME: `www.jpdiaz.dev` → `cname.vercel-dns.com`
 - This should change to the domain of Netlify.
 
+</details>
+
 ----
 
-## Step by step guide
+## Step by Step Guide
 
-### 1. Change the A record:
-- **Type**: A
-- **Host**: `lujoymoda.com`
-- **Value**: Change from `76.76.21.21` → `75.2.60.5`
+The above table is a summary of the changes you need to make. but here is a step by step guide using the example of `lujoymoda.com`
 
-### 2. Change the CNAME record of www:
-- **Type**: CNAME  
-- **Host**: `www.lujoymoda.com`
-- **Value**: Change from `cname.vercel-dns.com` → `apex-loadbalancer.netlify.com`
+<details>
+<summary>lujoymoda.com</summary>
 
-## Important:
-- **DO NOT touch** the MX records (email)
-- **DO NOT touch** the TXT (SPF)
-- **DO NOT touch** the wildcard `*.lujoymoda.com`
+<h3>1. Change the A record:</h3>
+<ul>
+  <li><strong>Type</strong>: A</li>
+  <li><strong>Host</strong>: <code>lujoymoda.com</code></li>
+  <li><strong>Value</strong>: Change from <code>76.76.21.21</code> → <code>75.2.60.5</code></li>
+</ul>
 
-## After the change:
-1. Save the changes in your DNS
-2. Wait 5-30 minutes for propagation
-3. Visit `lujoymoda.com` to verify
+<h3>2. Change the CNAME record of www:</h3>
+<ul>
+  <li><strong>Type</strong>: CNAME</li>
+  <li><strong>Host</strong>: <code>www.lujoymoda.com</code></li>
+  <li><strong>Value</strong>: Change from <code>cname.vercel-dns.com</code> → <code>apex-loadbalancer.netlify.com</code></li>
+</ul>
+
+<h2>Important:</h2>
+<ul>
+  <li><strong>DO NOT touch</strong> the MX records (email)</li>
+  <li><strong>DO NOT touch</strong> the TXT (SPF)</li>
+  <li><strong>DO NOT touch</strong> the wildcard <code>*.lujoymoda.com</code></li>
+</ul>
+
+<h2>After the change:</h2>
+<ol>
+  <li>Save the changes in your DNS</li>
+  <li>Wait 5–30 minutes for propagation</li>
+  <li>Visit <code>lujoymoda.com</code> to verify</li>
+</ol>
+
+</details>
+
+## Conclusion
+
+This experience taught me the importance of anticipating SSR costs and planning for redundancy. Going forward, I'll favor static builds, implement caching, and maintain multi-cloud backups to ensure reliability.
