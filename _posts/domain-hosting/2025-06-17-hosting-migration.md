@@ -33,19 +33,17 @@ Next: switch the project to static generation, cache SSR, and block crawlers bef
 1. Login to Netlify and Porkbun.
 2. Go to Porkbun and save your records (A, CNAME, etc). I mean the records that point to your domain.
 
-![Porkbun Records](/assets/img/domain/lujoymoda-records.png)
+    ![Porkbun Records](/assets/img/domain/lujoymoda-records.png)
 
-**You only need to change the A and CNAME records**
+    **You only need to change the A and CNAME records**
 
-## DNS Records Update
+    ## DNS Records Update
 
-| Tipo  | Host              | Vercel Value           | Netlify Value                 |
-| :---- | :---------------- | :--------------------- | :-------------------------- |
-| A     | lujoymoda.com     | 76.76.21.21            | **75.2.60.5** |
-| CNAME | www.lujoymoda.com | cname.vercel-dns.com   | **dyr.netlify.app** |
-| ALIAS | *.lujoymoda.com | cname.vercel-dns.com   | **apex-loadbalancer.netlify.com** |
-
-
+    | Tipo  | Host              | Vercel Value           | Netlify Value                 |
+    | :---- | :---------------- | :--------------------- | :-------------------------- |
+    | A     | lujoymoda.com     | 76.76.21.21            | **75.2.60.5** |
+    | CNAME | www.lujoymoda.com | cname.vercel-dns.com   | **dyr.netlify.app** |
+    | ALIAS | *.lujoymoda.com | cname.vercel-dns.com   | **apex-loadbalancer.netlify.com** |
 
 3. Go to Netlify and create a new project with the repository you want to migrate.
 4. Once the project is setup. Add a domain `lujoymoda.com` to the project.
