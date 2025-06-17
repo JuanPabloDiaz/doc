@@ -20,38 +20,44 @@ As a software engineer, I've always been a fan of Vercel. A few weeks ago I migr
 ## 🔧 Temporary fix: migrate to Netlify
 
 - Deleted/Paused the project from Vercel (June 16)
-- DNS now points to Netlify
-- Portfolio is live at [https://jpdiaz.netlify.app](https://jpdiaz.netlify.app)
+- DNS now points to Netlify at [jpdiaz.dev](https://jpdiaz.dev)
+- Portfolio is live at [jpdiaz.netlify.app](https://jpdiaz.netlify.app)
+- Vercel account is paused [jpdiaz.vercel.app](https://jpdiaz.vercel.app)
 
 Next: switch the project to static generation, cache SSR, and block crawlers before re-deploying it safely.
 
-
-<details>
-<summary>
-Hosting Migration
-</summary>
-<br>
-Watch this video to learn more about Hosting and how to use them.
-<br>
-
-{% include embed/youtube.html id='lvF_WmIoVnw' %}
-
-
-</details>
-<br>
+---
 
 ## How to temporarily migrate your Hosting from Vercel to Netlify
 
-1. Login to Vercel, Netlify and Porkbun.
+1. Login to Netlify and Porkbun.
 2. Go to Porkbun and save your records (A, CNAME, etc). I mean the records that point to your domain.
 
 ![Porkbun Records](/assets/img/domain/lujoymoda-records.png)
 
-3. Go to Netlify and create a new site with the repository you want to migrate.
-4. Go to Netlify and 
+**You only need to change the A and CNAME records**
+
+## DNS Records Update
+
+| Tipo  | Host              | Vercel Value           | Netlify Value                 |
+| :---- | :---------------- | :--------------------- | :-------------------------- |
+| A     | lujoymoda.com     | 76.76.21.21            | **75.2.60.5** |
+| CNAME | www.lujoymoda.com | cname.vercel-dns.com   | **dyr.netlify.app** |
+| ALIAS | *.lujoymoda.com | cname.vercel-dns.com   | **apex-loadbalancer.netlify.com** |
 
 
-## My Porkbun-Vercel Records
+
+3. Go to Netlify and create a new project with the repository you want to migrate.
+4. Once the project is setup. Add a domain `lujoymoda.com` to the project.
+5. Go to Porkbun and update the records to point to the new IP address of Netlify.
+6. Wait for the DNS to propagate.
+7. Visit `lujoymoda.com` to verify.
+
+This experience reminded me of the importance of understanding how SSR impacts serverless costs. From now on, I’ll default to static generation when possible — and always back up my critical projects across providers.
+
+----
+
+## My Records (backup)
 
 ### jcdistributioncorp.com
 ![Records](/assets/img/domain/jcdistributioncorp-records.png)
@@ -66,12 +72,13 @@ Watch this video to learn more about Hosting and how to use them.
 
 **You only need to change the A and CNAME records**
 - Record A: `lujoymoda.com` → `76.76.21.21`
-- This should change to the IP of Netlify
+- This should change to the IP of Netlify: `75.2.60.5`
 - Record CNAME: `www.lujoymoda.com` → `cname.vercel-dns.com`
-- This should change to the domain of Netlify
+- This should change to the domain of Netlify: `dyr.netlify.app`
+
+To learn more about how to migrate your Hosting from Vercel to Netlify, check out the [step by step guide](#step-by-step-guide)
 
 ### talentoparati.com
-![Records](/assets/img/domain/talentoparati-records.png)
 
 <details>
 <summary>
@@ -167,9 +174,9 @@ Talento Para Ti records
 
 **Records to change:**
 1. **Record A**: `talentoparati.com` → `76.76.21.21`
-   - Change to the IP of Netlify
+   - Change to the IP of Netlify: `75.2.60.5`
 2. **Record CNAME**: `www.talentoparati.com` → `cname.vercel-dns.com`
-   - Change to the domain of Netlify (e.g: `your-site.netlify.app`)
+   - Change to the domain of Netlify: `your-site.netlify.app`
 
 **Records to keep:**
 - **MX**: `fwd1.porkbun.com` (email) - **KEEP IT**
@@ -191,33 +198,48 @@ Change only what you need for `talentoparati.com` and `www.talentoparati.com` to
 
 **You only need to change the A and CNAME records**
 - Record A: `charlotte-us.com` → `76.76.21.21`
-- This should change to the IP of Netlify
+- This should change to the IP of Netlify: `75.2.60.5`
 - Record CNAME: `www.charlotte-us.com` → `cname.vercel-dns.com`
-- This should change to the domain of Netlify
+- This should change to the domain of Netlify: `charlotte-us.netlify.app`
 
 ### miguediaz.com
-![Records](/assets/img/domain/miguediaz-records.png)
 
 **You only need to change the A and CNAME records**
 - Record A: `miguediaz.com` → `76.76.21.21`
-- This should change to the IP of Netlify
+- This should change to the IP of Netlify: `75.2.60.5`
 - Record CNAME: `www.miguediaz.com` → `cname.vercel-dns.com`
-- This should change to the domain of Netlify
+- This should change to the domain of Netlify: `madiaz.netlify.app`
 
 ### jpdiaz.dev 
-![Records](/assets/img/domain/jpdiaz-dev-records.png)
+![Records jpdiaz.dev](/assets/img/domain/jpdiaz-records.png)
+![Records www.jpdiaz.dev](/assets/img/domain/jpdiaz-records2.png)
 
 **You only need to change the A and CNAME records**
 - Record A: `jpdiaz.dev` → `76.76.21.21`
-- This should change to the IP of Netlify
+- This should change to the IP of Netlify: `75.2.60.5`
 - Record CNAME: `www.jpdiaz.dev` → `cname.vercel-dns.com`
-- This should change to the domain of Netlify
-
-
-
-
+- This should change to the domain of Netlify.
 
 ----
 
+## Step by step guide
 
+### 1. Change the A record:
+- **Type**: A
+- **Host**: `lujoymoda.com`
+- **Value**: Change from `76.76.21.21` → `75.2.60.5`
 
+### 2. Change the CNAME record of www:
+- **Type**: CNAME  
+- **Host**: `www.lujoymoda.com`
+- **Value**: Change from `cname.vercel-dns.com` → `apex-loadbalancer.netlify.com`
+
+## Important:
+- **DO NOT touch** the MX records (email)
+- **DO NOT touch** the TXT (SPF)
+- **DO NOT touch** the wildcard `*.lujoymoda.com`
+
+## After the change:
+1. Save the changes in your DNS
+2. Wait 5-30 minutes for propagation
+3. Visit `lujoymoda.com` to verify
